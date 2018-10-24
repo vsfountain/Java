@@ -1,0 +1,28 @@
+package com.example.methods;
+
+public class OverLoadingExample {
+
+	public static void main(String[] args) {
+		methodOne();
+	}
+
+	static void methodOne() {
+		System.out.println("there are no arguments");
+	}
+	
+	static void methodOne(char c) {
+		System.out.println("there are no arguments, again");
+	}
+
+	// an overloaded method
+	static void methodOne(int i) {
+		System.out.println(i);
+	}
+
+	/*
+	 * drawRectangle(int x, int y, int height, int length)
+	 * drawRectangle(int x, int y, int height, int length, double alpha)
+	 * 
+	 */
+
+}

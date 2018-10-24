@@ -1,0 +1,37 @@
+package com.example.classbehavior;
+
+/*
+ * Scopes of a variable in java:
+ * 
+ * 		static/class - exists within the class itself
+ * 		instance/object -	only exists within the object
+ * 		local/method- only exists within the specific method
+ * 		block- only exists within the specific block
+ */
+
+class Car {
+
+	String color;
+	String model;
+	String make;
+	
+	//if no other constructor is created, then the compiler gives you a default
+	//	constructor. the default constructor happens to be a no-args constructor
+	Car() { 	//this is a no args constructor
+	}
+	
+	Car(String s) { 	//this is an args constructor
+	}
+	
+	Car(String color, String model, String make){
+		this.color=color;
+		this.model=model;
+		this.make=make;
+	}
+	
+	void printCar() {
+		System.out.println("Color: "+ color +
+							"     model: "+ model +
+							"     make: "+ make);
+	}
+}

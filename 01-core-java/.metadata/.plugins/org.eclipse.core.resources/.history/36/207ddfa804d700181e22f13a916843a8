@@ -1,0 +1,18 @@
+package com.example.flowcontrol;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		//What is flow control?
+		//		if statements, loops, try catch blocks, etc
+		
+		
+		
+	}
+	
+	public static boolean method1() {
+		return true;
+	}
+
+}

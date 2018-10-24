@@ -1,0 +1,20 @@
+package com.example.classbehavior;
+
+//this is a class
+// a class is a blueprint for an object.
+public class Animal {
+	//how do we give an object state?
+	int speed;
+	String color="red";
+	boolean isAlive;
+	
+	//how do we give an object behavior?
+	void walk() {
+		speed= speed+15;
+	}
+	
+	void mortality() {
+		isAlive= !isAlive;
+	}
+	
+}

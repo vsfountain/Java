@@ -1,0 +1,24 @@
+package com.example.classbehavior;
+
+/*Naming conventions of java
+ * 
+ * variable names: camel case.  e.g. myFirstName, myLastName
+ * class names: title case. e.g. CoolAnimal, UserStory
+ * 
+ * 
+ * 
+ */
+
+
+public class Main {
+
+	public static void main(String[] args) {
+		new Animal();	//simplest way to create an object
+		
+		Animal x= new Animal();
+		
+		//is there a constructor? is this calling the constructor?
+		Car daCar= new Car();
+	}
+
+}

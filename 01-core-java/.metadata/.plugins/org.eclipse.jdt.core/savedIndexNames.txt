@@ -1,0 +1,3 @@
+INDEX VERSION 1.130+C:\Users\Trevin\Documents\git_repos\1810-oct22-java\01-core-java\.metadata\.plugins\org.eclipse.jdt.core
+773712376.index
+2380175872.index

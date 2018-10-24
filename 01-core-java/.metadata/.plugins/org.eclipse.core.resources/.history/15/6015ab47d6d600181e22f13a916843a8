@@ -1,0 +1,7 @@
+package com.example.classbehavior;
+
+//this is a class
+// a class is a blueprint for an object.
+public class Animal {
+	
+}

@@ -1,0 +1,17 @@
+package com.example.methods;
+
+public class OverLoadingExample {
+
+	public static void main(String[] args) {
+		methodOne(14);
+	}
+	
+	static void methodOne() {
+		System.out.println("there are no arguments");
+	}
+	//an overloaded method
+	static void methodOne(int i) {
+		System.out.println(i);
+	}
+
+}

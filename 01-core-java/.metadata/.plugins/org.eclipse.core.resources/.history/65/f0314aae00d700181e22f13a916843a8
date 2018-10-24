@@ -1,0 +1,16 @@
+package com.example.flowcontrol;
+
+public class LoopExample {
+
+	public static void main(String[] args) {
+		//what is a loop?
+		
+		//while loop
+		int i= 7;
+		while(i<10) {
+		}
+		
+		
+	}
+
+}

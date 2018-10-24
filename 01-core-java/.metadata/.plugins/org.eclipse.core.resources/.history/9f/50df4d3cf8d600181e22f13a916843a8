@@ -1,0 +1,12 @@
+package com.example.access;
+
+/*
+ * Access Modifiers:
+ * 		public-
+ * 		(default)-
+ * 		protected-
+ * 		private-
+ */
+public class Clement {
+		private String rev= "October";
+}

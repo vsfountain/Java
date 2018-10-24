@@ -1,0 +1,47 @@
+package com.example.flowcontrol;
+
+public class IfExample {
+
+	public static void main(String[] args) {
+
+		// what is an if statements?
+		/*
+		 * int j= 2; int i = j>3 ? 7500:1000; //ternary statement
+		 * 
+		 * if (i < 7000) { //if statement System.out.println("first if statement hit!");
+		 * System.out.println("I like buttered toast"); } else if (i < 8000) {
+		 * System.out.println("second if"); } else { System.out.println("other stuff");
+		 * }
+		 */
+
+		int k = 9;
+
+		if (k == 1) {
+			// code
+		} else if (k == 6) {
+			// code
+		} else if (k == 9) {
+			// code
+		} else {
+			// so much code
+		}
+
+		// switch statement
+		switch (k) {
+		case 1:
+			// code
+			break;
+		case 6:
+			// code
+			break;
+		case 9:
+			// code
+			break;
+		default:
+			// so much code
+		}
+
+		System.out.println("done");
+	}
+
+}

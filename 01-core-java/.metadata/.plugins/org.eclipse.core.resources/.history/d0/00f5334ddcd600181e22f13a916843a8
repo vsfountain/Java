@@ -1,0 +1,14 @@
+package com.example.classbehavior;
+
+public class Main {
+
+	public static void main(String[] args) {
+		new Animal();	//simplest way to create an object
+		
+		Animal x= new Animal();
+		
+		//is there a constructor? is this calling the constructor?
+		Car daCar= new Car();
+	}
+
+}

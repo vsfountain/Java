@@ -1,0 +1,21 @@
+package com.example.flowcontrol;
+
+public class IfExample {
+
+	public static void main(String[] args) {
+
+		//what is an if statements?
+		
+		int i = 8000;
+		
+		if(i<7000) {
+			System.out.println("first if statement hit!");
+			System.out.println("I like buttered toast");
+		}else {
+			System.out.println("other stuff");
+		}
+		
+		System.out.println("done");
+	}
+
+}
