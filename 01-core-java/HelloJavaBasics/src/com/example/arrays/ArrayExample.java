@@ -14,7 +14,7 @@ public class ArrayExample {
 		//how do we create an array?
 		int[] arryOne= {15, 21, 37};  //also, "int arryThree[]= {15, 21, 37};" works
 		int[] arryTwo= new int[11];
-		char boolarry[]= new char[67];
+		boolean boolarry[]= new boolean[67];
 		
 		//how do we alter values in an array? Index starts at 0, NOT 1
 		arryTwo[0]= 67;
@@ -23,7 +23,7 @@ public class ArrayExample {
 		//System.out.println(arryTwo.length); //size of the array
 		
 		//what happens if I try to access an element that hasn't been initialized
-		//System.out.println(boolarry[2]);
+		System.out.println(boolarry[2]);
 		
 		/*
 		 * default values:
