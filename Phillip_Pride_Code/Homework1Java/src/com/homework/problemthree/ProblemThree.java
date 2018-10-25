@@ -6,22 +6,14 @@ public class ProblemThree {
 		String word = new String("Clutch");
 		System.out.println(word);
 		System.out.println("REVERSE!!!!");
-		System.out.println(reverseString(word));
-	}
-	
-	public static String reverseString(String s) {
-		String revS = new String("");
-		for(int i = 0; i<s.length()/2;i++) {
-			//System.out.println(i);
-			s.charAt(i) = s.charAt(s.length(-i));
+		
+		for(int i = word.length()-1; i>=0;i--) {
+			word+= word.charAt(i); // adds the reverse of the initial word to the end of the String
 		}
 		
-		/*for(int i = s.length()-1; i>=0;i--) {
-			//System.out.println(i);
-			revS+= s.charAt(i);
-		}*/
+		word = word.substring(word.length()/2); // slices the String in half so that only the reverse of the word remains
+		System.out.println(word);
 		
-		return revS;
 	}
 
 }
