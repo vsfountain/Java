@@ -7,7 +7,13 @@ public class Pizza extends Food{
 	}
 
 	@Override
+	void cook() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*@Override
 	public void cook() {
 		System.out.println(temperature);
-	}
+	}*/
 }
