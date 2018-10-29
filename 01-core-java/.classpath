@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="FourPillarsOOP/src"/>
+	<classpathentry kind="src" path="HelloJavaBasics/src"/>
+	<classpathentry kind="src" path="HelloWorld/src"/>
+	<classpathentry kind="src" path="maven-project-examples/CoreJavaExamples/src/main/java"/>
+	<classpathentry kind="src" path="maven-project-examples/ErrorsVsExceptions/src/main/java"/>
+	<classpathentry kind="src" path="maven-project-examples/LoggyTheLog/src/main/java"/>
+	<classpathentry kind="src" path="maven-project-examples/TestingExample/src/main/java"/>
+	<classpathentry kind="output" path="FourPillarsOOP/bin"/>
+</classpath>
