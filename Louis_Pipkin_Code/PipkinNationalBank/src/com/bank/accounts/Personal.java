@@ -11,4 +11,31 @@ public class Personal extends Account {
 	
 	public Client owner; 
 
+	Personal(){
+	
+	}
+
+	public Personal(Client owner) {
+		super();
+		this.owner = owner;
+	}
+
+	public Client getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Client owner) {
+		this.owner = owner;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Personal [owner=" + owner + "]";
+	}
+	
+	
 }

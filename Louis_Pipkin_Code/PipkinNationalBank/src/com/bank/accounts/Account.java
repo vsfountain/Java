@@ -11,20 +11,50 @@ public class Account implements Serializable {
 	
 	boolean approved;
 	int balance;
-	
+
 	public Account(){
+	}
+	
+	public Account(boolean approved, int balance) {
+		super();
+		this.approved = approved;
+		this.balance = balance;
 	}
 	
 	public boolean deposit(int amount) {
 		return false;
 	}
 	
-	public boolean withdrawl(int amount) {
-		return false;
+	public int withdrawl(int amount) {
+		return 0;
 	}
 	
 	public boolean transfer(int amount, Account toAccount) {
 		return false;
 	}
 	
+	@Override
+	public String toString() {
+		return "Account [approved=" + approved + ", balance=" + balance + "]";
+	}
+
+	public boolean isApproved() {
+		return approved;
+	}
+
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+
+	public int getBalance() {
+		return balance;
+	}
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

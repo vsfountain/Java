@@ -18,4 +18,59 @@ public class Client extends User {
 	
 	public ArrayList<Account> accounts;
 	
+	Client(){
+		
+	}
+
+	public Client(String address, String ssn, Date birthDay, ArrayList<Account> accounts) {
+		super();
+		this.address = address;
+		this.ssn = ssn;
+		this.birthDay = birthDay;
+		this.accounts = accounts;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getSsn() {
+		return ssn;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+
+	public ArrayList<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(ArrayList<Account> accounts) {
+		this.accounts = accounts;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Client [address=" + address + ", ssn=" + ssn + ", birthDay=" + birthDay + ", accounts=" + accounts
+				+ "]";
+	}
+	
+	
 }
