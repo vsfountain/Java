@@ -14,12 +14,11 @@ public class Prime {
 
 		int cnt = 0;
 		for (int i = 0; i < nums.size(); i++) {
-			// System.out.println("i: " + i);
+
 			if (nums.get(i) % 2 == 0) {
 				continue;
 			}
 			for (int j = 3; j * j <= i; j += 2) {
-				// System.out.println("j: " + j);
 				if (nums.get(i) > 3) {
 					if (nums.get(i) % j == 0) {
 						cnt++;
