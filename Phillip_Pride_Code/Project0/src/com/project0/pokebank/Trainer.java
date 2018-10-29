@@ -46,12 +46,12 @@ public class Trainer  implements Serializable{
 			if (accounts.contains(aName)) {
 				aName.removePokemon(poke);
 			} else {
-				System.out.println("Nurse Joy: Oh dear! That Pok\u00E9mon does not seem to be stored in your PC Box! "
+				System.out.println("Oh dear! That Pok\u00E9mon does not seem to be stored in your PC Box! "
 						+ "Did you mean to pick up a different Pok\u00E9mon?");
 			}
 		} else {
 			System.out.println(
-					"Nurse Joy: I'm sorry, you don't seem to have an open box. Please apply for one");
+					"I'm sorry, you don't seem to have an open box. Please apply for one");
 
 		}
 
@@ -64,7 +64,7 @@ public class Trainer  implements Serializable{
 
 			}
 			else {
-				System.out.println();
+				System.out.println("I'm sorry, you don't seem to have an open box. Please apply for one");
 			}
 		}
 

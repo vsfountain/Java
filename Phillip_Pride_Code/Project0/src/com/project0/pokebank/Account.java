@@ -1,8 +1,9 @@
 package com.project0.pokebank;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Account {
+public class Account implements Serializable{
 	private String acctName;
 	private List<String> pokes;
 

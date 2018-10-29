@@ -27,8 +27,10 @@ public class Employee {
 		this.isAdmin = isAdmin;
 	}
 
-	public ArrayList<Trainer> getClients() {
-		return clients;
+	public void getClients() {
+		for(int i =0; i<clients.size();i++) {
+			System.out.println(clients.get(i).toString());
+		}
 	}
 
 	public void addClient(Trainer client) {

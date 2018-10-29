@@ -1,4 +1,4 @@
-package com.example.problemeight;
+package com.homework.problemeight;
 
 import java.util.*;
 
