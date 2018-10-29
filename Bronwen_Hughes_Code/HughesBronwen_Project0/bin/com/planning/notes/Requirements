@@ -1,0 +1,26 @@
+Banking App Pt. 1
+
+	[ ] Building application using Java 8
+	[ ] All interaction with the user should be done through the console using Scanner class
+	[ ] Customers of the bank should be able to register with a username and a password
+		[ ] Customers can apply to open an account
+		[ ] Customers should be able to apply for joint accounts
+	[ ] Once account is open, customers should be able to withdraw, deposit, and transfer funds between accounts
+		[ ] Basic validation
+			[ ] Negative amounts
+			[ ] Overdrawing
+	[ ] Employees of the bank should be able to view all of their customers information
+		[ ] Account information
+		[ ] Account balances
+		[ ] Personal information
+	[ ] Employees should be able to approve / deny open applications for accounts
+	[ ] Bank admins should be able to view and edit all accounts 
+		[ ] Approving / denying accounts
+		[ ] Withdrawing, depositing, transferring from all accounts
+		[ ] Canceling accounts
+	[ ] All info should be persisted using text files and serialization
+	[ ] 100% test coverage is expect using J-Unit
+		[ ] Use TDD
+	[ ] Logging should be accomplished using Log4J
+		[ ] All transactions should be logged
+	
