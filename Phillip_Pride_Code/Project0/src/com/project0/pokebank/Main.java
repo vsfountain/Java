@@ -25,12 +25,14 @@ public class Main {
 		ArrayList<Employee> employees = new ArrayList<>();
 
 		trainers.add(t1);
-		t1.applyForBox("Box1");
 		workr1.addClient(t1);
-		// writeObject(filename, t1);
+		employees.add(workr1);
+		//t1.applyForBox();
+		workr1.approveOrDeny("clutch", true);
+		//writeObject(filename, trainers);
 
-		 trainers = readObject(filename, trainers);
-		 System.out.println("top " + trainers);
+		trainers = readObject(filename, trainers);
+		System.out.println("top " + trainers);
 		// Checks to see if this is a User or a bank employee
 		System.out.println(
 				"Welcome to Phil's PC at the Tampa Pok\u00E9mon Center! Are you an employee(e) or a trainer? (t)");
@@ -45,13 +47,14 @@ public class Main {
 			response = input.next().toLowerCase();
 			// Do-while loop that checks logic for various functions depending on user input
 			// using switch cases for a trainer;
+			TrainerActions:
 			do {
 				switch (response) {
 				case "done":
 
 					System.out.println("Thank you visiting Phil's PC. We hope to you again!");
 					done = true;
-					//writeObject(filename, trainers);
+					// writeObject(filename, trainers);
 					// readObject(filename);
 					continue;
 
@@ -66,6 +69,7 @@ public class Main {
 								&& password.equals(trainers.get(i).getPassword())) {
 							System.out.println("Welcome " + usrname + "! You are now logged in.");
 							currentTrainer = trainers.get(i);
+							cnt=0;
 							break;
 						} else {
 							cnt++;
@@ -86,6 +90,7 @@ public class Main {
 					trainers.add(currentTrainer);
 					System.out.println("New " + trainers);
 					workr1.addClient(currentTrainer);
+					currentTrainer.applyForBox();
 					System.out.println(
 							"Thank you for creating an account with us. Please log in" + " with your new account");
 					done = true;
@@ -93,8 +98,7 @@ public class Main {
 
 				case "apply":
 					if (currentTrainer != null) {
-						System.out.println("Enter a name for your box");
-						currentTrainer.applyForBox(input.next());
+						currentTrainer.applyForBox();
 
 						System.out.println("Thank you, your PC representative will review your "
 								+ "application as soon as possible.");
@@ -116,6 +120,7 @@ public class Main {
 					System.out.println("Which box is it in?");
 					box = currentTrainer.getBox(input.next());
 					currentTrainer.withdraw(box, poke);
+					break;
 
 				case "t":
 					System.out.println("Which Pok\u00E9mon are you transferring?");
@@ -145,10 +150,15 @@ public class Main {
 			System.out.print("Please enter your password (case-sensitive): ");
 			password = input.next();
 			int cnt = 0;
-			for (int i = 0; i < employees.size(); i++) {
-				if (usrname.equals(employees.get(i).getUsrname()) && password.equals(employees.get(i).getPassword())) {
+			System.out.println("before loop");
+			for(int i = 0; i < employees.size(); i++) {
+				System.out.println("in loop");
+				if (usrname.equals(employees.get(i).getUsrname().toLowerCase()) && password.equals(employees.get(i).getPassword())) {
 					System.out.println("Welcome " + usrname + "! You are now logged in.");
 					currentWorker = employees.get(i);
+				}
+				else {
+					cnt++;
 				}
 			}
 			if (cnt != 0) {
@@ -159,27 +169,37 @@ public class Main {
 			// While loop for employees. Currently an infinite loop
 			while (!done) {
 				System.out.println("What would you like to do today? View clients(clients). "
-						+ "View open applications for new PC boxes(apps).");
+						+ "Review open applications for new PC boxes(apps). Log out(done)");
 				response = input.next().toLowerCase();
 				switch (response) {
 				case "clients":
 					currentWorker.getClients();
+					break;
+				case "apps":
+					System.out.println("Enter the name of the trainer whose application you are reviewing:");
+					String applicant = input.next().toLowerCase();
+					System.out.println("Are you approving(true) or denying(false) the application?");
+					boolean bool = input.nextBoolean();
+					currentWorker.approveOrDeny(applicant, bool);
+					break;
+				case "done":
+					System.out.println("You have been logged out.");
+					done=true;
 
 				}
 			}
 		}
-				
-		//readObject(filename, trainers);
+
+		// readObject(filename, trainers);
 		writeObject(filename, trainers);
-		//System.out.println(trainers);
+		// System.out.println(trainers);
 
 	}
 
 	static ArrayList<Trainer> readObject(String filename, ArrayList<Trainer> list) {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
 			list = (ArrayList<Trainer>) ois.readObject();// de-serialization
-			//System.out.println("read: "+list);
-			
+			// System.out.println("read: "+list);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -193,7 +213,7 @@ public class Main {
 
 	static void writeObject(String filename, ArrayList<Trainer> list) {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
-			//System.out.println("write: " + list);
+			// System.out.println("write: " + list);
 			oos.writeObject(list); // serialization
 
 		} catch (IOException e) {

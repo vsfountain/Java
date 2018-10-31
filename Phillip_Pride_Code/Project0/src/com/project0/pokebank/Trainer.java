@@ -4,11 +4,16 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Trainer  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String usrname;
 	private String password;
 	private ArrayList<Account> accounts;
 	boolean hasOpenBox;
 	protected String application;
+	int boxNum = 0;
 
 	public Trainer(String usrname, String password) {
 		this.usrname = usrname.toLowerCase();
@@ -35,9 +40,9 @@ public class Trainer  implements Serializable{
 		
 	}
 
-	void applyForBox(String accntName) {
+	void applyForBox() {
 		application = "yes";
-		createBox(accntName);
+		createBox();
 		
 	}
 
@@ -85,12 +90,12 @@ public class Trainer  implements Serializable{
 			}
 		}
 	}
-	private void createBox(String name) {
-		accounts.add(new Account(name));
+	private void createBox() {
+		accounts.add(new Account("Box"+ ++boxNum));
 	}
 
 	@Override
 	public String toString() {
-		return "\nTrainer [username = " + usrname +  ", password = " + password + " accounts: " + accounts.size() + "has applied for a new box: " + application +"]";
+		return "\nTrainer [username = " + usrname +  ", password = " + password + " accounts: " + accounts + " has applied for a new box: " + application +"]";
 	}
 }

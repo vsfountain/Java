@@ -44,9 +44,12 @@ public class Employee {
 	public String getPassword() {
 		return password;
 	}
-	public void approveOrDeny(Trainer tr, boolean pass) {
-		tr.hasOpenBox = pass;
-		tr.application = "no";
+	public void approveOrDeny(String tr, boolean pass) {
+		for(Trainer t: clients) {
+			if(t.getUsername().equals(tr.toLowerCase()));
+			t.hasOpenBox = pass;
+			t.application = "no";
+		}
 	}
 	public boolean isAdmin() {
 		return isAdmin;

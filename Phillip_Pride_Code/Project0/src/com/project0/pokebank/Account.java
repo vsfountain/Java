@@ -32,4 +32,10 @@ public class Account implements Serializable{
 		pokes.remove(poke);
 	}
 
+	/*@Override
+	public String toString() {
+		return "Account [acctName= " + acctName + ", pokes= " + pokes + "]\n";
+	}*/
+	
+
 }
