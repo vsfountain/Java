@@ -91,6 +91,6 @@ public class Trainer  implements Serializable{
 
 	@Override
 	public String toString() {
-		return "\nTrainer [usrname=" + usrname +  ", accounts=" + accounts + "applied for an account?" + application+ "]";
+		return "\nTrainer [username = " + usrname +  ", password = " + password + " accounts: " + accounts.size() + "has applied for a new box: " + application +"]";
 	}
 }

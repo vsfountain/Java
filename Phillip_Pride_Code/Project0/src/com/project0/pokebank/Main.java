@@ -21,15 +21,16 @@ public class Main {
 
 		String filename = "./trainerAccountInfo.txt";
 
-		List<Trainer> trainers = new ArrayList<>();
-		List<Employee> employees = new ArrayList<>();
+		ArrayList<Trainer> trainers = new ArrayList<>();
+		ArrayList<Employee> employees = new ArrayList<>();
 
 		trainers.add(t1);
 		t1.applyForBox("Box1");
 		workr1.addClient(t1);
-		writeObject(filename, t1);
+		// writeObject(filename, t1);
 
-		// readObject(filename);
+		 trainers = readObject(filename, trainers);
+		 System.out.println("top " + trainers);
 		// Checks to see if this is a User or a bank employee
 		System.out.println(
 				"Welcome to Phil's PC at the Tampa Pok\u00E9mon Center! Are you an employee(e) or a trainer? (t)");
@@ -50,7 +51,7 @@ public class Main {
 
 					System.out.println("Thank you visiting Phil's PC. We hope to you again!");
 					done = true;
-					writeObject(filename, currentTrainer);
+					//writeObject(filename, trainers);
 					// readObject(filename);
 					continue;
 
@@ -83,9 +84,12 @@ public class Main {
 					password = input.next();
 					currentTrainer = new Trainer(usrname, password);
 					trainers.add(currentTrainer);
+					System.out.println("New " + trainers);
 					workr1.addClient(currentTrainer);
-					System.out.println("Thank you for creating an account with us");
-					break;
+					System.out.println(
+							"Thank you for creating an account with us. Please log in" + " with your new account");
+					done = true;
+					continue;
 
 				case "apply":
 					if (currentTrainer != null) {
@@ -160,18 +164,22 @@ public class Main {
 				switch (response) {
 				case "clients":
 					currentWorker.getClients();
-					
 
 				}
 			}
 		}
+				
+		//readObject(filename, trainers);
+		writeObject(filename, trainers);
+		//System.out.println(trainers);
 
 	}
 
-	static void readObject(String filename) {
+	static ArrayList<Trainer> readObject(String filename, ArrayList<Trainer> list) {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-			Object obj = ois.readObject();// de-serialization
-			System.out.println(obj);
+			list = (ArrayList<Trainer>) ois.readObject();// de-serialization
+			//System.out.println("read: "+list);
+			
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -180,11 +188,13 @@ public class Main {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+		return list;
 	}
 
-	static void writeObject(String filename, Object obj) {
-		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename, true))) {
-			oos.writeObject(obj); // serialization
+	static void writeObject(String filename, ArrayList<Trainer> list) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+			//System.out.println("write: " + list);
+			oos.writeObject(list); // serialization
 
 		} catch (IOException e) {
 			e.printStackTrace();
