@@ -13,17 +13,17 @@ public class CustomerAccess {
 	switch(N) {
 		case 1:
 			System.out.println((char)27 + "[35mEnter Amount to Withdraw");
-		Integer WithdrawAmount = Integer.parseInt(scanner.nextLine());
-		System.out.println(customer.withdraw(WithdrawAmount, AmountLeft));
+			Integer WithdrawAmount = Integer.parseInt(scanner.nextLine());
+			System.out.println(customer.withdraw(WithdrawAmount, AmountLeft));
 		break;
-	case 2:
-		System.out.println((char)27 + "[35mEnter Amount to Deposit");
+		case 2:
+			System.out.println((char)27 + "[35mEnter Amount to Deposit");
 			Integer DepositAmount = Integer.parseInt(scanner.nextLine());
 			System.out.println(customer.Deposit(DepositAmount, AmountLeft));
 			break;
 		case 3:
 			break;
-	}
+		}
 	}
 
 }

@@ -1,13 +1,5 @@
 package Admin;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class Person implements Serializable, CharSequence{
@@ -19,8 +11,8 @@ public class Person implements Serializable, CharSequence{
 	
 	private String name; 
 	private int pin;
-	private transient Integer ssn;
-	protected static int accessLevel;
+	private Integer ssn;
+	protected int accessLevel;
 	
 	
 	public String getName() {
@@ -47,7 +39,7 @@ public class Person implements Serializable, CharSequence{
 	
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", pin=" + pin + ", ssn=" + ssn + "]";
+		return "Person [name=" + name + ", pin=" + pin + ", ssn=" + ssn + ",accessLevel=" + accessLevel+"]";
 	}
 	
 	public Person(String name, int pin, Integer ssn, int accessLevel) {
@@ -74,46 +66,42 @@ public class Person implements Serializable, CharSequence{
 	}
 	
 	
-	protected static boolean readObject(String filename, Person person) {
-		try(ObjectInputStream ois = new ObjectInputStream(
-				new FileInputStream(filename)))
-		{
-			Object obj = ois.readObject();//de-serialization
-			BufferedReader bf = new BufferedReader(new FileReader(filename));
-			
-			System.out.println("readline"+bf.readLine());
-			System.out.println("obj class"+obj.toString());
-			System.out.println("person class"+person.toString());
-			System.out.println("deserialized obj"+obj);
-			
-			if(obj.toString()==person.toString()) {
-				System.out.println("Customer Info Found");
-				return true;
-			}
-		}catch(FileNotFoundException e) {
-			e.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}catch(ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		System.out.println("New person");
-		return false;
-	}
-	protected static void writeObject(String filename, Person person) {
-		System.out.println("Writing new customer information");
-		//FileWriter writer = new FileWriter(filename,true);
-		try(ObjectOutputStream oos = new ObjectOutputStream(
-				new FileOutputStream(filename,true)))
-		{
-			Object obj = person;
-			oos.writeObject("/n");
-			oos.writeObject(obj); //serialization
-			
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	protected static void readObject(String filename, Person person) throws ClassNotFoundException, IOException {
+//		List<Object> results = new ArrayList<Object>();
+//		FileInputStream f = new FileInputStream(filename);
+//		//ObjectInputStream ois = new ObjectInputStream(f);
+//
+//	    try {
+//	    	//FileInputStream f = new FileInputStream(filename);
+//	        while (true) {
+//	            ObjectInputStream ois = new ObjectInputStream(f);
+//	            results.add(ois.readObject());
+//	        }
+//	    } catch (EOFException ignored) {
+//	        // as expected
+//	    } finally {
+//	        if (f != null) {
+//	            f.close();
+//	        }
+//	    }
+//	    System.out.println("results = " + results);
+//	}
+//	
+//	protected static void writeObject(String filename, Person person) {
+//		
+//		System.out.println("Writing new customer information");
+//		try(ObjectOutputStream oos = new ObjectOutputStream(
+//				new FileOutputStream(filename,true)))
+//		
+//		{
+//			Object obj = person;
+//			oos.reset();
+//			oos.writeObject(obj); //serialization
+//			
+//		}catch(IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 }
 
