@@ -24,7 +24,8 @@ public class CompanyView {
 	private boolean running;
 	
 	
-	public CompanyView() {
+	public CompanyView(Employee employee) {
+		this.employee = employee;
 		tempRegistration = new ArrayList<Registration>(RegistrationList.getInstance().registrationList);
 		System.out.println("You have " + RegistrationList.getInstance().registrationList.size()
 				+ " application(s) needing to be approved/denied.");
@@ -45,20 +46,25 @@ public class CompanyView {
 		case "A":
 			System.out.println("View account information");
 			viewAccountInfo();
+			AccountList.printTo();
 			break;
 		case "B":
 			System.out.println("View Account balances");
 			viewAccountBalances();
+			AccountList.printTo();
 			break;
 		case "C":
 			System.out.println("View personal information");
 			viewPersonalInformation();
+			AccountList.printTo();
 			break;
 		case "D":
 			handleApplications();
+			AccountList.printTo();
 			break;
 		case "E":
 			accessAdminFunctions();
+			AccountList.printTo();
 			break;
 		case "U":
 			Main.start();
@@ -120,6 +126,8 @@ public class CompanyView {
 	}
 	
 	void accessAdminFunctions() {
+		System.out.println(employee);
+		System.out.println(employee.isAdmin());
 		if(employee.isAdmin()) {
 			chooseAdminFunctions();
 		}
@@ -150,6 +158,7 @@ public class CompanyView {
 			System.out.println("Choose amount");
 			tempMoney = ScannerSingleton.instance().nextDouble();
 			AccountList.getInstance().accountList.get(temp2).deposit(tempMoney);
+			AccountList.printTo();
 			break;
 		case "C":
 			System.out.println("View Account balances");
@@ -158,10 +167,12 @@ public class CompanyView {
 			System.out.println("Choose two accounts account");
 			temp2 = ScannerSingleton.instance().nextInt() - 1;
 			int temp3 = ScannerSingleton.instance().nextInt() -1;
+			AccountList.printTo();
 			
 			System.out.println("Choose amount");
 			tempMoney = ScannerSingleton.instance().nextDouble();
 			AccountList.getInstance().accountList.get(temp2).transfer(AccountList.getInstance().accountList.get(temp3), tempMoney, true);
+			AccountList.printTo();
 			break;
 		case "D":
 			System.out.println("View account information");
@@ -169,6 +180,7 @@ public class CompanyView {
 			System.out.println("Choose one account");
 			temp2 = ScannerSingleton.instance().nextInt() - 1;
 			AccountList.getInstance().accountList.remove(temp);
+			AccountList.printTo();
 			break;
 		case "U":
 			chooseAdminFunctions();

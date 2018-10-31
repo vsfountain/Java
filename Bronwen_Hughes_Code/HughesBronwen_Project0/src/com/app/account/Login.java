@@ -36,6 +36,7 @@ public class Login {
 				double temp2 = ScannerSingleton.instance().nextDouble();
 				
 				account.withdraw(temp2);
+				AccountList.printTo();
 				// withdraw
 				break;
 			case "B":
@@ -43,6 +44,7 @@ public class Login {
 				temp2 = ScannerSingleton.instance().nextDouble();
 				
 				account.deposit(temp2);
+				AccountList.printTo();
 				// deposit
 				break;
 			case "C":
@@ -55,6 +57,7 @@ public class Login {
 				account.transfer(AccountList.getInstance().accountList.get(accountTemp), moneyTemp, true);
 				System.out.println("Your account is at: " + account.printBalance());
 				System.out.println("The account you transfered to has: " + AccountList.getInstance().accountList.get(accountTemp).getBalance());
+				AccountList.printTo();
 				// transfer
 				break;
 			case "X":

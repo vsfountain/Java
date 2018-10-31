@@ -8,6 +8,7 @@ import com.app.main.ScannerSingleton;
 public class LoginEmployee {
 
 	private boolean loggedIn;
+	private Employee employee;
 
 	public LoginEmployee() {
 		attemptLogin();
@@ -16,7 +17,7 @@ public class LoginEmployee {
 	public LoginEmployee(String username, String password) {
 		checkCredentials(username, password);
 		if (loggedIn) {
-			new CompanyView();
+			new CompanyView(employee);
 		}
 	}
 
@@ -25,6 +26,7 @@ public class LoginEmployee {
 		for(Employee employee : EmployeeList.getInstance().employeeList) {
 			if(employee.getUsername().equals(username) && employee.getPassword().equals(password)) {
 				loggedIn = true;
+				this.employee = employee;
 				break;
 			}
 		}

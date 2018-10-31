@@ -15,7 +15,7 @@ public class Main {
 		// if employee login, prompt company login details
 		// if okay, then allow access
 
-		// if customer login, prompt customer login details
+		// if customer logisn, prompt customer login details
 		// if no account, prompt create a new account
 
 		start();
