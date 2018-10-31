@@ -25,6 +25,8 @@ import com.app.company.CompanyView;
 					System.out.println("Please fill out the forms.");
 					Registration registrationTemp = new Registration();
 					RegistrationList.getInstance().addRegistration(registrationTemp);
+					Main.start();
+					
 					//new CompanyView(new Employee("Kat", "kat", "Kat", "Hughes", true));
 					
 				
@@ -34,6 +36,7 @@ import com.app.company.CompanyView;
 					Main.exitApplication();
 					break;
 				} else {
+					
 					System.out.println("Invalid");
 				}
 			}

@@ -23,7 +23,6 @@ public class Main {
 	
 	public static void start() {
 		while (running) {
-			System.out.println(CustomerList.getInstance().toString());
 			System.out.println("Are you an employee or a customer? (Employee / Customer)");
 			String temp = ScannerSingleton.instance().nextLine().toUpperCase();
 

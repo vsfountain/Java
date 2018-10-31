@@ -1,11 +1,16 @@
 package com.app.account;
 
+import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OptionalDataException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CustomerList implements Serializable {
 	/**
@@ -15,56 +20,58 @@ public class CustomerList implements Serializable {
 
 	private static CustomerList instance;
 
-	public ArrayList<Customer> customerList = new ArrayList<>();
-	
+	public static ArrayList<Customer> customerList = new ArrayList<>();
+	static ArrayList<Object> results = new ArrayList<>();
+
 	private static boolean hasNoFile;
 
 	public void addCustomer(Customer customer) {
 		customerList.add(customer);
-		System.out.println(customerList.toString());
-		//printTo(instance);
-		
+	//	System.out.println(customerList.toString());
+
+		//repopulate(customerList);
+		 printTo();
 	}
 
 	private CustomerList() {
-		//repopulate(instance);
+
+		//printTo();
+		 repopulate(customerList);
 	}
 
 	public static CustomerList getInstance() {
 		if (instance == null) {
 			instance = new CustomerList();
-			
 		}
-		/*printTo(instance);
-		repopulate(instance);*/
 		return instance;
 	}
-	
 
-	
-	
 	@Override
 	public String toString() {
-	//	repopulate(instance);
 		return "CustomerList [customerList=" + customerList + "]";
 	}
 
-	public static void printTo(CustomerList instance) {
+	public static void printTo() {
+		System.out.println("READING FROM ARRAY!  " + customerList);
 		String fileName = "./CustomerList.txt";
-		try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))){
-			out.writeObject(instance);
-		} catch(Exception e) {
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
+			out.writeObject(customerList);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void repopulate(CustomerList instance) {
+
+	public static void repopulate(ArrayList<Customer> list) {
+		System.out.println("WRITING TO ARRAY" + customerList);
 		String fileName = "./CustomerList.txt";
-		try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))){
-			System.out.println("A");
-			instance = (CustomerList) in.readObject();
-		} catch (Exception e){
+
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName))) {
+			customerList = (ArrayList<Customer>) in.readObject();
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			System.out.println("Finally: " + customerList);
 		}
 	}
+
 }

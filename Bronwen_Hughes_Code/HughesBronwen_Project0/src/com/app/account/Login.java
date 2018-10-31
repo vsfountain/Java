@@ -110,6 +110,8 @@ public class Login {
 		System.out.println("Enter your password: ");
 		String password = ScannerSingleton.instance().next();
 
+		checkCredentials(username, password);
+		
 		if (loggedIn) {
 			chooseAction();
 		}
