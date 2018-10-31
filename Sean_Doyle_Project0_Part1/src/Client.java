@@ -11,6 +11,7 @@ public final class Client implements Serializable {
 	/**
 	 * 
 	 */
+	static Scanner s = new Scanner(System.in);
 	private static final long serialVersionUID = -3109361032833950478L;
 	private static final String EMPLOYEEACCESSCODE = "Snoflake";
 	private static final String ADMINISTRATORACCESSCODE = "Fluffy";
@@ -47,7 +48,8 @@ public final class Client implements Serializable {
 	}
 
 	protected boolean verifyName(String first, String last) {
-		return (first.equals(this.givenName) && last.equals(this.familyName));
+		return (first.toLowerCase().equals(this.givenName.toLowerCase())
+				&& last.toLowerCase().equals(this.familyName.toLowerCase()));
 	}
 
 	protected boolean verifyPassword(String pass) {
@@ -62,7 +64,8 @@ public final class Client implements Serializable {
 		return this.isActive;
 	}
 
-	public static void clientCreator(Scanner s, ArrayList<Client> clientList) {
+	public static Client clientCreator(ArrayList<Client> clientList) {
+		s.reset();
 		String firstName, lastName;
 		boolean correct = false;
 		do {
@@ -76,40 +79,53 @@ public final class Client implements Serializable {
 				correct = true;
 			}
 		} while (!correct);
-		clientList.add(new Client(firstName, lastName));
-		if (clientList.get(Client.clientCount - 1).changeClientPassword("Giant_Jenga")) {
+		Client temp = new Client(firstName, lastName);
+		if (temp.changeClientPassword("Giant_Jenga")) {
 			System.out.println("A bank employee will review your Application forthwith.\n\n");
 		} else {
 			System.out.println(
 					"Sorry we are unable to set your account pass phrase at this time. \nA bank employee will contact you ASAP to finish setting up your account.");
 		}
+
+		return temp;
 	}
 
-	protected void canBank(Scanner s, Account myAcc) {
+	protected void canBank(Account myAcc) {
+		s.reset();
 		if (this.isActive) {
 			if (myAcc != null) {
-				System.out.println("Please choose from the list of options below:");
-				System.out.println("A: Deposit funds.    \nB: Withdraw funds.   \nC: Transfer funds.");
-				switch (s.next().toLowerCase().substring(0, 1)) {
-				case "a":
-					System.out.print("Enter the decimal amount to be Deposited: $");
-					myAcc.deposit(s.nextDouble(), this);
-					break;
-				case "b":
-					System.out.print("Enter the decimal amount to Withdraw: $");
-					myAcc.withdraw(s.nextDouble(), this);
-					break;
-				case "c":
-					// TODO build transfer logic
-				default:
-					canBank(s, myAcc);
-				}
+				boolean doMore = true;
+				while (doMore) {
+					System.out.println("Your account balance is: " + myAcc.getAccountBalance());
+					System.out.println("Please choose from the list of options below:");
+					System.out.println("A: Deposit funds.    \nB: Withdraw funds.   \nC: Transfer funds.    \nD: CANCEL");
+					switch (s.next().toLowerCase().substring(0, 1)) {
+					case "a":
+						System.out.print("Enter the decimal amount to be Deposited: $");
+						myAcc.deposit(s.nextDouble(), this);
+						break;
+					case "b":
+						System.out.print("Enter the decimal amount to Withdraw: $");
+						myAcc.withdraw(s.nextDouble(), this);
+						break;
+					case "c":
+						// TODO build transfer logic make sure it is only from this acc to another and not another way around
+						System.out.println("Sorry we have not enabled this functionality yet.");
+						break;
+					case "d":
+						doMore = false;
+						break;
+					default:
+						System.out.println("Please enter a valid selection.");
+					}
+				} // END WHILE LOOP
 			} else {
 				System.out.println("Sorry no account has been linked.");
 			}
 		} else {
 			System.out.println("Sorry your account is NOT Active.");
 		}
+
 	}
 
 	// Setters/Mutators
@@ -126,7 +142,7 @@ public final class Client implements Serializable {
 	private boolean changeClientPassword(String verify) {
 		if (verify.equals(this.password) || EMPLOYEEACCESSCODE.equals(verify)
 				|| ADMINISTRATORACCESSCODE.equals(verify)) {
-			Scanner s = new Scanner(System.in);
+			s.reset();
 			String pass, passVerify;
 			boolean correct = false;
 			do {
@@ -136,13 +152,13 @@ public final class Client implements Serializable {
 				passVerify = s.next();
 				if (pass.equals(passVerify)) {
 					correct = true;
-					this.password = pass;
+					this.password = passVerify;
 					System.out.println("SUCCESS: the password has been saved.");
 				} else {
 					System.out.println("Sorry the two pass phrases do not match.");
 				}
 			} while (!correct);
-			s.close();
+
 			return true;
 		} else {
 			System.out.println("FAIL: Invalid challenge password");
@@ -250,11 +266,10 @@ public final class Client implements Serializable {
 			int clientNum) {
 		if (EMPLOYEEACCESSCODE.equals(verify) || ADMINISTRATORACCESSCODE.equals(verify)) {
 			Client client = clients.get(clientNum);
-			Scanner s = new Scanner(System.in);
+			s.reset();
 			int index = 0;
 			boolean toClose = false;
-			BoDuke:
-			while (!toClose) {
+			BoDuke: while (!toClose) {
 				System.out.println("Please choose from the list of options below:");
 				System.out.println("A: Edit client Name.    \nB: Edit client Pass Phrase. ");
 				System.out.println("C: Toggle client approval status.     \nD: Add Joint Client. ");
@@ -313,7 +328,7 @@ public final class Client implements Serializable {
 					System.out.println("Invalid selection");
 				}
 			}
-			s.close();
+
 		} else {
 			System.out.println("ACCESS DENIED: Invalid Employee / Admin Code");
 		}

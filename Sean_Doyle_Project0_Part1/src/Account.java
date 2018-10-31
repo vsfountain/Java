@@ -11,6 +11,7 @@ public class Account implements Serializable {
 	/**
 	 * 
 	 */
+	static Scanner s = new Scanner(System.in);
 	private static final long serialVersionUID = -8409567036769111821L;
 	private static final String EMPLOYEEACCESSCODE = "Snoflake";
 	private static final String ADMINISTRATORACCESSCODE = "Fluffy";
@@ -25,22 +26,22 @@ public class Account implements Serializable {
 
 	Account(Client client) {
 		// This constructor is for clients filing solo
+		this.accountNumber = accountCount++;
 		this.balance = 0.0;
 		this.myPerson = client.getClientID();
 		client.linkAccount(this, EMPLOYEEACCESSCODE);
-		this.accountNumber = accountCount++;
 		history.add(new Transaction(0.0, this.myPerson, false));
 	}
 
 	Account(Client client, Client joint) {
 		// This constructor is for clients filing jointly
+		this.accountNumber = accountCount++;
 		this.balance = 0.0;
 		this.myPerson = client.getClientID();
 		client.linkAccount(this, EMPLOYEEACCESSCODE);
 		this.myJointPerson = joint.getClientID();
 		joint.linkAccount(this, EMPLOYEEACCESSCODE);
 		this.jointly = true;
-		this.accountNumber = accountCount++;
 		history.add(new Transaction(0.0, this.myPerson, this.myJointPerson));
 	}
 
@@ -101,6 +102,7 @@ public class Account implements Serializable {
 			return false;
 		}
 		if (client.getClientStatus()) {
+			System.out.println("Your account is Frozen.");
 			history.add(new Transaction(amount, client.getClientID(), "FAIL: Deposit, Account Not-Active"));
 		}
 		if (verifyID(client)) {
@@ -108,6 +110,7 @@ public class Account implements Serializable {
 			history.add(new Transaction(amount, client.getClientID(), "Success: Deposit"));
 			return true;
 		} else {
+			System.out.println("Invalid Credentials.");
 			history.add(new Transaction(amount, client.getClientID(), "FAIL: Deposit, Invalid Credentials"));
 			return false;
 		}
@@ -120,6 +123,7 @@ public class Account implements Serializable {
 			return false;
 		}
 		if (!client.getClientStatus()) {
+			System.out.println("Your account is Frozen.");
 			history.add(new Transaction(amount, client.getClientID(), "FAIL: Withdrawl, Account Not-Active"));
 		}
 		if (verifyID(client)) {
@@ -132,6 +136,7 @@ public class Account implements Serializable {
 			history.add(new Transaction(amount, client.getClientID(), "Success: Withdrawl"));
 			return true;
 		} else {
+			System.out.println("Invalid Credentials.");
 			history.add(new Transaction(amount, client.getClientID(), "FAIL: Withdrawl, Invalid Credentials"));
 			return false;
 		}
@@ -223,7 +228,7 @@ public class Account implements Serializable {
 
 	protected void mutateBalance(Scanner s) {
 		System.out.println("Please choose from the list of options below:");
-		System.out.println("A: Deposit Funds.\nB: Withdraw Funds.\nC:Transfer Funds.\nD:CANCEL TRANSACTION");
+		System.out.println("A: Deposit Funds.\nB: Withdraw Funds.\nC: Transfer Funds.\nD: CANCEL TRANSACTION");
 		switch (s.next().toLowerCase().substring(0, 1)) {
 		case "a":
 			deposit(s);
@@ -278,7 +283,7 @@ public class Account implements Serializable {
 				}
 			} else {
 				System.out.println("Follow the below steps to add a NEW Joint Holder");
-				Client.clientCreator(s, clients);
+				Client.clientCreator(clients);
 				System.out.println("SUCCESS: new client added as joint holder");
 				return true;
 			}
@@ -291,7 +296,7 @@ public class Account implements Serializable {
 	protected static void accountEditor(ArrayList<Account> accounts, String verify, ArrayList<Client> clients, int accountNum) {
 		if (EMPLOYEEACCESSCODE.equals(verify) || ADMINISTRATORACCESSCODE.equals(verify)) {
 			Account account = accounts.get(accountNum);
-			Scanner s = new Scanner(System.in);
+			s.reset();
 			int index = 0;
 			boolean toClose = false;
 			UncleJesse:
@@ -339,7 +344,7 @@ public class Account implements Serializable {
 					break;
 				case "g":
 					toClose = true;
-					s.close();
+					
 					break UncleJesse;
 				default:
 					System.out.println("Invalid selection");

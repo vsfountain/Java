@@ -36,12 +36,29 @@ public class Main {
 	//private final static String EMPLOYEEPASSPHRASE = "123Monkey";
 	//private final static String ADMINPASSPHRASE = "CafeBabe";
 
+	//static Scanner s;
+	
 	public static void main(String[] args) {
 		// Ryker International Banking
-		Scanner scan = new Scanner(System.in);
 		ArrayList<Client> clientList = new ArrayList<>();
+		/*
+		clientList.add(new Client("sean", "doyle"));
+		System.out.println(clientList.get(0).toString());
+		clientList.add(new Client("ross", "geller"));
+		System.out.println(clientList.get(1).toString());
+		clientList.add(new Client("jacob", "smith"));
+		System.out.println(clientList.get(2).toString());
+		clientList.add(new Client("maxwell", "smart"));
+		System.out.println(clientList.get(3).toString());
+		clientList.add(new Client("ruby", "slippers"));
+		System.out.println(clientList.get(4).toString());
+		*/
+		
+		
+		
 		ArrayList<Account> accountList = new ArrayList<>();
-		repopulate(clientList, accountList);
+		clientList = repopulateClients(clientList);
+		accountList = repopulateAccounts(accountList);
 		String howTo = loginScreen();
 		
 		LoginManager loginManager = new LoginManager();
@@ -53,31 +70,37 @@ public class Main {
 				howTo = loginScreen();
 				break;
 			case "newClient":
-				howTo = newClientCheck(scan);
+				howTo = newClientCheck();
 				break;
 			case "clientCreate":
-				howTo = loginManager.clientCreator(scan, clientList);
-				howTo = continueBanking(scan, howTo);
+				howTo = loginManager.clientCreator(clientList);
+				if (!(howTo.equals("jointClientCreate"))) {
+					howTo = loginManager.continueBanking(howTo);
+				}
 				break;
 			case "clientOrEmployee":
-				howTo = clientOrEmployee(scan);
+				howTo = clientOrEmployee();
 				break;
 			case "clientLogin":
-				howTo = loginManager.clientLogin(scan, clientList, accountList);
-				howTo = continueBanking(scan, howTo);
+				howTo = loginManager.clientLogin(clientList, accountList);
+				howTo = loginManager.continueBanking(howTo);
 				break;
 			case "employeeLogin":
-				howTo = loginManager.employeeLogin(scan, clientList, accountList);
+				howTo = loginManager.employeeLogin(clientList, accountList);
 				if (!howTo .equals("adminLogin")){
-						howTo = continueBanking(scan, howTo);
+						howTo = loginManager.continueBanking(howTo);
 				}
 				break;
 			case "adminLogin":
-				howTo = loginManager.adminLogin(scan, clientList, accountList);
-				howTo = continueBanking(scan, howTo);
+				howTo = loginManager.adminLogin(clientList, accountList);
+				howTo = loginManager.continueBanking(howTo);
 				break;
 			case "loginScreen":
 				howTo = loginScreen();
+				break;
+			case "jointClientCreate":
+				howTo = loginManager.jointClientCreator(clientList);
+				howTo = loginManager.continueBanking(howTo);
 				break;
 			default:
 				howTo = "quit";
@@ -87,107 +110,53 @@ public class Main {
 
 	}
 
-	public static String continueBanking(Scanner s, String oldHowTo) {
-		System.out.println("Do you wish to continue banking? (Y/N)");
-		if (!s.next().toLowerCase().substring(0,1).equals("y")) {
-			return "quit";
-		}else {
-			return oldHowTo;
-		}
+	public static ArrayList<Client>  repopulateClients(ArrayList<Client> clients) {
+		String fileInCli = "./myClients.txt";
+		try{ 			 	            
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileInCli)); 	            
+            clients =   (ArrayList<Client>) in.readObject();//retrieves the data from a file
+            Client.resetClientCount(clients.size());
+            in.close();	            
+        } catch (EOFException eof) {
+        	
+        } catch (IOException ioe) {
+        	
+        } catch (ClassNotFoundException cnfe) {
+        	
+        }
+		return clients;
 	}
 
-	public static void repopulate(ArrayList<Client> clients, ArrayList<Account> accounts) {
-		String fileInCli = "./myClients.txt";
-		try {
-			
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileInCli));
-			boolean found = false;
-			while (!found) {
-				try {
-					clients.add((Client) in.readObject());// de-serialization
-				} catch (FileNotFoundException e) {
-					found = true;
-					e.printStackTrace();
-				} catch (EOFException e) {
-					found = true;
-					e.printStackTrace();//WE WANT TO BE SEEING THIS
-				} catch (IOException e) {
-					found = true;
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					found = true;
-					e.printStackTrace();
-				}
-			}
-			Client.resetClientCount(clients.size());
-			in.close();
-		}catch (IOException e) {
-			
-		}finally {
-		}
+	public static ArrayList<Account>  repopulateAccounts(ArrayList<Account> accounts) {
 		String fileInAcc = "./myAccounts.txt";
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileInAcc));
-			boolean found = false;
-			while (!found) {
-				try {
-					accounts.add((Account) in.readObject());// de-serialization
-				} catch (FileNotFoundException e) {
-					found = true;
-					e.printStackTrace();
-				} catch (EOFException e) {
-					found = true;
-					e.printStackTrace();//WE WANT TO BE SEEING THIS
-				} catch (IOException e) {
-					found = true;
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					found = true;
-					e.printStackTrace();
-				}
-			}
+			accounts = (ArrayList<Account>) in.readObject();// de-serialization
 			in.close();
-		}catch (IOException e) {
+		} catch (ClassNotFoundException e) {
 			
-		}finally {
+		} catch (IOException e) {
+			
+		} finally {
+			
 		}
+		return accounts;
 	}
-	
-	static void saveBank(ArrayList<Client> clients, ArrayList<Account> accounts) {
+	public static void saveBank(ArrayList<Client> clients, ArrayList<Account> accounts) {
 		String fileOutCli = "./myClients.txt";
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileOutCli));
-			int index = 0;
-			while (index < clients.size()) {
-				try {
-					out.writeObject(clients.get(index));// de-serialization
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				index++;
-			}
-			out.close();
-		}catch (IOException e) {
-			
-		}finally {
-			
-		}
+		try { 			 
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileOutCli));
+            out.writeObject(clients);	            
+            out.close();
+        }catch (IOException ioe) {
+        
+        }
+		
+		
 		String fileOutAcc = "./myAccounts.txt";
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileOutAcc));
-			int index = 0;
-			while (index < accounts.size()) {
-				try {
-					out.writeObject(accounts.get(index));// de-serialization
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} 
-				index++;
-			}
+			out.writeObject(accounts);// de-serialization
 			out.close();
 		}catch (IOException e) {
 			
@@ -206,7 +175,8 @@ public class Main {
 		System.out.println("Thank You for choosing Ryker International Banking!");
 		System.exit(0);
 	}
-	public static String newClientCheck(Scanner s) {
+	public static String newClientCheck() {
+		Scanner s = new Scanner(System.in);
 		System.out.println("Are you a NEW client? (Y/N)");
 		if (s.next().toLowerCase().substring(0, 1).equals("y")) {
 			return "clientCreate";
@@ -214,7 +184,8 @@ public class Main {
 			return "clientOrEmployee";
 		}
 	}
-	public static String clientOrEmployee(Scanner s) {
+	public static String clientOrEmployee() {
+		Scanner s = new Scanner(System.in);
 		System.out.println("Are you a returning client? (Y/N)");
 		String response = s.next().toLowerCase().substring(0, 1);
 		if (response.equals("y")) {
