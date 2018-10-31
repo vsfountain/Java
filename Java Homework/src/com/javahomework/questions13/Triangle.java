@@ -1,7 +1,7 @@
 package com.javahomework.questions13;
 
 public class Triangle {
-
+//i have not figured out how to get this one to work
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -15,6 +15,7 @@ public class Triangle {
 			}
 		System.out.println(i);
 		i += 1;
+		
 		}
 
 	}
