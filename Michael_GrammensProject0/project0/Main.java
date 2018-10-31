@@ -509,11 +509,20 @@ public class Main {
 								if(adminAction.equals("withdraw") || adminAction.equals("Withdraw")) {
 									while(true) {
 										boolean checker = false;
-										System.out.print("Which account would you like to withdraw from: ");
-										for(int i = 0; i < approvedAccounts.size(); i++) {
-											System.out.print(approvedAccounts.get(i).getUserName());
+										System.out.print("Which account would you like to withdraw from or type \"Cancel\": ");
+										System.out.print("Current open accounts: ");
+										if(approvedAccounts.size()==0) {
+											System.out.println("No accounts open at this time, returning......");
+											break;
 										}
+										for(int i = 0; i < approvedAccounts.size(); i++) {
+											System.out.print(approvedAccounts.get(i).getUserName() + " ");
+										}
+										System.out.println();
 										String adminInput = currString.nextLine();
+										if(adminInput.equals("Cancel")||adminInput.equals("cancel")) {
+											break;
+										}
 										ApprovedAccounts currAccount = new ApprovedAccounts();
 										for(int i = 0; i < approvedAccounts.size(); i++) {
 											if(adminInput.equals(approvedAccounts.get(i).getUserName())) {
@@ -559,9 +568,14 @@ public class Main {
 									boolean checker = false;
 									ApprovedAccounts currAccount = new ApprovedAccounts();
 									while(true) {
-										System.out.print("Which account would you like to deposit to: ");
+										System.out.println("Which account would you like to deposit to: ");
+										System.out.print("Current open accounts: ");
+										if(approvedAccounts.size()==0) {
+											System.out.println("No accounts open at this time, returning......");
+											break;
+										}
 										for(int i = 0; i < approvedAccounts.size(); i++) {
-											System.out.print(approvedAccounts.get(i).getUserName() + ", ");
+											System.out.print(approvedAccounts.get(i).getUserName() + " ");
 										}
 										System.out.println();
 										String adminInput = currString.nextLine();
@@ -576,8 +590,11 @@ public class Main {
 											break;
 										}
 										if(checker==false) {
-											System.out.println("Account was not found, try again.");
+											System.out.println("Account was not found, try again or type \"Cancel\"");
 										}
+									}
+									if(checker==false) {
+										break;
 									}
 									double moneyAmount = 0.0;
 									while(true) {
@@ -588,6 +605,9 @@ public class Main {
 											moneyAmount = Double.parseDouble(currString.nextLine());
 											if(moneyAmount<0.0) {
 												System.out.println("You cannot subtract from a Deposit, try again. Exiting.....");
+											}
+											else if(moneyAmount==0.0) {
+												System.out.println("Thats 0 amount, please try a new number.");
 											}
 											else {
 												currAccount.setMoney(moneyAmount);
@@ -603,8 +623,17 @@ public class Main {
 									double moneyAmount = 0.0;
 									while(true) {
 										System.out.println("How much would you like to Transfer today and to which accounts? Name $$.$$ Name or type \"Cancel\"");
+										System.out.print("Accounts currently open: ");
+										if(approvedAccounts.size()==0) {
+											System.out.println("No accounts open at this time, returning....");
+											break;
+										}
+										for(int i = 0; i < approvedAccounts.size(); i++) {
+											System.out.print(approvedAccounts.get(i).getUserName() + " ");
+										}
+										System.out.println();
 										String check = currString.nextLine();
-										if(check.equals("cancel")||check.equals("Cancel")) {
+										if(check.equals("Cancel")||check.equals("cancel")) {
 											break;
 										}
 										try {
@@ -619,7 +648,13 @@ public class Main {
 											ApprovedAccounts getAccountOne = new ApprovedAccounts();
 											ApprovedAccounts getAccountTwo = new ApprovedAccounts();
 											boolean checkNames = false;
+											boolean cancelled = false;
 											while(true) {
+												String accounts = currString.nextLine();
+												if(accounts.equals("cancel")||accounts.equals("Cancel")) {
+													cancelled = true;
+													break;
+												}
 												for(int i = 0; i < approvedAccounts.size(); i++) {
 													if(approvedAccounts.get(i).getUserName().equals(nameOne) || approvedAccounts.get(i).getUserNameJoint().equals(nameOne)){
 														checkNames = true;
@@ -627,12 +662,15 @@ public class Main {
 														break;
 													}
 												}
-												if(moneyAmount > getAccountOne.getMoney()) {
-													System.out.println("Insufficient funds, try again.");
+												if(moneyAmount >= getAccountOne.getMoney()) {
+													System.out.println("Insufficient funds, try again or type \"Cancel\"");
 												}
 												else if(checkNames==true) {
 													break;
 												}
+											}
+											if(checkNames==false || cancelled == true) {
+												break;
 											}
 											checkNames = false;
 											for(int i = 0; i < approvedAccounts.size(); i++) {
@@ -647,6 +685,7 @@ public class Main {
 												getAccountOne.withdraw(moneyAmount);
 												getAccountTwo.setMoney(moneyAmount);
 												System.out.println("Transfer completed.");
+												break;
 											}
 										}catch(Exception E) {
 											System.out.println("Wrong input, try again.");
@@ -666,6 +705,9 @@ public class Main {
 						else if(adminControl.equals("Cancel") || adminControl.equals("cancel")) {
 							while(true) {
 								System.out.print("Accounts currently listed: ");
+								if(approvedAccounts.size()==0) {
+									System.out.println("No approved accounts open, please type \"Cancel\"");
+								}
 								for(int i = 0; i < approvedAccounts.size(); i++) {
 									System.out.print(approvedAccounts.get(i).getUserName() + " ");
 								}
