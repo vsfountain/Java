@@ -50,6 +50,8 @@ public class Trainer  implements Serializable{
 		if (hasOpenBox) {
 			if (accounts.contains(aName)) {
 				aName.removePokemon(poke);
+				System.out.println("Here's your " + poke + " safe and sound!");
+				
 			} else {
 				System.out.println("Oh dear! That Pok\u00E9mon does not seem to be stored in your PC Box! "
 						+ "Did you mean to pick up a different Pok\u00E9mon?");
@@ -91,6 +93,7 @@ public class Trainer  implements Serializable{
 		}
 	}
 	private void createBox() {
+		hasOpenBox = true;
 		accounts.add(new Account("Box"+ ++boxNum));
 	}
 
