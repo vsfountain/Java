@@ -22,11 +22,21 @@ public class Account implements Serializable {
 	}
 	
 	public boolean deposit(int amount) {
-		return false;
+		if (amount>0) {
+			balance += amount;
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 	public int withdrawl(int amount) {
-		return 0;
+		if (amount > balance) {
+			balance -= amount;
+			return amount;
+		}else {
+			return 0;
+		}
 	}
 	
 	public boolean transfer(int amount, Account toAccount) {

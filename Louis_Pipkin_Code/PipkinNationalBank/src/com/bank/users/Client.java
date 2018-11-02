@@ -19,11 +19,30 @@ public class Client extends User {
 	public ArrayList<Account> accounts;
 	
 	Client(){
-		
 	}
 
+	public Client(String userName, String password) {
+		super();
+		this.userName = userName;
+		this.password = password;
+	}
+	
 	public Client(String address, String ssn, Date birthDay, ArrayList<Account> accounts) {
 		super();
+		this.address = address;
+		this.ssn = ssn;
+		this.birthDay = birthDay;
+		this.accounts = accounts;
+	}
+	
+	public Client(String userName, String email, String password, String firstName, 
+					String lastName, String address, String ssn, Date birthDay, ArrayList<Account> accounts) {
+		super();
+		this.userName = userName;
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.address = address;
 		this.ssn = ssn;
 		this.birthDay = birthDay;
@@ -64,13 +83,6 @@ public class Client extends User {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	@Override
-	public String toString() {
-		return "Client [address=" + address + ", ssn=" + ssn + ", birthDay=" + birthDay + ", accounts=" + accounts
-				+ "]";
-	}
-	
+	}	
 	
 }
