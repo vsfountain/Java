@@ -1,29 +1,36 @@
 package Customer;
 
+import java.util.Iterator;
 import java.util.Scanner;
 
+import Admin.Bank;
+import Admin.Person;
+
 public class CustomerAccess {
-	public static void main(String[] args) {
+	public static Integer main(Person person, Integer val) {
 	Scanner scanner = new Scanner(System.in);
 	System.out.println((char)27 + "[35mEnter 1 to Withdraw 2 to Deposit and 3 to Transfer");
 	Integer N = Integer.parseInt(scanner.nextLine());
 	CustomerAccessBase customer = new CustomerAccessBase();
 	
-	Integer AmountLeft = 300;
+	//public Integer AmountLeft = 300;
 	switch(N) {
 		case 1:
 			System.out.println((char)27 + "[35mEnter Amount to Withdraw");
 			Integer WithdrawAmount = Integer.parseInt(scanner.nextLine());
-			System.out.println(customer.withdraw(WithdrawAmount, AmountLeft));
-		break;
+			Integer AmountLeft = customer.withdraw(WithdrawAmount, val);
+			System.out.println(AmountLeft);
+			return AmountLeft;
 		case 2:
 			System.out.println((char)27 + "[35mEnter Amount to Deposit");
 			Integer DepositAmount = Integer.parseInt(scanner.nextLine());
-			System.out.println(customer.Deposit(DepositAmount, AmountLeft));
-			break;
+			Integer AmountAdded = customer.Deposit(DepositAmount, val);
+			System.out.println(AmountAdded);
+			return AmountAdded;
 		case 3:
-			break;
+			return val ;
 		}
+	return null;
 	}
 
 }

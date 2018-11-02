@@ -2,7 +2,7 @@ package Admin;
 
 import java.io.Serializable;
 
-public class Person implements Serializable, CharSequence{
+public class Person implements Serializable{
 
 	/**
 	 * 
@@ -49,59 +49,6 @@ public class Person implements Serializable, CharSequence{
 		this.ssn = ssn;
 		this.accessLevel = accessLevel;
 	}
-	@Override
-	public int length() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public char charAt(int index) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public CharSequence subSequence(int start, int end) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-//	protected static void readObject(String filename, Person person) throws ClassNotFoundException, IOException {
-//		List<Object> results = new ArrayList<Object>();
-//		FileInputStream f = new FileInputStream(filename);
-//		//ObjectInputStream ois = new ObjectInputStream(f);
-//
-//	    try {
-//	    	//FileInputStream f = new FileInputStream(filename);
-//	        while (true) {
-//	            ObjectInputStream ois = new ObjectInputStream(f);
-//	            results.add(ois.readObject());
-//	        }
-//	    } catch (EOFException ignored) {
-//	        // as expected
-//	    } finally {
-//	        if (f != null) {
-//	            f.close();
-//	        }
-//	    }
-//	    System.out.println("results = " + results);
-//	}
-//	
-//	protected static void writeObject(String filename, Person person) {
-//		
-//		System.out.println("Writing new customer information");
-//		try(ObjectOutputStream oos = new ObjectOutputStream(
-//				new FileOutputStream(filename,true)))
-//		
-//		{
-//			Object obj = person;
-//			oos.reset();
-//			oos.writeObject(obj); //serialization
-//			
-//		}catch(IOException e) {
-//			e.printStackTrace();
-//		}
-//	}
 
 }
 

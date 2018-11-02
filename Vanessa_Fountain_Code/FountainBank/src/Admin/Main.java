@@ -8,8 +8,7 @@ import Admin.Person;
 
 public class Main extends Bank{
 	public Main(String name, int pin, Integer ssn, int accessLevel) {
-		super(name, pin, ssn, accessLevel);
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	/**
@@ -36,25 +35,7 @@ public class Main extends Bank{
 		Integer ssn = Integer.parseInt(scanner.nextLine());
 		
 		Person person = new Person(name, pin, ssn, accessLevel);
-		AdminAccess.AdminAccessor(accessLevel, person);
-		
-		//new Bank(name, pin, ssn, accessLevel);
-		
-		
-		
-		//String filename = "./CustomerInformation";
-		
-		
-//		if(customer.checkAccountInfo(person) == true) {
-//			System.out.println("Hello "+ person.getName());
-//		}
-//		else {	
-//			writeObject(filename, person);
-//			System.out.println("Writing new customer info to" + CustomersOfBank);
-//			customer.addNewCustomer(person);
-//			System.out.println(CustomersOfBank);
-//			readObject(filename, person);
-//		}
+		Bank.Bank(accessLevel, person);
 
 	}
 

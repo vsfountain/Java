@@ -1,16 +1,14 @@
 package Customer;
 
-import java.util.Scanner;
-
 public class CustomerAccessBase {
 	
-	Integer withdraw(Integer WithdrawAmount, Integer AmountLeft) {
-		AmountLeft -= WithdrawAmount;
-		if (AmountLeft<0) {
+	Integer withdraw(Integer WithdrawAmount, Integer val) {
+		val -= WithdrawAmount;
+		if (val<0) {
 			System.out.println("Insufficient Funds");
-			AmountLeft += WithdrawAmount;
+			val += WithdrawAmount;
 		}
-		return AmountLeft;
+		return val;
 	}
 	Integer Deposit(Integer DepositAmount, Integer AmountLeft) {
 		return AmountLeft += DepositAmount;
@@ -19,5 +17,5 @@ public class CustomerAccessBase {
 		return null;
 	}
 	
-
+	
 }
