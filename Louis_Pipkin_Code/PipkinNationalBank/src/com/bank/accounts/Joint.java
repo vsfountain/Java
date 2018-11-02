@@ -1,7 +1,5 @@
 package com.bank.accounts;
 
-import java.util.ArrayList;
-
 import com.bank.users.Client;
 
 public class Joint extends Account{
@@ -11,22 +9,42 @@ public class Joint extends Account{
 	 */
 	private static final long serialVersionUID = -2328880142745761291L;
 
-	public ArrayList<Client> owners;
-
+	//public ArrayList<Client> owners;
+	public Client owner1;
+	public Client owner2;
+	
 	Joint(){
 	}
 	
-	public Joint(ArrayList<Client> owners) {
+	public Joint(Client owner1, Client owner2) {
 		super();
-		this.owners = owners;
+		this.owner1 = owner1;
+		this.owner2 = owner2;
 	}
 
-	public ArrayList<Client> getOwners() {
-		return owners;
+	public Joint(Client owner1, Client owner2, boolean approved, int balance) {
+		super();
+		this.owner1 = owner1;
+		this.owner2 = owner2;
+		this.approved = approved;
+		this.balance = balance;
+		this.accountName = owner1.getUserName() + "|" + owner2.getUserName();
+	}
+	
+	public Client getOwner1() {
+		return owner1;
 	}
 
-	public void setOwners(ArrayList<Client> owners) {
-		this.owners = owners;
+	public void setOwner1(Client owner1) {
+		this.owner1 = owner1;
+	}
+
+	public Client getOwner2() {
+		return owner2;
+	}
+
+	public void setOwner2(Client owner2) {
+		this.owner2 = owner2;
 	}
 
 	public static long getSerialversionuid() {
@@ -35,7 +53,8 @@ public class Joint extends Account{
 
 	@Override
 	public String toString() {
-		return "Joint [owners=" + owners + "]";
-	} 
+		return "Joint [owner1=" + owner1 + ", owner2=" + owner2 + ", approved=" + approved + ", balance=" + balance
+				+ ", accountName=" + accountName + "]";
+	}
 	
 }

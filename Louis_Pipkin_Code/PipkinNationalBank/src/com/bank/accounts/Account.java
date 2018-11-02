@@ -11,7 +11,8 @@ public class Account implements Serializable {
 	
 	boolean approved;
 	int balance;
-
+	String accountName;
+	
 	public Account(){
 	}
 	
@@ -20,7 +21,7 @@ public class Account implements Serializable {
 		this.approved = approved;
 		this.balance = balance;
 	}
-	
+
 	public boolean deposit(int amount) {
 		if (amount>0) {
 			balance += amount;
@@ -42,11 +43,6 @@ public class Account implements Serializable {
 	public boolean transfer(int amount, Account toAccount) {
 		return false;
 	}
-	
-	@Override
-	public String toString() {
-		return "Account [approved=" + approved + ", balance=" + balance + "]";
-	}
 
 	public boolean isApproved() {
 		return approved;
@@ -64,7 +60,22 @@ public class Account implements Serializable {
 		this.balance = balance;
 	}
 	
+	public String getAccountName() {
+		return accountName;
+	}
+
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
+	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [approved=" + approved + ", balance=" + balance + ", accountName=" + accountName + "]";
+	}
+	
+	
 }

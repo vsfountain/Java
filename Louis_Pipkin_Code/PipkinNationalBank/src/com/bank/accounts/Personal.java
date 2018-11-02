@@ -15,9 +15,12 @@ public class Personal extends Account {
 	
 	}
 
-	public Personal(Client owner) {
+	public Personal(Client owner, boolean approved, int balance) {
 		super();
 		this.owner = owner;
+		this.approved = approved;
+		this.balance = balance;
+		this.accountName = owner.getUserName();
 	}
 
 	public Client getOwner() {
@@ -34,8 +37,8 @@ public class Personal extends Account {
 
 	@Override
 	public String toString() {
-		return "Personal [owner=" + owner + "]";
+		return "Personal [owner=" + owner + ", approved=" + approved + ", balance=" + balance + ", accountName="
+				+ accountName + "]";
 	}
-	
 	
 }

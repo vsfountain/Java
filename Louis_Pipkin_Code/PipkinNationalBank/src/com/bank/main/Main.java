@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.bank.accounts.Account;
+import com.bank.accounts.Joint;
+import com.bank.accounts.Personal;
 import com.bank.users.Admin;
 import com.bank.users.Associate;
 import com.bank.users.Client;
@@ -27,6 +29,8 @@ public class Main {
 		Map<String, User> allUsers = new HashMap<>();
 		Map<String, Account> allAccounts = new HashMap<>();
 		User user = null;
+		User tmpUser = null;
+		Account account = null;
 		Scanner scanner = new Scanner(System.in);
 		
 		//System.out.println("1. "+allUsers);
@@ -34,6 +38,7 @@ public class Main {
 		allUsers = DataFileIO.readUserState();
 		allAccounts = DataFileIO.readAccountState();
 		System.out.println(allUsers);
+		System.out.println(allAccounts);
 		
 //		Admin a = new Admin("root", "root");
 //		Associate as = new Associate("Louis", "pass");
@@ -63,9 +68,15 @@ public class Main {
 					if (allUsers.get(userID) != null) {
 						//System.out.println("found user: "+allUsers.get(userID).getUserName());
 						user = allUsers.get(userID);
-						flag = true;
-						option = -2;
 						//add passord check
+						if (password.equals(user.getPassword())) {
+							flag = true;
+							option = -2;
+						} else {
+							System.out.println("Password invalid.\n");
+							user = null;
+							//password = getInput(scanner);
+						}
 					}else {
 						System.out.println("User name not found");
 					}
@@ -98,18 +109,60 @@ public class Main {
 						MenuPrinter.openAccount();
 						option = getOption(scanner);
 						if (option == 1) {			//person account
-							System.out.println("create personal");
+							//System.out.println("create personal");
+							account = new Personal((Client)user, false, 0);
+							allAccounts.put(account.getAccountName(), account);
+							System.out.println("Your account has been submitted.\n"+
+											"Please allow 24 hours for account approval.\n");
 							option = -2;
 						} else if (option == 2) { 	//joint account
-							System.out.println("create personal");
+							//System.out.println("create joint");
+							flag = false; 
+							MenuPrinter.openJointAccount();
+							option = getOption(scanner);
+							while (flag == false) {
+								if (option == 1) {			//joint with exisiting
+									System.out.println("Please enter a user name for the existing user.");
+									userID = getInput(scanner);
+									System.out.println("Please enter a password for the existing user.");
+									password = getInput(scanner);
+									if (allUsers.get(userID) == null) {
+										System.out.println("User not found.");
+									} else {
+										tmpUser = allUsers.get(userID);										
+										account = new Joint((Client) user, (Client) tmpUser, false, 0);
+										allAccounts.put(account.getAccountName(), account);
+										flag = true;
+										//option = -2;
+									}
+								} else if (option ==2) {	//joint with new
+									System.out.println("Please enter a user name for the new user.");
+									userID = getInput(scanner);
+									System.out.println("Please enter a password for the new user.");
+									password = getInput(scanner);
+									if (allUsers.get(userID) != null) {
+										System.out.println("User already exists.");
+									}else {
+										tmpUser = new Client(userID, password);
+										allUsers.put(tmpUser.getUserName(), tmpUser);
+										account = new Joint((Client) user, (Client) tmpUser, false, 0);
+										allAccounts.put(account.getAccountName(), account);
+										flag = true;
+										//option = -2;
+										//go to home screen
+									}
+								}
+							}
+							System.out.println("Your account has been submitted.\n"+
+									"Please allow 24 hours for account approval.\n");
 							option = -2;
 						} else if (option == 80) {
 							option = -2;
 						}
 					} else if (option == 2) {	//view accounts
-						
+						//get the account list 
 					} else if (option == 3) {	//view personal info
-						
+						//personal info
 					}
 				}
 			} else if (user instanceof Associate) {

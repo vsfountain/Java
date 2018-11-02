@@ -32,6 +32,13 @@ public class MenuPrinter {
   				"* 80. Back");
 	}
 	
+	public static void openJointAccount() {
+		System.out.println("Please select an option\n"+
+  				"*  1. Open Account with Existing User\n"+
+  				"*  2. Open Account with New User\n"+
+  				"* 80. Back");
+	}
+	
 	public static void viewAccount() {
 		
 	}
