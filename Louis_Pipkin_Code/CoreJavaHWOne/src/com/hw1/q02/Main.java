@@ -12,15 +12,16 @@ public class Main {
 		 */
 		
 		fibonacci(25);
+		fibonacci(70);
 	
 	}
 	
 	public static void fibonacci(int iterations) {
 		//find nth fib number by adding last two numbers before n
 		//recursive fib is a bad idea
-		int first = 0; //first number before n
-		int second = 0;//second number before n
-		int current;
+		long first = 0; //first number before n
+		long second = 0;//second number before n
+		long current;
 		for (int i=0; i<iterations; i++) {
 			if (i == 0) {				//first fib number will always be 0
 				System.out.println(0);
