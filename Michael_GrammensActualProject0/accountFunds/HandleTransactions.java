@@ -7,9 +7,10 @@ import java.util.Scanner;
 
 import accountManagement.AccountManagement;
 
-public class HandleTransactions {
+public class HandleTransactions implements HandleTransactionsDao{
 	
-	public static void withdraw(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
+	@Override
+	public void withdraw(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		while(true) {
 			System.out.print("Total Balance: " + currentAccount.getApprovedAccounts().get(currentAccountDetails).getMoney());
@@ -35,7 +36,8 @@ public class HandleTransactions {
 		}
 	}
 	
-	public static void deposit(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
+	@Override
+	public void deposit(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		while(true) {
 			System.out.print("Total Balance: " + currentAccount.getApprovedAccounts().get(currentAccountDetails).getMoney());
@@ -55,12 +57,14 @@ public class HandleTransactions {
 			}
 		}
 	}
-	public static void transfer(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
+	
+	@Override
+	public void transfer(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		int otherAccountDetails = 0;
 		while(true) {
 			System.out.print("Total Balance: " + currentAccount.getApprovedAccounts().get(currentAccountDetails).getMoney());
-			System.out.println("How much would you like to Transfer today and to which account? Or type \"Cancel\". Format: $$.$$ Name");
+			System.out.println(" How much would you like to Transfer today and to which account? Or type \"Cancel\". Format: $$.$$ Name");
 			String check = getAmount.nextLine();
 			if(check.equals("cancel")||check.equals("Cancel")) {
 				break;

@@ -6,13 +6,15 @@ package customerPanel;
 import java.util.Scanner;
 
 import accountFunds.HandleTransactions;
+import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
 
-public class CustomersUI {
+public class CustomersUI implements CustomersUIDao{
 	private static boolean passWordChecker = false;
 	private static AccountManagement accountAccess = new AccountManagement();
 	
-	public static void customerMain(Scanner consoleInput) throws Exception{
+	@Override
+	public void customerMain(Scanner consoleInput) throws Exception{
 		System.out.println("Do you have an existing account? Yes or No.");
 		String accountY = consoleInput.nextLine();
 		if(accountY.equals("Yes") || accountY.equals("yes")) {
@@ -22,7 +24,9 @@ public class CustomersUI {
 			createAccount(consoleInput);
 		}
 	}
-	public static void loggedInAccount(Scanner loggedInAccount) throws Exception{
+	
+	@Override
+	public void loggedInAccount(Scanner loggedInAccount) throws Exception{
 		//Login info
 		String associatedName = "";
 		AccountManagement currentAccount = new AccountManagement();
@@ -70,13 +74,19 @@ public class CustomersUI {
 				System.out.println("Would you like to withdraw, deposit or transfer funds? Withdraw, Deposit, or Transfer. Type \"Logout\" to return to home page.");
 				String userAction = loggedInAccount.nextLine();
 				if(userAction.toLowerCase().equals("withdraw")) {
-					HandleTransactions.withdraw(currentAccountDetails, currentAccount, loggedInAccount);
+					//HandleTransactions.withdraw(currentAccountDetails, currentAccount, loggedInAccount);
+					HandleTransactionsDao withdrawFunds = new HandleTransactions();
+					withdrawFunds.withdraw(currentAccountDetails, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("deposit")) {
-					HandleTransactions.deposit(currentAccountDetails, currentAccount, loggedInAccount);
+					//HandleTransactions.deposit(currentAccountDetails, currentAccount, loggedInAccount);
+					HandleTransactionsDao depositFunds = new HandleTransactions();
+					depositFunds.deposit(currentAccountDetails, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("transfer")) {
-					HandleTransactions.transfer(currentAccountDetails, currentAccount, loggedInAccount);
+					//HandleTransactions.transfer(currentAccountDetails, currentAccount, loggedInAccount);
+					HandleTransactionsDao transferFunds = new HandleTransactions();
+					transferFunds.transfer(currentAccountDetails, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("logout")) {
 					System.out.println("User interface cancelled, returning to home page.");
@@ -90,7 +100,8 @@ public class CustomersUI {
 		passWordChecker = false;
 	}
 	
-	public static void createAccount(Scanner createAccount) {
+	@Override
+	public void createAccount(Scanner createAccount) throws Exception{
 		//Apply for an account
 		while(true) {
 			System.out.println("Would you like to create an account or a joint account? Account or Joint.");

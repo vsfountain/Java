@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 import accountManagement.AccountManagement;
 import handlePendingAccounts.PendingAccountsManager;
+import handlePendingAccounts.PendingAccountsManagerDao;
 
-public class EmployeeUI {
+public class EmployeeUI implements EmployeeUIDao{
 
 	private final static String employeeUserName = "employee";
 	private final static String employeePassWord = "employeeemployee";
 	
-	public static void employeeMain(Scanner employeeDetails) throws Exception{
+	@Override
+	public void employeeMain(Scanner employeeDetails) throws Exception{
 		while(true) {
 			System.out.println("Enter employee details: ");
 			System.out.print("Employee name: ");
@@ -35,7 +37,8 @@ public class EmployeeUI {
 		}
 	}
 	
-	public static void loggedInAccount(Scanner currString) throws Exception{
+	@Override
+	public void loggedInAccount(Scanner currString) throws Exception{
 		AccountManagement currentAccount = new AccountManagement();
 		while(true) {
 			System.out.println("Welcome employee, would you like to view account information, account balances, personal information, or view pending accouns? Format: Info, Balance, Personal, Pending.");
@@ -47,7 +50,7 @@ public class EmployeeUI {
 			else if(employeeController.toLowerCase().equals("info")) {
 				System.out.print("Account informations: ");
 				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-					System.out.print(currentAccount.getApprovedAccounts().get(i));
+					System.out.print(currentAccount.getApprovedAccounts().get(i) + " ");
 				}
 				System.out.println();
 			}
@@ -61,12 +64,14 @@ public class EmployeeUI {
 			else if(employeeController.equals("Personal") || employeeController.equals("personal")) {
 				System.out.println("Personal Information: ");
 				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-					System.out.print(currentAccount.getApprovedAccounts().get(i).getUserName() + " has this password: " + currentAccount.getApprovedAccounts().get(i).getUserPW());
+					System.out.print(currentAccount.getApprovedAccounts().get(i).getUserName() + " has this password: " + currentAccount.getApprovedAccounts().get(i).getUserPW() + " ");
 				}
 				System.out.println();
 			}
 			else if(employeeController.equals("Pending") || employeeController.equals("pending")) {
-				PendingAccountsManager.pendingAccounts(currString);
+				//PendingAccountsManager.pendingAccounts(currString);
+				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
+				checkPending.pendingAccounts(currString);
 			}
 			else {
 				System.out.println("Invalid command, try again.");

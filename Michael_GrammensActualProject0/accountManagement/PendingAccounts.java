@@ -3,7 +3,7 @@
  */
 package accountManagement;
 
-public class PendingAccounts{
+public class PendingAccounts implements PendingAccountsDao{
 	
 	private String userPW = "";
 	private String userName = "";
@@ -22,42 +22,52 @@ public class PendingAccounts{
 		this.accountID = accountID;
 	}
 	
+	@Override
 	public String getAccountID() {
 		return this.accountID;
 	}
 	
+	@Override
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
 	
+	@Override
 	public String getUserNameJoint() {
 		return userNameJoint;
 	}
 	
+	@Override
 	public void setUserNameJoint(String name) {
 		this.userNameJoint = name;
 	}
 	
+	@Override
 	public String getUserPW() {
 		return userPW;
 	}
 
+	@Override
 	public void setUserPW(String userPW) {
 		this.userPW = userPW;
 	}
 
+	@Override
 	public String getUserName() {
 		return userName;
 	}
 
+	@Override
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
+	@Override
 	public String getAccountType() {
 		return accountType;
 	}
 
+	@Override
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}

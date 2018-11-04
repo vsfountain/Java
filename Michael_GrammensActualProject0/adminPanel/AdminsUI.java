@@ -3,14 +3,17 @@ package adminPanel;
 import java.util.Scanner;
 
 import accountFunds.HandleTransactions;
+import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
 import handlePendingAccounts.PendingAccountsManager;
+import handlePendingAccounts.PendingAccountsManagerDao;
 
-public class AdminsUI {
+public class AdminsUI implements AdminsUIDao{
 	private final static String adminUserName = "admin";
 	private final static String adminPassWord = "adminadmin";
 	
-	public static void adminMain(Scanner adminDetails) throws Exception{
+	@Override
+	public void adminMain(Scanner adminDetails) throws Exception{
 		while(true) {
 			System.out.println("Enter admin details: ");
 			System.out.print("Admin name: ");
@@ -35,14 +38,17 @@ public class AdminsUI {
 		}
 	}
 	
-	public static void loggedInAccount(Scanner currString) throws Exception{
+	@Override
+	public void loggedInAccount(Scanner currString) throws Exception{
 		AccountManagement currentAccount = new AccountManagement();
 		int currentAccountDetails = 0;
 		while(true){
 			System.out.println("Welcome admin, would you like to view pending accounts, change money in accounts, or cancel an account? or type \"Logout\". Format: Pending, Change or Cancel.");
 			String adminControl = currString.nextLine();
 			if(adminControl.equals("Pending") || adminControl.equals("pending")) {
-				PendingAccountsManager.pendingAccounts(currString);
+				//PendingAccountsManager.pendingAccounts(currString);
+				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
+				checkPending.pendingAccounts(currString);
 			}
 			else if(adminControl.toLowerCase().equals("change")) {
 				while(true) {
@@ -76,13 +82,19 @@ public class AdminsUI {
 						System.out.println("Would you like to withdraw, deposit, or transfer?");
 						adminControl = currString.nextLine();
 						if(adminControl.toLowerCase().equals("withdraw")) {
-							HandleTransactions.withdraw(currentAccountDetails, currentAccount, currString);
+							//HandleTransactions.withdraw(currentAccountDetails, currentAccount, currString);
+							HandleTransactionsDao withdrawFunds = new HandleTransactions();
+							withdrawFunds.withdraw(currentAccountDetails, currentAccount, currString);
 						}
 						else if(adminControl.toLowerCase().equals("deposit")) {
-							HandleTransactions.deposit(currentAccountDetails, currentAccount, currString);
+							//HandleTransactions.deposit(currentAccountDetails, currentAccount, currString);
+							HandleTransactionsDao depositFunds = new HandleTransactions();
+							depositFunds.deposit(currentAccountDetails, currentAccount, currString);
 						}
 						else if(adminControl.toLowerCase().equals("transfer")) {
-							HandleTransactions.transfer(currentAccountDetails, currentAccount, currString);
+							//HandleTransactions.transfer(currentAccountDetails, currentAccount, currString);
+							HandleTransactionsDao transferFunds = new HandleTransactions();
+							transferFunds.transfer(currentAccountDetails, currentAccount, currString);
 						}
 					}
 				}

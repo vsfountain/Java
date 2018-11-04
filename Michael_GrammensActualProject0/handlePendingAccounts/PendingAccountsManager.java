@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 import accountManagement.AccountManagement;
 
-public class PendingAccountsManager {
-	public static void pendingAccounts(Scanner currString) {
+public class PendingAccountsManager implements PendingAccountsManagerDao {
+	
+	@Override
+	public void pendingAccounts(Scanner currString){
 		AccountManagement currentAccounts = new AccountManagement();
 		System.out.println(currentAccounts.getCustomerAccountRequests());
 		System.out.println("Is there an account you would like to handle? Yes or No.");

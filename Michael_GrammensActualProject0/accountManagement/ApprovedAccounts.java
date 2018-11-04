@@ -3,7 +3,7 @@
  */
 package accountManagement;
 
-public class ApprovedAccounts{
+public class ApprovedAccounts implements ApprovedAccountsDao{
 	
 	private String userPW = "";
 	private String userName = "";
@@ -23,19 +23,27 @@ public class ApprovedAccounts{
 		this.accountID = accountID;
 	}
 	
+	@Override
 	public String getAccountID() {
 		return this.accountID;
 	}
 	
+	@Override
 	public void setAccountID(String accountID) {
 		this.accountID = accountID;
 	}
+	
+	@Override
 	public Double getMoney() {
 		return this.money;
 	}
+	
+	@Override
 	public void setMoney(double deposit) {
 		this.money+=deposit;
 	}
+	
+	@Override
 	public double withdraw(double amount) {
 		if(amount <= 0.0) {
 			return -1.0;
@@ -49,27 +57,43 @@ public class ApprovedAccounts{
 		}
 		return -2.0;
 	}
+	
+	@Override
 	public String getUserNameJoint() {
 		return this.userNameJoint;
 	}
+	
+	@Override
 	public void setUserNameJoint(String userNameJoint) {
 		this.userNameJoint = userNameJoint;
 	}
+	
+	@Override
 	public String getUserPW() {
 		return this.userPW;
 	}
+	
+	@Override
 	public void setUserPW(String userPW) {
 		this.userPW = userPW;
 	}
+	
+	@Override
 	public String getUserName() {
 		return userName;
 	}
+	
+	@Override
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	@Override
 	public String getAccountType() {
 		return accountType;
 	}
+	
+	@Override
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
