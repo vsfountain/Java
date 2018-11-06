@@ -5,11 +5,14 @@ package customerPanel;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import accountFunds.HandleTransactions;
 import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
 
 public class CustomersUI implements CustomersUIDao{
+	final static Logger logger = Logger.getLogger(CustomersUI.class);
 	private static boolean passWordChecker = false;
 	private static AccountManagement accountAccess = new AccountManagement();
 	private static int accountID = 1;
@@ -36,7 +39,7 @@ public class CustomersUI implements CustomersUIDao{
 			boolean checkName = false;
 			System.out.println("Enter id associated with account or joint account or type \"Cancel\": ");
 			associatedName = loggedInAccount.nextLine();
-			if(associatedName.equals("cancel") || associatedName.equals("Cancel")) {
+			if(associatedName.toLowerCase().equals("cancel")) {
 				passWordChecker = true;
 				break;
 			}
@@ -60,6 +63,7 @@ public class CustomersUI implements CustomersUIDao{
 					}
 					else {
 						System.out.println("Password incorrect, please try again.");
+						logger.warn("User information entered incorrectly on account: " + associatedName);
 					}
 				}
 				break;
@@ -127,6 +131,9 @@ public class CustomersUI implements CustomersUIDao{
 				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, "N/A", accountX, accountsID);
 				accountID++;
 				System.out.println("Account has been recieved, give our Admin's sometime to approve or deny the request. You have been logged out.");
+				if(logger.isInfoEnabled()) {
+					logger.info("Account created: " + accountName);
+				}
 				break;
 			}
 			else if(accountX.equals("Joint") || accountX.equals("joint")) {
@@ -153,6 +160,9 @@ public class CustomersUI implements CustomersUIDao{
 				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, accountNameJoint, accountX, accountsID);
 				accountID++;
 				System.out.println("Joint Account has been recieved, give our Admin's sometime to approve or deny the request.");
+				if(logger.isInfoEnabled()) {
+					logger.info("Account created: " + accountName + " " + accountNameJoint);
+				}
 				break;
 			}
 			else if(accountX.equals("No") || accountX.equals("no")) {

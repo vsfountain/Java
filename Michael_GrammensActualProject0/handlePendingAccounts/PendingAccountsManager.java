@@ -2,10 +2,12 @@ package handlePendingAccounts;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import accountManagement.AccountManagement;
 
 public class PendingAccountsManager implements PendingAccountsManagerDao {
-	
+	final static Logger logger = Logger.getLogger(PendingAccountsManager.class);
 	@Override
 	public void pendingAccounts(Scanner currString){
 		AccountManagement currentAccounts = new AccountManagement();

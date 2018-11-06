@@ -2,6 +2,8 @@ package com.homework.project0;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import accountManagement.AccountManagement;
 import adminPanel.AdminsUI;
 import adminPanel.AdminsUIDao;
@@ -11,7 +13,7 @@ import employeePanel.EmployeeUI;
 import employeePanel.EmployeeUIDao;
 
 public class RunProject implements RunProjectDao{
-	
+	final static Logger logger = Logger.getLogger(RunProject.class);
 	@Override
 	public void newAccount(){
 		Scanner consoleInput = new Scanner(System.in);

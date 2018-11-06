@@ -2,6 +2,8 @@ package adminPanel;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import accountFunds.HandleTransactions;
 import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
@@ -9,6 +11,7 @@ import handlePendingAccounts.PendingAccountsManager;
 import handlePendingAccounts.PendingAccountsManagerDao;
 
 public class AdminsUI implements AdminsUIDao{
+	final static Logger logger = Logger.getLogger(AdminsUI.class);
 	private final static String adminUserName="admin";
 	private final static String adminPassWord="adminadmin";
 	
@@ -34,6 +37,7 @@ public class AdminsUI implements AdminsUIDao{
 			}
 			else if(checkInfo==false) {
 				System.out.println("Invalid admin credentials, try again. Or type \"Cancel\"");
+				logger.warn("Invalid admin login.");
 			}
 		}
 	}

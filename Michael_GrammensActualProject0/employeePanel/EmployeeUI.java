@@ -2,12 +2,15 @@ package employeePanel;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import accountManagement.AccountManagement;
 import handlePendingAccounts.PendingAccountsManager;
 import handlePendingAccounts.PendingAccountsManagerDao;
 
 public class EmployeeUI implements EmployeeUIDao{
 
+	final static Logger logger = Logger.getLogger(EmployeeUI.class);
 	private final static String employeeUserName = "employee";
 	private final static String employeePassWord = "employeeemployee";
 	
@@ -33,6 +36,7 @@ public class EmployeeUI implements EmployeeUIDao{
 			}
 			else if(checkInfo==false) {
 				System.out.println("Invalid employee credentials, try again. Or type \"Cancel\"");
+				logger.warn("Invalid employee login.");
 			}
 		}
 	}

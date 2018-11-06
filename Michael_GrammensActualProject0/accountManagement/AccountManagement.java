@@ -11,7 +11,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 public class AccountManagement implements AccountManagementDao{
+	final static Logger logger = Logger.getLogger(AccountManagement.class);
 	private static ArrayList<PendingAccounts> customerAccountRequests = new ArrayList<>();
 	private static ArrayList<ApprovedAccounts> approvedAccounts = new ArrayList<>();
 	private final static String url="jdbc:oracle:thin:@revy-chan.cvi5jgypuakx.us-east-2.rds.amazonaws.com:1521:orcl";
@@ -41,7 +44,8 @@ public class AccountManagement implements AccountManagementDao{
 			
 			ps.executeUpdate();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Inserting into allAccounts caused an Error:",
+					new SQLException());
 		}
 	}
 	
@@ -55,7 +59,8 @@ public class AccountManagement implements AccountManagementDao{
 			ps.executeUpdate();
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Deleting from allAccounts caused an Error:",
+					new SQLException());
 		}
 	}
 	
@@ -70,7 +75,8 @@ public class AccountManagement implements AccountManagementDao{
 			ps.executeUpdate();
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Updating allAccounts caused an Error:",
+					new SQLException());
 		}
 	}
 	@Override
@@ -93,7 +99,8 @@ public class AccountManagement implements AccountManagementDao{
 			}
 			return currMoneyy;
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting * FROM allAccounts caused an Error:",
+					new SQLException());
 		}
 		return 0.0;
 	}
@@ -107,6 +114,8 @@ public class AccountManagement implements AccountManagementDao{
 				currID = Integer.parseInt(accountID);
 			}
 			catch(Exception e) {
+				logger.error("Parsing integer failure:",
+						new Exception());
 				return;
 			}
 			money.setInt(1, currID);
@@ -134,7 +143,8 @@ public class AccountManagement implements AccountManagementDao{
 			pss.executeQuery();
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Depositing money caused an Error:",
+					new SQLException());
 		}
 	}
 	
@@ -149,6 +159,8 @@ public class AccountManagement implements AccountManagementDao{
 				currID = Integer.parseInt(accountID);
 			}
 			catch(Exception e) {
+				logger.error("Integer parse caused an Error:",
+						new Exception());
 				return "";
 			}
 			String returnedName = "";
@@ -158,7 +170,8 @@ public class AccountManagement implements AccountManagementDao{
 			returnedName = cs.getString(2);
 			return returnedName;
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("SELECTING userName caused an Error:",
+					new SQLException());
 		}
 		return "";
 	}
@@ -173,6 +186,8 @@ public class AccountManagement implements AccountManagementDao{
 				currID = Integer.parseInt(accountID);
 			}
 			catch(Exception e) {
+				logger.error("Parsing an Integer caused an Error:",
+						new Exception());
 				return "";
 			}
 			name.setInt(1, currID);
@@ -183,7 +198,8 @@ public class AccountManagement implements AccountManagementDao{
 			}
 			return getName;
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting userNameJoint caused an Error:",
+					new SQLException());
 		}
 		return "";
 	}
@@ -197,6 +213,8 @@ public class AccountManagement implements AccountManagementDao{
 				currID = Integer.parseInt(accountID);
 			}
 			catch(Exception e) {
+				logger.error("Parse Integer caused an Error:",
+						new SQLException());
 				return "";
 			}
 			name.setInt(1, currID);
@@ -207,7 +225,8 @@ public class AccountManagement implements AccountManagementDao{
 			}
 			return getPassword;
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting password caused an Error:",
+					new SQLException());
 		}
 		return "";
 	}
@@ -222,6 +241,8 @@ public class AccountManagement implements AccountManagementDao{
 				currID = Integer.parseInt(accountID);
 			}
 			catch(Exception e) {
+				logger.error("Parse Integer caused an Error:",
+						new Exception());
 				return -1.0;
 			}
 			money.setInt(1, currID);
@@ -257,7 +278,8 @@ public class AccountManagement implements AccountManagementDao{
 			}
 			
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Withdrawing money caused an Error:",
+					new SQLException());
 		}
 		return 0.0;
 	}
@@ -295,7 +317,8 @@ public class AccountManagement implements AccountManagementDao{
 			PreparedStatement pss = conn.prepareStatement(sql);
 			pss.executeQuery();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Dropping or creating tables caused an Error:",
+					new SQLException());
 		}
 	}
 	
@@ -328,7 +351,8 @@ public class AccountManagement implements AccountManagementDao{
 				}
 			}		
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting all accounts with pending status caused an Error:",
+					new SQLException());
 		}
 		return 0;
 	}
@@ -359,7 +383,8 @@ public class AccountManagement implements AccountManagementDao{
 				}
 			}		
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting all approved Accounts caused an Error:",
+					new SQLException());
 		}
 		return 0;
 	}
@@ -379,7 +404,8 @@ public class AccountManagement implements AccountManagementDao{
 				}
 			}		
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Selecting the entire database caused an Error:",
+					new SQLException());
 		}
 		return sqlPending;
 	}
@@ -433,7 +459,8 @@ public class AccountManagement implements AccountManagementDao{
 				}
 			}		
 		}catch(SQLException e) {
-			e.printStackTrace();
+			logger.error("Retreiving all approved accounts caused an Error:",
+					new SQLException());
 		}
 		return sqlApproved;
 		//return approvedAccounts;
