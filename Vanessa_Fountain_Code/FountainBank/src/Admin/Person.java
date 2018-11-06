@@ -39,7 +39,9 @@ public class Person implements Serializable{
 	
 	@Override
 	public String toString() {
+		//Bank.preparedStatement(name, pin, ssn, accessLevel);
 		return "Person [name=" + name + ", pin=" + pin + ", ssn=" + ssn + ",accessLevel=" + accessLevel+"]";
+		
 	}
 	
 	public Person(String name, int pin, Integer ssn, int accessLevel) {
