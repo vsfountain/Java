@@ -15,7 +15,7 @@ public interface AdministratorDao {
 	//Create
 	public int insertAdministrator(Administrator admin);
 	//read
-	public List <Administrator>selectAllAdminstrator();
+	public List<Administrator> selectAllAdminstrator();
 	public Administrator selectAdministratorById (int admin_id);
 	public Administrator selectAdministratorByAdminFirstName (String adminFirstName);
 	public Administrator selectAdministratorByAdminLastName(String adminLastName);

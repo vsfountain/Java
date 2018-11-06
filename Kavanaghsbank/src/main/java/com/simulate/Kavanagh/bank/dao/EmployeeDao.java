@@ -14,7 +14,7 @@ public interface EmployeeDao {
 	/**
 	 * 
 	 */
-	public int insertEmployeeDao(Employee e);
+	public int insertEmployeeDao(Employee employee);
 	 //read
 	public List<Employee>selectAllEmployee();
 	public Employee selectEmployeebyId (int employee_id);
@@ -25,9 +25,9 @@ public interface EmployeeDao {
 	public Employee selectEmployeebyFirstName();
 	public Employee selectEmployeebyLastName();
 	//update 
-	public int updateEmployee (Employee e);
+	public int updateEmployee (Employee employee);
 	//Delete
-	public int deleteEmployee(Employee e);
+	public int deleteEmployee(Employee employee);
 
 	
 	

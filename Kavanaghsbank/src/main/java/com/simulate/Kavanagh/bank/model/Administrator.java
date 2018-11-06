@@ -20,7 +20,7 @@ public class Administrator {
 	 * @param adminEmail
 	 */
 	public Administrator(int admin_id, String adminFirstName, String adminLastName, char adminEmail) {
-		super();
+		//super();
 		this.admin_id = admin_id;
 		this.adminFirstName = adminFirstName;
 		this.adminLastName = adminLastName;

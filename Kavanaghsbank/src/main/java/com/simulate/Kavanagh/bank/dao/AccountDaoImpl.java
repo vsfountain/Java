@@ -16,7 +16,7 @@ public class AccountDaoImpl implements AccountDao {
 	private  static String password = "";
 
 	@Override
-	public int insertAccount(Account a) {
+	public int insertAccount(Account account) {
 		
 		return 0;
 	}
@@ -32,7 +32,7 @@ public class AccountDaoImpl implements AccountDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) 
 			{
-			accts.add(new Account(rs.getInt(1), rs.getString("status")));
+			//accts.add(new Account(rs.getInt(1), rs.getString("status")));
 			}
 
 				} catch (SQLException e) {
@@ -44,25 +44,38 @@ public class AccountDaoImpl implements AccountDao {
 		
 	@Override
 	public Account selectAccountByAccountNumber(int accountNumber) {
-		// TODO Auto-generated method stub
-		return null;
+				return null;
 	}
 
 	@Override
 	public Account selectAccountBystatus(String status) {
-		// TODO Auto-generated method stub
+				return null;
+	}
+	@Override 
+	public Account selectAccountByclient_id(int client_id) {
+		return null;
+			} 
+	@Override
+	public Account selectAccountByAccountBalance(double accountBalance) {
+		return null;
+	}
+	@Override
+	public Account selectAccountByInterestEarned(double interestEarned) {
+		return null;
+	}
+	@Override 
+	public Account selectCustomerByDescription(char description) {
 		return null;
 	}
 
 	@Override
 	public int updateAccount(Account a) {
-		// TODO Auto-generated method stub
-		return 0;
+			return 0;
 	}
 
 	@Override
 	public int deleteAccount(Account a) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 	

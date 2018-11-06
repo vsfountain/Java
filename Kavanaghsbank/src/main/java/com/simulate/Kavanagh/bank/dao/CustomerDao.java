@@ -14,7 +14,7 @@ public interface CustomerDao {
 	 * CRUD methods only
 	 */
 	//create
-	public int insertCustomer(Customer c);
+	public int insertCustomer(Customer client);
 	//read
 	public List<Customer>selectAllCustomer();
 	public Customer selectCustomerById (int client_id);
@@ -31,9 +31,9 @@ public interface CustomerDao {
 	public Customer selectCustomerByCustomerEmail( char customerEmail);
 	public Customer selectCustomerByPassWord(char passWord);	
 	//update
-	public int updateCustomer(Customer c);
+	public int updateCustomer(Customer client);
 	//Delete
-	public int deleteCustomer(Customer c);
+	public int deleteCustomer(Customer client);
 
 }
 
