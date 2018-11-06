@@ -9,8 +9,8 @@ import handlePendingAccounts.PendingAccountsManager;
 import handlePendingAccounts.PendingAccountsManagerDao;
 
 public class AdminsUI implements AdminsUIDao{
-	private final static String adminUserName = "admin";
-	private final static String adminPassWord = "adminadmin";
+	private final static String adminUserName="admin";
+	private final static String adminPassWord="adminadmin";
 	
 	@Override
 	public void adminMain(Scanner adminDetails) throws Exception{
@@ -41,26 +41,21 @@ public class AdminsUI implements AdminsUIDao{
 	@Override
 	public void loggedInAccount(Scanner currString) throws Exception{
 		AccountManagement currentAccount = new AccountManagement();
-		int currentAccountDetails = 0;
 		while(true){
 			System.out.println("Welcome admin, would you like to view pending accounts, change money in accounts, or cancel an account? or type \"Logout\". Format: Pending, Change or Cancel.");
 			String adminControl = currString.nextLine();
-			if(adminControl.equals("Pending") || adminControl.equals("pending")) {
-				//PendingAccountsManager.pendingAccounts(currString);
+			if(adminControl.toLowerCase().equals("pending")) {
 				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
 				checkPending.pendingAccounts(currString);
 			}
 			else if(adminControl.toLowerCase().equals("change")) {
 				while(true) {
+					int currID = 0;
 					boolean checker = false;
 					System.out.print("Which accountID would you like to change? or type \"Cancel\": ");
-					System.out.print("Current open accounts: ");
-					if(currentAccount.getApprovedAccounts().size()==0) {
+					if(currentAccount.selectApprovedDataBase()==-1) {
 						System.out.println("No accounts open at this time, returning......");
 						break;
-					}
-					for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-						System.out.print(currentAccount.getApprovedAccounts().get(i) + " ");
 					}
 					System.out.println();
 					String adminInput = currString.nextLine();
@@ -68,33 +63,27 @@ public class AdminsUI implements AdminsUIDao{
 						System.out.println("Admin interface cancelled, returning to home page.");
 						break;
 					}
-					for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-						if(adminInput.equals("" + currentAccount.getApprovedAccounts().get(i).getAccountID())) {
-							checker = true;
-							currentAccountDetails = i;
-							break;
-						}
+					if(currentAccount.getNameOfAccountHolder(adminInput)!="") {
+						checker = true;
+						currID = Integer.parseInt(adminInput);
 					}
 					if(checker==false) {
 						System.out.println("Account was not found, try again.");
 					}
 					else{
 						System.out.println("Would you like to withdraw, deposit, or transfer?");
-						adminControl = currString.nextLine();
-						if(adminControl.toLowerCase().equals("withdraw")) {
-							//HandleTransactions.withdraw(currentAccountDetails, currentAccount, currString);
+						String adminControlled = currString.nextLine();
+						if(adminControlled.toLowerCase().equals("withdraw")) {
 							HandleTransactionsDao withdrawFunds = new HandleTransactions();
-							withdrawFunds.withdraw(currentAccountDetails, currentAccount, currString);
+							withdrawFunds.withdraw(currID, currentAccount, currString);
 						}
-						else if(adminControl.toLowerCase().equals("deposit")) {
-							//HandleTransactions.deposit(currentAccountDetails, currentAccount, currString);
+						else if(adminControlled.toLowerCase().equals("deposit")) {
 							HandleTransactionsDao depositFunds = new HandleTransactions();
-							depositFunds.deposit(currentAccountDetails, currentAccount, currString);
+							depositFunds.deposit(currID, currentAccount, currString);
 						}
-						else if(adminControl.toLowerCase().equals("transfer")) {
-							//HandleTransactions.transfer(currentAccountDetails, currentAccount, currString);
+						else if(adminControlled.toLowerCase().equals("transfer")) {
 							HandleTransactionsDao transferFunds = new HandleTransactions();
-							transferFunds.transfer(currentAccountDetails, currentAccount, currString);
+							transferFunds.transfer(currID, currentAccount, currString);
 						}
 					}
 				}
@@ -102,11 +91,9 @@ public class AdminsUI implements AdminsUIDao{
 			else if(adminControl.toLowerCase().equals("cancel")) {
 				while(true) {
 					System.out.print("Accounts currently listed: ");
-					if(currentAccount.getApprovedAccounts().size()==0) {
-						System.out.println("No approved accounts open, please type \"Cancel\"");
-					}
-					for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-						System.out.print(currentAccount.getApprovedAccounts().get(i) + " ");
+					if(currentAccount.selectApprovedDataBase()==-1) {
+						System.out.println("No accounts open at this time, returning......");
+						break;
 					}
 					System.out.println();
 					System.out.println("Enter accountID you wish to cancel or type \"cancel\":");

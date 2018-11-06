@@ -6,7 +6,7 @@ import accountManagement.AccountManagement;
 
 public interface HandleTransactionsDao {
 
-	public void withdraw(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount);
-	public void deposit(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount);
-	public void transfer(int currentAccountDetails, AccountManagement currentAccount, Scanner getAmount);
+	public void withdraw(int currID, AccountManagement currentAccount, Scanner getAmount);
+	public void deposit(int currID, AccountManagement currentAccount, Scanner getAmount);
+	public void transfer(int currID, AccountManagement currentAccount, Scanner getAmount);
 }

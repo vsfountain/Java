@@ -56,20 +56,22 @@ public class EmployeeUI implements EmployeeUIDao{
 			}
 			else if(employeeController.toLowerCase().equals("balance")) {
 				System.out.println("Account Balances: ");
-				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-					System.out.print(currentAccount.getApprovedAccounts().get(i).getUserName() + " has this balance: " + currentAccount.getApprovedAccounts().get(i).getMoney() + " ");
+				for(int i = 1; i < currentAccount.getApprovedAccounts().size()+1; i++) {
+					String currID = "" + i;
+					System.out.println(currentAccount.getNameOfAccountHolder(currID) + " " + currentAccount.getNameOfJointAccountHolder(currID) + 
+							" has this balance: " + currentAccount.dataBaseMoney(currID));
 				}
 				System.out.println();
 			}
-			else if(employeeController.equals("Personal") || employeeController.equals("personal")) {
+			else if(employeeController.toLowerCase().equals("personal")) {
 				System.out.println("Personal Information: ");
-				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-					System.out.print(currentAccount.getApprovedAccounts().get(i).getUserName() + " has this password: " + currentAccount.getApprovedAccounts().get(i).getUserPW() + " ");
+				for(int i = 1; i < currentAccount.getApprovedAccounts().size()+1; i++) {
+					String currID = "" + i;
+					System.out.println(currentAccount.getNameOfAccountHolder(currID) + " " + currentAccount.getNameOfJointAccountHolder(currID) + " has this password: " + currentAccount.getPasswordOfAccountHolder(currID));
 				}
 				System.out.println();
 			}
-			else if(employeeController.equals("Pending") || employeeController.equals("pending")) {
-				//PendingAccountsManager.pendingAccounts(currString);
+			else if(employeeController.toLowerCase().equals("pending")) {
 				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
 				checkPending.pendingAccounts(currString);
 			}

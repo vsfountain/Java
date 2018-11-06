@@ -23,6 +23,15 @@ public class ApprovedAccounts implements ApprovedAccountsDao{
 		this.accountID = accountID;
 	}
 	
+	public ApprovedAccounts(String userPW, String userName, String accountType, String userNameJoint, String accountID, double setMoney) {
+		this.userPW = userPW;
+		this.userName = userName;
+		this.accountType = accountType;
+		this.userNameJoint = userNameJoint;
+		this.accountID = accountID;
+		this.money=setMoney;
+	}
+	
 	@Override
 	public String getAccountID() {
 		return this.accountID;

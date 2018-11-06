@@ -12,6 +12,7 @@ import accountManagement.AccountManagement;
 public class CustomersUI implements CustomersUIDao{
 	private static boolean passWordChecker = false;
 	private static AccountManagement accountAccess = new AccountManagement();
+	private static int accountID = 1;
 	
 	@Override
 	public void customerMain(Scanner consoleInput) throws Exception{
@@ -30,35 +31,31 @@ public class CustomersUI implements CustomersUIDao{
 		//Login info
 		String associatedName = "";
 		AccountManagement currentAccount = new AccountManagement();
-		int currentAccountDetails = 0;
+		int currID = 0;
 		while(true){
 			boolean checkName = false;
-			System.out.println("Enter name associated with account or joint account or type \"Cancel\": ");
+			System.out.println("Enter id associated with account or joint account or type \"Cancel\": ");
 			associatedName = loggedInAccount.nextLine();
 			if(associatedName.equals("cancel") || associatedName.equals("Cancel")) {
 				passWordChecker = true;
 				break;
 			}
-			for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-				if(currentAccount.getApprovedAccounts().get(i).getUserName().equals(associatedName) || currentAccount.getApprovedAccounts().get(i).getUserNameJoint().equals(associatedName)) {
-					checkName = true;
-					currentAccountDetails = i;
-					break;
-				}
+			if(currentAccount.getNameOfAccountHolder(associatedName)!="") {
+				checkName = true;
+				currID = Integer.parseInt(associatedName);
 			}
 			if(checkName == false) {
-				System.out.println("Name was not found in our system, try again.");
+				System.out.println("ID was not found in our system, try again.");
 			}
 			else if(checkName == true){
 				while(true) {
 					System.out.println("Enter password associated with the account " + associatedName+ ", or type \"Cancel\": ");
 					String getPassword = loggedInAccount.nextLine();
-					String usersPassword = currentAccount.getApprovedAccounts().get(currentAccountDetails).getUserPW();
-					if(getPassword.equals("Cancel") || getPassword.equals("cancel")){
+					if(getPassword.toLowerCase().equals("cancel")) {
 						passWordChecker = true;
 						break;
 					}
-					if(getPassword.equals(usersPassword)) {
+					if(currentAccount.getPasswordOfAccountHolder(associatedName).equals(getPassword)) {
 						break;
 					}
 					else {
@@ -69,24 +66,27 @@ public class CustomersUI implements CustomersUIDao{
 			}
 		}
 		if(passWordChecker==false) {
-			System.out.println("Welcome: " + associatedName);
+			System.out.print("Welcome: " + currentAccount.getNameOfAccountHolder(associatedName));
+			if(currentAccount.getNameOfJointAccountHolder(associatedName)!=""||currentAccount.getNameOfJointAccountHolder(associatedName)!="N/A") {
+				System.out.println(" " + currentAccount.getNameOfJointAccountHolder(associatedName));
+			}
+			else {
+				System.out.println();
+			}
 			while(true) {
 				System.out.println("Would you like to withdraw, deposit or transfer funds? Withdraw, Deposit, or Transfer. Type \"Logout\" to return to home page.");
 				String userAction = loggedInAccount.nextLine();
 				if(userAction.toLowerCase().equals("withdraw")) {
-					//HandleTransactions.withdraw(currentAccountDetails, currentAccount, loggedInAccount);
 					HandleTransactionsDao withdrawFunds = new HandleTransactions();
-					withdrawFunds.withdraw(currentAccountDetails, currentAccount, loggedInAccount);
+					withdrawFunds.withdraw(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("deposit")) {
-					//HandleTransactions.deposit(currentAccountDetails, currentAccount, loggedInAccount);
 					HandleTransactionsDao depositFunds = new HandleTransactions();
-					depositFunds.deposit(currentAccountDetails, currentAccount, loggedInAccount);
+					depositFunds.deposit(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("transfer")) {
-					//HandleTransactions.transfer(currentAccountDetails, currentAccount, loggedInAccount);
 					HandleTransactionsDao transferFunds = new HandleTransactions();
-					transferFunds.transfer(currentAccountDetails, currentAccount, loggedInAccount);
+					transferFunds.transfer(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("logout")) {
 					System.out.println("User interface cancelled, returning to home page.");
@@ -107,7 +107,7 @@ public class CustomersUI implements CustomersUIDao{
 			System.out.println("Would you like to create an account or a joint account? Account or Joint.");
 			String accountX = createAccount.nextLine();
 			if(accountX.equals("Account") || accountX.equals("account")) {
-				System.out.println("Please enter your name specified name for the account.");
+				System.out.println("Please enter your name specified for the account.");
 				String accountName = createAccount.nextLine();
 				String accountPWHolder = "";
 				String accountPWConfirm = "";
@@ -123,8 +123,9 @@ public class CustomersUI implements CustomersUIDao{
 						System.out.println("Passwords do not match, please try again.");
 					}
 				}
-				String accountID = "" + Math.random()*10;
-				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, "N/A", accountX, accountID);
+				String accountsID = "" + accountID;
+				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, "N/A", accountX, accountsID);
+				accountID++;
 				System.out.println("Account has been recieved, give our Admin's sometime to approve or deny the request. You have been logged out.");
 				break;
 			}
@@ -148,8 +149,9 @@ public class CustomersUI implements CustomersUIDao{
 					}
 					
 				}
-				String accountID = "" + Math.random()*10;
-				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, accountNameJoint, accountX, accountID);
+				String accountsID = "" + accountID;
+				accountAccess.setCustomerAccountRequests(accountPWConfirm, accountName, accountNameJoint, accountX, accountsID);
+				accountID++;
 				System.out.println("Joint Account has been recieved, give our Admin's sometime to approve or deny the request.");
 				break;
 			}

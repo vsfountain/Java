@@ -9,14 +9,18 @@ public class PendingAccountsManager implements PendingAccountsManagerDao {
 	@Override
 	public void pendingAccounts(Scanner currString){
 		AccountManagement currentAccounts = new AccountManagement();
-		System.out.println(currentAccounts.getCustomerAccountRequests());
+		if(currentAccounts.selectPendingDataBase()==-1) {
+			System.out.println("No accounts open at this time, returning......");
+			return;
+		}
+		System.out.println();
 		System.out.println("Is there an account you would like to handle? Yes or No.");
 		String accountHandling = currString.nextLine();
 		if(accountHandling.toLowerCase().equals("yes")) {
 			while(true) {
 				System.out.println("Would you like to approve or deny an account? Approve or Deny.");
 				String approveOrDeny = currString.nextLine();
-				if(approveOrDeny.equals("Approve") || approveOrDeny.equals("approve")) {
+				if(approveOrDeny.toLowerCase().equals("approve")) {
 					System.out.println("Which account would you like to approve? Format: ID of account holder.");
 					for(int i = 0; i < currentAccounts.getCustomerAccountRequests().size(); i++) {
 						System.out.println(currentAccounts.getCustomerAccountRequests().get(i));
@@ -35,7 +39,6 @@ public class PendingAccountsManager implements PendingAccountsManagerDao {
 										currentAccounts.getCustomerAccountRequests().get(i).getUserNameJoint(), 
 										currentAccounts.getCustomerAccountRequests().get(i).getAccountType(), 
 										currentAccounts.getCustomerAccountRequests().get(i).getAccountID());
-								currentAccounts.removeCustomerAccountRequests(currID);
 								checkString = true;
 								break;
 							}
@@ -51,7 +54,7 @@ public class PendingAccountsManager implements PendingAccountsManagerDao {
 					}
 					break;
 				}
-				else if(approveOrDeny.equals("Deny") || approveOrDeny.equals("deny")) {
+				else if(approveOrDeny.toLowerCase().equals("deny")) {
 					System.out.println("Which account would you like to deny? ID of current Account.");
 					for(int i = 0; i < currentAccounts.getCustomerAccountRequests().size(); i++) {
 						System.out.println(currentAccounts.getCustomerAccountRequests().get(i));
