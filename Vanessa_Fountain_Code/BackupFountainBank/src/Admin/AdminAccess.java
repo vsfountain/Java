@@ -58,14 +58,34 @@ public class AdminAccess {
 				Integer ssn = Integer.parseInt(scanner.nextLine());
 				log.info("New Customer Account Created");
 				Person person2 = new Person(name, pin, ssn, 1);
+				
 				log.info("Person" + person + "accessLevel" + 1);
 				person2.setAccessLevel(1);
+				readObject("./CustomerInformation", person2);
 				writeObject("./CustomerInformation",person2);
-				Customer.CustomerAccessBase.preparedStatementCustomerAccess(person2, 0, 1);
+				//Customer.CustomerAccessBase.preparedStatementCustomerAccess(person2, 0, 1);
 				System.out.println("New Customer Account: " + person2);
 				break;
-			case 3:
 				
+			case 3:
+				System.out.println("Enter the Information of the Customer Account you would like to view");
+				System.out.println((char)27 + "[35mEnter User Name");
+				String name3 = scanner.nextLine();
+				
+				System.out.println((char)27 + "[35mEnter User Pin");
+				Integer pin3 = Integer.parseInt(scanner.nextLine());
+				
+				System.out.println((char)27 + "[35mEnter the Last Four of Social Security Number");
+				Integer ssn3 = Integer.parseInt(scanner.nextLine());
+				log.info("Admin is viewing a customer");
+				Person person3 = new Person(name3, pin3, ssn3, 1);
+				
+				log.info("Customer Account" + person3 + "accessLevel" + 1);
+				person3.setAccessLevel(1);
+				
+				readObject("./CustomerInformation", person3);
+				System.out.println(AccountHolderInfo);
+				//System.out.println(replaceFile);
 				//Integer bal = CustomerAccessBase.Balance(person);
 				//System.out.println(bal);
 				break;
@@ -106,7 +126,7 @@ public class AdminAccess {
 				System.exit(0);
 				//return null;
 		}
-		return null;
+		return AdminAccess.main(person, acess);
 		}
 		
 		public static void readObject(String filename, Person person) throws ClassNotFoundException, IOException {
@@ -170,5 +190,6 @@ public class AdminAccess {
 					e.printStackTrace();
 					}
 			}
+		
 		
 }
