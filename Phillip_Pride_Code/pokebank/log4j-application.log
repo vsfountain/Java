@@ -37,3 +37,4 @@ java.sql.SQLException
 	at com.project0.pokebank.Main.main(Main.java:131)
 2018-11-07 14:34:39 INFO  TrainerDaoImpl:121 - ash has deposited a Charizard.
 2018-11-07 14:34:44 INFO  TrainerDaoImpl:121 - ash has deposited a Ditto.
+2018-11-07 15:19:46 WARN  TrainerDaoImpl:157 - ash attempted to withdraw a Pokémon they did not own. They may be from Team Rocket!
