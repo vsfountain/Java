@@ -3,9 +3,8 @@ package controller.task;
 import java.util.Scanner;
 
 import controller.main.RunApp;
-import model.users.AllUsers;
-import model.users.ClientUser;
-import model.users.User;
+import controller.services.UserService;
+import controller.services.UserServicesImpl;
 import view.ConfirmationView;
 
 
@@ -20,26 +19,32 @@ public class AddingUser {
 	 */
 	public static void AddUser() {
 		//PotentialUsers addTo = PotentialUsers.getInstance();
-		AllUsers users = AllUsers.getInstance(); 
-		String name = "";
+		
+		String firstName = "";
+		String lastName = "";
 		String email = "";
 		String password = "";
-		User toAdd = null;
+		//User toAdd = null;
 		Scanner scan = RunApp.scan;
 		do {
-			System.out.println("Please enter your name:");
-			name = scan.next();
+			System.out.println("Please enter your first name:");
+			firstName = scan.next();
+			System.out.println("Please enter your last name:");
+			lastName = scan.next();
 			System.out.println("\nPlease enter you email: ");
 			email = scan.next();
 			System.out.print("\nPlease enter password: ");
 			password = scan.next();
-			toAdd = new ClientUser(name, email, password);
-			System.out.println("\nYour entry:\nName: " + name + "\nEmail: " + email);
+			//toAdd = new ClientUser(firstName, lastName, email, password);
+			System.out.println("\nYour entry:\nName: " + firstName
+					+ " " + lastName + "\nEmail: " + email);
 		} while (ConfirmationView.confirmation() != 1);
-		if (users.getUsers().contains(toAdd)) {
+		UserService service = new UserServicesImpl();
+		Boolean results = service.registerUser(firstName, lastName, password, email);
+		//System.out.println(results); 
+		if (!results) {
 			System.out.println("\nThat email is already in use.");
 		} else {
-			users.addUser(toAdd);
 			System.out.println("\nYou have registered. Log in to create an account");
 
 		}

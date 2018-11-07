@@ -3,13 +3,12 @@ package controller.task;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
+import controller.services.UserService;
+import controller.services.UserServicesImpl;
 import model.accounts.Account;
-import model.accounts.JointAccount;
-import model.accounts.PotentialAccounts;
-import model.users.AllUsers;
 import model.users.CurrentUser;
-import model.users.Employee;
 import model.users.User;
 import view.ClientOptions;
 
@@ -18,53 +17,48 @@ import view.ClientOptions;
  * handles all the logic in the clients menu.
  */
 public class ClientMenu {
-
+	static ScannerInt scannerInt = new ScannerInt();
 	/**
-	 *Starts the clients menue.
+	 * Starts the clients menue.
 	 */
 	public static void goToClientMenu() {
 		Scanner scan = RunApp.scan;
+		UserService services = new UserServicesImpl();
 		CurrentUser user = CurrentUser.getInstance();
 		User currentUser = user.getCurrentUser();
-		PotentialAccounts accounts = PotentialAccounts.getInstance();
-		System.out.println("loading this properly? " + accounts);
+		// PotentialAccounts accounts = PotentialAccounts.getInstance();
+		// System.out.println("loading this properly? " + accounts);
 		int choice = -1;
 		while (choice != 7) {
 			choice = ClientOptions.showClientOptions();
 			if (choice == 1) { // view personal info
-				System.out.println(user.getCurrentUser());
-				for (Account x : user.getCurrentUser().getAccounts()) {
+				System.out.println(currentUser);
+				ArrayList<Account> accounts = services.getAccounts(currentUser.getAccountId());
+				for (Account x : accounts) {
 					System.out.println(x);
 				}
 			} else if (choice == 2) {// apply for account
-				User applying = new User(currentUser.getName(), currentUser.getEmail(), null,
-						currentUser.getAccountId());
-				Account newAccount = null;
-				System.out.println("What type of account do you want?\n[1] Checking\n [2]Savings");
-				int accountChoice = scan.nextInt();
+				System.out.println("What type of account do you want?\n[1] " + "Savings\n[2] Checking");
+				int accountChoice = scannerInt.scanInt();
+				Boolean result = false;
 				if (accountChoice != 1 && accountChoice != 2) {
 					System.out.println("not valid account type");
 
 				} else if (accountChoice == 1) {
+
 					// System.out.println(accounts);
 					// System.out.println(applying.getAccounts());
-					newAccount = new Account("Checking", accounts.getAccountId());
-					System.out.println("request sent for aproval");
-				} else if (accountChoice == 2) {
-					newAccount = (new Account("Savings", accounts.getAccountId()));
-					System.out.println("request sent for aproval");
-				}
-				if (newAccount != null) {
-					int index = accounts.getUsers().indexOf(applying);
-					if (index >= 0) {
-						accounts.getUsers().get(index).getAccounts().add(newAccount);
-					} else {
-						applying.getAccounts().add(newAccount);
-						accounts.addUser(applying);
-					}
-					System.out.println("Added app " + accounts.getUsers());
-				}
 
+					result = services.applyForAccount(currentUser.getAccountId(), 1);
+				} else if (accountChoice == 2) {
+					result = services.applyForAccount(currentUser.getAccountId(), 2);
+
+				}
+				if (result) {
+					System.out.println("Applications submitted");
+				} else {
+					System.out.println("Something went wrong, try again later.");
+				}
 				// make withdraw
 			} else if (choice == 3) {
 
@@ -76,41 +70,53 @@ public class ClientMenu {
 				// Transfer
 			} else if (choice == 5) {
 
-				ArrayList<Account> theirAccounts = currentUser.getAccounts();
+				ArrayList<Account> theirAccounts = services.getAccounts(currentUser.getAccountId());
 				if (theirAccounts.size() <= 1) {
 					System.out.println("You need more then 1 account to transfer");
 				} else {
 					Utility.transfer();
 				}
-				//create the joint account request
+				// create the joint account request
 			} else if (choice == 6) {
-				System.out.println("enter email of person you want to create a joint account with.");
-				String email = scan.next();
-				User check = new User(null, email, null);
-				AllUsers allOfThem = AllUsers.getInstance();
-				ArrayList<User> theActualUsers = allOfThem.getUsers();
-				//checks if the joint user requested exists and isn't an employee
-				if (theActualUsers.contains(check)) {
-					int indexOf = theActualUsers.indexOf(check);
-					if(theActualUsers.get(indexOf) instanceof Employee) {
-						System.out.println("That user dosn't exsist");
+
+				ArrayList<User> users = services.getAllUsers();
+				ArrayList<User> jointWith = new ArrayList<User>();
+				jointWith.add(currentUser);
+				Boolean addMore = true;
+				// checks if the joint user requested exists and isn't an employee
+				while (addMore) {
+					System.out.println("enter email of person you want to create a joint account with.");
+					String email = scan.next();
+					User check = new User(null, null, email, null);
+					int indexOf = -1;
+					if (users.contains(check)) {
+						indexOf = users.indexOf(check);
+						if (jointWith.contains(check)) {
+
+							System.out.println("User already added for joint account");
+						} else if (indexOf == -1) {
+							System.out.println("user dosnt exsist");
+						}
+
+						else {
+							jointWith.add(users.get(indexOf));
+							System.out.println(jointWith);
+							System.out.println("Added: " + users.get(indexOf));
+						}
+						int input = -1;
+						while (input < 0 || input > 2) {
+							System.out.println("Add more users to joint account?\n" + "[1] Yes \n[2] No\n");
+							input = scannerInt.scanInt();
+						}
+						if (input != 1) {
+							addMore = false;
+						}
 					} else {
-						//creation and addition of the joint account object into request table
-						User toAdd = new User(currentUser.getName(), currentUser.getEmail(), null);
-						JointAccount jC = new JointAccount("Joint", accounts.getAccountId());
-						jC.addUser(currentUser);
-						//System.out.println("CU " + currentUser);
-						jC.addUser(check);
-						//System.out.println("Check"+ check);
-						//System.out.println("UWITN" + jC.getUsersWith());
-						toAdd.getAccounts().add(jC);
-						accounts.addUser(toAdd);
-						System.out.println("account sent for aproval");
+						System.out.println("That user dosn't exsist");
 					}
-					
-				} else {
-					System.out.println("That user dosn't exsist");
 				}
+				
+				services.batchApplyForAccount(jointWith);
 			}
 			if (choice != 7) {
 				choice = -1;

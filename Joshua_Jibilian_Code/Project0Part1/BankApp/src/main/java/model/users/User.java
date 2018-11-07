@@ -16,13 +16,20 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 2L;
 	
 	/** The name. */
-	private String name;
+	private String firstName;
+	
+	/** The last name. */
+	private String lastName;
 	
 	/** The email. */
 	private String email;
 	
 	/** The password. */
 	private String password;
+	
+	/** The user id. */
+	@SuppressWarnings("unused")
+	private int userId;
 	
 	/** The accounts of the user*. */
 	private ArrayList<Account> accounts = new ArrayList<Account>();
@@ -35,13 +42,15 @@ public class User implements Serializable{
 	/**
 	 * Instantiates a new user.
 	 *
-	 * @param name the name
+	 * @param firstName the first name
+	 * @param lastName the last name
 	 * @param email the email
 	 * @param password the password
 	 * @param accountId the account id
 	 */
-	public User(String name, String email, String password, int accountId) {
-		this.name = name;
+	public User(String firstName,String lastName, String email, String password, int accountId) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.accountId = accountId;
 		this.password = password;
@@ -51,12 +60,14 @@ public class User implements Serializable{
 	/**
 	 * Instantiates a new user.
 	 *
-	 * @param name the name
+	 * @param firstName the first name
+	 * @param lastName the last name
 	 * @param email the email
 	 * @param password the password
 	 */
-	public User(String name, String email, String password) {
-		this.name = name;
+	public User(String firstName,String lastName, String email, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.accountId = -1;
@@ -73,6 +84,15 @@ public class User implements Serializable{
 		return accounts;
 	}
 
+	/**
+	 * Adds the account.
+	 *
+	 * @param A the a
+	 */
+	public void addAccount(Account A) {
+		accounts.add(A);
+	}
+	
 	/**
 	 * Sets the accounts.
 	 *
@@ -110,9 +130,26 @@ public class User implements Serializable{
 	 * @return the name
 	 */
 	public String getName() {
-		return name;
+		return firstName + " " + lastName;
 	}
 
+	/**
+	 * Gets the first name.
+	 *
+	 * @return the first name
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	/**
+	 * Gets the last name.
+	 *
+	 * @return the last name
+	 */
+	public String getLastName() {
+		return lastName;
+	}
 
 
 	/**
@@ -120,11 +157,18 @@ public class User implements Serializable{
 	 *
 	 * @param name the new name
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String name) {
+		this.firstName = name;
 	}
 
-
+	/**
+	 * Sets the last name.
+	 *
+	 * @param name the new last name
+	 */
+	public void setLastName(String name) {
+		this.lastName = name;
+	}
 
 	/**
 	 * Gets the email.
@@ -162,10 +206,7 @@ public class User implements Serializable{
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return this.getClass().getSimpleName() + "[ name=" + name + ", email=" + email +", password="+password+", account=" + accountId + "]\n";
-	}
+
 
 	/**
 	 * Instantiates a new user.
@@ -177,6 +218,16 @@ public class User implements Serializable{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", "
+				+ "email=" + email + ", password=" + password
+				+ ", accountId=" + accountId + "]";
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */

@@ -3,6 +3,7 @@ package view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
 
 
@@ -11,7 +12,7 @@ import controller.main.RunApp;
  * The Class ConfirmationView. This just asks if what they enterd is correct. Info should be printed before call to static method
  */
 public class ConfirmationView {
- 
+	static ScannerInt scannerInt = new ScannerInt();
  /**
   * Asks what user enter was correct. Info should be printed before call to this method
   *
@@ -26,7 +27,7 @@ public class ConfirmationView {
 		System.out.println( "[1] Yes\n[2] No");
 			try {
 				//System.out.println("thing");
-				choice = scan.nextInt();
+				choice = scannerInt.scanInt();
 				if (choice >=1 || choice <= 2) {
 					valid = true;
 				}

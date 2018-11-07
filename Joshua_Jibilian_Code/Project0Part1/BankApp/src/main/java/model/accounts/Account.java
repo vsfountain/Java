@@ -26,7 +26,11 @@ public class Account implements Serializable{
 	/** The type of the account. Probably should use enums later */
 	private String type = "";
 	
-	
+	public Account(String type, int id, int balance) {
+		this.type = type;
+		this.id = id;
+		this.balance = balance;
+	}
 	/**
 	 * Instantiates a new account.
 	 *
@@ -142,6 +146,17 @@ public class Account implements Serializable{
 	@Override
 	public String toString() {
 		return "Account [balance=" + balance + ", id=" + id + ", type=" + type + "]";
+	}
+	
+	public boolean equals(Object o) {
+		System.out.println("ACCOUNT ==== 1");
+		if (o instanceof JointAccount) {
+			if (((JointAccount) o).getId() == this.getId()) {
+				return true;
+			}
+		}
+		return false;
+		
 	}
 	
 }

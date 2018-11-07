@@ -3,6 +3,7 @@ package view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
 
 // TODO: Auto-generated Javadoc
@@ -11,7 +12,7 @@ import controller.main.RunApp;
  */
 public class AdminOptions {
 
-	
+	static ScannerInt scannerInt = new ScannerInt();
 	/**
 	 * Show admin options.
 	 *
@@ -32,7 +33,7 @@ public class AdminOptions {
 				+ "\n[7] Log Out");
 			try {
 				//System.out.println("thing");
-				choice = scan.nextInt();
+				choice = scannerInt.scanInt();
 				if (choice >=1 || choice <= 4) {
 					valid = true;
 				}

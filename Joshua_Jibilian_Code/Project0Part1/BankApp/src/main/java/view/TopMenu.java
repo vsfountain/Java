@@ -3,6 +3,7 @@ package view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
 
 // TODO: Auto-generated Javadoc
@@ -10,7 +11,7 @@ import controller.main.RunApp;
  * The Class TopMenu.
  */
 public class TopMenu {
-
+	static ScannerInt scannerInt = new ScannerInt();
 	/**
 	 * Top menu choice.
 	 *
@@ -25,7 +26,7 @@ public class TopMenu {
 		System.out.println( "[1] Login\n[2] Create account\n[3] Close");
 			try {
 				//System.out.println("thing");
-				choice = scan.nextInt();
+				choice = scannerInt.scanInt();
 				if (choice >=1 || choice <= 3) {
 					valid = true;
 				}
