@@ -1,0 +1,25 @@
+2018-11-06 20:17:29 INFO  TrainerDaoImpl:30 - Account for phillyp was successfully created.
+2018-11-07 09:12:26 INFO  Main:76 - clutch has logged in.
+2018-11-07 09:12:42 INFO  TrainerDaoImpl:121 - clutch has deposited a Pikachu.
+2018-11-07 10:02:55 INFO  Main:72 - clutch has logged in.
+2018-11-07 10:05:11 INFO  Main:72 - clutch has logged in.
+2018-11-07 10:09:39 INFO  TrainerDaoImpl:121 - murphbaby has deposited a Pikachu.
+2018-11-07 10:09:39 INFO  TrainerDaoImpl:178 - clutch has transferred a Pikachu to murphbaby.
+2018-11-07 10:11:44 INFO  TrainerDaoImpl:121 - clutch has deposited a Aegislash.
+2018-11-07 10:16:53 INFO  TrainerDaoImpl:30 - Account for fishman was successfully created.
+2018-11-07 11:50:25 ERROR TrainerDaoImpl:32 - There was an error creating an account for clutch.
+java.sql.SQLException
+	at com.project0.pokebank.TrainerDaoImpl.createTrainer(TrainerDaoImpl.java:33)
+	at com.project0.pokebank.Main.main(Main.java:95)
+2018-11-07 12:03:18 INFO  TrainerDaoImpl:30 - Account for prideman was successfully created.
+2018-11-07 12:04:26 INFO  TrainerDaoImpl:30 - Account for jasmine was successfully created.
+2018-11-07 12:04:59 INFO  TrainerDaoImpl:30 - Account for lanced was successfully created.
+2018-11-07 12:05:43 INFO  Main:189 - maryk has logged in.
+2018-11-07 12:05:58 INFO  Employee:166 - Admin MaryK deleted jasmine's account.
+2018-11-07 12:06:52 INFO  Employee:142 - Admin MaryK withdrew a Chimchar from clutch's box.
+2018-11-07 12:07:32 INFO  Employee:101 - Admin MaryK deposited a Chimchar into clutch's box.
+2018-11-07 12:07:57 INFO  Employee:142 - Admin MaryK withdrew a Chimchar from clutch's box.
+2018-11-07 12:07:58 INFO  Employee:101 - Admin MaryK deposited a Chimchar into trevinc's box.
+2018-11-07 12:07:58 INFO  Employee:151 - Admin MaryK tranferred a Chimchar to clutch from trevinc.
+2018-11-07 12:08:47 INFO  Main:189 - jakem has logged in.
+2018-11-07 12:08:51 WARN  Main:245 - Non-admin attempted to perform a withdrawal. They may be from Team Rocket.

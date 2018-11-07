@@ -1,5 +1,6 @@
 package com.project0.pokebank;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,38 +9,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class TrainerDaoImpl implements TrainerDao {
 	private static String url = "jdbc:oracle:thin:@revatur-instance.cyxb24oq9oml.us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String username = "pokebank";
 	private static String password = "NurseJoy95";
+	final static Logger logger = Logger.getLogger(TrainerDaoImpl.class);
 
 	@Override
 	public void createTrainer(String name, String passw) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "INSERT INTO trainers(username, password, "
-					+ "hasAppliedForBox, hasBoxAccess) VALUES(?,?,0,0)";
+			String sql = "{ call add_trainer(?,?) }";
 
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, name);
-			ps.setString(2, passw);
+			CallableStatement cs = conn.prepareCall(sql);
+			cs.setString(1, name);
+			cs.setString(2, passw);
 
-			ps.executeUpdate();
+			cs.executeUpdate();
+			logger.info("Account for " + name + " was successfully created.");
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("There was an error creating an account for " + name + ".",
+					new SQLException());
 		}
 	}
 
 	@Override
-	public List<Trainer> getAllTrainers() {
+	public ArrayList<Trainer> getAllTrainers() {
 		ArrayList<Trainer> trainers = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT * FROM trainers";
+			String sql = "SELECT * FROM trainers ORDER BY trainer_id";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				trainers.add(new Trainer(rs.getString("username"), rs.getString("password")));
+				trainers.add(new Trainer(rs.getString("username"), rs.getString("password"), rs.getInt("trainer_id")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,9 +53,9 @@ public class TrainerDaoImpl implements TrainerDao {
 	}
 
 	@Override
-	public int getTrainerId(String name) {
+	public int getTrainerId(Trainer trainer) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT trainer_id FROM trainers WHERE username='" + name + "'";
+			String sql = "SELECT trainer_id FROM trainers WHERE username='" + trainer.getUsername() + "'";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -61,17 +66,17 @@ public class TrainerDaoImpl implements TrainerDao {
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error retrieving " + trainer.getUsername() + "'s id.", new SQLException());
 		}
 		return 0;
 	}
 
 	@Override
-	public List<String> getTrainerBox(String name) {
+	public List<String> getTrainerBox(Trainer trainer) {
 		ArrayList<String> box = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			String sql = "SELECT pokemon FROM pcbox WHERE trainer_id = "
-					+ "(SELECT trainer_id FROM trainers WHERE username = '" + name + "')";
+					+ "(SELECT trainer_id FROM trainers WHERE username = '" + trainer.getUsername() + "')";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
@@ -86,24 +91,25 @@ public class TrainerDaoImpl implements TrainerDao {
 	}
 
 	@Override
-	public void applyForBox(String name) {
+	public void applyForBox(Trainer trainer) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "UPDATE trainers SET hasAppliedForBox = 1 WHERE username = '" + name + "'";
+			String sql = "UPDATE trainers SET hasAppliedForBox = 1 WHERE username = '" + trainer.getUsername() + "'";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.executeUpdate();
-
+			
+			logger.info(trainer.getUsername() + " has applied for a PC box.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void depositPoke(String poke, String name) {
+	public void depositPoke(String poke, Trainer trainer) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT hasBoxAccess FROM trainers WHERE username='" + name + "'";
+			String sql = "SELECT hasBoxAccess FROM trainers WHERE username='" + trainer.getUsername() + "'";
 			String sql2 = "INSERT INTO pcbox(pokemon, trainer_id) " + "Values('" + poke
-					+ "', (SELECT trainer_id FROM trainers WHERE username='" + name + "'))";
+					+ "', " + getTrainerId(trainer) + ")";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			PreparedStatement ps2 = conn.prepareStatement(sql2);
@@ -112,24 +118,28 @@ public class TrainerDaoImpl implements TrainerDao {
 			while (rs.next()) {
 				if (rs.getBoolean("hasBoxAccess")) {
 					ps2.executeUpdate(sql2);
+					logger.info(trainer.getUsername() + " has deposited a " + poke + ".");
 				}
 
 				else {
 					System.out.println("You do not have access to an open PC box. Please apply for one.");
+					logger.warn(trainer.getUsername() + " attempted to deposit a Pok\u00E9mon "
+							+ "without an open PC box.");
 				}
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("There was an issue depositing " + poke + " into " +
+							trainer.getUsername() + "'s PC box.", new SQLException());
 		}
 	}
 
 	@Override
-	public void withdrawPoke(String poke, String name) {
+	public void withdrawPoke(String poke, Trainer trainer) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT trainer_id, hasBoxAccess FROM trainers WHERE username='" + name + "'";
+			String sql = "SELECT trainer_id, hasBoxAccess FROM trainers WHERE username='" + trainer.getUsername() + "'";
 			String sql2 = "SELECT trainer_id FROM pcbox WHERE pokemon='" + poke + "'";
 			String sql3 = "DELETE FROM pcbox WHERE pokemon='" + poke + "' AND trainer_id = "
-					+ "(SELECT trainer_id FROM trainers WHERE username='" + name + "')";
+					+ "(SELECT trainer_id FROM trainers WHERE username='" + trainer.getUsername() + "')";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			PreparedStatement ps2 = conn.prepareStatement(sql2);
@@ -144,12 +154,16 @@ public class TrainerDaoImpl implements TrainerDao {
 							ps3.executeUpdate();
 						} else {
 							System.out.println("You don't have a " + poke + " staying with us.");
+							logger.warn(trainer.getUsername() + " attempted to withdraw a Pok\u00E9mon they did"
+									+ " not own. They may be from Team Rocket!");
 						}
 					}
 				}
 
 				else {
 					System.out.println("You do not have access to an open PC box. Please apply for one.");
+					logger.warn(trainer.getUsername() + " attempted to withdraw a Pok\u00E9mon "
+							+ "without an open PC box.");
 				}
 			}
 		} catch (SQLException e) {
@@ -158,9 +172,11 @@ public class TrainerDaoImpl implements TrainerDao {
 	}
 
 	@Override
-	public void transferPoke(String poke, String name, String moveTo) {
-		withdrawPoke(poke, name);
-		depositPoke(poke, moveTo);
+	public void transferPoke(String poke, Trainer trainer, Trainer trainer2) {
+		withdrawPoke(poke, trainer);
+		depositPoke(poke, trainer2);
+		logger.info(trainer.getUsername() + " has transferred a " + poke + " to " + trainer2.getUsername() + 
+				".");
 	}
 
 	

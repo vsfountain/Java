@@ -1,12 +1,3 @@
---CREATE TABLE employees(
---employee_id NUMBER(15) PRIMARY KEY,
---username VARCHAR2(100) UNIQUE,
---password VARCHAR(25) NOT NULL,
---isAdmin NUMBER(2) NOT NULL,
---CONSTRAINT employee_id CHECK (employee_id > 0),
---CONSTRAINT isAdmin CHECK (isAdmin >= 0 AND isAdmin <2)
---);
-
 CREATE TABLE trainers(
 trainer_id NUMBER(15) PRIMARY KEY,
 username VARCHAR2(100) UNIQUE,
@@ -18,7 +9,15 @@ CONSTRAINT hasAppliedForBox CHECK (hasAppliedForBox >= 0 AND hasAppliedForBox <2
 CONSTRAINT hasBoxAccess CHECK (hasBoxAccess >= 0 AND hasBoxAccess <2)
 );
 
-DROP TABLE trainers;
+-- Stored Procedure for creating new trainers
+CREATE OR REPLACE PROCEDURE add_trainer(user_name IN VARCHAR2, pass_word IN VARCHAR2)
+IS
+BEGIN
+    INSERT INTO trainers(username, password, hasAppliedForBox, hasBoxAccess) VALUES(user_name,pass_word,0,0);
+END;
+/
+
+--DROP TABLE trainers;
 
 CREATE TABLE pcbox(
 box_id NUMBER(15) PRIMARY KEY,
@@ -57,8 +56,10 @@ BEGIN
 END;
 /
 
-SELECT * FROM trainers;
-SELECT * FROM pcbox;
+SELECT * FROM trainers ORDER BY trainer_id;
+SELECT * FROM pcbox ORDER BY trainer_id;
+
+
 SELECT username FROM trainers WHERE hasAppliedForBox = 1;
 -- ALWAYS COMMIT!!!!!!
 commit; -- DID YOU COMMIT!!!!!?????
