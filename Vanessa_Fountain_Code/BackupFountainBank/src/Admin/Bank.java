@@ -60,7 +60,11 @@ public class Bank implements Serializable{
 		}
 		if(accessLevel == 3) {
 			filename = "./AdminInformation";
+			Admin.AdminAccess.main(person, accessLevel);
 			//readObject(filename, person);
+			//Admin.AdminAccess.writeObject(filename,person);
+			//AdminAccess.preparedStatementNewUser(person, person.getPin(), person.getSsn(), 3);
+			//Admin.AdminAccess.preparedStatementNewUser(name, pin, ssn, accessLevel);
 		}
 		else if(accessLevel == 4){
 			filename = "./NewUserInformation";
