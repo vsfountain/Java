@@ -7,6 +7,7 @@ import java.util.Scanner;
 import Admin.Person;
 
 public class Main extends Bank{
+	
 	public Main(String name, int pin, Integer ssn, int accessLevel) {
 		super();
 	}

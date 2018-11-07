@@ -68,7 +68,7 @@ public class NewUserBase {
 	
 	protected static void writeObject(String filename, Person person) {
 		System.out.println("Writing new information");
-		Bank.preparedStatement(person.getName(), person.getPin(), person.getSsn(), 4);
+		Bank.preparedStatementNewUser(person.getName(), person.getPin(), person.getSsn(), 4);
 		try(ObjectOutputStream oos = new ObjectOutputStream(
 				new FileOutputStream(filename,true))){
 			Object obj = holder;

@@ -1,5 +1,8 @@
 package Admin;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -19,13 +22,13 @@ public class Bank implements Serializable{
 	/**
 	 * 
 	 */
+	final static Logger logger = Logger.getLogger(Main.class);
 	static String filename;
 	private static String url="jdbc:oracle:thin:@revature.cakynjhhcvux.us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String username= "BankFountain";
 	private static String password= "p4ssw0rd";
-
 	
-	public static void preparedStatement(String name, Integer pin, Integer ssn,
+	public static void preparedStatementNewUser(String name, Integer pin, Integer ssn,
 			Integer accessLevel)
 	{
 		try(Connection conn=DriverManager.getConnection(url, username, password)){
@@ -41,6 +44,7 @@ public class Bank implements Serializable{
 				e.printStackTrace();
 				}
 		}
+	
 
 	
 	public static void Bank(Integer accessLevel, Person person) throws ClassNotFoundException, IOException{
