@@ -23,3 +23,17 @@ java.sql.SQLException
 2018-11-07 12:07:58 INFO  Employee:151 - Admin MaryK tranferred a Chimchar to clutch from trevinc.
 2018-11-07 12:08:47 INFO  Main:189 - jakem has logged in.
 2018-11-07 12:08:51 WARN  Main:245 - Non-admin attempted to perform a withdrawal. They may be from Team Rocket.
+2018-11-07 13:43:32 INFO  Main:73 - clutch has logged in.
+2018-11-07 14:31:01 INFO  TrainerDaoImpl:30 - Account for ash was successfully created.
+2018-11-07 14:31:55 INFO  Main:73 - ash has logged in.
+2018-11-07 14:32:13 INFO  TrainerDaoImpl:101 - ash has applied for a PC box.
+2018-11-07 14:32:33 INFO  Main:57 - ash has logged out.
+2018-11-07 14:32:49 INFO  Main:189 - jakem has logged in.
+2018-11-07 14:33:23 INFO  Employee:80 - JakeM reviewed open applications for pc boxes.
+2018-11-07 14:33:41 INFO  Main:73 - ash has logged in.
+2018-11-07 14:33:59 ERROR TrainerDaoImpl:131 - There was an issue depositing Pikachu into ash's PC box.
+java.sql.SQLException
+	at com.project0.pokebank.TrainerDaoImpl.depositPoke(TrainerDaoImpl.java:132)
+	at com.project0.pokebank.Main.main(Main.java:131)
+2018-11-07 14:34:39 INFO  TrainerDaoImpl:121 - ash has deposited a Charizard.
+2018-11-07 14:34:44 INFO  TrainerDaoImpl:121 - ash has deposited a Ditto.

@@ -59,7 +59,7 @@ public class Main {
 					continue;
 
 				case "login": // Logs in an existing user
-					if (currentTrainer != null) {
+					if (currentTrainer == null) {
 						System.out.print("Please enter your username: ");
 						usrname = input.next().toLowerCase();
 						System.out.print("Please enter your password (case-sensitive): ");
@@ -211,7 +211,7 @@ public class Main {
 			response = input.next().toLowerCase();
 			switch (response) {
 			case "clients":
-				currentWorker.getBoxApplications();
+				System.out.println(trainers);
 				break;
 
 			case "boxed":
@@ -280,6 +280,7 @@ public class Main {
 				break;
 
 			case "apps":
+				currentWorker.getBoxApplications();
 				System.out.println("Enter the username of the trainer whose application you are reviewing:");
 				String applicant = input.next().toLowerCase();
 				System.out.println("Are you approving(1) or denying(0) the application?");
