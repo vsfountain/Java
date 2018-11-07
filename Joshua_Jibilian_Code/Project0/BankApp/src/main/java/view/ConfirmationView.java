@@ -3,6 +3,7 @@ package view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
 
 
@@ -26,7 +27,7 @@ public class ConfirmationView {
 		System.out.println( "[1] Yes\n[2] No");
 			try {
 				//System.out.println("thing");
-				choice = scan.nextInt();
+				choice = ScannerInt.scanInt();
 				if (choice >=1 || choice <= 2) {
 					valid = true;
 				}

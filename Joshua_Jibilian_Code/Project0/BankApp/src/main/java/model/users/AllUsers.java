@@ -104,9 +104,9 @@ public class AllUsers implements Serializable {
 		if (!users.contains(u)) {
 			User toAdd = null;
 			if (u instanceof Employee) {
-				toAdd = new Employee(u.getName(), u.getEmail(), u.getPassword(), nextId++);
+				toAdd = new Employee(u.getFirstName(),u.getLastName(), u.getEmail(), u.getPassword(), nextId++);
 			} else {
-				toAdd = new ClientUser(u.getName(), u.getEmail(), u.getPassword(), nextId++);
+				toAdd = new ClientUser(u.getFirstName(),u.getLastName(), u.getEmail(), u.getPassword(), nextId++);
 			}
 			// pUsers.removeUser(u);
 			users.add(toAdd);

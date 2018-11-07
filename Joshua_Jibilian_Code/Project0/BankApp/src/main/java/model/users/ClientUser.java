@@ -28,12 +28,13 @@ public class ClientUser extends User implements Serializable {
 	 * Instantiates a new client user.
 	 *
 	 * @param name the name
+	 * @param name2 the name 2
 	 * @param email the email
 	 * @param password the password
 	 * @param account the account
 	 */
-	public ClientUser(String name, String email,String password, int account) {
-		super(name, email, password, account);
+	public ClientUser(String name, String name2,  String email,String password, int account) {
+		super(name,name2, email, password, account);
 		
 	}
 	
@@ -41,11 +42,12 @@ public class ClientUser extends User implements Serializable {
 	 * Instantiates a new client user.
 	 *
 	 * @param name the name
+	 * @param name2 the name 2
 	 * @param email the email
 	 * @param password the password
 	 */
-	public ClientUser(String name, String email,String password) {
-		super(name, email, password);
+	public ClientUser(String name,String name2, String email,String password) {
+		super(name, name2, email, password);
 		
 	}
 

@@ -55,8 +55,9 @@ public class JointAccount extends Account implements Serializable{
 	 */
 	@Override
 	public String toString() {
-		return "JointAccount [with=" + with + "]" + super.toString();
+		return "JointAccount [id=" + this.getId() +", with=" + with + "]" + super.toString();
 	}
+
 
 	
 

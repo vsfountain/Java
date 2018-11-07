@@ -14,25 +14,27 @@ public class Employee extends User implements Serializable {
 	/**
 	 * Instantiates a new employee.
 	 *
-	 * @param name the name
+	 * @param firstName the first name
+	 * @param lastName the last name
 	 * @param email the email
 	 * @param password the password
 	 * @param account the account
 	 */
-	public Employee(String name, String email,String password, int account) {
-		super(name, email, password, account);
+	public Employee(String firstName,String lastName, String email,String password, int account) {
+		super(firstName, lastName, email, password, account);
 		
 	}
 	
 	/**
 	 * Instantiates a new employee.
 	 *
-	 * @param name the name
+	 * @param firstName the first name
+	 * @param lastName the last name
 	 * @param email the email
 	 * @param password the password
 	 */
-	public Employee(String name, String email,String password) {
-		super(name, email, password);
+	public Employee(String firstName,String lastName, String email,String password) {
+		super(firstName,lastName, email, password);
 		
 	}
 

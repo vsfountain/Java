@@ -1,0 +1,25 @@
+status = error
+name = PropertiesConfig
+ 
+#Make sure to change log file path as per your need
+property.filename = C:\\Users\\Joshua\\Desktop\\log4j2.txt
+ 
+filters = threshold
+ 
+filter.threshold.type = ThresholdFilter
+filter.threshold.level = info
+ 
+appenders = stdout
+ 
+appender.stdout=org.apache.log4j.ConsoleAppender
+appender.stdout.Target=System.out
+appender.stdout.layout=org.apache.log4j.PatternLayout
+appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+# Redirect log messages to a log file, support file rolling. 
+appender.file=org.apache.log4j.RollingFileAppender
+appender.file.File=C:\\Users\\Joshua\\Desktop\\log4j-application.log
+appender.file.MaxFileSize=5MB
+appender.file.MaxBackupIndex=10
+appender.file.layout=org.apache.log4j.PatternLayout
+appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n

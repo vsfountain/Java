@@ -3,6 +3,7 @@ package view;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import controller.dataio.ScannerInt;
 import controller.main.RunApp;
 
 // TODO: Auto-generated Javadoc
@@ -26,7 +27,7 @@ public class ClientOptions {
 				+ "\n[5] Transfer funds.\n[6] Apply for joint account\n[7] Log out");
 			try {
 				//System.out.println("thing");
-				choice = scan.nextInt();
+				choice = ScannerInt.scanInt();
 				if (choice >=1 || choice <= 6) {
 					valid = true;
 				}
