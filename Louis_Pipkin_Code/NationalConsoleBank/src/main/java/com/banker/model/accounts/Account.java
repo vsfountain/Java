@@ -38,7 +38,7 @@ public class Account {
 	}
 	
 	public int withdrawal(int amount) {
-		if (amount < balance && amount > 0) {
+		if (amount < balance && amount >= 0) {
 			balance -= amount;
 			return amount;
 		}else {

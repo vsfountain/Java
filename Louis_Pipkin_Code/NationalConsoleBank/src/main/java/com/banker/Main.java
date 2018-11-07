@@ -63,6 +63,8 @@ public class Main {
 						}
 					} else {
 						System.out.println("User name not found");
+						flag = true;
+						option = -1;
 					}
 				}
 			} else if (option == 2) { // register
@@ -83,7 +85,7 @@ public class Main {
 					}
 				}
 			}
-
+			//go to home screens on  
 			if (user instanceof Client) {
 				option = Views.clientLoop(user);
 			} else if (user instanceof Associate) {

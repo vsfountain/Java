@@ -125,7 +125,7 @@ public class BankerServiceImpl implements BankerService {
 	public void addAccount(User u1, User u2) {
 		logger.info("Running addAccount(User, User) Service.");
 		
-		System.out.println(u1+ " "+u2);
+		//System.out.println(u1+ " "+u2);
 		ArrayList<String> als = new ArrayList<>();
 		als.add(u1.getUserName());
 		als.add(u2.getUserName());	
