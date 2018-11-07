@@ -1,0 +1,58 @@
+2018-11-07 11:52:54 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 11:52:58 INFO  CustomerMainMenu:114 - Customer managed to login.
+2018-11-07 11:53:00 INFO  CustomerMainMenu:131 - Joint customer registration submitted.
+2018-11-07 12:40:17 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 12:47:12 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 12:47:16 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 12:47:16 WARN  EmployeePortal:228 - An employee tried to access admin functions without being an admin.
+2018-11-07 12:47:23 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 12:47:24 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 12:47:39 INFO  CustomerMainMenu:114 - Customer managed to login.
+2018-11-07 12:47:48 INFO  CustomerMainMenu:131 - Joint customer registration submitted.
+2018-11-07 12:50:50 INFO  CustomerMainMenu:114 - Customer managed to login.
+2018-11-07 12:50:53 INFO  CustomerMainMenu:131 - Joint customer registration submitted.
+2018-11-07 12:51:07 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 12:51:12 INFO  EmployeePortal:127 - Handling Registration was accessed.
+2018-11-07 12:51:15 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 12:51:29 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 12:51:38 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 12:51:56 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 12:52:00 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 12:52:23 INFO  EmployeePortal:296 - Admin canceled account 2
+2018-11-07 12:52:26 INFO  EmployeePortal:304 - Admin deleted customer(s) associated with the account.
+2018-11-07 13:19:10 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 13:20:19 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 13:20:35 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 13:20:43 INFO  CustomerMainMenu:114 - Customer managed to login.
+2018-11-07 13:20:46 INFO  CustomerMainMenu:131 - Joint customer registration submitted.
+2018-11-07 13:20:59 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 13:21:00 INFO  EmployeePortal:127 - Handling Registration was accessed.
+2018-11-07 13:21:02 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 13:21:06 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 13:21:10 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 13:21:18 INFO  EmployeePortal:261 - Admin deposited $1 from Account Account [id=1, balance=100.2, mainUserId=1, jointUserId=2].
+2018-11-07 13:21:38 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 13:22:04 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 13:22:06 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 13:22:15 INFO  EmployeePortal:245 - Admin withdrew $1 from Account Account [id=1, balance=90.0, mainUserId=1, jointUserId=2].
+2018-11-07 13:22:18 INFO  EmployeePortal:86 - View Account Info was accessed.
+2018-11-07 13:37:13 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 14:47:36 INFO  Main:31 - Starting up program - Creating Databases. Ignore if DB was already created beforehand.
+2018-11-07 14:48:45 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 14:49:11 INFO  CustomerMainMenu:114 - Customer managed to login.
+2018-11-07 14:49:18 INFO  CustomerMainMenu:131 - Joint customer registration submitted.
+2018-11-07 14:49:47 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 14:49:49 INFO  EmployeePortal:127 - Handling Registration was accessed.
+2018-11-07 14:49:53 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 14:49:58 INFO  EmployeePortal:144 - Registration was accepted.
+2018-11-07 14:50:04 INFO  EmployeePortal:86 - View Account Info was accessed.
+2018-11-07 14:50:15 INFO  EmployeePortal:100 - View Account Balance was accessed.
+2018-11-07 14:50:19 INFO  EmployeePortal:113 - View Person Info was accessed.
+2018-11-07 14:50:25 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 14:50:53 INFO  EmployeePortal:36 - Employee Portal was accessed.
+2018-11-07 14:50:55 INFO  EmployeePortal:195 - Admin functions was accessed.
+2018-11-07 14:50:55 WARN  EmployeePortal:228 - An employee tried to access admin functions without being an admin.
+2018-11-07 14:51:07 INFO  CustomerMainMenu:90 - Customer User managed to login.
+2018-11-07 14:51:07 INFO  CustomerPortal:25 - Customer Portal was accessed.
+2018-11-07 14:51:14 INFO  CustomerPortal:85 - Account 1 deposit $123.0.
+2018-11-07 14:51:33 INFO  CustomerPortal:75 - Account 1 withdrew $121.1.
