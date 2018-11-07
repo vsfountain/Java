@@ -113,7 +113,7 @@ public class CustomerAccessBase {
 		    //System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 		    if(entry.getKey().toString().equals(person.toString())) {
 		    	entry.setValue(number);
-		    	System.out.println("Match found: "+ entry.getValue());
+		    	//System.out.println("Match found: "+ entry.getValue());
 		    }
 		}
 		System.out.println("Writing new information");
@@ -123,6 +123,8 @@ public class CustomerAccessBase {
 		oos.writeObject(replaceFile);
 		System.out.println(replaceFile);
 	}
+	
+	
 	@SuppressWarnings("unchecked")
 	protected static void readObject(String filename, Person person) throws ClassNotFoundException, IOException {
 		FileInputStream f = new FileInputStream(filename);

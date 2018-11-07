@@ -72,7 +72,7 @@ public class CustomerAccess {
 			log.info("Person" + person + "accessLevel" + 1);
 			
 			//Integer DepositAmount2 = Integer.parseInt(scanner.nextLine());
-			Integer BalanceD2 = CustomerAccessBase.Balance(person2);
+			Integer BalanceD2 = CustomerAccessBase.Balance(person2)  ;
 			Integer AmountAdded2 = customer.Deposit(TransferAmount, BalanceD2);
 			
 			System.out.println(AmountAdded2);
