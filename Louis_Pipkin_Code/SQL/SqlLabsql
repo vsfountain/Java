@@ -1,0 +1,336 @@
+--SQL Lab
+
+--2.0 SQL Queries
+--In this section you will be performing various queries against the Oracle Chinook database.
+--2.1 SELECT
+--Task – Select all records from the Employee table.
+SELECT * FROM employee;
+--Task – Select all records from the Employee table where last name is King.
+SELECT * FROM employee WHERE lastname = 'King';
+--Task – Select all records from the Employee table where first name is Andrew and REPORTSTO is NULL.
+SELECT * FROM employee WHERE firstname = 'Andrew' AND reportsto IS NULL;
+
+--2.2 ORDER BY
+--Task – Select all albums in Album table and sort result set in descending order by title.
+SELECT * FROM album ORDER BY title DESC;
+--Task – Select first name from Customer and sort result set in ascending order by city
+SELECT firstname FROM customer ORDER BY city ASC;
+
+--2.3 INSERT INTO
+--Task – Insert two new records into Genre table
+SELECT * FROM genre;
+BEGIN
+    INSERT INTO genre VALUES(26, 'Spoken Word');
+    INSERT INTO genre VALUES(27, 'Audiobook');
+END;
+/
+--Task – Insert two new records into Employee table
+SELECT * FROM employee;
+BEGIN
+    INSERT INTO employee(employeeid, firstname, lastname, title, reportsto) VALUES(9, 'Louis', 'Pipkin', 'Software Engineer', 6);
+    INSERT INTO employee(employeeid, firstname, lastname) VALUES(10, 'John', 'Doe');
+END;
+/
+--Task – Insert two new records into Customer table
+SELECT * FROM customer;
+BEGIN
+    INSERT INTO customer(customerid, firstname, lastname, email) VALUES(60, 'Mary', 'Wacob', 'mwacob@aol.com');
+    INSERT INTO customer(customerid, firstname, lastname, email) VALUES(61, 'James', 'May', 'may3838@hotmail.com');
+END;
+/
+
+--2.4 UPDATE
+--Task – Update Aaron Mitchell in Customer table to Robert Walter
+SELECT * FROM customer WHERE firstname='Aaron' AND lastname='Mitchell';
+UPDATE customer SET firstname='Robert', lastname='Walter' WHERE firstname='Aaron' AND lastname='Mitchell';
+SELECT * FROM customer WHERE firstname='Robert' AND lastname='Walter';
+
+--Task – Update name of artist in the Artist table “Creedence Clearwater Revival” to “CCR”
+SELECT * FROM artist WHERE name='Creedence Clearwater Revival';
+UPDATE artist SET name='CCR' WHERE name='Creedence Clearwater Revival';
+SELECT * FROM artist WHERE name='CCR';
+
+--2.5 LIKE
+--Task – Select all invoices with a billing address like “T%”
+SELECT * FROM invoice WHERE billingaddress LIKE 'T%';
+
+--2.6 BETWEEN
+--Task – Select all invoices that have a total between 15 and 50
+SELECT * FROM invoice WHERE total BETWEEN 15 AND 50;
+
+--Task – Select all employees hired between 1st of June 2003 and 1st of March 2004
+SELECT * FROM employee;
+SELECT * FROM employee WHERE hiredate BETWEEN '6-JUN-03' AND '3-MAR-04';
+
+--2.7 DELETE
+--Task – Delete a record in Customer table where the name is Robert Walter (There may be constraints that rely on this, find out how to resolve them).
+BEGIN
+    DELETE FROM invoiceline WHERE invoiceid IN (SELECT invoiceid FROM invoice WHERE customerid IN
+        (SELECT customerid FROM customer WHERE firstname='Robert' AND lastname='Walter'));
+    DELETE FROM invoice WHERE customerid IN 
+        (SELECT customerid FROM customer WHERE firstname='Robert' AND lastname='Walter');
+    DELETE FROM customer WHERE firstname='Robert' AND lastname='Walter';
+END;
+/
+
+--SQL Functions
+--In this section you will be using the Oracle system functions, as well as your own functions, to perform various actions against the database
+--3.1 System Defined Functions
+--Task – Create a function that returns the current time.
+CREATE OR REPLACE FUNCTION get_current_time
+RETURN VARCHAR2
+IS
+    current_time VARCHAR2(10);
+BEGIN
+    SELECT TO_CHAR(SYSDATE, 'HH24:MI:SS') INTO current_time FROM dual;
+    RETURN current_time;
+END;
+/
+ 
+SELECT get_current_time FROM dual;
+
+--Task – create a function that returns the length of a mediatype from the mediatype table
+CREATE OR REPLACE FUNCTION get_length_mediatype(mediaid NUMBER)
+RETURN NUMBER
+IS
+    mediatype_length NUMBER;
+BEGIN
+    SELECT LENGTH(name) INTO mediatype_length FROM mediatype WHERE mediatypeid=mediaid;
+    RETURN mediatype_length;
+END;
+/
+
+SELECT get_length_mediatype(1) FROM dual;
+
+--3.2 System Defined Aggregate Functions
+--Task – Create a function that returns the average total of all invoices
+CREATE OR REPLACE FUNCTION get_avg_invoice_total
+RETURN NUMBER
+IS
+    avg_total NUMBER;
+BEGIN
+    SELECT AVG(total) INTO avg_total FROM invoice;
+    RETURN avg_total;
+END;
+/
+
+SELECT get_avg_invoice_total FROM dual;
+
+--Task – Create a function that returns the most expensive track
+CREATE OR REPLACE FUNCTION get_top_track
+RETURN NUMBER
+IS
+    top_track NUMBER;
+BEGIN
+    SELECT MAX(unitprice) INTO top_track FROM track;   
+    RETURN top_track;
+END;
+/
+
+SELECT * FROM track WHERE unitprice=get_top_track;
+
+--3.3 User Defined Scalar Functions
+--Task – Create a function that returns the average price of invoiceline items in the invoiceline table
+CREATE OR REPLACE FUNCTION get_avg_invoiceline
+RETURN NUMBER
+IS
+    avg_invoiceline NUMBER;
+BEGIN
+    SELECT AVG(unitprice) INTO avg_invoiceline FROM invoiceline;
+    RETURN avg_invoiceline;
+END;
+/
+
+SELECT get_avg_invoiceline FROM dual;
+
+--3.4 User Defined Table Valued Functions
+--Task – Create a function that returns all employees who are born after 1968.
+CREATE OR REPLACE FUNCTION get_employee_after_1968 RETURN SYS_REFCURSOR
+is
+    emp_cursor SYS_REFCURSOR;
+BEGIN
+    OPEN emp_cursor FOR SELECT * FROM employee WHERE birthdate >= TO_DATE('01-01-1968', 'DD-MM-YYYY');
+    return emp_cursor;
+END;
+/
+
+SELECT get_employee_after_1968 FROM dual;
+SELECT * FROM employee;
+
+SET SERVEROUTPUT ON;
+
+--4.0 Stored Procedures
+-- In this section you will be creating and executing stored procedures. You will be creating various types of stored procedures that take input and output parameters.
+--4.1 Basic Stored Procedure
+--Task – Create a stored procedure that selects the first and last names of all the employees.
+CREATE OR REPLACE PROCEDURE get_frist_last_employees(emp_cursor OUT SYS_REFCURSOR)
+IS
+BEGIN
+    OPEN emp_cursor FOR SELECT firstname, lastname FROM employee;
+END;
+/
+/*
+DECLARE
+    emp_cursor SYS_REFCURSOR;
+BEGIN
+    SELECT get_frist_last_employees(emp_cursor) FROM dual;
+    
+END;
+/
+*/
+--4.2 Stored Procedure Input Parameters
+--Task – Create a stored procedure that updates the personal information of an employee.
+CREATE OR REPLACE PROCEDURE update_employee(e_id IN NUMBER, e_fname IN VARCHAR2, e_lname IN VARCHAR2)
+IS
+BEGIN
+    UPDATE employee SET firstname=e_fname , lastname=e_lname WHERE employeeid=e_id;
+    COMMIT;
+END;
+/
+
+SELECT * FROM employee;
+BEGIN
+    update_employee(10, 'Jim', 'Smith');
+END;
+/
+--Task – Create a stored procedure that returns the managers of an employee.
+CREATE OR REPLACE PROCEDURE get_manager(e_id IN NUMBER, m_fname OUT employee.firstname%TYPE, m_lname OUT employee.lastname%TYPE)
+IS
+BEGIN
+    SELECT firstname, lastname INTO m_fname, m_lname FROM employee WHERE employeeid IN 
+        (SELECT reportsto FROM employee WHERE employeeid=e_id);
+END;
+/
+
+DECLARE
+    m_fname VARCHAR2(20);
+    m_lname VARCHAR2(20);
+BEGIN
+    get_manager(5, m_fname, m_lname);
+    DBMS_output.put_line('Manager:  ' || m_fname || ' ' || m_lname);
+END;
+/
+--4.3 Stored Procedure Output Parameters
+--Task – Create a stored procedure that returns the name and company of a customer.
+CREATE OR REPLACE PROCEDURE get_customer_info(c_id IN NUMBER, c_fname OUT customer.firstname%TYPE, 
+                                    c_lname OUT customer.lastname%TYPE, c_comp OUT customer.company%TYPE)
+IS
+BEGIN
+    SELECT firstname, lastname, company INTO c_fname, c_lname, c_comp FROM customer WHERE customerid=c_id;
+END;
+/
+
+DECLARE
+    c_fname VARCHAR2(40);
+    c_lname VARCHAR2(20);
+    c_comp VARCHAR2(80);
+BEGIN
+    get_customer_info(5, c_fname, c_lname, c_comp);
+    DBMS_output.put_line('Customer:  ' || c_fname || ' ' || c_lname || ', '|| c_comp);
+END;
+/
+
+--5.0 Transactions
+--In this section you will be working with transactions. Transactions are usually nested within a stored procedure.
+--Task – Create a transaction that given a invoiceId will delete that invoice (There may be constraints that rely on this, find out how to resolve them).
+CREATE OR REPLACE PROCEDURE delete_invoice(i_id IN NUMBER)
+IS
+BEGIN
+    DELETE FROM invoiceline WHERE invoiceid=i_id;
+    DELETE FROM invoice WHERE invoiceid=i_id;
+    COMMIT;
+END;
+/
+
+SELECT * FROM invoice;
+BEGIN
+    delete_invoice(262);
+END;
+/
+--Task – Create a transaction nested within a stored procedure that inserts a new record in the Customer table
+CREATE OR REPLACE PROCEDURE insert_genre_procedure(id IN NUMBER, g IN VARCHAR2)
+IS
+BEGIN
+    
+    insert_genre_transaction(id, g);
+END;
+/
+
+CREATE OR REPLACE PROCEDURE insert_genre_transaction(id IN NUMBER, g IN VARCHAR2)
+IS
+BEGIN
+    INSERT INTO genre VALUES(id, g);
+    COMMIT;
+END;
+/
+
+SELECT * FROM genre;
+BEGIN
+    insert_genre_procedure(30, 'Something');
+END;
+/
+
+--6.0 Triggers
+--In this section you will create various kinds of triggers that work when certain DML statements are executed on a table.
+--6.1 AFTER/FOR
+--Task - Create an after insert trigger on the employee table fired after a new record is inserted into the table.
+CREATE OR REPLACE TRIGGER employee_insert_trigger
+BEFORE INSERT ON employee
+FOR EACH ROW
+BEGIN
+    DBMS_output.put_line('Inserted new row in employee table');
+END;
+/
+INSERT INTO employee(employeeid, firstname, lastname) VALUES(34, 'Adam', 'Curry');
+--Task – Create an after update trigger on the album table that fires after a row is inserted in the table
+CREATE OR REPLACE TRIGGER album_insert_trigger 
+AFTER INSERT ON album
+FOR EACH ROW
+BEGIN
+    DBMS_output.put_line('Inserted new row in album table');
+END;
+/
+select * from album;
+INSERT INTO album(albumid, title, artistid) VALUES(400, 'Some album', 266);
+--Task – Create an after delete trigger on the customer table that fires after a row is deleted from the table.
+CREATE OR REPLACE TRIGGER customer_delete_trigger
+AFTER DELETE ON customer
+FOR EACH ROW
+BEGIN
+    DBMS_output.put_line('Deleted 1 row in customer table');
+END;   
+/
+DELETE FROM customer WHERE customerid=60;
+
+--7.0 JOINS
+--In this section you will be working with combing various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
+--7.1 INNER
+--Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
+SELECT firstname, lastname, invoiceid, total 
+    FROM customer c INNER JOIN invoice i ON c.customerid = i.customerid;
+
+--7.2 OUTER
+--Task – Create an outer join that joins the customer and invoice table, specifying the CustomerId, firstname, lastname, invoiceId, and total.
+SELECT c.customerid, c.firstname, c.lastname, i.invoiceid, i.total 
+    FROM customer c LEFT OUTER JOIN invoice i ON c.customerid = i.customerid;
+--7.3 RIGHT
+--Task – Create a right join that joins album and artist specifying artist name and title.
+SELECT * FROM album alb RIGHT OUTER JOIN artist art ON alb.artistid = art.artistid;
+
+--7.4 CROSS
+--Task – Create a cross join that joins album and artist and sorts by artist name in ascending order.
+SELECT * FROM album CROSS JOIN artist ORDER BY artist.name ASC;
+
+--7.5 SELF
+--Task – Perform a self-join on the employee table, joining on the reportsto column.
+SELECT * FROM employee a INNER JOIN employee b ON a.employeeid = b.reportsto;
+
+--9.0 Administration
+--In this section you will be creating backup files of your database. After you create the backup file you will also restore the database. Research or try random things then communicate with batchmates, do not ask trainer.
+--Task – Create a .bak file for the Chinook database.
+
+--Under the tools menu, select database export, and select the database connection you want to backup.
+--Continue the select next until finished, only sepcify the file name and location. Once the export is 
+--complete, rename the file to '.bak' from '.sql'. 
+
+COMMIT;
