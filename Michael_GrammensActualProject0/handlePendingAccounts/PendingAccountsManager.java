@@ -6,9 +6,8 @@ import org.apache.log4j.Logger;
 
 import accountManagement.AccountManagement;
 
-public class PendingAccountsManager implements PendingAccountsManagerDao {
+public class PendingAccountsManager {
 	final static Logger logger = Logger.getLogger(PendingAccountsManager.class);
-	@Override
 	public void pendingAccounts(Scanner currString){
 		AccountManagement currentAccounts = new AccountManagement();
 		if(currentAccounts.selectPendingDataBase()==-1) {

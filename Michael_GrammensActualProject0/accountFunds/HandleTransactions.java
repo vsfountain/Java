@@ -9,9 +9,9 @@ import org.apache.log4j.Logger;
 
 import accountManagement.AccountManagement;
 
-public class HandleTransactions implements HandleTransactionsDao{
+public class HandleTransactions{
 	final static Logger logger = Logger.getLogger(HandleTransactions.class);
-	@Override
+	
 	public void withdraw(int currID, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		while(true) {
@@ -33,19 +33,18 @@ public class HandleTransactions implements HandleTransactionsDao{
 				}
 				else if(moneyWithdrew >= 0.0) {
 					System.out.println("Money has been withdrawn. New available balance: " + currentAccount.dataBaseMoney(currIdd) + " Have a great Day!");
-					logger.warn("Withdrawn money: " + moneyAmount +" From: " + currentAccount.getNameOfAccountHolder(currIdd) + " " + currentAccount.getNameOfJointAccountHolder(currIdd));
+					if(logger.isInfoEnabled()) {
+						logger.info("Withdrawn money: " + moneyAmount +" From: " + currentAccount.getNameOfAccountHolder(currIdd) + " " + currentAccount.getNameOfJointAccountHolder(currIdd));
+					}
 					break;
 				}
 			}catch(Exception E) {
 				System.out.println("Wrong input, try again.");
-				if(logger.isInfoEnabled()) {
-					logger.info("Withdraw, wrong input. From: " + currentAccount.getNameOfAccountHolder(currIdd) + " " + currentAccount.getNameOfJointAccountHolder(currIdd));
-				}
+				logger.warn("Withdraw, wrong input. From: " + currentAccount.getNameOfAccountHolder(currIdd) + " " + currentAccount.getNameOfJointAccountHolder(currIdd));
 			}
 		}
 	}
 	
-	@Override
 	public void deposit(int currID, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		while(true) {
@@ -73,7 +72,6 @@ public class HandleTransactions implements HandleTransactionsDao{
 		}
 	}
 	
-	@Override
 	public void transfer(int currID, AccountManagement currentAccount, Scanner getAmount) {
 		double moneyAmount = 0.0;
 		while(true) {

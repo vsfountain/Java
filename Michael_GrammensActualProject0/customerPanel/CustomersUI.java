@@ -8,16 +8,14 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import accountFunds.HandleTransactions;
-import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
 
-public class CustomersUI implements CustomersUIDao{
+public class CustomersUI{
 	final static Logger logger = Logger.getLogger(CustomersUI.class);
 	private static boolean passWordChecker = false;
 	private static AccountManagement accountAccess = new AccountManagement();
 	private static int accountID = 1;
 	
-	@Override
 	public void customerMain(Scanner consoleInput) throws Exception{
 		System.out.println("Do you have an existing account? Yes or No.");
 		String accountY = consoleInput.nextLine();
@@ -29,7 +27,6 @@ public class CustomersUI implements CustomersUIDao{
 		}
 	}
 	
-	@Override
 	public void loggedInAccount(Scanner loggedInAccount) throws Exception{
 		//Login info
 		String associatedName = "";
@@ -81,15 +78,15 @@ public class CustomersUI implements CustomersUIDao{
 				System.out.println("Would you like to withdraw, deposit or transfer funds? Withdraw, Deposit, or Transfer. Type \"Logout\" to return to home page.");
 				String userAction = loggedInAccount.nextLine();
 				if(userAction.toLowerCase().equals("withdraw")) {
-					HandleTransactionsDao withdrawFunds = new HandleTransactions();
+					HandleTransactions withdrawFunds = new HandleTransactions();
 					withdrawFunds.withdraw(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("deposit")) {
-					HandleTransactionsDao depositFunds = new HandleTransactions();
+					HandleTransactions depositFunds = new HandleTransactions();
 					depositFunds.deposit(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("transfer")) {
-					HandleTransactionsDao transferFunds = new HandleTransactions();
+					HandleTransactions transferFunds = new HandleTransactions();
 					transferFunds.transfer(currID, currentAccount, loggedInAccount);
 				}
 				else if(userAction.toLowerCase().equals("logout")) {
@@ -104,7 +101,6 @@ public class CustomersUI implements CustomersUIDao{
 		passWordChecker = false;
 	}
 	
-	@Override
 	public void createAccount(Scanner createAccount) throws Exception{
 		//Apply for an account
 		while(true) {

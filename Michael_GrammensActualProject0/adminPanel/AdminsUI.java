@@ -5,17 +5,14 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import accountFunds.HandleTransactions;
-import accountFunds.HandleTransactionsDao;
 import accountManagement.AccountManagement;
 import handlePendingAccounts.PendingAccountsManager;
-import handlePendingAccounts.PendingAccountsManagerDao;
 
-public class AdminsUI implements AdminsUIDao{
+public class AdminsUI{
 	final static Logger logger = Logger.getLogger(AdminsUI.class);
 	private final static String adminUserName="admin";
 	private final static String adminPassWord="adminadmin";
-	
-	@Override
+
 	public void adminMain(Scanner adminDetails) throws Exception{
 		while(true) {
 			System.out.println("Enter admin details: ");
@@ -42,14 +39,13 @@ public class AdminsUI implements AdminsUIDao{
 		}
 	}
 	
-	@Override
 	public void loggedInAccount(Scanner currString) throws Exception{
 		AccountManagement currentAccount = new AccountManagement();
 		while(true){
 			System.out.println("Welcome admin, would you like to view pending accounts, change money in accounts, or cancel an account? or type \"Logout\". Format: Pending, Change or Cancel.");
 			String adminControl = currString.nextLine();
 			if(adminControl.toLowerCase().equals("pending")) {
-				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
+				PendingAccountsManager checkPending = new PendingAccountsManager();
 				checkPending.pendingAccounts(currString);
 			}
 			else if(adminControl.toLowerCase().equals("change")) {
@@ -78,15 +74,15 @@ public class AdminsUI implements AdminsUIDao{
 						System.out.println("Would you like to withdraw, deposit, or transfer?");
 						String adminControlled = currString.nextLine();
 						if(adminControlled.toLowerCase().equals("withdraw")) {
-							HandleTransactionsDao withdrawFunds = new HandleTransactions();
+							HandleTransactions withdrawFunds = new HandleTransactions();
 							withdrawFunds.withdraw(currID, currentAccount, currString);
 						}
 						else if(adminControlled.toLowerCase().equals("deposit")) {
-							HandleTransactionsDao depositFunds = new HandleTransactions();
+							HandleTransactions depositFunds = new HandleTransactions();
 							depositFunds.deposit(currID, currentAccount, currString);
 						}
 						else if(adminControlled.toLowerCase().equals("transfer")) {
-							HandleTransactionsDao transferFunds = new HandleTransactions();
+							HandleTransactions transferFunds = new HandleTransactions();
 							transferFunds.transfer(currID, currentAccount, currString);
 						}
 					}

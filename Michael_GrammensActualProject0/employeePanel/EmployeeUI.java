@@ -1,20 +1,20 @@
 package employeePanel;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
 import accountManagement.AccountManagement;
+import accountManagement.ApprovedAccounts;
 import handlePendingAccounts.PendingAccountsManager;
-import handlePendingAccounts.PendingAccountsManagerDao;
 
-public class EmployeeUI implements EmployeeUIDao{
+public class EmployeeUI{
 
 	final static Logger logger = Logger.getLogger(EmployeeUI.class);
 	private final static String employeeUserName = "employee";
 	private final static String employeePassWord = "employeeemployee";
 	
-	@Override
 	public void employeeMain(Scanner employeeDetails) throws Exception{
 		while(true) {
 			System.out.println("Enter employee details: ");
@@ -41,7 +41,6 @@ public class EmployeeUI implements EmployeeUIDao{
 		}
 	}
 	
-	@Override
 	public void loggedInAccount(Scanner currString) throws Exception{
 		AccountManagement currentAccount = new AccountManagement();
 		while(true) {
@@ -54,29 +53,28 @@ public class EmployeeUI implements EmployeeUIDao{
 			else if(employeeController.toLowerCase().equals("info")) {
 				System.out.print("Account informations: ");
 				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
-					System.out.print(currentAccount.getApprovedAccounts().get(i) + " ");
+					System.out.println(currentAccount.getApprovedAccounts().get(i) + " ");
 				}
 				System.out.println();
 			}
 			else if(employeeController.toLowerCase().equals("balance")) {
 				System.out.println("Account Balances: ");
-				for(int i = 1; i < currentAccount.getApprovedAccounts().size()+1; i++) {
-					String currID = "" + i;
-					System.out.println(currentAccount.getNameOfAccountHolder(currID) + " " + currentAccount.getNameOfJointAccountHolder(currID) + 
-							" has this balance: " + currentAccount.dataBaseMoney(currID));
+				ArrayList<ApprovedAccounts> getPersonal = currentAccount.getApprovedAccounts();
+				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
+					System.out.println(currentAccount.getNameOfAccountHolder(getPersonal.get(i).getAccountID()) + " " + currentAccount.getNameOfJointAccountHolder(getPersonal.get(i).getAccountID()) + " has this balance: " + currentAccount.dataBaseMoney(getPersonal.get(i).getAccountID()));
 				}
 				System.out.println();
 			}
 			else if(employeeController.toLowerCase().equals("personal")) {
 				System.out.println("Personal Information: ");
-				for(int i = 1; i < currentAccount.getApprovedAccounts().size()+1; i++) {
-					String currID = "" + i;
-					System.out.println(currentAccount.getNameOfAccountHolder(currID) + " " + currentAccount.getNameOfJointAccountHolder(currID) + " has this password: " + currentAccount.getPasswordOfAccountHolder(currID));
+				ArrayList<ApprovedAccounts> getPersonal = currentAccount.getApprovedAccounts();
+				for(int i = 0; i < currentAccount.getApprovedAccounts().size(); i++) {
+					System.out.println(currentAccount.getNameOfAccountHolder(getPersonal.get(i).getAccountID()) + " " + currentAccount.getNameOfJointAccountHolder(getPersonal.get(i).getAccountID()) + " has this password: " + currentAccount.getPasswordOfAccountHolder(getPersonal.get(i).getAccountID()));
 				}
 				System.out.println();
 			}
 			else if(employeeController.toLowerCase().equals("pending")) {
-				PendingAccountsManagerDao checkPending = new PendingAccountsManager();
+				PendingAccountsManager checkPending = new PendingAccountsManager();
 				checkPending.pendingAccounts(currString);
 			}
 			else {
