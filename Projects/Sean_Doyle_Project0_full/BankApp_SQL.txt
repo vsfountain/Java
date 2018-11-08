@@ -1,0 +1,121 @@
+CREATE USER RykerIndustries IDENTIFIED BY revature1;
+
+GRANT CONNECT, RESOURCE TO RykerIndustries;
+GRANT DBA TO RykerIndustries WITH ADMIN OPTION;
+-------DONE-------------------------------------------------------------------
+    
+    
+    CREATE TABLE clients (
+    client_id NUMBER(10) PRIMARY KEY,
+    givenname VARCHAR2(20) NOT NULL,
+    familyname VARCHAR2(20) NOT NULL,
+	passwordc VARCHAR2(20) NOT NULL,
+	isactive NUMBER(1) NOT NULL,
+	myaccountnumber NUMBER(10)--,FOREIGN KEY (jointholder) REFERENCES clients (client_id)
+    );    
+    
+    CREATE TABLE accounts (
+	accountnumber NUMBER(10) PRIMARY KEY,
+    balance DECIMAL(20,2),
+	myperson NUMBER(10),
+	jointly NUMBER(1) NOT NULL,
+	isFrozen NUMBER(1)--,FOREIGN KEY (myperson) REFERENCES clients (client_id),
+    --FOREIGN KEY (myjointperson) REFERENCES clients (client_id)
+    );
+        
+    CREATE TABLE transactions (
+    transaction_id NUMBER(10) PRIMARY KEY,
+    amount DECIMAL(20,2),
+	accountnum NUMBER(10),
+    clientnum NUMBER(10),
+    transdesc VARCHAR2(200) NOT NULL,
+	dateof VARCHAR2(30)--,FOREIGN KEY (accountnum) REFERENCES accounts (accountnumber)
+    );
+    
+    CREATE TABLE joining (
+	accountnum NUMBER(10),
+    clientnum NUMBER(10),
+    FOREIGN KEY (accountnum) REFERENCES accounts (accountnumber),
+    FOREIGN KEY (clientnum) REFERENCES clients (client_id)
+    );
+    
+
+CREATE OR REPLACE PROCEDURE wipedb (verifyauthority IN VARCHAR2)
+IS
+BEGIN
+    IF verifyauthority = 'Sp00d3rMan' THEN
+        DELETE FROM joining;
+        DELETE FROM accounts;
+        DELETE FROM clients;
+        DELETE FROM transactions;
+        commit;
+    END IF;
+END;
+/
+
+SELECT * FROM accounts;
+SELECT * FROM clients;
+SELECT * FROM transactions;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    ALTER TABLE clients ADD FOREIGN KEY (myaccountnumber) REFERENCES accounts (accountnumber) NAME AS bad_constraint;
+    
+    INSERT INTO clients VALUES (0, 'Victoria', 'Ryker', 'pizza', 1, null, null);
+    INSERT INTO clients VALUES (1, 'Sean', 'Ryker', 'loki', 1, 0, null);
+    UPDATE clients SET jointholder = 1 WHERE client_id = 0;
+    
+    INSERT INTO clients (client_id, familyname, givenname, passwordc, isactive, myaccountnumber,  jointholder)VALUES (0, 'doyle', 'sean', 'loki', 0, null, null);
+    
+    
+    
+    SELECT * FROM clients;
+    commit;
+    
+    INSERT INTO accounts VALUES (0,102.22,0, 0, null,0);
+    INSERT INTO accounts VALUES (1,99.13,1, 0,null,0);
+    
+    SELECT * FROM accounts;
+    commit;
+    
+    INSERT INTO transactions VALUES (0, 100, 666, 0, 'Oh yell yeah', '04-NOV-18');
+    INSERT INTO transactions VALUES (1, 90, 666, 0, 'Oh yell', '04-NOV-18');
+    INSERT INTO transactions VALUES (2, 80, 667, 1, 'Oh yeah', '04-NOV-18');
+    INSERT INTO transactions VALUES (3, 32.22, 666, 0, 'yell yeah', '04-NOV-18');
+    INSERT INTO transactions VALUES (4, 90.1990, 666, 0, ' yeah', '04-NOV-18');
+
+    SELECT * FROM transactions;
+    commit;
+    UPDATE clients SET isactive = 0;
+    UPDATE clients SET myaccountnumber = -1;
+
+
+ ALTER TABLE clients DROP CONSTRAINT SYS_C005301;
+  ALTER TABLE clients DROP CONSTRAINT SYS_C005293;
+  ALTER TABLE accounts DROP CONSTRAINT SYS_C005297;
+   ALTER TABLE accounts DROP CONSTRAINT SYS_C005296;
+    ALTER TABLE transactions DROP CONSTRAINT SYS_C005300;
+TRUNCATE TABLE accounts;
+TRUNCATE TABLE transactions;
+TRUNCATE TABLE clients;
+
+    DROP TABLE clients;
+    DROP TABLE transactions;
+    DROP TABLE accounts;
