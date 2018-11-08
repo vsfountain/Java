@@ -224,7 +224,7 @@ let tempSuperVillain = {
 			console.log("the most super stuff you can imagine");
 		}
 }
-tempSuperVillain.doSuperStuff();
+//tempSuperVillain.doSuperStuff();
 
 ///////factory function
 function supervillainFactory(name, ability){
@@ -238,11 +238,41 @@ function supervillainFactory(name, ability){
 let myVill = supervillainFactory('Phillip',
 		'winning rock paper scissors');
 
-console.log(myVill);
+//console.log(myVill);
+
+//Constructor
+function SupervillainWithConstructor(name, ability){
+	let worldName= 'Loss';	//private
+	this.name=name;	//public
+	this.ability=ability;
+	this.method1= function(){
+		console.log(worldName);
+	}
+}
+let theVill = new SupervillainWithConstructor('Ryan', 'papercuts');
+//theVill.method1();
+//console.log(theVill.worldName); //cannot access
+
+///////Errors
+//throw new Error('invalid something or other');
 
 
+///////LOOPS
+/*for(var i=0; i<15; i++){
+	document.write('my dynamic text: '+i+"<br>");
+}*/
 
 
+//////arrow notation
+//(a,b) => a+b;
+//is another way to create a function   '=>'
+
+let arrowExample = (numba) => {
+	console.log('numba ',numba);
+	console.log('Abigail');
+}
+
+arrowExample(5);
 
 
 
