@@ -275,4 +275,33 @@ SELECT * FROM artist a CROSS JOIN album b ORDER BY a.name;
 -- 7.5 SELF
 SELECT * FROM employee a INNER JOIN employee b ON a.employeeid=b.reportsto;
 
--- 9.0 Administration
+-- Bonus Question, JOIN every table in Chinook
+SELECT * FROM employee a LEFT JOIN customer b on a.employeeid = b.supportrepid 
+                         LEFT JOIN invoice c on b.customerid = c.customerid
+                         LEFT JOIN invoiceline d on c.invoiceid = d.invoiceid
+                         LEFT JOIN track e on d.trackid = e.trackid
+                         LEFT JOIN genre f on e.genreid = f.genreid
+                         LEFT JOIN mediatype g on e.mediatypeid = g.mediatypeid
+                         LEFT JOIN album h on e.albumid = h.albumid
+                         LEFT JOIN artist i on h.artistid = i.artistid
+                         LEFT JOIN playlisttrack j on e.trackid = j.trackid
+                         LEFT JOIN playlist k on j.playlistid = k.playlistid;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
