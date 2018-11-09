@@ -115,4 +115,65 @@ SELECT get_max(33, 79) FROM dual;
 
 --3.2
 
+select * from invoice;
+
+CREATE OR REPLACE FUNCTION get_avg(),
+RETURN NUMBER
+IS
+BEGIN  
+    RETURN SELECT AVG(total) from invoice;
+END;
+/
+
+select avg(total) from invoice;
+
+select * from track;
+CREATE OR REPLACE FUNCTION max_track(),
+RETURN NUMBER
+IS
+BEGIN
+    RETURN SELECT MAX(unitprice) from track;
+END;
+/
+
+--3.3
+
+
+CREATE OR REPLACE FUNCTION get_avg(),
+RETURN NUMBER
+IS
+BEGIN  
+    RETURN SELECT AVG(total) from invoice;
+END;
+/
+
+select avg(total) from invoice;
+
+
+--3.4
+
+select * from employee;
+
+select * from employee where birthdate>01-JAN-68;
+
+
+--4.1
+
+CREATE OR REPLACE PROCEDURE get_first_last(),
+IS
+BEGIN
+    SELECT firstname, lastname from employee;
+END;
+/
+
+
+--4.2
+
+
+
+
+
+
+
+
 
