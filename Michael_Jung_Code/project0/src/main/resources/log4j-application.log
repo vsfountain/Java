@@ -1,0 +1,29 @@
+2018-11-04 12:02:02 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-04 12:02:58 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-04 12:04:09 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-04 12:04:38 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-04 12:14:36 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-04 12:15:06 INFO  Main:50 -dfslkjdlsfjdkjsklf
+2018-11-05 02:00:11 INFO  Main:165 -User "customer1" has been created
+2018-11-06 04:37:30 INFO  Main:217 -Account application for user "customer1" submitted
+2018-11-06 04:40:34 INFO  Main:94 -User customer1 deposited $20.22 into Account #1
+2018-11-06 04:45:51 INFO  Main:94 -User customer1 deposited $20.22 into Account #1
+2018-11-06 04:50:56 INFO  Main:217 -Account application for user "customer1" submitted
+2018-11-06 04:51:46 INFO  Main:94 -User customer1 deposited $20.22 into Account #1
+2018-11-06 05:17:18 INFO  Main:166 -User "customer2" has been created
+2018-11-06 06:58:43 INFO  Main:199 -Joint Account application for user "customer1" and "customer2" submitted
+2018-11-06 07:05:35 INFO  Main:95 -User customer1 deposited $20.23 into Account #1
+2018-11-06 07:18:53 INFO  Main:100 -User customer1 withdrew $20.0 into Account #1
+2018-11-06 07:30:16 INFO  Main:262 -User customer1 deposited $22.33 into Account #1
+2018-11-06 07:31:20 INFO  Main:154 -User customer1 withdrew $20.33 from Account #1
+2018-11-06 09:08:01 INFO  Main:138 -User customer1 transferred $101.0 from Account #1 to Account #2
+2018-11-07 12:48:44 INFO  Main:180 -User "usernamename1" has been created
+2018-11-07 12:50:40 INFO  Main:523 -Account application for user "usernamename1" submitted
+2018-11-07 12:52:12 INFO  Main:384 -User usernamename1 deposited $22.0 into Account #21
+2018-11-07 12:52:35 INFO  Main:276 -User usernamename1 withdrew $10.0 from Account #21
+2018-11-07 14:57:11 INFO  Main:180 -User "Taylor" has been created
+2018-11-07 14:59:12 INFO  Main:523 -Account application for user "Taylor" submitted
+2018-11-07 15:00:36 INFO  Main:384 -User Taylor deposited $52.22 into Account #22
+2018-11-07 15:00:55 INFO  Main:276 -User Taylor withdrew $2.99 from Account #22
+2018-11-07 15:02:01 INFO  Main:523 -Account application for user "Taylor" submitted
+2018-11-07 15:02:51 INFO  Main:138 -User Taylor transferred $22.0 from Account #22 to Account #23
