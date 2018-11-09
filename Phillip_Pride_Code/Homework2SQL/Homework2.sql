@@ -99,22 +99,23 @@ SET SERVEROUTPUT ON;
 
 -- 4.0 Stored Procedures
 -- 4.1 Basic Stored Procedures
-CREATE OR REPLACE PROCEDURE get_employee_names
+CREATE OR REPLACE PROCEDURE get_employee_names(employees OUT SYS_REFCURSOR)
 IS
-    --employee_name SYS_REFCURSOR;
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Some employee');
-    --RETURN employee_name;
+    OPEN employees FOR SELECT firstname, lastname FROM employee;
+    
+    --DBMS_OUTPUT.PUT_LINE('Some employee');
+   
 
 END;
 /
 DECLARE
-    --employee_name SYS_REFCURSOR;
+    employee_name SYS_REFCURSOR;
     --last_name VARCHAR(20);
 Begin
     
-    get_employee_names;
-    --SELECT employee_name FROM dual;
+    get_employee_names(employee_name);
+    SELECT employee_name FROM dual;
     
 End;
 /
@@ -273,3 +274,5 @@ SELECT * FROM artist a CROSS JOIN album b ORDER BY a.name;
 
 -- 7.5 SELF
 SELECT * FROM employee a INNER JOIN employee b ON a.employeeid=b.reportsto;
+
+-- 9.0 Administration
