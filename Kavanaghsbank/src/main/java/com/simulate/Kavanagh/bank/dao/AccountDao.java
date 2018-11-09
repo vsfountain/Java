@@ -14,22 +14,24 @@ public interface AccountDao {
 	// read
 	public List<Account>selectAllAccount();
 
-	public Account selectAccountByAccountNumber(int accountNumber);
+	public List <Account> selectAccountByAccountNumber(int accountNumber);
 
 	public Account selectAccountBystatus(String status);
 
-	public Account selectAccountByclient_id(int client_id);
+	public List<Account> selectAccountByclient_id(int client_id);
 
 	public Account selectAccountByAccountBalance(double accountBalance);
 
 	public Account selectAccountByInterestEarned(double interestEarned);
 
-	public Account selectCustomerByDescription(char description);
+	public Account selectAccountByDescription(String description);
 
 //update
 	public int updateAccount(Account accountBank);
 
 //	//Delete
 	public int deleteAccount(Account accountBank);
+
+	Account selectAllAccountByClient_id(int client_id);
 
 }

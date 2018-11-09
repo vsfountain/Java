@@ -1,5 +1,6 @@
 package com.simulate.Kavanagh.bank.model;
 
+
 /**
  * This model is to keep track of the Customer's information.
  * 
@@ -7,29 +8,29 @@ package com.simulate.Kavanagh.bank.model;
  * @version 11/4/2018
  *
  */
-public class Customer {
+public class Customer  {
 	// initialize
 	private int client_id;
 	private String firstName;
 	private String lastName;
 	private double income;
 	private int creditScore;
-	private char address;
+	private  String address;
 	private String city;
 	private String state;
-	private char postalCode;
-	private char telePhoneNumber;
-	private char customerEmail;
-	private char userName;
-	private char passWord;
-	// Scanner input = new Scanner(System.in);
+	private int postalCode;
+	private int telePhoneNumber;
+	private String customerEmail;
+	private String userName;
+	private String passWord;
+
 
 	// instantiate
-	public Customer(int client_id, String firstName, String lastName, double income, int creditScore, char address,
-			String city, String state, char postalCode, char telePhoneNumber, char customerEmail, char userName,
-			char passWord) {
+	public Customer(int client_id, String firstName, String lastName, double income, int creditScore, String address,
+			String city, String state, int postalCode, int telePhoneNumber, String customerEmail, String userName,
+			String passWord) {
 		super();
-		// data = input.nextLine();
+		
 		this.client_id = client_id;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -44,6 +45,27 @@ public class Customer {
 		this.userName = userName;
 		this.passWord = passWord;
 	}
+
+	
+//	
+//	public Customer(String firstName, String lastName, double income, int creditScore, String address, String city,
+//			String state, int postalCode, int telePhoneNumber, String customerEmail) {
+//		super();
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.income = income;
+//		this.creditScore = creditScore;
+//		this.address = address;
+//		this.city = city;
+//		this.state = state;
+//		this.postalCode = postalCode;
+//		this.telePhoneNumber = telePhoneNumber;
+//		this.customerEmail = customerEmail;
+//		this.userName = userName;
+//		this.passWord = passWord;
+//	}
+
+
 
 	/**
 	 * @return the client_id
@@ -118,14 +140,14 @@ public class Customer {
 	/**
 	 * @return the address
 	 */
-	public char getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
 	/**
 	 * @param address the address to set
 	 */
-	public void setAddress(char address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 
@@ -160,35 +182,35 @@ public class Customer {
 	/**
 	 * @return the postalCode
 	 */
-	public char getPostalCode() {
+	public int getPostalCode() {
 		return postalCode;
 	}
 
 	/**
 	 * @param postalCode the postalCode to set
 	 */
-	public void setPostalCode(char postalCode) {
+	public void setPostalCode(int postalCode) {
 		this.postalCode = postalCode;
 	}
 
 	/**
 	 * @return the telePhoneNumber
 	 */
-	public char getTelePhoneNumber() {
+	public int getTelePhoneNumber() {
 		return telePhoneNumber;
 	}
 
 	/**
 	 * @param telePhoneNumber the telePhoneNumber to set
 	 */
-	public void setTelePhoneNumber(char telePhoneNumber) {
+	public void setTelePhoneNumber(int telePhoneNumber) {
 		this.telePhoneNumber = telePhoneNumber;
 	}
 
 	/**
 	 * @return userName
 	 */
-	public char getuserName() {
+	public String getuserName() {
 		return userName;
 
 	}
@@ -196,14 +218,14 @@ public class Customer {
 	/**
 	 * @param userName the userName to set
 	 */
-	public void setUserName(char userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
 	/**
 	 * @return passWord
 	 */
-	public char getpassWord() {
+	public String getpassWord() {
 		return passWord;
 
 	}
@@ -211,21 +233,21 @@ public class Customer {
 	/**
 	 * @param passWord the passWord to set
 	 */
-	public void setPassWord(char passWord) {
+	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
 
 	/**
 	 * @return customerEmail
 	 */
-	public char getCustomerEmail() {
+	public String getCustomerEmail() {
 		return customerEmail;
 	}
 
 	/**
 	 * @param customerEmail the customerEmail to set
 	 */
-	public void setCustomerEmail(char customerEmail) {
+	public void setCustomerEmail(String customerEmail) {
 		this.customerEmail = customerEmail;
 	}
 
@@ -235,6 +257,12 @@ public class Customer {
 				+ income + ",creditScore =" + creditScore + ", address =" + address + ",City=" + city + ",State="
 				+ state + ",postalCode=" + postalCode + ",telePhoneNumber=" + telePhoneNumber + ",customerEmail"
 				+ customerEmail + ",userName=" + userName + ",passWord=" + passWord + "]";
+	}
+
+
+	public Object selectAllCustomer() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

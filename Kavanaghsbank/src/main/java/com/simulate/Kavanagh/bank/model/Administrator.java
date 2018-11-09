@@ -11,7 +11,7 @@ public class Administrator {
 	private int admin_id;
 	private String adminFirstName;
 	private String adminLastName;
-	private char adminEmail;
+	private String adminEmail;
 
 	/**
 	 * @param admin_id
@@ -19,8 +19,8 @@ public class Administrator {
 	 * @param adminLastName
 	 * @param adminEmail
 	 */
-	public Administrator(int admin_id, String adminFirstName, String adminLastName, char adminEmail) {
-		//super();
+	public Administrator(int admin_id, String adminFirstName, String adminLastName, String adminEmail) {
+		super();
 		this.admin_id = admin_id;
 		this.adminFirstName = adminFirstName;
 		this.adminLastName = adminLastName;
@@ -72,14 +72,14 @@ public class Administrator {
 	/**
 	 * @return the adminEmail
 	 */
-	public char getAdminEmail() {
+	public String getAdminEmail() {
 		return adminEmail;
 	}
 
 	/**
 	 * @param the adminEmail the adminEmail to set
 	 */
-	public void setAdminEmail(char adminEmail) {
+	public void setAdminEmail(String adminEmail) {
 		this.adminEmail = adminEmail;
 
 	}

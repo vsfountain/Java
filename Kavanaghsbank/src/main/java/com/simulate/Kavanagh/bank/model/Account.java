@@ -12,10 +12,32 @@ public class Account {
 	private double accountBalance;
 	private double interestEarned;
 	private String status;
-	private char description;
+	private String description;
+	private int isJointAccount;
+	private int jointAccountClientId;
 
-	public Account(int accountNumber, int client_id, double accountBalance, double interestRate, double interestEarned,
-			char description, String status) {
+	/**
+	 * @param client_id
+	 * @param accountBalance
+	 * @param interestEarned
+	 * @param status
+	 * @param description
+	 * @param isJointAccount
+	 * @param jointAccountClientId
+	 */
+	public Account(int client_id, double accountBalance, double interestEarned, String status, String description,
+			int isJointAccount, int jointAccountClientId) {
+		super();
+		this.client_id = client_id;
+		this.accountBalance = accountBalance;
+		this.interestEarned = interestEarned;
+		this.status = status;
+		this.description = description;
+		this.isJointAccount = isJointAccount;
+		this.jointAccountClientId = jointAccountClientId;
+	}
+	public Account(int client_id,int accountNumber, double accountBalance, double interestEarned,
+			String description, String status, int isJointAccount,int jointAccountClientId) {
 		super();
 		this.accountNumber = accountNumber;
 		this.client_id = client_id;
@@ -23,8 +45,27 @@ public class Account {
 		this.interestEarned = interestEarned;
 		this.description = description;
 		this.status = status;
+		this.isJointAccount = isJointAccount;
+		this.jointAccountClientId = jointAccountClientId;;
 	}
-
+/**
+ * @return the isJointAccount
+ */
+	public int getisJointAccount() {
+		return isJointAccount;
+	}
+	/**
+	 * @param jointAccountClientId the jointAccountClentID
+	 */
+	public void setJointAccountClientId (int jointAccountClientId) {
+		this.jointAccountClientId = jointAccountClientId;
+	}
+	/**
+	 * 
+	 */
+	public int getjointAccountClientId() {
+		return jointAccountClientId;
+	}
 	/**
 	 * @return the accountNumber
 	 */
@@ -84,14 +125,14 @@ public class Account {
 	/**
 	 * @return the description
 	 */
-	public char getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(char description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -112,6 +153,7 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account[accountNumber=" + accountNumber + ",accountBalance=" + accountBalance + ",interestEarned ="
-				+ interestEarned + ",description" + description + ",status=" + status + "]";
+				+ interestEarned + ",description" + description + ",status=" + status + ",isJointAccount=" + isJointAccount + ",jointAccountClientId=" + jointAccountClientId +
+				"]";
 	}
 }

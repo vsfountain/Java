@@ -20,16 +20,17 @@ public interface CustomerDao {
 	public Customer selectCustomerById (int client_id);
 	public Customer selectCustomerByFirstName (String firstName);
 	public Customer selectCustomerByLastName (String lastName);
-	public Customer selectCustomerByAddress (char address);
-	public List<Customer>selectByusername(char userName);
+	public Customer selectCustomerByAddress (String address);
+	public Customer selectByusername(String userName);
+	public Customer selectCustomerBypassWord(String passWord);
 	public List<Customer>selectCustomerByincome(double income);
 	public List<Customer>selectCustomerByCreditScore(int creditScore);
 	public List<Customer>selectCustomerByCity(String city);
 	public List<Customer>selectCustomerByState(String state);
-	public Customer selectCustomerByPostalCode (char postalCode);
-	public Customer selectCustomerByTelePhoneNumber(char telePhoneNumber);
-	public Customer selectCustomerByCustomerEmail( char customerEmail);
-	public Customer selectCustomerByPassWord(char passWord);	
+	public Customer selectCustomerByPostalCode (int postalCode);
+	public Customer selectCustomerByTelePhoneNumber(int telePhoneNumber);
+	public Customer selectCustomerByCustomerEmail( String customerEmail);
+	//public Customer selectCustomerByPassWord(String passWord);	
 	//update
 	public int updateCustomer(Customer client);
 	//Delete
