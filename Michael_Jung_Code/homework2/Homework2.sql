@@ -168,6 +168,28 @@ END;
 
 
 --4.2
+select * from employee;
+CREATE OR REPLACE PROCEDURE update_info(city IN VARCHAR2, EMPLOYEEID IN NUMBER)
+IS
+BEGIN
+    UPDATE set CITY = city where Employeeid = EMPLOYEEID
+    COMMIT;
+END;
+/
+
+
+
+CREATE OR REPLACE PROCEDURE get_manager(EMPLOYEEID IN NUMBER)
+IS
+BEGIN
+    SELECT * FROM EMPLOYEE where EMPLOYEEID=(select reportsto from employee where employeeid=EMPLOYEEID)
+    COMMIT;
+END;
+/
+
+
+--4.3
+
 
 
 
