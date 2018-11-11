@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>DOM</title>
+</head>
+<body>
+  
+  <div>
+    <div>
+      <h3>Sum: <span id="sum"></span></h3>
+      <h5 id="currentTime"></h5>
+    </div>
+    <div>
+      <h1 id="test" >United <span data-customAttr="USA">States</span> of America (<span>USA</span>)</h1>
+      <div><a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click Here</a><a>Click Here</a></div>
+      <a>Click Here</a>
+      <a>Click <span>Here1</span></a>
+      <a>Click Here</a>
+      <div>
+	  <select name="colors">
+	    <option value="green">Green</option>
+	    <option value="blue">Blue</option>
+	    <option value="red" selected="selected">Red</option>
+	    <option value="purple">Purple</option>
+	    <option value="yellow" selected="selected">Yellow</option>
+	  </select>
+      </div>
+    </div>
+    <p id="helloWorld">Hello, World!</p>
+    <div>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+        </tr>
+        <tr>
+          <td name="John" class="empName">John</td>
+          <td>Sales</td>
+        </tr>
+        <tr>
+          <td name="Amy" class="empName">Amy</td>
+          <td>Finance</td>
+        </tr>
+        <tr>
+          <td name ="Austin" class="empName">Austin</td>
+          <td>Sales</td>
+        </tr>
+        <tr>
+          <td name="Katie" class="empName">Katie</td>
+          <td>Marketing</td>
+        </tr>
+        <tr>
+          <td name="Courtney" class="empName" data-customAttr="court">Courtney</td>
+          <td>Sales</td>
+        </tr>
+        <tr>
+          <td name = "Scout" class="empName">Scout</td>
+          <td>Sales</td>
+        </tr>
+      </table>
+    </div>
+    <form id="firstForm">
+      <a>Click <span>Here2</span></a>
+	  <input type="text" data-customAttr="7"/><br/>
+	  <input type="text" data-customAttr="24"/><br/>
+	  <input type="radio" name="favoriteAnimal" value="dog"/>Dog<br/>
+	  <span id ="favColor1" class= "favColorClass"  ><input type="radio"  name="favoriteColor" value="blue">Blue</input></span><br/>
+	  <input id="num1" class="nums" type="text"/><br/>
+	  <input type="radio" name="favoriteAnimal" value="cat"/>Cat<br/>
+	  <span id ="favColor2" class= "favColorClass"  ><input type="radio" name="favoriteColor" value="red">Red</input></span><br/>
+	  <input type="radio" name="favoriteAnimal" value="horse"/>Horse<br/>
+	  <input type="radio" name="favoriteAnimal" value="dolphin"/>Dolphin<br/>
+	  <a>Click <span>Here</span></a><br/>
+	  <input type="radio" name="favoriteAnimal" value="eagle"/>Eagle<br/>
+	  <span id ="favColor3" class= "favColorClass"  ><input type="radio" name="favoriteColor" value="green">Green</input></span><br/>
+	  <span id ="favColor4" class= "favColorClass"  ><input type="radio" name="favoriteColor" value="orange">Orange</input></span><br/>
+	  <select name="hobbies" id = "hobbies">
+	    <option value="photography">Photography</option>
+	    <option value="football" selected="selected">Football</option>
+	    <option value="kayaking" selected="selected">Kayaking</option>
+	    <option value="hiking">Hiking</option>
+	    <option value="programming" selected="selected">Programming</option>
+	  </select>
+	  <input id="num2" class="nums" type="text"/>
+	  <select name="skills" id = "skills">
+	    <option value="java">Java</option>
+	    <option value="net">.NET</option>
+	    <option value="dom" selected="selected">DOM</option>
+	    <option value="html">HTML</option>
+	    <option value="css">CSS</option>
+	    <option value="javascript" selected="selected">Javascript</option>
+	  </select>
+    </form>
+  </div>
+  <a>Click Here</a>
+  <a>Click <span data-customAttr="500">Here3</span></a>
+  <a>Click Here</a>
+	  
+  <script type="text/javascript">
+    /*1. USA
+Define function getUSA()
+Find the html element that contains "USA".
+Print that element's contents.
+
+*/
+function getUSA(){
+  let doc = document.getElementsByTagName('span');
+  console.log(doc[2]);
+}
+//getUSA();
+/*
+  
+2. Sales
+Define function getPeopleInSales()
+Print the names of all the people in the sales department.
+  */
+function getPeopleInSales(){
+    let sales = document.getElementsByTagName('td');
+    for(let i =0; i<sales.length; i++){
+      if(sales[i].textContent == 'Sales'){
+          salesArr.push(sales[i - 1])
+          console.log(sales[i - 1])
+      }      
+    }
+}
+//getPeopleInSales();
+  /*
+}
+3. Click Here
+Define function getAnchorChildren()
+Find all anchor elements with a <span> child.
+Print the contents of <span>
+*/
+function getAnchorChildren(){
+    let anchors = document.getElementsByTagName('a');
+    let spans = [];
+    for(let i = 0; i<anchors.length; i++){
+     if (anchors[i].children[0]){
+       spans.push(anchors[i].children[0].innerHTML); 
+     }
+      
+    }
+    console.log(spans)
+}
+//getAnchorChildren();
+/*
+  *
+4. Hobbies
+Define function getHobbies()
+Find all checked options in the 'skills' select element.
+Print the value and the contents.
+  */
+function getHobbies(){
+let check = document.getElementsByTagName('option');
+let checkArr = [];
+for(let i = 0; i<check.length;i++){
+  if(check[i].selected){
+    console.log(check[i])
+    }
+  }
+}
+//getHobbies();
+  /*
+}
+5. Custom Attribute
+Define function getCustomAttribute()
+Find all elements with "data-customAttr" attribute
+Print the value of the attribute.
+Print the element that has the attribute.
+*/
+  function getCustomAttribute(){
+    let inp   = document.getElementsByTagName('input');
+    let inpArr = [];
+    console.log(inp[0])
+    console.log(inp[1]);    
+  }
+ // getCustomAttribute();
+/*
+6. Sum Event
+NOTE: Write unobtrusive Javascript
+Regarding these elements:
+  <input id="num1" class="nums" type="text"/>
+  <input id="num2" class="nums" type="text"/>
+  <h3>Sum: <span id="sum"></span></h3>
+*/
+let newDiv = document.createElement('div');
+let input1 = document.createElement('input');
+input1.setAttribute("id", "num1");
+input1.setAttribute("class", "nums");
+input1.setAttribute("type", "text");
+let input2 = document.createElement('input');
+input2.setAttribute("id", "num2");
+input2.setAttribute("class", "nums");
+input2.setAttribute("type", "text");
+let header = document.createElement('h3');
+let spanner = document.createElement('span');
+spanner.setAttribute("id","sum");
+let text = document.createTextNode("Sum: ");
+newDiv.append(input1);
+newDiv.append(input2);
+header.append(text);
+header.appendChild(spanner);
+newDiv.append(header);
+//console.log(newDiv);
+/*
+Define onchange event handler.
+Add <input> element values.
+Put the sum in the <span> element.
+If values cannot be added, put "Cannot add" in the <span> element
+*/
+let hobbies  = document.getElementById('hobbies');
+hobbies.addEventListener('change', handleChange);
+function handleChange(e){
+  console.log(e);
+}
+/*
+7. Skills Event
+NOTE: Write unobtrusive Javascript
+When user selects a skill, create an alert with a message similar to:
+  "Are you sure CSS is one of your skills?"
+NOTE: no alert should appear when user deselects a skill.
+*/
+function ruSure(){
+  alert("Are you sure about that?  I've seen some of your work");
+}
+let skills = document.getElementById('skills');
+skills.addEventListener('change', ruSure);
+//console.log(skills)
+/*
+8. Favorite Color Event
+NOTE: Write unobtrusive Javascript
+NOTE: This is regarding the favoriteColor radio buttons.
+When a user selects a color, create an alert with a message similar to:
+  "So you like green more than blue now?"
+In this example, green is the new value and blue is the old value.
+Make the background color (of all favoriteColor radio buttons) the newly selected favoriteColor
+*/
+let favColor1 = document.getElementById('favColor1');
+favColor1.addEventListener('change',favCol);
+let favColor2 = document.getElementById('favColor2');
+favColor2.addEventListener('change', favCol);
+let favColor3 = document.getElementById('favColor3');
+favColor3.addEventListener('change', favCol);
+let favColor4 = document.getElementById('favColor4');
+favColor4.addEventListener('change', favCol);
+
+let colorClass = document.getElementsByClassName('favColorClass');
+
+ 
+/*document.getElementById("p2").style.color = "blue";*/
+function favCol(e){  
+let newColor = e.target.value;
+alert("What do you have against better colors, like anything besides " + newColor);
+ colorClass[0].style.backgroundColor = newColor;
+ colorClass[1].style.backgroundColor = newColor;
+ colorClass[2].style.backgroundColor = newColor;
+ colorClass[3].style.backgroundColor = newColor;  
+}
+
+
+/*
+9. Show/Hide Event
+NOTE: Write unobtrusive Javascript
+When user hovers over an employees name:
+  Hide the name if shown.
+  Show the name if hidden.
+*/
+
+let employeeList = document.querySelectorAll(".empName");
+
+function toggleShow(e){ 
+  let element = e.target;  
+  var name = element.getAttribute("name"); 
+  let str = e.target.textContent;
+  if(str.length > 0){
+    element.textContent = "";
+  }
+  else{
+    element.textContent = name;
+  }
+  //console.log(str)
+
+
+}
+//console.log(employeeList[0]);
+employeeList[0].addEventListener('mouseover', toggleShow);
+employeeList[1].addEventListener('mouseover', toggleShow);
+employeeList[2].addEventListener('mouseover', toggleShow);
+employeeList[3].addEventListener('mouseover', toggleShow);
+employeeList[4].addEventListener('mouseover', toggleShow);
+employeeList[5].addEventListener('mouseover', toggleShow);
+/*employeeList.forEach(function(element) {
+    element.addEventListener("hover", function() {
+        console.log("ToggleShow");
+    });
+});*/
+/*
+10. Current Time
+Regarding this element:
+  <h5 id="currentTime"></h5>
+Show the current time in this element in this format: 9:05:23 AM
+The time should be accurate to the second without having to reload the page.
+*/
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  document.getElementById('currentTime').innerHTML = h + ":" + m + ":" + s;
+  
+}
+startTime();
+/*
+11. Delay
+Regarding this element:
+  <p id="helloWorld">Hello, World!</p>
+Three seconds after a user clicks on this element, change the text to a random color.
+*/
+let hw = document.getElementById('helloWorld');
+hw.addEventListener('click',colorRng);
+function colorRng(){
+  console.log("TEST")
+  let clrArr = ['blue','red','yellow','black','green','pink','white'];
+  let min=0; 
+  let max=clrArr.length;  
+  let rng =Math.floor(Math.random() * (+max - +min)) + +min; 
+  let randomColor = clrArr[rng];
+  console.log(randomColor);
+  setTimeout(function(){     
+    hw.style.color = randomColor 
+  }, 3000);
+}
+/*
+12. Walk the DOM
+Define function walkTheDOM(node, func)
+This function should traverse every node in the DOM. Use recursion.
+On each node, call func(node).*/
+//https://stackoverflow.com/questions/6969604/recursion-down-dom-tree
+let results = [];
+
+let walkTheDOM = function (node,func) {
+        func(node);                     //What does this do?
+        node = node.firstChild;
+        while(node) {
+            walkTheDOM(node,func);
+            node = node.nextSibling;
+        }
+
+    };
+walkTheDOM(document.body, function(node) {
+    console.log(node.tagName);
+});
+  </script>
+  
+</body>
+</html>
