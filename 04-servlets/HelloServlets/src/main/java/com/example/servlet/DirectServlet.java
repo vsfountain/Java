@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.model.SuperVillain;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class MyServlet extends HttpServlet {
+public class DirectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
