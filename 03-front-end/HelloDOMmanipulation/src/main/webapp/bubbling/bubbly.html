@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<h3>welcome to bubbling</h3>
+		<!-- bubbling is event propagation from child to parent -->
+	</div>
+	<div>
+		<form onclick="alert('form')">
+				FORM
+			<div onclick="event.stopPropagation(); alert('div')">
+				DIV
+				<p onclick="alert('para')">Look at this</p>
+			</div>
+		</form>
+	</div>
+	<!-- What is capturing? 
+		capturing is the opposite of bubbling.
+		
+		get in groups of twos and create a capturing example-->
+</body>
+</html>
