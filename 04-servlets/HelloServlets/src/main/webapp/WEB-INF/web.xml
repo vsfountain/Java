@@ -24,14 +24,14 @@
 		<url-pattern>/otherdir</url-pattern>
 	</servlet-mapping>
 	<!-- INDIRECT SERVLET CONFIGURATIONS -->
-	<!-- <servlet>
+	<servlet>
 		<servlet-name>IndirServ</servlet-name>
 		<servlet-class>com.example.indirectservlet.IndirectServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>IndirServ</servlet-name>
 		<url-pattern>/indirserv</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 	<!-- SESSION SERVLET CONFIGURATIONS -->
 	<servlet>
 		<servlet-name>SesServ</servlet-name>
