@@ -4,7 +4,6 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>MasterServlet</servlet-name>
     <servlet-class>com.example.servlet.MasterServlet</servlet-class>
@@ -12,5 +11,15 @@
   <servlet-mapping>
     <servlet-name>MasterServlet</servlet-name>
     <url-pattern>*.wumpus</url-pattern>
+  </servlet-mapping>
+  
+  <!-- AJAX SERVLET RETURNS ONLY JSONs -->
+  <servlet>
+    <servlet-name>MasterJSON</servlet-name>
+    <servlet-class>com.example.json.MasterJSON</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterJSON</servlet-name>
+    <url-pattern>*.json</url-pattern>
   </servlet-mapping>
 </web-app>
