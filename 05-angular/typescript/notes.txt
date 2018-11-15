@@ -1,0 +1,14 @@
+AngularJS vs Angular
+AngularJS= 1.0
+Angular=2.0+      now we're in angular 7
+
+Angular is a front end framework, written in typescript.
+
+Who developed ReactJS? Facebook
+who developed Angular? Google
+
+Component based. In short, a component is a segment of front end
+    functionality (the html, css, and ts)
+
+We use this framework because programming an application with js alone
+    becomes difficult when web apps become more massive (scalability).
