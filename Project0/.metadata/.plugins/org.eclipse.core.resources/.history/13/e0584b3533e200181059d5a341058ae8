@@ -1,0 +1,125 @@
+package com.daotests;
+
+
+import static org.junit.Assert.*;
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+
+
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+
+import controller.dao.UserDaoImpl;
+import controller.dataio.DriverManagerFacade;
+import model.users.User;
+
+
+
+public class DAOtest {
+	Connection conn = Mockito.mock(Connection.class);
+	
+	private static String url = "jdbc:oracle:thin:@revy.ctgsqmepdtko.us-east-2.rds.amazonaws.com:1521:orcl";
+
+	/** The username. */
+	private static String username = "bankuser";
+
+	/** The password. */
+	private static String password = "p4ssw0rd";
+
+	@InjectMocks
+	private UserDaoImpl dao;
+
+	@Mock
+	private Connection mockConnection;
+
+	@Mock
+	private Statement mockStatement;
+	@Mock
+	private CallableStatement stmt;
+	
+	
+	
+	@Mock
+	private DriverManagerFacade driver;
+	
+	User use;
+
+
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		MockitoAnnotations.initMocks(this);
+		use = new User("d", "d", "d@", null, 0);
+
+		
+
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void test() throws SQLException {
+		ResultSet mrs= mock(ResultSet.class);
+		when(mockConnection.prepareCall(any(String.class))).thenReturn(stmt);
+		when(driver.getConn(url,username,password)).thenReturn(mockConnection);
+		
+		when(mrs.next()).thenReturn(true).thenReturn(true).thenReturn(false);
+		when(mrs.getString("firstname")).thenReturn("d");
+		when(mrs.getString("lastname")).thenReturn("d");
+		when(mrs.getString("email")).thenReturn("d@");
+		when(mrs.getInt("userid")).thenReturn(0);
+		when(stmt.executeQuery()).thenReturn(mrs);
+		
+		
+		when(mrs.getString("usertypename")).thenReturn("");
+		
+		
+		
+		UserDaoImpl dao = new UserDaoImpl();
+		User testThis = dao.userLogin("d@", "d");
+		
+		assertEquals(use, testThis);
+		Mockito.verify(mockConnection.createStatement(), Mockito.times(1));
+		Mockito.verify(mrs.getString("firstname"), Mockito.times(1));
+		Mockito.verify(mrs.getString("lastname"), Mockito.times(1));
+		Mockito.verify(mrs.getString("email"), Mockito.times(1));
+		Mockito.verify(mrs.getString("userid"), Mockito.times(1));
+
+		fail("Not yet implemented");
+	}
+
+}
