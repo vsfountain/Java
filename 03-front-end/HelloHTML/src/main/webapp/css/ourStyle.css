@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+/*
+//THIS IS THE CSS STRUCTURE
+selector {
+	property: value;
+}
+*/
+
+/* we can select by element name */
+h1, h3 {
+	color: red;
+	/* text-align: right; */
+}
+/* we can select by class attribute*/
+.righty {
+	text-align: right;
+}
+
+/* we can select by id attribute*/
+#numbasign{
+	text-align: right;	
+}
+/* we can select certain elements ONLY if they have a specific
+	parent element */
+div > p {
+	text-align: right;
+}
+
+/* The Box Model
+Every element in HTML is represented by a box.
+The box is divided into 4 components:
+	Margin
+	Border
+	Padding
+	The content itself
+*/
+form {
+	border: 5px solid green;
+	margin: 20px;
+	padding: 10px;
+	
+}
+
+
+
+
+
+
+
+
