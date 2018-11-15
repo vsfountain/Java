@@ -1,0 +1,9 @@
+INDEX VERSION 1.4+C:\Users\Joshua\Desktop\GitDir\1810-oct22-java\Joshua_Jibilian_Code\JSHW\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4024126401.index
+1660982873.index
+3284303021.index
+1660982873.index
+3581143713.index
+2940830320.index
+861583280.index
+48056425.index

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.buildship.ui.wizard.project.creation">
+		<item value="VERSION" key="gradle_distribution_type"/>
+		<item value="true" key="use_default_location"/>
+		<item value="false" key="apply_working_sets"/>
+		<item value="4.10.2" key="gradle_distribution_configuration"/>
+		<item value="C:\Users\Joshua\Desktop\GitDir\1810-oct22-java\Joshua_Jibilian_Code\Project1\ReimbursSys" key="project_location"/>
+		<list key="working_sets">
+		</list>
+	</section>
+</section>
