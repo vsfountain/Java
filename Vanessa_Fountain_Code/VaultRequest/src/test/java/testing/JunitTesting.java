@@ -24,25 +24,11 @@ public class JunitTesting {
 	
 	@Test
 	public void displayAllRequests(){
+		//SMALLER TESTS DONE IN ONE TO ONE METHODS CALLS
 		System.out.println("Currently testing view all requests");
 		VaultServiceImplementation tester = new VaultServiceImplementation();
 		System.out.println(tester.displayAllRequests());
 		assertThat("Fails if empty", tester.displayAllRequests(), is(not(0)));
 	}
-//	@SuppressWarnings("static-access")
-//	@Test
-//	public final void truth_empty_list() throws Throwable {
-//	final ArrayList<Object> lst = new ArrayList<Object>();
-//
-//	new Expectations() {
-//	Truth truth;
-//	{
-//	truth.valid((Collection<?>)lst); minTimes = 1;
-//	}
-//	};
-//
-//	boolean actual = Truth.valid(lst);
-//	assertThat(actual, is(false));
-//	}
 
 }
