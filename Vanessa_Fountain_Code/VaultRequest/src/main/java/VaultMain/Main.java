@@ -1,16 +1,17 @@
 package VaultMain;
 
-import VaultLogin.LoginImplementation;
+import ServiceLayer.VaultService;
+import ServiceLayer.VaultServiceImplementation;
 
 public class Main {
 
 	public static void main(String[] args) {
-		LoginImplementation login = new LoginImplementation();
+		VaultService dweller = new VaultServiceImplementation();
 		
 		String username = "vsfount";
 		String password = "password";
 		
-		System.out.println(login.checkInfo(username, password));
+		System.out.println(dweller.getUserInfo(username,password));
 
 	}
 
