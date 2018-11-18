@@ -1,18 +1,105 @@
 @charset "ISO-8859-1";
-.login-container{
+
+.login-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 3px solid red;
+	/*border: 3px solid blue;*/
 	text-align: center;
 }
 
-form{
-	border: 2px solid black;
+form {
+	background-color: #151518;
+	/*border: 2px solid black;*/
 	padding: 10px;
 	margin: 10px;
 }
 
-input{
+input {
+	/*margin: 3px;*/
+}
+
+.control-label{
+	text-align: left;
+}
+
+body {
+	background-color: #0D0D0F;
+	color: #F1E4E8;
+	/*font-family: "M PLUS 1p"; 
+/*	 font-family: "Nico Moji"; */
+	/*font-family: "M PLUS Rounded 1c";*/
+	/*font-family: 'Montserrat', sans-serif;
+	font-size: 13px;*/
+}
+
+h1{
+	color: #F1E4E8;
+	font-family: "M PLUS Rounded 1c";
+	font-size: 40px;
+	letter-spacing: 20px;
+}
+
+h3{
+	color: #F1E4E8;
+	font-family: "M PLUS Rounded 1c";
+	font-size: 20px;
 	margin: 3px;
+}
+
+h4{
+	color: #F1E4E8;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	margin: 3px;
+	text-transform: uppercase;
+}
+
+
+.textfield-box {
+	display: inline-block;
+	border-radius: 10px;
+	background-color: #E2DCDE;
+	border: none; text-align : center;
+	font-size: 13px;
+	width: 200px;
+	padding: 10px;
+	margin: 5px;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	
+}
+
+.login-button {
+	display: inline-block;
+	border-radius: 10px;
+	background-color: #B97375;
+	border: none;
+	color: #E2DCDE;
+	text-align: center;
+	font-size: 13px;
+	width: 220px;
+	cursor: pointer;
+	padding: 10px;
+	margin: 5px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.wf-nicomoji {
+	font-family: "Nico Moji";
+}
+
+.wf-mplus1p {
+	font-family: "M PLUS 1p";
+}
+
+.wf-roundedmplus1c {
+	font-family: "M PLUS Rounded 1c";
+}
+
+.box-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
 }

@@ -15,4 +15,22 @@
     <url-pattern>/MasterServlet</url-pattern>
     <url-pattern>*.kers</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <servlet-name>MasterJSON</servlet-name>
+    <servlet-class>com.kers.json.MasterJSON</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterJSON</servlet-name>
+    <url-pattern>*.json</url-pattern>
+  </servlet-mapping>
+  
+   <context-param> 
+      <description>Location to store uploaded file</description> 
+      <param-name>file-upload</param-name> 
+      <param-value>
+         C:\Users\Bronwen\my_git_repos\1810-oct22-java\Project1_Workspace\ExpenseReimbursementSystem\src\main\webapp\resources\uploadsc:\apache-tomcat-5.5.29\webapps\data\
+      </param-value> 
+   </context-param>
 </web-app>

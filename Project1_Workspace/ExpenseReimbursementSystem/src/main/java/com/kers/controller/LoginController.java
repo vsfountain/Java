@@ -11,7 +11,7 @@ public class LoginController {
 	static UserDAO userD = new UserDAOImpl();
 
 	public static String login(HttpServletRequest req) {
-		
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		if (!req.getMethod().equals("POST")) {
 			return "index.html";
 		}
@@ -22,11 +22,13 @@ public class LoginController {
 
 		if (u == null) {
 			return "index.html";
+			//return "badlogin.html";
 		} else {
-			req.getSession().setAttribute("loggedusername", username);
-			req.getSession().setAttribute("loggedpassword", password);
-
-			return "/home.kers";
+			//req.getSession().setAttribute("loggedusername", username);
+			//req.getSession().setAttribute("loggedpassword", password);
+			req.getSession().setAttribute("user", u);
+			System.out.println("user in logincontroller: " + u);
+			return "resources/html/home.html";
 			// return "badlogin.html";
 		}
 	}

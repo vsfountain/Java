@@ -1,24 +1,51 @@
 package com.kers.models;
 
-import java.awt.Image;
-import java.time.LocalDate;
+import java.sql.Blob;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Reimbursement {
 	private int id;
 	private double amount;
-	private LocalDate submitted;
-	private LocalDate resolved;
+	private Timestamp submitted;
+	private Timestamp resolved;
 	private String description;
-	private Image receipt;
-	private int author;
-	private int resolver;
-	private int status_id;
-	private int type_id;
+	private Blob receipt;
+	private String author;
+	private String resolver;
+	private String status;
+	private String type;
 
-	public Reimbursement(int id, double amount, LocalDate submitted, LocalDate resolved, String description,
-			Image receipt, int author, int resolver, int status_id, int type_id) {
+	
+
+	public Reimbursement(double amount, String description, Blob receipt, String author, String type) {
 		super();
-		this.id = id;
+		this.amount = amount;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.type = type;
+	}
+	
+	
+
+	public Reimbursement(double amount, Timestamp submitted, String description, Blob receipt, String author,
+			String status, String type) {
+		super();
+		this.amount = amount;
+		this.submitted = submitted;
+		this.description = description;
+		this.receipt = receipt;
+		this.author = author;
+		this.status = status;
+		this.type = type;
+	}
+
+
+
+	public Reimbursement(double amount, Timestamp submitted, Timestamp resolved, String description, Blob receipt,
+			String author, String resolver, String status, String type) {
+		super();
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
@@ -26,9 +53,11 @@ public class Reimbursement {
 		this.receipt = receipt;
 		this.author = author;
 		this.resolver = resolver;
-		this.status_id = status_id;
-		this.type_id = type_id;
+		this.status = status;
+		this.type = type;
 	}
+
+
 
 	public double getAmount() {
 		return amount;
@@ -38,19 +67,19 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public LocalDate getSubmitted() {
+	public Timestamp getSubmitted() {
 		return submitted;
 	}
 
-	public void setSubmitted(LocalDate submitted) {
+	public void setSubmitted(Timestamp submitted) {
 		this.submitted = submitted;
 	}
 
-	public LocalDate getResolved() {
+	public Timestamp getResolved() {
 		return resolved;
 	}
 
-	public void setResolved(LocalDate resolved) {
+	public void setResolved(Timestamp resolved) {
 		this.resolved = resolved;
 	}
 
@@ -62,51 +91,51 @@ public class Reimbursement {
 		this.description = description;
 	}
 
-	public Image getReceipt() {
+	public Blob getReceipt() {
 		return receipt;
 	}
 
-	public void setReceipt(Image receipt) {
+	public void setReceipt(Blob receipt) {
 		this.receipt = receipt;
 	}
 
-	public int getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(int author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public int getResolver() {
+	public String getResolver() {
 		return resolver;
 	}
 
-	public void setResolver(int resolver) {
+	public void setResolver(String resolver) {
 		this.resolver = resolver;
 	}
 
-	public int getStatus_id() {
-		return status_id;
+	public String getStatus() {
+		return status;
 	}
 
-	public void setStatus_id(int status_id) {
-		this.status_id = status_id;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
-	public int getType_id() {
-		return type_id;
+	public String getType() {
+		return type;
 	}
 
-	public void setType_id(int type_id) {
-		this.type_id = type_id;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	@Override
 	public String toString() {
-		return "Reimbursement [id=" + id + ", amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
+		return "Reimbursement [amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
 				+ ", description=" + description + ", receipt=" + receipt + ", author=" + author + ", resolver="
-				+ resolver + ", status_id=" + status_id + ", type_id=" + type_id + "]";
+				+ resolver + ", status=" + status + ", type=" + type + "]\n";
 	}
 
 }
