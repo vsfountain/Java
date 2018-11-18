@@ -21,6 +21,8 @@ public class Testing {
 		//assertNotNull("Should return from the Database",tester.getUserInfo());
 		//assertThat(tester.getUserInfo(), is(notNullValue()));
 		assertThat("No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
+		assertThat("Should be 1",tester.getUserInfo(username, password), is(1));
+		
 	}
 
 }

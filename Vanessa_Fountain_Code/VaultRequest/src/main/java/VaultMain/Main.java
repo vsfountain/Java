@@ -11,7 +11,11 @@ public class Main {
 		String username = "vsfount";
 		String password = "password";
 		
+		
+		//int user = dweller.getUserInfo(username,password);
+		
 		System.out.println(dweller.getUserInfo(username,password));
+		
 
 	}
 

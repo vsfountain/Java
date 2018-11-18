@@ -9,6 +9,15 @@ import java.sql.SQLException;
 import ModelLayer.VaultUser;
 
 public class LoginImplementation implements LoginInterface{
+	static {
+		// This is how we can make sure our tomcat knows what to do when calling DB
+		// make sure you add ojdbc to WEB-INF and add to build-path
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
 	private static String url="jdbc:oracle:thin:@revature.cakynjhhcvux.us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String user= "reimburse_admin";
 	private static String pass = "MyPassword";
