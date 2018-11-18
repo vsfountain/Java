@@ -20,8 +20,7 @@ public class LoginController {
 		System.out.println(dweller.getUserInfo(username, password));
 		if( userID != 1) {
 			return "Index.html";
-//		if(!(username.equals("mac") && password.equals("cheese"))) {
-//			return "Index.html";
+
 		}else {
 			req.getSession().setAttribute("loggedusername", username);
 			req.getSession().setAttribute("loggedpassword", password);

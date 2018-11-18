@@ -9,6 +9,7 @@ import org.junit.Test;
 import ServiceLayer.VaultServiceImplementation;
 
 public class JunitTesting {
+	
 	//JUNIT TESTING CLASS REQUIRES SETUP NOT USED IN MOCKITO TESTING CLASS
 	
 	@Test
@@ -17,8 +18,31 @@ public class JunitTesting {
 		VaultServiceImplementation tester = new VaultServiceImplementation();
 		String username = "vsfount";
 		String password = "password";
-		assertThat("No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
+		assertThat("Fails if 0, No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
 		assertThat("Should be 1",tester.getUserInfo(username, password), is(1));
 	}
+	
+	@Test
+	public void displayAllRequests(){
+		System.out.println("Currently testing view all requests");
+		VaultServiceImplementation tester = new VaultServiceImplementation();
+		System.out.println(tester.displayAllRequests());
+		assertThat("Fails if empty", tester.displayAllRequests(), is(not(0)));
+	}
+//	@SuppressWarnings("static-access")
+//	@Test
+//	public final void truth_empty_list() throws Throwable {
+//	final ArrayList<Object> lst = new ArrayList<Object>();
+//
+//	new Expectations() {
+//	Truth truth;
+//	{
+//	truth.valid((Collection<?>)lst); minTimes = 1;
+//	}
+//	};
+//
+//	boolean actual = Truth.valid(lst);
+//	assertThat(actual, is(false));
+//	}
 
 }

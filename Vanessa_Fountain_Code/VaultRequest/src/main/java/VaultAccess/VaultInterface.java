@@ -1,14 +1,17 @@
 package VaultAccess;
 
+import java.util.ArrayList;
 import ModelLayer.VaultReimbursement;
 import ModelLayer.VaultUser;
 
 public interface VaultInterface {
-	//CREATE REQ TO OPEN VAULT DOOR
+		//CREATE REQ TO OPEN VAULT DOOR
 		public void insertVaultDB(VaultReimbursement reqEntrance);
 		
 		//RETREIVE VAULT DOOR REQ BEFORE OPENING VAULT DOOR
 		public int retreiveReq(VaultReimbursement reimbAuthor);
+		//RETRIEVE ALL REQUESTS
+		public ArrayList<Object> retrieveAll();
 		//RETREIVE CHECK REQUESTORS INFORMATION
 		public int retreiveDweller(VaultUser ERSUsersID);
 		
