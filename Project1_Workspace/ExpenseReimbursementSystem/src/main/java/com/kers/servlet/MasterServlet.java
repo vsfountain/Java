@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kers.controller.RequestHelper;
-import com.kers.json.JSONRequestHelper;
 
 /**
  * Servlet implementation class MasterServlet

@@ -13,7 +13,7 @@ import com.kers.models.Reimbursement;
 import com.kers.models.User;
 
 public class RequestHelper {
-	public static String process(HttpServletRequest req) {
+	public static String process(HttpServletRequest req) throws JsonProcessingException, IOException {
 		System.out.println(req.getRequestURI());
 
 		switch (req.getRequestURI()) {
@@ -21,6 +21,8 @@ public class RequestHelper {
 			return LoginController.login(req);
 		case "/ExpenseReimbursementSystem/home.kers":
 			return HomeController.processReimbursement(req);
+		case "/ExpenseReimbursementSystem/update.kers":
+			return ReimbursementController.alterReimbursements(req);
 		default:
 			return "resources/html/badlogin.html";
 		}
@@ -31,15 +33,11 @@ public class RequestHelper {
 		System.out.println(req.getRequestURI());
 		switch (req.getRequestURI()) {
 		case "/ExpenseReimbursementSystem/home/home.html":
-			User u = (User) req.getSession().getAttribute("user");
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(u));
+			ReimbursementController.getUser(req, resp);
 			break;
 	
 		case "/ExpenseReimbursementSystem/home/ownreimb.html":
-			@SuppressWarnings("unchecked") 
-			List<Reimbursement> rList = (List<Reimbursement>) req.getSession().getAttribute("reimbursementlist");
-			System.out.println("requesthelper retrieve rLIST: " + rList);
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(rList));
+			ReimbursementController.getList(req, resp);
 			break;
 
 		default:

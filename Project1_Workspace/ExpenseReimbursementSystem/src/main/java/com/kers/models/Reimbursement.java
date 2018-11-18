@@ -2,7 +2,7 @@ package com.kers.models;
 
 import java.sql.Blob;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
 
 public class Reimbursement {
 	private int id;
@@ -16,8 +16,7 @@ public class Reimbursement {
 	private String status;
 	private String type;
 
-	
-
+	// constructor for making reimbursement
 	public Reimbursement(double amount, String description, Blob receipt, String author, String type) {
 		super();
 		this.amount = amount;
@@ -26,12 +25,12 @@ public class Reimbursement {
 		this.author = author;
 		this.type = type;
 	}
-	
-	
 
-	public Reimbursement(double amount, Timestamp submitted, String description, Blob receipt, String author,
+	// constructor for retrieving reimbursement that is pending
+	public Reimbursement(int id, double amount, Timestamp submitted, String description, Blob receipt, String author,
 			String status, String type) {
 		super();
+		this.id = id;
 		this.amount = amount;
 		this.submitted = submitted;
 		this.description = description;
@@ -40,12 +39,12 @@ public class Reimbursement {
 		this.status = status;
 		this.type = type;
 	}
-
-
-
-	public Reimbursement(double amount, Timestamp submitted, Timestamp resolved, String description, Blob receipt,
+	
+	// constructor for retrieving reimbursement for completed transactions
+	public Reimbursement(int id, double amount, Timestamp submitted, Timestamp resolved, String description, Blob receipt,
 			String author, String resolver, String status, String type) {
 		super();
+		this.id = id;
 		this.amount = amount;
 		this.submitted = submitted;
 		this.resolved = resolved;
@@ -56,19 +55,25 @@ public class Reimbursement {
 		this.status = status;
 		this.type = type;
 	}
-
-
-
-	public double getAmount() {
-		return amount;
+	
+	public int getId() {
+		return id;
 	}
 
+	public String getAmount() {
+		return "$"+String.format( "%.2f", amount );
+	}
+
+	public double getAmountDouble() {
+		return amount;
+	}
+	
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 
 	public String getSubmitted() {
-		return ""+submitted;
+		return "" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(submitted);
 	}
 
 	public void setSubmitted(Timestamp submitted) {
@@ -76,7 +81,11 @@ public class Reimbursement {
 	}
 
 	public String getResolved() {
-		return ""+resolved;
+		if (resolved != null) {
+			return "" + resolved;
+		} else {
+			return null;
+		}
 	}
 
 	public void setResolved(Timestamp resolved) {
@@ -133,9 +142,11 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved 
+		return "Reimbursement [id=" + id + ", amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
 				+ ", description=" + description + ", receipt=" + receipt + ", author=" + author + ", resolver="
-				+ resolver + ", status=" + status + ", type=" + type + "]\n";
+				+ resolver + ", status=" + status + ", type=" + type + "]";
 	}
+
+	
 
 }

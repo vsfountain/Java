@@ -15,4 +15,6 @@ public interface ReimbursementDAO {
 	
 	public Reimbursement updateReimbursement(Reimbursement r);
 	public Reimbursement deleteReimbursement(Reimbursement r);
+	
+	public int updateReimbursementById(int id, String approved);
 }

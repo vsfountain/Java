@@ -33,7 +33,7 @@ function loadTable() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) {
 			let temp = xhr.responseText;
-			console.log(temp);
+			// console.log(temp);
 			temp1 = JSON.parse(temp);
 			addTable(temp1, table);
 
@@ -49,7 +49,10 @@ function loadTable() {
 
 function addTable(list, table) {
 	for (i = 0; i < list.length; i++) {
-		let row = table.insertRow(i+1);
+
+		let checkbox = document.createElement("A");
+		checkbox.type = "checkbox";
+		let row = table.insertRow(i + 1);
 		let cell0 = row.insertCell(0);
 		let cell1 = row.insertCell(1);
 		let cell2 = row.insertCell(2);
@@ -59,16 +62,22 @@ function addTable(list, table) {
 		let cell6 = row.insertCell(6);
 		let cell7 = row.insertCell(7);
 		let cell8 = row.insertCell(8);
+		let cell9 = row.insertCell(9);
+		let cell10 = row.insertCell(10);
 
-		cell0.innerHTML = list[i].author;
-		cell1.innerHTML = list[i].amount;
-		cell2.innerHTML = list[i].submitted;
-		cell3.innerHTML = list[i].resolved;
-		cell4.innerHTML = list[i].description;
-		cell5.innerHTML = list[i].receipt;
-		cell6.innerHTML = list[i].resolver;
-		cell7.innerHTML = list[i].status;
-		cell8.innerHTML = list[i].type;
+		cell0.innerHTML = list[i].id;
+		cell1.innerHTML = list[i].author;
+		cell2.innerHTML = list[i].amount;
+		cell3.innerHTML = list[i].submitted;
+		cell4.innerHTML = list[i].resolved;
+		cell5.innerHTML = list[i].description;
+		cell6.innerHTML = list[i].receipt;
+		cell7.innerHTML = list[i].resolver;
+		cell8.innerHTML = list[i].status;
+		cell9.innerHTML = list[i].type;
+		if (list[i].status == 'Pending') {
+			cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='+ list[i].id + '>';
+		}
 	}
 
 }
