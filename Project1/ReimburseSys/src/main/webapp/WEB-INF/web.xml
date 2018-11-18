@@ -3,16 +3,43 @@
   <display-name>ReimburseSys</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-
   </welcome-file-list>
-  	<servlet>
-		<description></description>
-		<display-name>MasterJson</display-name>
-		<servlet-name>MasterJson</servlet-name>
-		<servlet-class>com.jwjibilian.json.MasterJson</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MasterJson</servlet-name>
-		<url-pattern>*.json</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <display-name>MasterJson</display-name>
+    <servlet-name>MasterJson</servlet-name>
+    <servlet-class>com.jwjibilian.json.MasterJson</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterJson</servlet-name>
+    <url-pattern>*.json</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.jwjibilian.servlets.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/logedin</url-pattern>
+    <url-pattern>/getUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>MasterServlet</display-name>
+    <servlet-name>MasterServlet</servlet-name>
+    <servlet-class>com.jwjibilian.servlets.MasterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MasterServlet</servlet-name>
+    <url-pattern>/MasterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReimburseServlet</display-name>
+    <servlet-name>ReimburseServlet</servlet-name>
+    <servlet-class>com.jwjibilian.servlets.ReimburseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReimburseServlet</servlet-name>
+    <url-pattern>/getReimburse</url-pattern>
+  </servlet-mapping>
 </web-app>

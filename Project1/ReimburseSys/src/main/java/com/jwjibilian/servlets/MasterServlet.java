@@ -1,12 +1,12 @@
 package com.jwjibilian.servlets;
-
+import com.jwjibilian.controller.LoginHelper;
+import com.jwjibilian.json.*;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.jwjibilian.controller.RequestHelper;
 
 /**
  * Servlet implementation class MasterServlet
@@ -38,8 +38,7 @@ public class MasterServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req,
 			HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher(RequestHelper.process(req))
-		.forward(req, resp);
+		LoginHelper.process(req, resp);
 	}
 
 }

@@ -115,7 +115,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE TRIGGER ERS_USER_INSERT
+CREATE OR REPLACE TRIGGER REIMBURSEMENT_INSERT
 BEFORE INSERT
 ON ERS_REIMBURSEMENT
 FOR EACH ROW
@@ -126,6 +126,7 @@ BEGIN
   END IF;
 END;
 /
+
 
 
 --
@@ -150,6 +151,26 @@ END;
 
 
 INSERT INTO ers_users VALUES (null, 'jwjibilian', 'scout', 'Joshua', 'Jibilian', 'jwjibilian@', 1);
+INSERT INTO ers_users VALUES (null, 'deinstaller', 'pass', 'William', 'Jibilian', 'wjibilian@', 2);
+INSERT INTO ers_users VALUES (null, 'Bjorn', 'bear', 'Jeff', 'Smith', 'jsmith@', 2);
+
+INSERT INTO ers_reimbursement VALUES (null, 125.28, '16-nov-2018', null, 'I bougt a thing', null, 600022, null,1,2);
+INSERT INTO ers_reimbursement VALUES (null, 1000.28, '10-nov-2018', null, 'I bougt a thing', null, 600022, null,1,3);
+INSERT INTO ers_reimbursement VALUES (null, 99.28, '10-nov-2018', null, 'Another thing', null, 600021, null,1,2);
+
+
+UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = null WHERE REIMB_ID = 100001;
+commit;
+
+SELECT REIMB_SUBMITTED, REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS, REIMB_RECEIPT, REIMB_DESCRIPTION
+FROM
+ERS_REIMBURSEMENT re
+RIGHT JOIN ERS_REIMBURSEMENT_STATUS status on re.REIMB_STATUS_ID = status.REIMB_STATUS_ID
+RIGHT JOIN ERS_REIMBURSEMENT_TYPE reType on re.REIMB_TYPE_ID = reType.REIMB_TYPE_ID
+WHERE re.REIMB_AUTHOR = 600022;
+
+
+
 INSERT INTO ers_user_roles VALUES (1, 'Admin');
 INSERT INTO ers_user_roles VALUES (2, 'Client');
 --LODGING, TRAVEL, FOOD, or OTHER.

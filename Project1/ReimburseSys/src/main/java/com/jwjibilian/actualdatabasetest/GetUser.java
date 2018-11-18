@@ -1,10 +1,5 @@
 package com.jwjibilian.actualdatabasetest;
 
-import com.jwjibilian.controller.LoginController;
-import com.jwjibilian.model.user.User;
-import com.jwjibilian.services.UserService;
-import com.jwjibilian.services.UserServiceImpl;
-
 public class GetUser {
 	public static void main(String[] arg) {
 		/*LoginController cont = new LoginController();*/

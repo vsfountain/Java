@@ -9,7 +9,7 @@ import com.jwjibilian.model.user.Client;
 
 public class Reimbursement {
 	private int id;
-	private int ammount;
+	private double ammount;
 	private LocalDate timeSubmitted;
 	private LocalDate timeResolved;
 	private String description;
@@ -27,7 +27,7 @@ public class Reimbursement {
 
 
 
-	public Reimbursement(int id, int ammount, LocalDate timeSubmitted, LocalDate timeResolved, String description,
+	public Reimbursement(int id, double ammount, LocalDate timeSubmitted, LocalDate timeResolved, String description,
 			Image recipit, Client author, Admin resolver, String status, String type) {
 		super();
 		this.id = id;
@@ -56,13 +56,13 @@ public class Reimbursement {
 
 
 
-	public int getAmmount() {
+	public double getAmmount() {
 		return ammount;
 	}
 
 
 
-	public void setAmmount(int ammount) {
+	public void setAmmount(double ammount) {
 		this.ammount = ammount;
 	}
 
@@ -171,24 +171,6 @@ public class Reimbursement {
 				+ ", author=" + author + ", resolver=" + resolver + ", status=" + status + ", type=" + type + "]";
 	}
 
-
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ammount;
-		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
-		result = prime * result + ((recipit == null) ? 0 : recipit.hashCode());
-		result = prime * result + ((resolver == null) ? 0 : resolver.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((timeResolved == null) ? 0 : timeResolved.hashCode());
-		result = prime * result + ((timeSubmitted == null) ? 0 : timeSubmitted.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
-	}
 
 
 

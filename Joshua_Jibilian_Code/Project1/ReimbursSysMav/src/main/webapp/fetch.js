@@ -6,7 +6,7 @@ window.onload = function() {
 //once the value has returned all subscribers
 //are notified of the returned value.
 function getSW() {
-	//console.log('in getsw')
+	console.log('in getsw')
 	// getting field value
 	let uName = document.getElementById('field1').value;
 	let pWord = document.getElementById('field2').value;

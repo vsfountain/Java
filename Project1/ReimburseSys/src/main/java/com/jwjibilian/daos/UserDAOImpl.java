@@ -1,6 +1,5 @@
 package com.jwjibilian.daos;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +26,6 @@ public class UserDAOImpl implements UserDAO {
 		ResultSet result = null;
 		
 		User toReturn = null;
-		String hashedPassword = null;
 		String userType = null;
 		
 		String sqlHash = " SELECT ERS_USERS_ID, ERS_USERNAME, ERS_PASSWORD, USER_FIRST_NAME, " + 
