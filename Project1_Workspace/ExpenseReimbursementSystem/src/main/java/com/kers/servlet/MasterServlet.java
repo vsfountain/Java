@@ -36,6 +36,7 @@ public class MasterServlet extends HttpServlet {
 		//System.out.println(contextEx + " " + configEx);
 		//JSONRequestHelper.process(request, response);
 		//request.getRequestDispatcher(RequestHelper.retrieve(req, resp);)
+		//System.out.println(request.getRequestURI());
 		RequestHelper.retrieve(request, response);
 		PrintWriter out = response.getWriter();
 	}

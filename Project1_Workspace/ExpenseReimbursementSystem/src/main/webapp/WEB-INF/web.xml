@@ -14,6 +14,7 @@
     <servlet-name>MasterServlet</servlet-name>
     <url-pattern>/MasterServlet</url-pattern>
     <url-pattern>*.kers</url-pattern>
+    <url-pattern>/home/*</url-pattern>
   </servlet-mapping>
   
   <servlet>

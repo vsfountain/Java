@@ -28,7 +28,7 @@ public class LoginController {
 			//req.getSession().setAttribute("loggedpassword", password);
 			req.getSession().setAttribute("user", u);
 			System.out.println("user in logincontroller: " + u);
-			return "resources/html/home.html";
+			return "home.html";
 			// return "badlogin.html";
 		}
 	}

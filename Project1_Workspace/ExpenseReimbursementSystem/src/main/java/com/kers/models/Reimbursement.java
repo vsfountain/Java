@@ -67,16 +67,16 @@ public class Reimbursement {
 		this.amount = amount;
 	}
 
-	public Timestamp getSubmitted() {
-		return submitted;
+	public String getSubmitted() {
+		return ""+submitted;
 	}
 
 	public void setSubmitted(Timestamp submitted) {
 		this.submitted = submitted;
 	}
 
-	public Timestamp getResolved() {
-		return resolved;
+	public String getResolved() {
+		return ""+resolved;
 	}
 
 	public void setResolved(Timestamp resolved) {
@@ -133,7 +133,7 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved
+		return "Reimbursement [amount=" + amount + ", submitted=" + submitted + ", resolved=" + resolved 
 				+ ", description=" + description + ", receipt=" + receipt + ", author=" + author + ", resolver="
 				+ resolver + ", status=" + status + ", type=" + type + "]\n";
 	}

@@ -2,7 +2,7 @@ package com.kers.controller;
 
 import java.sql.Blob;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ import com.kers.models.User;
 
 public class HomeController {
 	public static String home(HttpServletRequest req) {
-		return "resources/html/home.html";
+		return "home.html";
 	}
 
 	public static String processReimbursement(HttpServletRequest req) {
@@ -34,12 +34,9 @@ public class HomeController {
 		Reimbursement r = new Reimbursement(amount, description, receipt, author, type);
 		ReimbursementDAO rdao = new ReimbursementDAOImpl();
 		rdao.insertReimbursement(r);
-		
-		req.getSession().setAttribute("type", type);
-		req.getSession().setAttribute("amount", amount);
-		req.getSession().setAttribute("receipt", receipt);
-		req.getSession().setAttribute("description", description);
-		req.getSession().setAttribute("dateSubmitted", dateSubmitted);
-		return "resources/html/home.html";
+		List<Reimbursement> temp = rdao.selectAllReimbursements();
+		System.out.println("process reimbursements: " + temp);
+		req.getSession().setAttribute("reimbursementlist", temp);
+		return "home.html";
 	}
 }
