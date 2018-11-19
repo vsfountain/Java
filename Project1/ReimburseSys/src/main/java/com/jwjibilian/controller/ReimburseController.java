@@ -12,6 +12,8 @@ import com.jwjibilian.model.reimbursement.Reimbursement;
 import com.jwjibilian.model.user.User;
 import com.jwjibilian.services.ReimbursementService;
 import com.jwjibilian.services.ReimbursementServiceImpl;
+import com.jwjibilian.services.UserService;
+import com.jwjibilian.services.UserServiceImpl;
 
 public class ReimburseController {
 
@@ -23,5 +25,23 @@ public class ReimburseController {
 		System.out.println(items);
 		MasterJson json = new MasterJson();
 		json.writeJsonToResp(resp, items);
+	}
+	
+	static public boolean sendReimbursementRequest(HttpServletRequest req, HttpServletResponse resp) {
+		ReimbursementService service = new ReimbursementServiceImpl();
+		User user = (User) req.getSession().getAttribute("user");
+		System.out.println(user);
+		service.addReimbursement(user.getId(), Double.parseDouble(req.getParameter("ammount")), req.getParameter("type")
+				, req.getParameter("desc"));
+		return false;
+		
+	}
+	static public void getAllUsersReimburse(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		ArrayList<User> allThem = new ArrayList<User>();
+		UserService service = new UserServiceImpl();
+		allThem = service.getAllUserReimbursements();
+		MasterJson json = new MasterJson();
+		json.writeJsonToResp(resp, allThem);
+		
 	}
 }

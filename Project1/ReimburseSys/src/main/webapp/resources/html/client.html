@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Client</title>
+	<meta charset="ISO-8859-1">
+	<title>Client</title>
 </head>
+
 <body>
 	<h6>CLIENT</h6>
-	<div id='user'></div>
+	<div id="user"></div>
+	<form id="reimburseForm" method="POST" action="sendReimburse">
+		Ammount:
+		<input id="ammount" name="ammount" />
+		<br border="1px solid black">
+		<input type="radio" name="type" value="Lodging"> Lodging
+		<input type="radio" name="type" value="Travel"> Travel
+		<input type="radio" name="type" value="Food"> Food
+		<input type="radio" name="type" value="Other"> Other
+		<br>
+		<textarea id="desc" name="desc" rows="4" cols="50"></textarea>
+		<br>
+		<input type="submit" value="sumbit" />
+	</form>
+	<div>
+		<table id="reimburseTable" border="1px solid black">
+			<tr>
+				<!-- REIMB_ID, REIMB_SUBMITTED, REIMB_RESOLVED, 
+				REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS,
+				 REIMB_RECEIPT, REIMB_DESCRIPTION -->
+				<th>Id</th>
+				<th>Date Submitted</th>
+				<th>Date Resolved</th>
+				<th>Ammount</th>
+				<th>Type</th>
+				<th>Status</th>
+				<th>Recipt</th>
+				<th>Description</th>
+			</tr>
+		</table>
 
-	<div></div>
+	</div>
+
 </body>
-<script type="text/javascript" src="resources/js/fetch.js"></script>
+<script type="text/javascript" src="resources/js/clientScreen.js"></script>
+<!-- <script type="text/javascript" src="resources/js/sendReimbursment.js"></script> -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
 </html>

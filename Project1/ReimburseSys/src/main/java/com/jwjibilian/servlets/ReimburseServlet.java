@@ -1,6 +1,8 @@
 package com.jwjibilian.servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,14 +33,17 @@ public class ReimburseServlet extends HttpServlet {
 		
 		ReimburseHelper.process(request, response);
 		
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		ReimburseHelper.process(request, response);
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/resources/html/client.html");
+	    dispatcher.forward(request, response);
+		
 	}
 
 }

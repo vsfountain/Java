@@ -69,6 +69,9 @@ public class User {
 	public void setReiburse(ArrayList<Reimbursement> reiburse) {
 		this.reiburse = reiburse;
 	}
+	public void addReimbursment(Reimbursement toAdd) {
+		reiburse.add(toAdd);
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", password=" + password + ", firstName=" + firstName

@@ -41,5 +41,7 @@
   <servlet-mapping>
     <servlet-name>ReimburseServlet</servlet-name>
     <url-pattern>/getReimburse</url-pattern>
+    <url-pattern>/sendReimburse</url-pattern>
+    <url-pattern>/getAll</url-pattern>
   </servlet-mapping>
 </web-app>

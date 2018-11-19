@@ -25,7 +25,7 @@ public class LoginController {
 		System.out.println(user);
 		if (user == null) {
 			req.getSession().setAttribute("password", "");
-			return "index.html";
+			return "/index.html";
 
 		} else {
 			req.getSession().setAttribute("user", user);

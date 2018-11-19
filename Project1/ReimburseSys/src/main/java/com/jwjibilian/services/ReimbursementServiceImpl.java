@@ -15,5 +15,9 @@ public class ReimbursementServiceImpl implements ReimbursementService{
 	public ArrayList<Reimbursement> getUserReimbursments(User u) {
 		return dao.getUserReimbursments(u);
 	}
+	@Override
+	public boolean addReimbursement(int userId, double ammount, String type, String desc) {
+		return dao.addReimbursement(userId, ammount, type, desc);
+	}
 
 }

@@ -6,7 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import com.jwjibilian.controller.DBDriver;
@@ -59,6 +63,45 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		}
 		//System.out.println(toReturn);
 		return toReturn;
+	}
+
+	@Override
+	public boolean addReimbursement(int userId, double ammount, String type, String desc) {
+		String sql = "INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), "
+				+ "null, ?, null, ?, null, 1, ?)";
+		Instant time = Instant.now();
+		Timestamp ts = java.sql.Timestamp.from( time );
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss") .withZone(ZoneId.systemDefault());
+		String datetime = formatter.format(time);
+		System.out.println(datetime);
+		int typeNum = 4;
+		if(type.equals("Lodging")) {
+			typeNum = 1;
+		} else if(type.equals("Travel")) {
+			typeNum = 2;
+			
+		} else if(type.equals("Food")) {
+			typeNum = 3;
+		} 
+		
+		try (Connection conn = orclDriver.connect()) {
+			PreparedStatement cs = conn.prepareStatement(sql);
+			cs.setDouble(1, ammount);
+			cs.setString(2, datetime);
+			cs.setString(3, desc);
+			cs.setInt(4, userId);
+			cs.setInt(5, typeNum);
+			int result = cs.executeUpdate();
+			if(result == 1) {
+				return true;
+			}
+			
+		} catch (SQLException e) {
+				
+				e.printStackTrace();
+				return false;
+			}
+		return false;
 	}
 
 }
