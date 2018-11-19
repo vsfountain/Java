@@ -82,7 +82,7 @@ public class Reimbursement {
 
 	public String getResolved() {
 		if (resolved != null) {
-			return "" + resolved;
+			return "" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(resolved);
 		} else {
 			return null;
 		}

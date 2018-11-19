@@ -76,7 +76,8 @@ function addTable(list, table) {
 		cell8.innerHTML = list[i].status;
 		cell9.innerHTML = list[i].type;
 		if (list[i].status == 'Pending') {
-			cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='+ list[i].id + '>';
+			cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='
+					+ list[i].id + '>';
 		}
 	}
 

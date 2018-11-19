@@ -101,18 +101,23 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	}
 
 	@Override
-	public int updateReimbursementById(int id, String decision) {
+	public int updateReimbursementById(int id, String decision, String resolver) {
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
-			String sql = "UPDATE ers_reimbursement SET reimb_status_id = ? WHERE reimb_id = ?";
+			String sql = "{ call update_reimb_status(?,?,?) }";
 
 			PreparedStatement ps = con.prepareStatement(sql);
 			System.out.println("DECISION: " + decision);
+			/*
+			 * if (decision.equals("approve")) { ps.setInt(1, 102); } else { ps.setInt(1,
+			 * 103); }
+			 */
+			ps.setInt(1, id);
 			if (decision.equals("approve")) {
-				ps.setInt(1, 102);
+				ps.setString(2, "Approved");
 			} else {
-				ps.setInt(1, 103);
+				ps.setString(2, "Denied");
 			}
-			ps.setInt(2, id);
+			ps.setString(3, resolver);
 
 			return ps.executeUpdate();
 
