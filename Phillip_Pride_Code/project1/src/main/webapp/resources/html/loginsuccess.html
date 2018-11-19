@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Successful Login</title>
+<link rel="stylesheet" type="text/css" href="resources/css/mystyle.css"/>
+</head>
+<body>
+<h2>Login succeeded</h2>
+<span id="welcome">Hello</span>
+</body>
+
+<script>
+	let message = document.getElementById('welcome');
+	message.innerHTML = "Welcome User!";
+	
+	var session ='<%= Session["username"].toString()%>';
+	console.log(session);
+	
+</script>
+</html>

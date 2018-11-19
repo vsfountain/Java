@@ -1,0 +1,43 @@
+
+body{
+	
+	background-image: url("images/dm1.png");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-color: rgb(0, 0, 30);
+	background-position: top;
+	height: 800px;
+	
+}
+
+.form-container{
+	display: flex;
+	flex-direction: center;
+	justify-content: center;
+	border: 3px solid purple;
+	text-align: center;
+	background-color: rgba(210, 180, 99, .5);
+	color: white;
+	
+}
+
+
+form{
+	border: 2px solid red;
+	padding: 10px;
+	margin: 10px;
+	text-color: white;
+	box-shadow: 0px 0px 34px 12px rgba(71,71,71,1);
+	
+}
+
+input{
+	margin: 3px;
+}
+
+h2{
+	color:white;
+}
+span{
+	color: white;
+}
