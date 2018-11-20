@@ -1,0 +1,29 @@
+package VaultLogin;
+
+import ModelLayer.VaultUser;
+
+public class LoginImplementation implements LoginInterface{
+
+	public void addNewDweller(VaultUser newDweller) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int checkInfo(String username, String password) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void changeInfo(VaultUser VaultUsersID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteDwellerAccess(VaultUser dwellerRelease) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+}

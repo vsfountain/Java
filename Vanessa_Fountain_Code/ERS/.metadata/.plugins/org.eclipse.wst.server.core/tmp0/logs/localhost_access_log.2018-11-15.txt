@@ -1,0 +1,2 @@
+127.0.0.1 - - [15/Nov/2018:23:53:46 -0500] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [15/Nov/2018:23:53:48 -0500] "GET /ERSFrontEnd/WEB-INF/classes/ERSModelLayer/ERSUser.java HTTP/1.1" 404 1047

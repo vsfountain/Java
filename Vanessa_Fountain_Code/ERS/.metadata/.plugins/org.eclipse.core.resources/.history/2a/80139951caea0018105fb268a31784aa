@@ -1,0 +1,11 @@
+package ServiceLayer;
+
+public class VaultServiceImplementation implements VaultService{
+
+	@Override
+	public int getUserInfo() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

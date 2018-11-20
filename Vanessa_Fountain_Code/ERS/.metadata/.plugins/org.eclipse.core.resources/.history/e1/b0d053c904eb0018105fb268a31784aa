@@ -1,0 +1,70 @@
+package testing;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import ServiceLayer.VaultServiceImplementation;
+import Servlets.MasterServlet;
+
+public class Testing{
+	
+//	@Test
+//	public void getUsername() {
+//		System.out.print("Currently testing username set");
+//		VaultServiceImplementation tester = new VaultServiceImplementation();
+//		String username = "vsfount";
+//		String password = "password";
+//		//assertNull(null, tester.getUserInfo());
+//		//assertNotNull("Should return from the Database",tester.getUserInfo());
+//		//assertThat(tester.getUserInfo(), is(notNullValue()));
+//		assertThat("No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
+//		assertThat("Should be 1",tester.getUserInfo(username, password), is(1));
+//		
+//	}
+	
+	@Mock
+	HttpServletRequest request;
+	
+	@Mock
+	HttpServletResponse response;
+	
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+	}
+	
+	 @Test
+	 public void testServlet() throws Exception {
+		 when(request.getParameter("fn")).thenReturn("Vinod");
+		 when(request.getParameter("ln")).thenReturn("Kashyap");
+		 
+		 StringWriter sw = new StringWriter();
+		 PrintWriter pw = new PrintWriter(sw);
+		 
+		 when(response.getWriter()).thenReturn(pw);
+		 
+		 MasterServlet testMyServlet =new MasterServlet();
+		 testMyServlet.doPost(request, response);
+		 String result = sw.getBuffer().toString().trim();
+		 assertEquals(result, new String("Full Name: Vinod Kashyap"));
+	 
+
+	 }
+
+}

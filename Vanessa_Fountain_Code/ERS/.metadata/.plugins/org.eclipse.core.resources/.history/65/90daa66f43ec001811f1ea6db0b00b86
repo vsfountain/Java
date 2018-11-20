@@ -1,0 +1,66 @@
+$('main').on('focus', 'li', function() {
+    $this = $(this);
+    $this.addClass('active').siblings().removeClass();
+    $this.closest('main').scrollTop($this.index() * $this.outerHeight());
+}).on('keydown', 'li', function(e) {
+    $this = $(this);
+    if (e.keyCode == 40) 
+    {$this.next().focus();return false;}
+    else if (e.keyCode == 38) 
+    {$this.prev().focus(); return false;
+    }
+}).find('li').first().focus();
+
+
+//when page loads all HTML elements
+window.onload = function(){
+	document.getElementById("swSubmit")
+		.addEventListener('click', getSW);
+}
+
+
+function singlePageTable(){	
+	
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		
+		if(xhttp.readyState == 4 && xhttp.status==200){
+			//console.log('ready state:'+ xhttp.readyState);
+			//console.log(xhttp.responseText);
+			//parse changes a JSON into a javascript object
+			//JSON.stringify() does the opposite
+			let sw = JSON.parse(xhttp.responseText);
+			//console.log(sw);
+			setValues(sw);
+		}
+	}
+	
+	//create a connection
+	//(http method, url, boolean asynch or not)
+	xhttp.open("GET", 'reqTable.json');
+	//this begins the request process
+	xhttp.send(); //optional string argument
+				// used with http methods other than GET
+	
+	//console.log(xhttp);
+}
+
+function setValues(sw){
+	//This populates table by setvalue
+	console.log('Object should be here');
+	document.getElementById("swName").innerHTML = sw.name;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

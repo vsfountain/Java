@@ -1,0 +1,62 @@
+package testing;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import ServiceLayer.VaultServiceImplementation;
+import Servlets.MasterServlet;
+
+public class Testing{
+	
+//	@Test
+//	public void getUsername() {
+//		System.out.print("Currently testing username set");
+//		VaultServiceImplementation tester = new VaultServiceImplementation();
+//		String username = "vsfount";
+//		String password = "password";
+//		//assertNull(null, tester.getUserInfo());
+//		//assertNotNull("Should return from the Database",tester.getUserInfo());
+//		//assertThat(tester.getUserInfo(), is(notNullValue()));
+//		assertThat("No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
+//		assertThat("Should be 1",tester.getUserInfo(username, password), is(1));
+//		
+//	}
+	
+	@Test
+    public void testServlet() throws Exception {
+        HttpServletRequest request = mock(HttpServletRequest.class);       
+        HttpServletResponse response = mock(HttpServletResponse.class);
+        MasterServlet testServ = mock(MasterServlet.class);
+
+        Mockito.when(request.getParameter("username")).thenReturn("vsfount");
+        Mockito.when(request.getParameter("password")).thenReturn("password");
+
+        StringWriter stringWriter = new StringWriter();
+        PrintWriter writer = new PrintWriter(stringWriter);
+        Mockito.when(response.getWriter()).thenReturn(writer);
+        
+        testServ.doGet(request, response);
+    }
+	
+	
+
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Vault Login</title>
+
+<!--<link rel="stylesheet" type="text/css" href="resources/css/mystyles.css"/>-->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- boostrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+</head>
+
+<body>
+	<div class="login-container">
+		<h3>Access the Vault</h3>
+		
+		<form method="POST" action="login.vault867">
+		<!-- You can see the parameters in the url if you change this to a GET -->
+			<p>Please Log In To Request Access To This Vault</p>
+			<input placeholder="enter username" name="username"/>
+			<br>
+			<input placeholder="enter password" name="password"/>
+			<br>
+			<input type="submit" value="Login"/>
+		</form>
+		
+		<form method="post" action="naughty.vault">
+			<p>A URI that the request helper doesn't recognize</p>
+			<input type="submit" value="Naughty Button"/>
+		</form>
+	</div>
+
+</body>
+</html>

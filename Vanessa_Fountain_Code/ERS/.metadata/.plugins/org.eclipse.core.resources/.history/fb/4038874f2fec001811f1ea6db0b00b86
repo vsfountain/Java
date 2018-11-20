@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<title>Vault Login</title>
+
+<!--<link rel="stylesheet" type="text/css" href="resources/css/mystyles.css"/>-->
+<link href="resources/css/bootstrap.min.css" rel="stylesheet" class="">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300|Montserrat:400,700" rel="stylesheet" type="text/css">
+
+<link href="resources/css/styles.css" rel="stylesheet">
+
+
+<link href="resources/css/font-awesome.min.css" rel="stylesheet">
+<style id="__web-inspector-hide-shortcut-style__" type="text/css">
+.__web-inspector-hide-shortcut__, .__web-inspector-hide-shortcut__ *, .__web-inspector-hidebefore-shortcut__::before, .__web-inspector-hideafter-shortcut__::after
+{
+    visibility: hidden !important;
+}
+</style>
+
+	
+</head>
+	<header class="navbar navbar-fixed-top navbar-default shrink" role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false">
+            <i class="fa fa-bars"></i>
+          </button>
+          <a class="navbar-brand" href="#">Vault867</a>
+        </div>
+        <nav class="collapse navbar-collapse" id="collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#"><button type="button" class="btn btn-primary navbar-btn">Request Access</button></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+</head>
+
+<body>
+<main role="main">
+      <div class="jumbotron">
+        
+          <div class="row">
+            <div class="col-md-1">
+              <div class="text-uppercase">
+                <h3>Access the Vault</h3>
+				<form method="POST" action="login.vault867">
+				<!-- You can see the parameters in the url if you change this to a GET -->
+					<p class ="text-muted">Please Log In To Request Access To This Vault</p>
+					<input placeholder="enter username" name="username"/>
+					<br>
+					<input placeholder="enter password" name="password"/>
+					<br>
+					<input type="submit" class="btn btn-default" value="Login"/>
+	            	<div class="col-md-7">
+	              <figure><img src="https://www.geek.com/wp-content/uploads/2015/12/Vault_111-01-625x352.png" alt="" class=hide></figure>
+					</div>
+				</form>
+          	</div>
+       	 </div>
+      </div>
+</main>
+
+</body>
+</html>

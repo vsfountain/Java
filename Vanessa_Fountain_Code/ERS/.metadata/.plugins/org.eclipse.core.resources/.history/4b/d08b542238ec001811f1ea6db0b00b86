@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="../css/ReqForm.css"/>
+ 
+
+</head>
+<body>
+
+
+<header><p>Advanced Vault Access Options</p></header>
+<main>
+  <div class="scan"></div>
+  <p>Choose Advanced Options for: <b>Vault Access</b></p><p>(Use the arrow keys to highlight your choice.)</p>
+  <ul><li tabindex="0"><a href="#">View All Requests</a></li>
+    
+  <li tabindex="1"><a href="#">View Pending Requests</a></li>
+  <li tabindex="2"><a href="#">Safe Mode with Networking</a></li>
+  <li tabindex="3"><a href="#">Safe Mode with Command Prompt</a></li>
+  <li tabindex="4"><a href="#"></a></li>
+  <li tabindex="5"><a href="#">Enable low-resolution video (640x480)</a></li>
+  <li tabindex="6"><a href="#">Last Known Good Configuration (advanced)</a></li>
+  <li tabindex="7"><a href="#">Directory Services Restore Mode</a></li>
+  <li tabindex="8"><a href="#">Debugging Mode</a></li>
+  <li tabindex="9"><a href="#">Disable automatic restart on system failure</a></li>
+  <li tabindex="10"><a href="#">Disable Driver Signature Enforcement</a></li>
+
+  <li tabindex="11"><a href="#">Start Windows Normally</a></li>
+</ul>
+
+  <p>Description: <b>View a list of system recovery tools you can use to repair startup problems. run diagnostics, or restore your system.</b></p>
+</main>
+<footer><p>ENTER=Choose</p><p>ESC=Cancel</p></footer>
+
+<script src="resources/js/ReqForm.js" type="text/javascript"></script> 
+
+
+</body>
+</html>

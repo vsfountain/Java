@@ -1,0 +1,9 @@
+127.0.0.1 - - [14/Nov/2018:23:13:43 -0500] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [14/Nov/2018:23:14:08 -0500] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:10 -0500] "GET /HelloFrontController/index.html HTTP/1.1" 200 1089
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:10 -0500] "GET /HelloFrontController/resources/css/mystyles.css HTTP/1.1" 200 226
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:26 -0500] "GET /HelloFrontController/index.html HTTP/1.1" 200 1089
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:26 -0500] "GET /HelloFrontController/resources/css/mystyles.css HTTP/1.1" 200 226
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:26 -0500] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:43 -0500] "POST /HelloFrontController/login.wumpus HTTP/1.1" 200 1089
+0:0:0:0:0:0:0:1 - - [14/Nov/2018:23:14:53 -0500] "POST /HelloFrontController/login.wumpus HTTP/1.1" 200 199

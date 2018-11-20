@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>The Vault</title>
+</head>
+<body>
+	<div class="login-container">
+		<h4>Welcome to Vault 867 Dweller</h4>
+	</div>
+</body>
+</html>
