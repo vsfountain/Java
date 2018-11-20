@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Controller.RequestHelper;
+import RequestHelper.RequestHelper;
 
 public class MasterServlet extends HttpServlet{
 
@@ -18,6 +18,7 @@ public class MasterServlet extends HttpServlet{
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("in MasterServlet");
 		req.getRequestDispatcher(RequestHelper.process(req))
 		.forward(req, resp);
 		
