@@ -16,11 +16,11 @@ function singlePageTable(){
 }
 
 //GET JSON OBJECT OUT
-function getObj(){
-	fullTable = JSON.stringify(jsonData);
-	return fullTable;
-	
-}
+//function getObj(){
+//	fullTable = JSON.stringify(jsonData);
+//	return fullTable;
+//	
+//}
 
 $('main').on('focus', 'li', function() {
     $this = $(this);
@@ -39,7 +39,7 @@ $(function() {
     $('li').on('click', function() {
         var tableClone = $.clone(this);
         var stage = $('#showTableHereWhenTableIsClicked');
-        stage.prop('innerHTML', getObj());
+        stage.prop('innerHTML', jsonData);
         $(tableClone).appendTo(stage);
     });
 });

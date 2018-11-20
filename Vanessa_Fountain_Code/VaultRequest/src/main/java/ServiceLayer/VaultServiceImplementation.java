@@ -22,4 +22,10 @@ public class VaultServiceImplementation implements VaultService{
 		return request.retrieveAll();
 	}
 
+
+	@Override
+	public ArrayList<Object> displayAllUsers() {
+		return dweller.retriveAll();
+	}
+
 }

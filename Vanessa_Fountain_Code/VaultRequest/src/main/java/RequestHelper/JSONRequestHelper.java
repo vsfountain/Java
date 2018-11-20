@@ -19,6 +19,7 @@ public class JSONRequestHelper {
 			case "/VaultRequest/resources/html/reqTable.json":
 				System.out.println("in the switch");
 				ReimbursementController.viewRequests(req,resp);
+			
 			default:
 				HomeController.home(req);
 		}

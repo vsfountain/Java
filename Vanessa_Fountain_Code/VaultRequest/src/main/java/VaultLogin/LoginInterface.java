@@ -1,5 +1,7 @@
 package VaultLogin;
 
+import java.util.ArrayList;
+
 import ModelLayer.VaultUser;
 
 public interface LoginInterface {
@@ -14,5 +16,7 @@ public interface LoginInterface {
 			
 		//DELETE LOGIN FOR DWELLER
 		public void deleteDwellerAccess(VaultUser dwellerRelease);
+
+		public ArrayList<Object> retriveAll();
 
 }

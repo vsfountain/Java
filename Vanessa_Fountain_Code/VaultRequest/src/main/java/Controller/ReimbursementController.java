@@ -17,7 +17,7 @@ public class ReimbursementController {
 	public static void viewRequests(HttpServletRequest req, HttpServletResponse resp) throws JsonProcessingException, IOException {
 		VaultService dweller = new VaultServiceImplementation();
 		//System.out.println(dweller.getUserInfo(username, password));
-		ArrayList<Object> requests = dweller.displayAllRequests();
+		ArrayList<Object> requests = dweller.displayAllUsers();
 		
 		resp.getWriter().write(new ObjectMapper().writeValueAsString(requests));
 	}

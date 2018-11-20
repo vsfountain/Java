@@ -5,7 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import ModelLayer.RequestDisplay;
+import ModelLayer.VaultReimbursement;
 import ModelLayer.VaultUser;
 
 public class LoginImplementation implements LoginInterface{
@@ -56,6 +59,32 @@ public class LoginImplementation implements LoginInterface{
 
 	public void deleteDwellerAccess(VaultUser dwellerRelease) {
 		
+	}
+
+	@Override
+	public ArrayList<Object> retriveAll() {
+		ArrayList<Object> all = new ArrayList<Object>();
+		try(
+				Connection connect = DriverManager.getConnection(url, user, pass);
+				){
+			
+			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_AMOUNT, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
+					"FROM ERS_REIMBURSEMENT R " + 
+					"JOIN ERS_USERS P ON P.ERS_USERS_ID = R.REIMB_AUTHOR " + 
+					"JOIN ERS_REIMBURSEMENT_TYPE T ON T.REIMB_TYPE_ID = R.REIMB_TYPE_ID " + 
+					"JOIN ERS_REIMBURSEMENT_STATUS S ON S.REIMB_STATUS_ID = R.REIMB_STATUS_ID " + 
+					"JOIN ERS_USER_ROLES V ON P.USER_ROLE_ID = V.ERS_USER_ROLE_ID");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				 all.add(new RequestDisplay(rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
+			}
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return all;
 	}
 
 
