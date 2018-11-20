@@ -12,6 +12,18 @@
   <servlet-mapping>
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/MainServlet</url-pattern>
+    <url-pattern>*.login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>JSONServlet</display-name>
+    <servlet-name>JSONServlet</servlet-name>
+    <servlet-class>com.project1.servlets.JSONServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JSONServlet</servlet-name>
+    <url-pattern>/JSONServlet</url-pattern>
     <url-pattern>*.reimb</url-pattern>
   </servlet-mapping>
 </web-app>

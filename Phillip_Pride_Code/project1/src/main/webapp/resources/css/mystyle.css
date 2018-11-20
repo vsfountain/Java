@@ -1,5 +1,4 @@
-
-body{
+#home{
 	
 	background-image: url("images/dm1.png");
 	background-repeat: no-repeat;
@@ -8,6 +7,33 @@ body{
 	background-position: top;
 	height: 800px;
 	
+}
+
+#account-page{
+	
+	background-image: url("images/bewd1.png");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-color: #c0c0c00080;
+	background-position: top;
+	height: 800px;
+	
+}
+
+#login-fail{
+	background-image: url("images/traphole.jpg");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-position: top;
+	height: 400px;
+}
+
+#reimb-form{
+	background-image: url("images/obelisk1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-position: top;
+	height: 400px;
 }
 
 .form-container{
@@ -22,12 +48,15 @@ body{
 }
 
 
-form{
+
+#login-form{
 	border: 2px solid red;
 	padding: 10px;
 	margin: 10px;
-	text-color: white;
+	color: white;
 	box-shadow: 0px 0px 34px 12px rgba(71,71,71,1);
+	text-align: center;
+	justify-content: center;
 	
 }
 
@@ -35,9 +64,3 @@ input{
 	margin: 3px;
 }
 
-h2{
-	color:white;
-}
-span{
-	color: white;
-}
