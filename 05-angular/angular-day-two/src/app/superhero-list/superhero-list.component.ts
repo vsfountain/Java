@@ -2,7 +2,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { ISuperhero } from '../shared/superhero';
 import { CharacterService } from '../shared/character.service';
 
-@Injectable()
+/* @Injectable() we don't need injectable for component, they are 
+  automatically scanned by the injector*/
 @Component({
   selector: 'app-superhero-list',
   templateUrl: './superhero-list.component.html',

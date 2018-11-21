@@ -9,6 +9,8 @@ import { CharacterService } from './shared/character.service';
 import { ProfileComponent } from './profile/profile.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { PokemonService } from './shared/pokemon.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
       {path: 'profile', component: ProfileComponent},
@@ -29,7 +32,7 @@ import { RouterModule } from '@angular/router';
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
     ])
   ],
-  providers: [CharacterService],
+  providers: [CharacterService, PokemonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
