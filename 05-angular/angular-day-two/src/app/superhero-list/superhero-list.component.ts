@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { ISuperhero } from '../shared/superhero';
+import { CharacterService } from '../shared/character.service';
 
+@Injectable()
 @Component({
   selector: 'app-superhero-list',
   templateUrl: './superhero-list.component.html',
@@ -24,35 +26,13 @@ export class SuperheroListComponent implements OnInit {
   superheroes: ISuperhero[] = [];
   filteredSuperheroes: ISuperhero[] = [];
 
-  constructor() {
-    this.superheroes = [
-      {
-          'name': 'Frozone',
-          'ability': 'cold generation',
-          'organization': 'incredibles',
-          'image': 'http://www.minecraftjunkie.com/wp-content/uploads/2011/06/Skin1Pc-200x100.jpg'
-      },
-      {
-          'name': 'Eraser',
-          'ability': 'power nullification',
-          'organization': 'pro hero',
-          'image': 'http://www.minecraftjunkie.com/wp-content/uploads/2011/12/minecraft_wallpaper-200x100.jpg'
-      },
-      {
-          'name': 'Static Shock',
-          'ability': 'electric manipulation',
-          'organization': 'duo',
-          'image': 'http://www.minecraftjunkie.com/wp-content/uploads/2011/12/minecraft_wallpaper-200x100.jpg'
-      },
-      {
-          'name': 'Jack Jack',
-          'ability': 'what doesnt he have?',
-          'organization': 'incredibles',
-          'image': 'http://www.minecraftjunkie.com/wp-content/uploads/2011/06/Skin1Pc-200x100.jpg'
-      }
-  ];
-  this.filteredSuperheroes = this.superheroes;
-   }
+  // private _characterService: CharacterService = new CharacterService();
+  // private _characterService: CharacterService = null;
+
+  constructor(private _characterService: CharacterService) {
+    this.superheroes = this._characterService.getCharacters();
+    this.filteredSuperheroes = this.superheroes;
+  }
 
   ngOnInit() {
   }
@@ -64,7 +44,7 @@ export class SuperheroListComponent implements OnInit {
   performFilter(filterBy: string): ISuperhero[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.superheroes.filter((metahuman: ISuperhero) =>
-        metahuman.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      metahuman.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   onRankClicked(temp: string): void {
