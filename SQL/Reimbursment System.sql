@@ -158,8 +158,12 @@ INSERT INTO ers_reimbursement VALUES (null, 125.28, '16-nov-2018', null, 'I boug
 INSERT INTO ers_reimbursement VALUES (null, 1000.28, '10-nov-2018', null, 'I bougt a thing', null, 600022, null,1,3);
 INSERT INTO ers_reimbursement VALUES (null, 99.28, '10-nov-2018', null, 'Another thing', null, 600021, null,1,2);
 
+UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = (select to_date( '22/11/2018 08-00-00', 'DD/MM/YYYY HH24-MI-SS' ) as mydate from dual),
+                            REIMB_RESOLVER = 600002,
+                            REIMB_STATUS_ID = 2
+WHERE REIMB_ID = 100001;
 
-UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = null WHERE REIMB_ID = 100001;
+UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = null, REIMB_RESOLVER = null, REIMB_STATUS_ID = 1;
 commit;
 
 SELECT REIMB_SUBMITTED, REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS, REIMB_RECEIPT, REIMB_DESCRIPTION

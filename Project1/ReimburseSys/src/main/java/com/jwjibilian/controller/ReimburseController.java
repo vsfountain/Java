@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jwjibilian.daos.ReimbursementDAO;
 import com.jwjibilian.json.MasterJson;
 import com.jwjibilian.model.reimbursement.Reimbursement;
 import com.jwjibilian.model.user.User;
@@ -25,12 +24,14 @@ public class ReimburseController {
 		System.out.println(items);
 		MasterJson json = new MasterJson();
 		json.writeJsonToResp(resp, items);
+		
 	}
 	
 	static public boolean sendReimbursementRequest(HttpServletRequest req, HttpServletResponse resp) {
 		ReimbursementService service = new ReimbursementServiceImpl();
 		User user = (User) req.getSession().getAttribute("user");
 		System.out.println(user);
+		System.out.println(req.getParameter("ammount") + " "+  req.getParameter("type") + " " + req.getParameter("desc"));
 		service.addReimbursement(user.getId(), Double.parseDouble(req.getParameter("ammount")), req.getParameter("type")
 				, req.getParameter("desc"));
 		return false;
@@ -42,6 +43,21 @@ public class ReimburseController {
 		allThem = service.getAllUserReimbursements();
 		MasterJson json = new MasterJson();
 		json.writeJsonToResp(resp, allThem);
+		
+	}
+
+	public static void approveRequest(HttpServletRequest req, HttpServletResponse resp) {
+		ReimbursementServiceImpl service = new ReimbursementServiceImpl();
+		int adminId= (int) req.getSession().getAttribute("adminId");
+		System.out.println("The ID: " + req.getParameter("requestId")+ " "+ adminId);
+		service.approve(Integer.parseInt(req.getParameter("requestId")), adminId);
+	}
+
+	public static void denyRequest(HttpServletRequest req, HttpServletResponse resp) {
+		ReimbursementServiceImpl service = new ReimbursementServiceImpl();
+		int adminId= (int) req.getSession().getAttribute("adminId");
+		System.out.println("The ID: " + req.getParameter("requestId") + " "+ adminId);
+		service.deny(Integer.parseInt(req.getParameter("requestId")), adminId);
 		
 	}
 }

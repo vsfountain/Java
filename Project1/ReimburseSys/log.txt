@@ -1,0 +1,15 @@
+2018-11-19 15:40:31 DEBUG GetUser:14 - Debug Message Logged !!!
+2018-11-19 15:40:31 INFO  GetUser:15 - Info Message Logged !!!
+2018-11-19 15:40:31 ERROR GetUser:16 - Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at com.jwjibilian.actualdatabasetest.GetUser.main(GetUser.java:16) [classes/:?]
+2018-11-19 15:41:09 DEBUG GetUser:14 - Debug Message Logged !!!
+2018-11-19 15:41:09 INFO  GetUser:15 - Info Message Logged !!!
+2018-11-19 15:41:09 ERROR GetUser:16 - Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at com.jwjibilian.actualdatabasetest.GetUser.main(GetUser.java:16) [classes/:?]
+2018-11-19 15:41:14 DEBUG GetUser:14 - Debug Message Logged !!!
+2018-11-19 15:41:14 INFO  GetUser:15 - Info Message Logged !!!
+2018-11-19 15:41:14 ERROR GetUser:16 - Error Message Logged !!!
+java.lang.NullPointerException: NullError
+	at com.jwjibilian.actualdatabasetest.GetUser.main(GetUser.java:16) [classes/:?]

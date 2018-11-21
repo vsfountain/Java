@@ -1,15 +1,18 @@
 package com.jwjibilian.actualdatabasetest;
+import java.io.File;
+
+import org.apache.logging.log4j.LogManager;
+
+import org.apache.logging.log4j.Logger;
 
 public class GetUser {
-	public static void main(String[] arg) {
-		/*LoginController cont = new LoginController();*/
-		
-//		User o = null;
-		//System.out.println(true + false);
-//		UserService service = new UserServiceImpl();
-//		o = service.userLogin("jwjibilian", "scout");
-//		
-//		System.out.println(o);
-		
-	}
+    private static final Logger LOGGER = LogManager.getLogger(GetUser.class.getName());
+    
+    public static void main(String[] args)
+    {
+    	
+        LOGGER.debug("Debug Message Logged !!!");
+        LOGGER.info("Info Message Logged !!!");
+        LOGGER.error("Error Message Logged !!!", new NullPointerException("NullError"));
+    }
 }

@@ -2,7 +2,6 @@ package com.jwjibilian.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,7 @@ public class LoginServlet extends HttpServlet {
      */
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
@@ -30,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Am i getting called at all?");
+		System.out.println("Am i getting called at all? GET");
 		String goTo = LoginHelper.process(request, response);
 
 	}
@@ -42,9 +41,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Am i getting called at all?");
 		String goTo = LoginHelper.process(request, response);
-		System.out.println(goTo);
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(goTo);
-			    dispatcher.forward(request, response);
+		System.out.println("GoTo: " +  request.getContextPath()+goTo);
+//		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(goTo);
+//			    dispatcher.forward(request, response);
+		
+	
 		
 	}
 

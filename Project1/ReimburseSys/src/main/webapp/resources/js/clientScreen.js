@@ -1,8 +1,5 @@
-window.onload = function() {
-	console.log('in getsw1');
-	getUser();
-	getReimburse();
-}
+
+
 
 function getUser() {
 	console.log('in getsw');
@@ -97,3 +94,8 @@ function showReimburse(json){
 		table.appendChild(newRow);
 	}
 }
+
+
+	console.log('in getsw1');
+	getUser();
+	getReimburse();

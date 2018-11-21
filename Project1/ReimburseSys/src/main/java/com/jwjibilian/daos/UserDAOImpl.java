@@ -1,13 +1,15 @@
 package com.jwjibilian.daos;
 
 import java.awt.Image;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.jwjibilian.controller.DBDriver;
 import com.jwjibilian.model.reimbursement.Reimbursement;
@@ -19,6 +21,7 @@ import com.jwjibilian.model.user.User;
 
 public class UserDAOImpl implements UserDAO {
 	DBDriver theDriver = new DBDriver();
+	//private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class.getName());
 	@Override
 	public User getUser(int id) {
 		// TODO Auto-generated method stub
@@ -66,7 +69,9 @@ public class UserDAOImpl implements UserDAO {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+
+			return toReturn;
 		}
 		return toReturn;
 	}
@@ -116,8 +121,8 @@ public class UserDAOImpl implements UserDAO {
 				currentUser.addReimbursment(toAdd);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+
 		}
 		return toReturn;
 	}

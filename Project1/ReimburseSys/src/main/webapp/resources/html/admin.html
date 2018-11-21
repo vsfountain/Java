@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Admin</title>
+	<meta charset="ISO-8859-1">
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<title>Admin</title>
+
+	<!--boot strap CSS-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<!-- bootstrap JSS  -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
 
 </head>
+
 <body>
+
+	<button id="logOutButton" type="button" class="btn btn-primary">Log Out</button>
+	<br>
+
 	<h6>ADMIN</h6>
+	<br>
 	<div id="user"></div>
+	<br>
 	<table id="reimburseTable" border="1px solid black">
-			<tr>
-				<!-- REIMB_AUTHOR, USER_FIRST_NAME, USER_LAST_NAME, REIMB_RESOLVER, REIMB_SUBMITTED, REIMB_RESOLVED,
+		<tr>
+			<!-- REIMB_AUTHOR, USER_FIRST_NAME, USER_LAST_NAME, REIMB_RESOLVER, REIMB_SUBMITTED, REIMB_RESOLVED,
 				 REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS, REIMB_RECEIPT, REIMB_DESCRIPTION-->
-				<th>Author Id</th>
-				<th>Request Id</th>
-				<th>Submit Date</th>
-				<th>Name</th>
-				<th>Ammount</th>
-				<th>Type</th>
-				<th>Status</th>
-				<th>Recipt</th>
-				<th>Description</th>
-				<th>Resolved By</th>
-				<th>Resolved Date</th>
-			</tr>
-		</table>
+			<th></th>
+			<th>Author Id</th>
+			<th>Request Id</th>
+			<th>Submit Date</th>
+			<th>Name</th>
+			<th>Ammount</th>
+			<th>Type</th>
+			<th>Status</th>
+			<th>Recipt</th>
+			<th>Description</th>
+			<th>Resolved By</th>
+			<th>Resolved Date</th>
+		</tr>
+	</table>
 </body>
-<script type="text/javascript" src="resources/js/adminScreen.js"></script>
+<script type="text/javascript" src="../js/adminScreen.js"></script>
+<script type="text/javascript" src="../js/logOut.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
 </html>

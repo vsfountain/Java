@@ -1,11 +1,13 @@
 /**
  * 
  */
-window.onload = function () {
-	console.log('in adminScreen');
-	getUser();
-	getAllReimburse()
-}
+
+console.log('in adminScreen');
+getUser();
+getAllReimburse();
+
+
+
 
 function getUser() {
 	console.log('in getAdmin');
@@ -17,13 +19,16 @@ function getUser() {
 
 	xhttp.onreadystatechange = function () {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			console.log('Ready state: ' + xhttp.readyState);
+			console.log('Ready state: 22' + xhttp.readyState);
 
-
+			console.log("JSON BEING CALLED", xhttp.responseText)
 			let sw = JSON.parse(xhttp.responseText);
-			console.log(sw);
+
+			console.log("JOSON DONE BEING CALLED")
+			console.log("the user is: ", sw);
 			showUser(sw);
 		}
+		console.log(xhttp.readyState, xhttp.status)
 	};
 
 
@@ -40,12 +45,13 @@ function getAllReimburse() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			console.log('Ready state: ' + xhttp.readyState);
 
-
+			console.log("JSON BEING CALLED", xhttp.responseText)
 			let sw = JSON.parse(xhttp.responseText);
 
 			showAllReimburse(sw);
 			console.log(sw);
 		}
+		console.log(xhttp.readyState, xhttp.status)
 	};
 	xhttp.open("get", '/ReimburseSys/getAll', true);
 	xhttp.send();
@@ -85,11 +91,28 @@ function showAllReimburse(json) {
 			if (!desc) {
 				desc = '';
 			}
-			if (resolverId == 0) {}
-			resolverId = "";
+			if (resolverId == 0) {
+				resolverId = "";
+			}
+			let buttons = '';
+			if (status == 'Pending') {
+				buttons = "<td><div class=\"btn-group\" role=\"group\">" +
+					"<button id=\"btnGroupDrop1\" type=\"button\" class=\"btn btn-secondary dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">" +
+					"Options" +
+					"</button>" +
+					"<div class=\"dropdown-menu\" aria-labelledby=\"btnGroupDrop1\">" +
+					"<a class=\"dropdown-item\" onclick=\"approve(" + reimbursId + ")\">Approve</a>" +
+					"<a class=\"dropdown-item\" onclick=\"deny(" + reimbursId + ")\">Deny</a>" +
+					"</div>" +
+					"</div></td>"
+			} else {
+				buttons = "<td></td>"
+			}
 			let newRow = document.createElement("TR");
-			let newHTML = "<td>" + userId + "</td>" +
-				"<td id=\"rbid"+count+"\">" + reimbursId + "</td>" +
+			let newHTML =
+				buttons +
+				"<td>" + userId + "</td>" +
+				"<td id=\"rbid" + count + "\">" + reimbursId + "</td>" +
 				"<td>" + timeSubmitted + "</td>" +
 				"<td>" + usersName + "</td>" +
 				"<td>" + ammount + "</td>" +
@@ -99,7 +122,7 @@ function showAllReimburse(json) {
 				"<td>" + desc + "</td>" +
 				"<td>" + resolverId + "</td>" +
 				"<td>" + timeResolved + "</td>";
-				count = count + 1;
+			count = count + 1;
 			//console.log(newHTML);
 			//console.log(newRow);
 			newRow.innerHTML = newHTML
@@ -107,11 +130,46 @@ function showAllReimburse(json) {
 		}
 
 
-
 	}
 }
 
 function showUser(sw) {
-
+	console.log("SHOW THE DAMN USER")
 	document.getElementById("user").innerHTML = "Hello " + sw.firstName + " " + sw.lastname;
+}
+
+function approve(columnId) {
+	console.log("Approve: ", columnId);
+	let params = "requestId=" + columnId;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", '/ReimburseSys/approve', true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.onreadystatechange = function () {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			console.log('Ready state: ' + xhttp.readyState);
+
+
+		}
+	};
+
+	xhttp.send(params);
+	location.reload(true)
+}
+
+function deny(columnId) {
+	console.log("Deny: ", columnId);
+	let params = "requestId=" + columnId;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", '/ReimburseSys/deny', true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhttp.onreadystatechange = function () {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			console.log('Ready state: ' + xhttp.readyState);
+
+
+		}
+	};
+
+	xhttp.send(params);
+	location.reload(true)
 }

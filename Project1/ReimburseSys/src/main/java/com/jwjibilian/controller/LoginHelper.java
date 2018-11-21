@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.jwjibilian.json.MasterJson;
-import com.jwjibilian.model.user.User;
 
 public class LoginHelper {
 	public static String process(HttpServletRequest req, HttpServletResponse resp) throws JsonProcessingException, IOException {
@@ -27,7 +25,8 @@ public class LoginHelper {
 			return LoginController.login(req, resp);
 		case "/ReimburseSys/getUser":
 			return LoginController.getUser(req, resp);
-			
+		case "/ReimburseSys/logOut":
+			return LoginController.logOut(req, resp);
 			
 		default:
 			return "/index.html";

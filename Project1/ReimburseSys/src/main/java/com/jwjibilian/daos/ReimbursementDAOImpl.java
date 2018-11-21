@@ -1,7 +1,6 @@
 package com.jwjibilian.daos;
 
 import java.awt.Image;
-import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,15 +12,18 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+
 import com.jwjibilian.controller.DBDriver;
 import com.jwjibilian.model.reimbursement.Reimbursement;
 import com.jwjibilian.model.user.Admin;
 import com.jwjibilian.model.user.Client;
 import com.jwjibilian.model.user.User;
-
+import com.jwjibilian.services.ReimbursementServiceImpl;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
-
+	//private static final Logger LOGGER = LogManager.getLogger(ReimbursementDAOImpl.class.getName());
 	DBDriver orclDriver = new DBDriver();
 
 	@Override
@@ -37,7 +39,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		try (Connection conn = orclDriver.connect()) {
 			PreparedStatement cs = conn.prepareStatement(query);
 			cs.setInt(1, u.getId());
-			
+
 			result = cs.executeQuery();
 			while (result.next()) {
 				int id = result.getInt("REIMB_ID");
@@ -46,22 +48,20 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				LocalDate timeResolved = result.getObject("REIMB_RESOLVED", LocalDate.class);
 				String description = result.getString("REIMB_DESCRIPTION");
 				Image recipit = null;
-				Client author = (Client)u;
+				Client author = (Client) u;
 				Admin resolver = null;
 				String status = result.getString("REIMB_STATUS");
 				String type = result.getString("REIMB_TYPE");
-				Reimbursement toAdd =  new Reimbursement(
-						id, ammount, timeSubmitted, timeResolved, 
-						description, recipit, author, resolver, 
-						status, type);
-				//System.out.println(toAdd);
+				Reimbursement toAdd = new Reimbursement(id, ammount, timeSubmitted, timeResolved, description, recipit,
+						author, resolver, status, type);
+				// System.out.println(toAdd);
 				toReturn.add(toAdd);
 			}
 			cs.close();
 		} catch (SQLException e) {
-
+			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
 		}
-		//System.out.println(toReturn);
+		// System.out.println(toReturn);
 		return toReturn;
 	}
 
@@ -70,20 +70,21 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		String sql = "INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), "
 				+ "null, ?, null, ?, null, 1, ?)";
 		Instant time = Instant.now();
-		Timestamp ts = java.sql.Timestamp.from( time );
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss") .withZone(ZoneId.systemDefault());
+		Timestamp ts = java.sql.Timestamp.from(time);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+				.withZone(ZoneId.systemDefault());
 		String datetime = formatter.format(time);
 		System.out.println(datetime);
 		int typeNum = 4;
-		if(type.equals("Lodging")) {
+		if (type.equals("Lodging")) {
 			typeNum = 1;
-		} else if(type.equals("Travel")) {
+		} else if (type.equals("Travel")) {
 			typeNum = 2;
-			
-		} else if(type.equals("Food")) {
+
+		} else if (type.equals("Food")) {
 			typeNum = 3;
-		} 
-		
+		}
+
 		try (Connection conn = orclDriver.connect()) {
 			PreparedStatement cs = conn.prepareStatement(sql);
 			cs.setDouble(1, ammount);
@@ -92,15 +93,56 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			cs.setInt(4, userId);
 			cs.setInt(5, typeNum);
 			int result = cs.executeUpdate();
+			if (result == 1) {
+				return true;
+			}
+
+		} catch (SQLException e) {
+
+			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+
+			return false;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean updateRequest(int requestId, int adminId, String status) {
+		int statusId = -1;
+		
+		String sql = "UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = (select TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS') from dual), " + 
+				"REIMB_RESOLVER = ?, " + 
+				"REIMB_STATUS_ID = ? " + 
+				"WHERE REIMB_ID = ?";
+		Instant time = Instant.now();
+		Timestamp ts = java.sql.Timestamp.from(time);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+				.withZone(ZoneId.systemDefault());
+		String datetime = formatter.format(time);
+		int result = -1;
+		if (status.equals("approve")) {
+			statusId = 2;
+		} else if (status.equals("deny")) {
+			statusId = 3;
+		}
+		try (Connection conn = orclDriver.connect()) {
+			PreparedStatement cs = conn.prepareStatement(sql);
+			cs.setString(1, datetime);
+			cs.setInt(2, adminId);
+			cs.setInt(3, statusId);
+			cs.setInt(4, requestId);
+			result = cs.executeUpdate();
+			
 			if(result == 1) {
 				return true;
 			}
-			
+
 		} catch (SQLException e) {
-				
-				e.printStackTrace();
-				return false;
-			}
+
+			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+
+			return false;
+		}
 		return false;
 	}
 

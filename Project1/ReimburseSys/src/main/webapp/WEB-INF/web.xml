@@ -22,6 +22,7 @@
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/logedin</url-pattern>
     <url-pattern>/getUser</url-pattern>
+    <url-pattern>/logOut</url-pattern>
   </servlet-mapping>
   <servlet>
     <display-name>MasterServlet</display-name>
@@ -43,5 +44,7 @@
     <url-pattern>/getReimburse</url-pattern>
     <url-pattern>/sendReimburse</url-pattern>
     <url-pattern>/getAll</url-pattern>
+    <url-pattern>/approve</url-pattern>
+    <url-pattern>/deny</url-pattern>
   </servlet-mapping>
 </web-app>
