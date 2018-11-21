@@ -21,11 +21,11 @@ function getUser() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			console.log('Ready state: 22' + xhttp.readyState);
 
-			console.log("JSON BEING CALLED", xhttp.responseText)
+
 			let sw = JSON.parse(xhttp.responseText);
 
-			console.log("JOSON DONE BEING CALLED")
-			console.log("the user is: ", sw);
+
+
 			showUser(sw);
 		}
 		console.log(xhttp.readyState, xhttp.status)
@@ -134,7 +134,7 @@ function showAllReimburse(json) {
 }
 
 function showUser(sw) {
-	console.log("SHOW THE DAMN USER")
+
 	document.getElementById("user").innerHTML = "Hello " + sw.firstName + " " + sw.lastname;
 }
 

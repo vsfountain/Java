@@ -48,20 +48,31 @@
 		</div>
 	</nav>
 	<div class="row" style="margin: 100px;"></div>
-	<div class="mx-auto" style="width: 200px;">
-		<form method="post" action="logedin">
+	<div class="container">
+		<div class="row justify-content-md-center">
+			<div class="col col-lg-6">
+				<div class="card border mb-3" style="background: rgba(255, 255, 255, 0.5);">
+					<div class="card-body">
 
-			<!-- parameters will be seen in url if changes to GET -->
-			<p>Please log in</p>
-			<input placeholder="enter username" name="username" />
-			<br />
-			<input placeholder="enter password" name="password" />
-			<br />
-			<input type="submit" value="login" id="theButton" />
+						<form method="post" action="logedin">
+
+							<!-- parameters will be seen in url if changes to GET -->
+							<p>Please log in</p>
+							<input placeholder="enter username" name="username" />
+							<br />
+							<input placeholder="enter password" name="password" />
+							<br />
+							<input type="submit" value="login" id="theButton" />
 
 
-		</form>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 
 </body>
 
