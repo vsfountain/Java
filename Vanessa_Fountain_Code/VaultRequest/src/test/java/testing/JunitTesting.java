@@ -30,5 +30,13 @@ public class JunitTesting {
 		System.out.println(tester.displayAllRequests());
 		assertThat("Fails if empty", tester.displayAllRequests(), is(not(0)));
 	}
+	
+	@Test
+	public void displayUsers() {
+		System.out.println("Currently in user display");
+		VaultServiceImplementation tester = new VaultServiceImplementation();
+		System.out.println(tester.displayAllUsers());
+		assertThat("Fails if empty", tester.displayAllRequests(), is(not(0)));
+	}
 
 }

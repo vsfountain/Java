@@ -38,9 +38,7 @@ public class VaultAccessImplementaion implements VaultInterface{
 		return 0;
 	}
 
-	public void updateStatus(VaultReimbursement reimbStatusID, VaultReimbursement reimbResolver,
-			VaultReimbursement reimbResolved) {
-		// TODO Auto-generated method stub
+	public void updateStatus() {
 		
 	}
 
@@ -50,9 +48,9 @@ public class VaultAccessImplementaion implements VaultInterface{
 	}
 
 	@Override
-	public ArrayList<Object> retrieveAll() {
+	public ArrayList<VaultReimbursement> retrieveAll() {
 		//HashMap<Object, Object> map = new HashMap<>();
-		ArrayList<Object> all = new ArrayList<Object>();
+		ArrayList<VaultReimbursement> all = new ArrayList<VaultReimbursement>();
 		try(
 				Connection connect = DriverManager.getConnection(url, user, pass);
 				){

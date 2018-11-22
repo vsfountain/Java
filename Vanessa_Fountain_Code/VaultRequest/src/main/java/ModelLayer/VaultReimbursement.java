@@ -3,9 +3,6 @@ package ModelLayer;
 import java.sql.Blob;
 import java.sql.Date;
 
-import oracle.sql.BLOB;
-import oracle.sql.DATE;
-
 public class VaultReimbursement {
 	private int reimbId;
 	private int reimbAmount;

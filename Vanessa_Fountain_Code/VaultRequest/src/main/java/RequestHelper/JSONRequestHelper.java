@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Controller.HomeController;
+import Controller.PendingController;
 import Controller.ReimbursementController;
 
 public class JSONRequestHelper {
@@ -19,9 +20,13 @@ public class JSONRequestHelper {
 			case "/VaultRequest/resources/html/reqTable.json":
 				System.out.println("in the switch");
 				ReimbursementController.viewRequests(req,resp);
-			
+				break;
+			case "/VaultRequest/resources/html/reqTablePending.json":
+				PendingController.viewRequests(req, resp);
+				break;
 			default:
 				HomeController.home(req);
+				break;
 		}
 	}
 

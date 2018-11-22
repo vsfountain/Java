@@ -11,13 +11,12 @@ public interface VaultInterface {
 		//RETREIVE VAULT DOOR REQ BEFORE OPENING VAULT DOOR
 		public int retreiveReq(VaultReimbursement reimbAuthor);
 		//RETRIEVE ALL REQUESTS
-		public ArrayList<Object> retrieveAll();
+		public ArrayList<VaultReimbursement> retrieveAll();
 		//RETREIVE CHECK REQUESTORS INFORMATION
 		public int retreiveDweller(VaultUser ERSUsersID);
 		
 		//UPDATE GRANT ACCESS TO OPEN VAULT DOOR OR DENY UPDATE REOLVED, UPDATE RESOLVER
-		public void updateStatus(VaultReimbursement reimbStatusID, 
-				VaultReimbursement reimbResolver, VaultReimbursement reimbResolved);
+		public void updateStatus();
 		
 		//DELETE MAKE SURE RESOLVED THEN DELETE
 		public void deleteReq();

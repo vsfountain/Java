@@ -1,4 +1,4 @@
- package Controller;
+package Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,12 +13,11 @@ import ModelLayer.RequestDisplay;
 import ServiceLayer.VaultService;
 import ServiceLayer.VaultServiceImplementation;
 
-public class ReimbursementController {
-
+public class PendingController {
 	public static void viewRequests(HttpServletRequest req, HttpServletResponse resp) throws JsonProcessingException, IOException {
 		VaultService dweller = new VaultServiceImplementation();
-		//CONTROLLER TO DISPLAY ALL REQUESTS
-		ArrayList<RequestDisplay> requests = dweller.displayAllRequests();
+		//CONTROLLER FOR SENDING ONLY PENDING REQUESTS TO THE DISPLAY
+		ArrayList<RequestDisplay> requests = dweller.displayAllPending();
 		System.out.println(requests);
 		resp.getWriter().write(new ObjectMapper().writeValueAsString(requests));
 	}
