@@ -32,7 +32,7 @@ public class MasterJSON extends HttpServlet {
 							250_000);
 		resp.getWriter().write(
 				new ObjectMapper().writeValueAsString(dannyboy));
-		System.out.println("we're inside of our servlet! POST!");
+		System.out.println("we're inside of our  json servlet! POST!");
 	}
 	
 }

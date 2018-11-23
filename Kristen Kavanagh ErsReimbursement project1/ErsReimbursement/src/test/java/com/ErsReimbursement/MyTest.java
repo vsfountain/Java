@@ -12,14 +12,14 @@ import org.mockito.Mockito;
 
 import com.ErsReimbursement.service.UserService;
 
-public class MyTest {
+//public class MyTest {
 	//NOT using mockito, so this is not a unit test
 	//	it is integration testing
 	//ConversionService cserv= new ConversionService();
 	
 	//Let's use mockito instead
-	UserService cserv= Mockito.mock(UserService.class);
-}
+//	UserService cserv= Mockito.mock(UserService.class);
+//}
 //	User conv;
 //
 //	@Before
@@ -28,7 +28,7 @@ public class MyTest {
 //	}
 //
 //	@Test
-public static String login(HttpServletRequest req) {
+//public static String login(HttpServletRequest req) {
 //	public void test() {
 //		Mockito.when(cserv.findMilesToFeet()).thenReturn(5280);
 //		

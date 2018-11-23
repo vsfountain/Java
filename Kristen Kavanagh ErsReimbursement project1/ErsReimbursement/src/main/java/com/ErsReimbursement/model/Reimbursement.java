@@ -12,26 +12,30 @@ public class Reimbursement {
 	
 	private int remb_Id;
 	private double remb_Amount;
-	private Timestamp remb_Submitted;
-	private Timestamp remb_Resolved;
+	private String remb_Submitted;
+	private String remb_Resolved;
 	private String remb_Description;
 	private int remb_Author;
 	private String remb_Resolver;
 	private int remb_Status_Id;
 	private int remb_Type_Id;
-	public Reimbursement(int remb_Id, double remb_Amount, Timestamp remb_Submitted, Timestamp remb_Resolved,
+	public Reimbursement(int remb_Id, double remb_Amount, String reimb_submitted, String reimb_resolved,
 			String remb_Description, int remb_Author, String remb_Resolver, int remb_Status_Id,
 			int remb_Type_Id) {
 		super();
 		this.remb_Id = remb_Id;
 		this.remb_Amount = remb_Amount;
-		this.remb_Submitted = remb_Submitted;
-		this.remb_Resolved = remb_Resolved;
+		this.remb_Submitted = reimb_submitted;
+		this.remb_Resolved = reimb_resolved;
 		this.remb_Description = remb_Description;
 		this.remb_Author = remb_Author;
 		this.remb_Resolver = remb_Resolver;
 		this.remb_Status_Id = remb_Status_Id;
 		this.remb_Type_Id = remb_Type_Id;
+	}
+	public Reimbursement(String reimb_amount, String reimb_description, String reimb_author, String reimb_status_id,
+			String reimb_type_id) {
+		// TODO Auto-generated constructor stub
 	}
 	public int getRemb_Id() {
 		return remb_Id;
@@ -45,16 +49,16 @@ public class Reimbursement {
 	public void setRemb_Amount(double remb_Amount) {
 		this.remb_Amount = remb_Amount;
 	}
-	public Timestamp getRemb_Submitted() {
+	public String getRemb_Submitted() {
 		return remb_Submitted;
 	}
-	public void setRemb_Submitted(Timestamp remb_Submitted) {
+	public void setRemb_Submitted(String remb_Submitted) {
 		this.remb_Submitted = remb_Submitted;
 	}
-	public Timestamp getRemb_Resolved() {
+	public String getRemb_Resolved() {
 		return remb_Resolved;
 	}
-	public void setRemb_Resolved(Timestamp remb_Resolved) {
+	public void setRemb_Resolved(String remb_Resolved) {
 		this.remb_Resolved = remb_Resolved;
 	}
 	public String getRemb_Description() {

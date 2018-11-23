@@ -62,12 +62,20 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 			ResultSet rs = statmnt.executeQuery(sql);
 				while(rs.next())
-			{/*
-				arryreimb.add(new Reimbursement(rs.findColumn("REIMB_ID"), rs.findColumn("REIMB_AMOUNT"),
-						rs.findColumn("REIMB_SUBMITTED"), rs.findColumn("REIMB_RESOLVED"),
-					 
-								rs.findColumn("REIMB_DESCRIPTION"), rs.findColumn("REIMB_AUTHOR"), rs.findColumn("REIMB_RESOLVER"),
-								rs.getArray("REIMB_STATUS_ID"), rs.getArray(("REIMB_TYPE_ID"),));*/
+			{
+					int reimb_id = rs.getInt(0);
+					double reimb_amount = rs.getDouble(1);
+					String reimb_submitted = rs.getString(3);
+					String reimb_resolved = rs.getString(4);
+					String reimb_description = rs.getString(5);
+					int reimb_author = rs.getInt(6);
+					String reimb_resolver = rs.getString(7);
+					int reimb_status_id = rs.getInt(8);
+					int reimb_type_id =rs.getInt(9);
+					
+					Reimbursement newReimb = new Reimbursement(reimb_id, reimb_amount, reimb_submitted, reimb_resolved, reimb_description, reimb_author, reimb_resolver, reimb_status_id, reimb_type_id);
+				
+				arryreimb.add(newReimb);
 			}
 
 		} catch (SQLException e) {
