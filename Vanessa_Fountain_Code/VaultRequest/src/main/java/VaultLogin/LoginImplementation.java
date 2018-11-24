@@ -86,7 +86,7 @@ public class LoginImplementation implements LoginInterface{
 				Connection connect = DriverManager.getConnection(url, user, pass);
 				){
 			
-			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_AMOUNT, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
+			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_ID, R.REIMB_AMOUNT, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
 					"FROM ERS_REIMBURSEMENT R " + 
 					"JOIN ERS_USERS P ON P.ERS_USERS_ID = R.REIMB_AUTHOR " + 
 					"JOIN ERS_REIMBURSEMENT_TYPE T ON T.REIMB_TYPE_ID = R.REIMB_TYPE_ID " + 
@@ -96,7 +96,7 @@ public class LoginImplementation implements LoginInterface{
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()){
-				all.add(new RequestDisplay(rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
+				all.add(new RequestDisplay(rs.getInt("REIMB_ID"),rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
 			}
 					
 		}catch(SQLException e) {
@@ -112,7 +112,7 @@ public class LoginImplementation implements LoginInterface{
 				Connection connect = DriverManager.getConnection(url, user, pass);
 				){
 			
-			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_AMOUNT, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
+			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_ID, R.REIMB_AMOUNT, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
 					"FROM ERS_REIMBURSEMENT R " + 
 					"JOIN ERS_USERS P ON P.ERS_USERS_ID = R.REIMB_AUTHOR " + 
 					"JOIN ERS_REIMBURSEMENT_TYPE T ON T.REIMB_TYPE_ID = R.REIMB_TYPE_ID " + 
@@ -123,7 +123,7 @@ public class LoginImplementation implements LoginInterface{
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				 all.add(new RequestDisplay(rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
+				 all.add(new RequestDisplay(rs.getInt("REIMB_ID"), rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
 			}
 					
 		}catch(SQLException e) {

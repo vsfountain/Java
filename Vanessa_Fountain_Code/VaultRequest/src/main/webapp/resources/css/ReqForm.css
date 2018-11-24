@@ -7,7 +7,7 @@ ul{list-style-type:none;padding:0;margin:25px 0;}
 li{color:#ffbf;margin:2.5px 0;cursor:pointer;color:#ffcc00;outline:0;}
 li a{text-decoration:none;color:#ffcc00;display:inline-block;padding:4.5px 0 4.5px 40px;}
 li:nth-child(2){margin-bottom:25px;}
-li:last-child{margin-top:25px;}
+#li:last-child{margin-top:25px;}
 .active a{background:#ffcc00;color:#333333;}
 main p{color:#ffcc00;margin:5px 0;}
 main b{font-weight:normal;color:ffcc00;}

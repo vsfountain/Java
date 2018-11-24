@@ -1,14 +1,16 @@
 package ModelLayer;
 
 public class RequestDisplay {
+	int id;
 	int amount;
 	String first;
 	String last;
 	String status;
 	String type;
 	String role;
-	public RequestDisplay(int amount, String first, String last, String status, String type, String role) {
+	public RequestDisplay(int id, int amount, String first, String last, String status, String type, String role) {
 		super();
+		this.id = id;
 		this.amount = amount;
 		this.first = first;
 		this.last = last;
@@ -16,6 +18,15 @@ public class RequestDisplay {
 		this.type = type;
 		this.role = role;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getAmount() {
 		return amount;
 	}
@@ -52,10 +63,11 @@ public class RequestDisplay {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
 	@Override
 	public String toString() {
-		return "RequestDisplay [amount=" + amount + ", first=" + first + ", last=" + last + ", status=" + status
-				+ ", type=" + type + ", role=" + role + "]";
+		return "RequestDisplay [id=" + id + ", amount=" + amount + ", first=" + first + ", last=" + last + ", status="
+				+ status + ", type=" + type + ", role=" + role + "]";
 	}
 	
 

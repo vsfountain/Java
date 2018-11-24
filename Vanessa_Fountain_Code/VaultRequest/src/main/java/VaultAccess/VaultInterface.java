@@ -16,7 +16,7 @@ public interface VaultInterface {
 		public int retreiveDweller(VaultUser ERSUsersID);
 		
 		//UPDATE GRANT ACCESS TO OPEN VAULT DOOR OR DENY UPDATE REOLVED, UPDATE RESOLVER
-		public void updateStatus();
+		public void updateStatus(int reimbID);
 		
 		//DELETE MAKE SURE RESOLVED THEN DELETE
 		public void deleteReq();

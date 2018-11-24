@@ -1,6 +1,7 @@
 package VaultLogin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultUser;

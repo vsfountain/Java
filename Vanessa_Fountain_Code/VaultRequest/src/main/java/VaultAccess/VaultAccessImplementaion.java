@@ -38,7 +38,22 @@ public class VaultAccessImplementaion implements VaultInterface{
 		return 0;
 	}
 
-	public void updateStatus() {
+	public void updateStatus(int reimbID) {
+		try(
+				Connection connect = DriverManager.getConnection(url, user, pass);
+				){
+			
+			PreparedStatement ps = connect.prepareStatement("UPDATE ERS_REIMBURSEMENT " + 
+					"SET REIMB_STATUS_ID = 1 " + 
+					"WHERE REIMB_ID = ?; " + 
+					" COMMIT;");
+			ps.setInt(1, reimbID);
+			
+				ps.executeQuery();
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}		
 		
 	}
 
@@ -55,14 +70,14 @@ public class VaultAccessImplementaion implements VaultInterface{
 				Connection connect = DriverManager.getConnection(url, user, pass);
 				){
 			
-			PreparedStatement ps = connect.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT");
+			PreparedStatement ps = connect.prepareStatement("SELECT REIMB_ID, REIMB_AMOUNT, REIMB_SUBMITTED, REIMB_RESOLVED, REIMB_DESCRIPTION, REIMB_RECEIPT, REIMB_AUTHOR, REIMB_RESOLVER, REIMB_STATUS_ID, REIMB_TYPE_ID FROM ERS_REIMBURSEMENT");
 			
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				
-				 all.add(new VaultReimbursement(rs.getInt(1), rs.getInt(1), rs.getDate(3), rs.getDate(4), rs.getString(5), 
-						 rs.getBlob(6), rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10)) );
+				 all.add(new VaultReimbursement(rs.getInt("REIMB_ID"), rs.getInt("REIMB_AMOUNT"), rs.getDate("REIMB_SUBMITTED"), rs.getDate("REIMB_RESOLVED"), rs.getString("REIMB_DESCRIPTION"), 
+						 rs.getBlob("REIMB_RECEIPT"), rs.getInt("REIMB_AUTHOR"), rs.getInt("REIMB_RESOLVER"), rs.getInt("REIMB_STATUS_ID"), rs.getInt("REIMB_TYPE_ID")) );
 			}
 					
 		}catch(SQLException e) {

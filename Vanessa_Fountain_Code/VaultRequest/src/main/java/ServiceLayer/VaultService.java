@@ -1,6 +1,8 @@
 package ServiceLayer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultReimbursement;
 
@@ -8,11 +10,11 @@ public interface VaultService {
 	
 	public int getUserInfo(String username, String password);
 	
-	public ArrayList<RequestDisplay> displayAllRequests();
+	public HashMap<String, Integer> displayAllRequests();
 	
 	public ArrayList<RequestDisplay> displayAllUsers();
 	
-	public ArrayList<RequestDisplay> displayAllPending();
+	public HashMap<String, Integer> displayAllPending();
 	
 	//APPROVE OR DENY PENDING
 	public VaultReimbursement approveDeny(VaultReimbursement reqID);

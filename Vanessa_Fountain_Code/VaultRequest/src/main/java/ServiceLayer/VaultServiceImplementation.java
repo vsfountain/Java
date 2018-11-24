@@ -2,6 +2,7 @@ package ServiceLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultReimbursement;
@@ -18,6 +19,9 @@ public class VaultServiceImplementation implements VaultService{
 	private HashMap<VaultUser,Integer> idUser = new HashMap<VaultUser, Integer>();
 	private HashMap<VaultReimbursement,Integer> idReqPending = new HashMap<VaultReimbursement, Integer>();
 	
+	private HashMap<String, Integer> display = new HashMap<String, Integer>();
+	private HashMap<String, Integer> displayAll = new HashMap<String, Integer>();
+	
 	private int loggedIn;
 
 	@Override
@@ -28,8 +32,12 @@ public class VaultServiceImplementation implements VaultService{
 
 
 	@Override
-	public ArrayList<RequestDisplay> displayAllRequests() {
-		return dweller.retrieveUser();
+	public HashMap<String, Integer> displayAllRequests() {
+		ArrayList<RequestDisplay> all = dweller.retrieveUser();
+		for(RequestDisplay req : all) {
+			displayAll.put(req.getStatus()+": "+req.getRole()+" "+req.getFirst()+" "+req.getLast()+" Amount: "+req.getAmount(), req.getId());
+		}
+		return displayAll;
 	}
 
 
@@ -40,8 +48,14 @@ public class VaultServiceImplementation implements VaultService{
 
 
 	@Override
-	public ArrayList<RequestDisplay> displayAllPending() {
-		return dweller.retrievePending();
+	public HashMap<String, Integer> displayAllPending() {
+		ArrayList<RequestDisplay> pending = dweller.retrievePending();
+		for(RequestDisplay req : pending) {
+			display.put(req.getStatus()+": "+req.getRole()+" "+req.getFirst()+" "+req.getLast()+" Amount: "+req.getAmount(), req.getId());
+		}
+			
+		return display;
+		
 	}
 
 
