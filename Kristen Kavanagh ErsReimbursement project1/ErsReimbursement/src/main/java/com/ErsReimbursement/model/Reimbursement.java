@@ -1,7 +1,5 @@
 package com.ErsReimbursement.model;
 
-import java.sql.Timestamp;
-import java.util.Arrays;
 /**
  * Model for reimbursement.
  * 

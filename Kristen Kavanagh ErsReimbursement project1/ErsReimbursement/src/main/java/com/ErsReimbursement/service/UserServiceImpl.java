@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	
+
 
 	@Override
 	public String getCurrUserName(String currUserName) {
@@ -69,8 +69,8 @@ public class UserServiceImpl implements UserService {
 			int dbId = 0;
 			while (rs.next()) {
 				dbId = rs.getInt(1);
-				String dbName = rs.getString(2);
-				String dbPassword = rs.getString(3);
+				//String dbName = rs.getString(2);
+				//String dbPassword = rs.getString(3);
 			}
 			return String.valueOf(dbId);
 		} catch (SQLException e) {
@@ -78,21 +78,22 @@ public class UserServiceImpl implements UserService {
 		}
 		return "";
 	}
-
-	@Override
-	public String getCurrPassword(String currUserName) {
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT ers_password FROM ers_users WHERE ers_username=?";
-
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, currUserName);
-			ResultSet rs = ps.executeQuery();
-			rs.next();
-			String dbPassword = rs.getString(1);
-			return dbPassword;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
 }
+//
+//	@Override
+//	public String getCurrPassword(String currUserName) {
+//		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+//			String sql = "SELECT ers_password FROM ers_users WHERE ers_username=?";
+//
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setString(1, currUserName);
+//			ResultSet rs = ps.executeQuery();
+//			rs.next();
+//			String dbPassword = rs.getString(1);
+//			return dbPassword;
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return "";
+//	}
+//}

@@ -1,6 +1,7 @@
 package com.ErsReimbursement.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ErsReimbursement.model.Reimbursement;
 import com.ErsReimbursement.service.ReimbursementService;
@@ -10,7 +11,7 @@ public class HomeController {
 
 	
 		private static ReimbursementService imbur = new ReimbursementServiceImpl();
-		public static String InsertReimbursement(HttpServletRequest req) {
+		public static String InsertReimbursement(HttpServletRequest req, HttpServletResponse resp) {
 
 			String reimb_amount = req.getParameter("reimb_amount");
 			String reimb_description = req.getParameter("reimb_description");

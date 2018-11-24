@@ -47,12 +47,11 @@
 							class="dropdown-item" href="#">ViewReimbursement</a>
 						<div class="dropdown-divider"></div>
 					</div></li>
-				<li class="nav-item"><a class="nav-link" href="#">Finance</a>
-				</li>
+				<li class="nav-item"><a class="nav-link" href="#">Finance</a></li>
 			</ul>
-	</div>
+		</div>
 	</nav>
-		<div id="demo" class="carousel slide" data-ride="carousel">
+	<div id="demo" class="carousel slide" data-ride="carousel">
 
 		<ul class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0"></li>
@@ -66,8 +65,7 @@
 			<div class="carousel-item">
 				<img src="images/handshake.jpg" alt="Handshake" width="1500"
 					height="400">
-				<div class="carousel-caption">
-							</div>
+				<div class="carousel-caption"></div>
 			</div>
 			<div class="carousel-item">
 				<img src="images/movingtarget.jpg" alt="Movingtarget" width="1100"
@@ -76,9 +74,9 @@
 			<div class="carousel-item active">
 				<img src="images/digitalmoney.jpg" alt="digitalmoney" width="1500"
 					height="400">
-						<div class="carousel-caption">
-			<h1>You say it, we pay it </h1>
-							</div>
+				<div class="carousel-caption">
+					<h1>You say it, we pay it</h1>
+				</div>
 			</div>
 			<div class="carousel-item">
 				<img src="images/food.jpg" alt="food" width="1500" height="400">
@@ -99,57 +97,64 @@
 		</a>
 	</div>
 
-		
+
 	<!-- 	<div class="login-container"> -->
 	<!-- 		<form method="GET" action="ERSServlet"></form> -->
 	<!-- 		<form method="post" action="MasterJSON"></form> -->
 	<!-- 		<h3>Hello: ${User.username}</h3> -->
 	<!-- 		User Name: <b>req.getParameter("username")</b> -->
-/
 
-	<form method="post" action="InsertReimbursement.ERSServlet">
-<!-- 		<div class="login-container"> -->
-<!-- 					<form method="post" action="MasterJSON">   -->
-								
-								<div class="form-group">
 
-			<label for="exampleFormControlInput1">Amount</label> <input
-				type="text" name="reimb_amount" class="form-control" id="Reimb_Amount"
-				placeholder="amount">
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlSelect1">Description</label>
-			<textarea name= "reimb_description" class="form-control" id="Reimb_Description" rows="3"></textarea>
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlInput1">Author</label> <input
-				type="text" name = "reimb_author" class="User_Id" id="User_Id" placeholder="Author">
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlSelect2">Reimbursement Status </label>
-			<select  name = "reimb_status_id" multiple class="form-control" id="REIMB_STATUS_ID">
-				<option>Approved</option>
-				<option>Denied</option>
-				<option>Pending</option>
-			</select>
+
+
+	<form method="post" action="ERSServlet">
+		<div class="login-container">
+
+
 			<div class="form-group">
-				<label  for="exampleFormControlSelect2">Reimbursement Status
-				</label> <select name = "reimb_type_id" class="form-control" id="REIMB_TYPE_ID">
-					<option>Lodging</option>
-					<option>Travel</option>
-					<option>Food</option>
-					<option>Other</option>
+
+				<label for="exampleFormControlInput1">Amount</label> <input
+					type="text" name="reimb_amount" class="form-control"
+					id="Reimb_Amount" placeholder="amount">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Description</label>
+				<textarea name="reimb_description" class="form-control"
+					id="Reimb_Description" rows="3"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlInput1">Author</label> <input
+					type="text" name="reimb_author" class="User_Id" id="User_Id"
+					placeholder="Author">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect2">Reimbursement Status
+				</label> <select name="reimb_status_id" multiple class="form-control"
+					id="REIMB_STATUS_ID">
+					<option>Approved</option>
+					<option>Denied</option>
+					<option>Pending</option>
 				</select>
+				<div class="form-group">
+					<label for="exampleFormControlSelect2">Reimbursement Status
+					</label> <select name="reimb_type_id" class="form-control"
+						id="REIMB_TYPE_ID">
+						<option>Lodging</option>
+						<option>Travel</option>
+						<option>Food</option>
+						<option>Other</option>
+					</select>
+				</div>
+			</div>
+			<div class="container">
+				<div class="well">
+					<input type="submit" value="Submit" id="login"
+						class="form-control btn btn-primary" />
+				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="well">
-				<input type="submit" value="Submit" id="login"
-					class="form-control btn btn-primary" />
-			</div>
-		</div>
-		
-		      </form>
+	</form>
+	<form method="get" action="InsertReimbursement.MasterJSON"></form>
 
 </body>
 </html>

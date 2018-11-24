@@ -8,8 +8,8 @@ import com.ErsReimbursement.model.User;
  *
  */
 public interface UserService {
-	public String getCurrUserName(String currUserName);
-	public String getCurrPassword(String currUserName);
+public String getCurrUserName(String currUserName);
+//	public String getCurrPassword(String currUserName);
 	User selectUserByLoginInfo(String userName, String passWord);
 	
 	

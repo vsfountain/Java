@@ -1,6 +1,7 @@
 package com.ErsReimbursement.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.ErsReimbursement.model.User;
 import com.ErsReimbursement.service.UserService;
@@ -9,7 +10,7 @@ import com.ErsReimbursement.service.UserServiceImpl;
 public class LoginController {
 	private static UserService staff = new UserServiceImpl();
 
-	public static String login(HttpServletRequest req) {
+	public static String login(HttpServletRequest req, HttpServletResponse resp) {
 
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
