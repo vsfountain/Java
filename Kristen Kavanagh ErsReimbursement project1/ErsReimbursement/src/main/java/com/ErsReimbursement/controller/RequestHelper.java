@@ -9,10 +9,12 @@ public class RequestHelper {
 		case "ErsReimbursement/resources/html/ERSReimbursement.html":
 			return LoginController.login(req);
 		case "ErsReimbursement/resources/html/NEWReimbursement.html":
-		}
-		return LoginController.login(req);
-		// default:
-		// return "resources/html/unsuccessfullogin.html"; }
-
+		
+			return HomeController.InsertReimbursement(req);
+default:
+			case "resources/html/unsuccessfullogin.html":
+				return LoginController.login(req);
 	}
+
+}
 }
