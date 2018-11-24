@@ -17,12 +17,6 @@ $(function singlePageTable(){
 	xhr.send();
 });
 
-//GET JSON OBJECT OUT
-//function getObj(){
-//	fullTable = JSON.stringify(jsonData);
-//	return fullTable;	
-//}
-
 $('main').on('focus', 'li', function() {
     $this = $(this);
     $this.addClass('active').siblings().removeClass();
@@ -43,14 +37,13 @@ $(function() {
         //= $.clone(this);
         var stage = $('#showTableHereWhenTableIsClicked');
         stage.prop('innerHTML', table);
-        $(tableClone).appendTo(stage);
-        
+        $(tableClone).appendTo(stage);      
     });
 });
 
 $(function() {
     $('#allReq').on('click', function() {
-    	//singlePageTablePending();
+    
         var tableClone ;
         //= $.clone(this);
         var two = $('#2');

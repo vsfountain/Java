@@ -17,16 +17,6 @@ $(function singlePageTablePending(){
 	xhr.send();
 });
 
-//$(function() {
-//    $('#pending').on('click', function() {
-//        var tableClone = $.clone(this);
-//        var stage = $('#showTableHereWhenTableIsClicked');
-//        stage.prop('innerHTML', pendingTable);
-//        $(tableClone).appendTo(stage);
-//        
-//    });
-//});
-
 $(function() {
     $('#pending').on('click', function() {
     	
@@ -36,13 +26,16 @@ $(function() {
         two.prop('innerHTML', " ");
         two.prop('innerHTML',pendingTable[0]);
         $(tableClone).appendTo(two);
-        $('#2').on('click', function() {
-        	var prompt;
-            var stage = $('#showTableHereWhenTableIsClicked');
-            stage.prop('innerHTML', "Would you like to approve this request?")
-            stage.push("Would you like to approve this request?");
-            $(prompt).appendTo(stage);
-        });
+	      $(function() {
+	      $('#2').on('click', function() {
+	          var tc = $.clone(this);
+	          var stage = $('#showTableHereWhenTableIsClicked');
+	          stage.prop('innerHTML',"Would you like to approve this request?");
+	          $(tc).appendTo(stage);
+	          $(tc).appendTo(two);
+
+	      });
+	  });
         
         var three = $('#3');
         three.prop('innerHTML'," ");
