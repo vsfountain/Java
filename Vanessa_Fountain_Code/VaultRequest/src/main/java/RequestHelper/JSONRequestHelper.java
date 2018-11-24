@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import Controller.HomeController;
 import Controller.PendingController;
 import Controller.ReimbursementController;
+import Controller.StatusController;
 
 public class JSONRequestHelper {
 
@@ -23,6 +24,12 @@ public class JSONRequestHelper {
 				break;
 			case "/VaultRequest/resources/html/reqTablePending.json":
 				PendingController.viewRequests(req, resp);
+				break;
+			case "/VaultRequest/resources/html/reqTableApprove.json":
+				StatusController.approveReimb(req,resp);
+				break;
+			case "/VaultRequest/resources/html/reqTableDeny.json":
+				StatusController.denyReimb(req,resp);
 				break;
 			default:
 				HomeController.home(req);

@@ -17,7 +17,9 @@ public interface VaultService {
 	public HashMap<String, Integer> displayAllPending();
 	
 	//APPROVE OR DENY PENDING
-	public VaultReimbursement approveDeny(VaultReimbursement reqID);
+	public void denyReimb(int reimbID);
 
 	void mapBuilder();
+
+	public void approveReimb(int reimbID);
 }

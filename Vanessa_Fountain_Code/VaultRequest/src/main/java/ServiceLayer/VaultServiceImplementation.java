@@ -77,9 +77,21 @@ public class VaultServiceImplementation implements VaultService{
 
 
 	@Override
-	public VaultReimbursement approveDeny(VaultReimbursement reqID) {
-		return reqID;
+	public void denyReimb(int reimbID) {
+		//ReimbImple(reqID, false);
+		request.updateStatus(reimbID, false);
 		
 	}
+
+
+	@Override
+	public void approveReimb(int reimbID) {
+		//ReimbImple(reqID, true);
+		request.updateStatus(reimbID, true);
+
+	}
+
+
+	
 
 }

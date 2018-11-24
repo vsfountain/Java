@@ -24,7 +24,14 @@ public class MasterJSON extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		JSONRequestHelper.process(request, response);
+		
+		//doGet(request, response);
+//		System.out.println("in post uri is: "+request.getRequestURI());
+//		String reimbKey = request.getParameter("reimbKey");
+//		System.out.println("Our reimbKey is: "+reimbKey);
+//		int value = Integer.parseInt(reimbKey);
+//		System.out.println("Our integer reimbKey is: "+ value);
 	}
 
 }

@@ -38,17 +38,23 @@ public class VaultAccessImplementaion implements VaultInterface{
 		return 0;
 	}
 
-	public void updateStatus(int reimbID) {
+	public void updateStatus(int reimbID, boolean approve) {
 		try(
 				Connection connect = DriverManager.getConnection(url, user, pass);
 				){
 			
 			PreparedStatement ps = connect.prepareStatement("UPDATE ERS_REIMBURSEMENT " + 
-					"SET REIMB_STATUS_ID = 1 " + 
-					"WHERE REIMB_ID = ?; " + 
-					" COMMIT;");
-			ps.setInt(1, reimbID);
-			
+					"SET REIMB_STATUS_ID = ? " + 
+					"WHERE REIMB_ID = ? "
+					);
+			ps.setInt(2, reimbID);
+			if (approve) {
+				//IN DATABASE APPROVE == 1
+				ps.setInt(1,  1);
+			} else {
+				//IN DATABASE DENY == 2
+				ps.setInt(1, 2);
+			}
 				ps.executeQuery();
 					
 		}catch(SQLException e) {

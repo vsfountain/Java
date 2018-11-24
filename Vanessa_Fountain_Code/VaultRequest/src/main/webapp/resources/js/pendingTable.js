@@ -6,10 +6,15 @@ $(function singlePageTablePending(){
 	xhr.open(method, url, true);
 	xhr.onreadystatechange = function () {
 	  if(xhr.readyState === 4 && xhr.status === 200) {
+		 //console.log(xhr.responseText);
 		jData = JSON.parse(xhr.responseText);
+		//console.log(jData);
 		pendingTable = [];
-		for(var i in jData){
-			str = JSON.stringify(i);
+		for(var key in jData){
+			
+			str = JSON.stringify(key);
+			//console.log(jData[key]);
+
 			pendingTable.push(str);
 		}
 	  }
@@ -17,9 +22,31 @@ $(function singlePageTablePending(){
 	xhr.send();
 });
 
+function singlePageTableApprove(reimbKey){
+	key = JSON.parse(reimbKey);
+	
+	value = jData[key]
+	console.log(jData[key]);
+	var xhr = new XMLHttpRequest(),
+    method = 'POST',
+    url = 'reqTableApprove.json';
+	xhr.open(method, url + '?reimbKey='+value, true);
+	xhr.onreadystatechange = function () {
+	  if(xhr.readyState === 4 && xhr.status === 200) {
+		  console.log("inside single page table approve");
+//		jData = JSON.parse(xhr.responseText);
+//		pendingTable = [];
+//		for(var i in jData){
+//			str = JSON.stringify(i);
+//			pendingTable.push(str);
+//		}
+	  }
+	}; 
+	xhr.send();
+}
+
 $(function() {
     $('#pending').on('click', function() {
-    	
         var tableClone;
         	
         var two = $('#2');
@@ -30,9 +57,9 @@ $(function() {
 	      $('#2').on('click', function() {
 	          var tc = $.clone(this);
 	          var stage = $('#showTableHereWhenTableIsClicked');
-	          stage.prop('innerHTML',"Would you like to approve this request?");
+	          singlePageTableApprove(pendingTable[0]);
+	          //stage.prop('innerHTML',"Would you like to approve this request?");
 	          $(tc).appendTo(stage);
-	          $(tc).appendTo(two);
 
 	      });
 	  });

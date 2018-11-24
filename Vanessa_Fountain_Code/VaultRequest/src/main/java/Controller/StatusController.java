@@ -1,31 +1,34 @@
 package Controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import ServiceLayer.VaultService;
 import ServiceLayer.VaultServiceImplementation;
 
 public class StatusController {
-//	public static String login(HttpServletRequest req) {
-//		if(!req.getMethod().equals("POST")) {
-//			return "Index.html";
-//		}
-//		String reimbID = req.getParameter("username");
-//		//String password= req.getParameter("password");
-//		
-//		VaultService dweller = new VaultServiceImplementation();
-//		
-//		int userID = dweller.getUserInfo(username, password);
-//		
-//		System.out.println(dweller.getUserInfo(username, password));
-//		if( userID != 1) {
-//			return "Index.html";
-//
-//		}else {
-//			req.getSession().setAttribute("loggedusername", username);
-//			req.getSession().setAttribute("loggedpassword", password);
-//			
-//			return "/home.vault867";
-//		}
-//	}
+
+	public static void approveReimb(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("in post uri is: "+req.getRequestURI());
+		String reimbKey = req.getParameter("reimbKey");
+		System.out.println("Our reimbKey is: "+reimbKey);
+		int reimbID = Integer.parseInt(reimbKey);
+		System.out.println("Our integer reimbKey is: "+ reimbID);
+		VaultService dweller = new VaultServiceImplementation();
+		dweller.approveReimb(reimbID);
+		
+	}
+	
+	public static void denyReimb(HttpServletRequest req, HttpServletResponse resp) {
+		System.out.println("in post uri is: "+req.getRequestURI());
+		String reimbKey = req.getParameter("reimbKey");
+		System.out.println("Our reimbKey is: "+reimbKey);
+		int reimbID = Integer.parseInt(reimbKey);
+		System.out.println("Our integer reimbKey is: "+ reimbID);
+		VaultService dweller = new VaultServiceImplementation();
+		dweller.denyReimb(reimbID);
+		
+	}
+	
+	
 }
