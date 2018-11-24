@@ -3,19 +3,20 @@ package com.ErsReimbursement.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ErsReimbursement.dao.UserDao;
+import com.ErsReimbursement.dao.UserDaoImpl;
 import com.ErsReimbursement.model.User;
-import com.ErsReimbursement.service.UserService;
-import com.ErsReimbursement.service.UserServiceImpl;
 
 public class LoginController {
-	private static UserService staff = new UserServiceImpl();
+	private static UserDao staff = new UserDaoImpl();
 
 	public static String login(HttpServletRequest req, HttpServletResponse resp) {
 
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
-		System.out.println("username and password" + username + "  " + password);
-
+		String username = req.getParameter("Ers_username");
+		String password = req.getParameter("Ers_password");
+		System.out.println("username and password " + username + "  " + password);
+		String checked = req.getParameter("checkbox");
+		System.out.println("checkdbox " + checked);
 		User logUser = staff.selectUserByLoginInfo(username, password);
 
 		if (logUser == null) {
@@ -25,8 +26,11 @@ public class LoginController {
 		} else {
 			req.getSession().setAttribute("loggedusername", username);
 			req.getSession().setAttribute("loggedpassword", password);
-
-			return "NewReimbursement.html";
+			if (checked!= null & logUser.getUserRoleId() == 2) {
+				return "FinanceERSReimbursement.html";
+			} else {
+			return "ErsReimbursement.html";
+			}
 		}
 	}
 

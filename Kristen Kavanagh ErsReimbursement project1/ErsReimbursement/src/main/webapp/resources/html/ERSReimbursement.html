@@ -16,7 +16,8 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <img src="images/reimlogo.jpg" width="150" height="75" alt=""></a>
+		<a class="navbar-brand" href="#"> <img src="images/reimlogo.jpg"
+			width="150" height="75" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -43,7 +44,7 @@
 				<li class="nav-item"><a class="nav-link disabled" href="#">Finance</a>
 				</li>
 			</ul>
-			
+
 		</div>
 	</nav>
 	<div id="demo" class="carousel slide" data-ride="carousel">
@@ -91,62 +92,62 @@
 		</a>
 	</div>
 
-<!-- 	<script type="text/javascript" src="fetch.js"></script> -->
+	<script type="text/javascript" src="fetch.js"></script>
 
-<!-- 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<!-- 	<script -->
-<!-- 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-	<div class="login-container">
 
-		<form method="GET" action="ERSServlet"></form>
-		<form method="post" action="MasterJSON"></form>
+	<form action="login.ERSServlet" method="POST">
 
-	</div>
-	<div class="container">
-		<div class="row" style="margin: 25px;"></div>
+		<!-- 		<form method="post" action="ERSServlet"></form> -->
+		<!-- 		<form method="post" action="MasterJSON"></form> -->
 
-		<div class="row">
-			<div class="col"></div>
-			<div class="col">
-				<form method="POST" action="login.ERSServlet">
-					<p>Please enter your log in credentials:</p>
-					<div class="form-group row">
-						<label for="username" class="col-sm-3 col-form-label">username</label>
-						<div class="col-sm">
-							<input name="username" class="form-control" id ="username"
-								placeholder="enter username">
+			<div class="container">
+				<div class="row" style="margin: 25px;"></div>
+
+				<div class="row">
+					<div class="col"></div>
+					<div class="col">
+						<!-- 				<form method="POST" action="ERSServlet"> -->
+						<p>Please enter your log in credentials:</p>
+						<div class="form-group row">
+							<label for="username" class="col-sm-3 col-form-label">username</label>
+							<div class="col-sm">
+								<input name="Ers_username" class="form-control" id="username"
+									placeholder="enter username">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
-						<div class="col-sm">
-							<input name="password" class="form-control" id="inputPassword3"
-								placeholder="Password">
+						<div class="form-group row">
+							<label for="inputPassword3" class="col-sm-3 col-form-label">Password</label>
+							<div class="col-sm">
+								<input name="Ers_password" class="form-control" id="inputPassword3"
+									placeholder="Password">
+							</div>
 						</div>
-					</div>
-					<div class="form-group row">
-						<div class="col-sm">Manager</div>
-						<div class="col-sm">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" id="gridCheck1">
-								<label class="form-check-label" for="gridCheck1">
-									Finance Manager</label>
+						<div class="form-group row">
+							<!-- 					value and method  -->
+							<div class="col-sm">Manager</div>
+							<div class="col-sm">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="checkbox"
+									id="gridCheck1"> <label class="form-check-label"
+										for="gridCheck1"> Finance Manager</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<button type="submit" value="Login" class="btn btn-success">Sign
+									in</button>
 							</div>
 						</div>
 					</div>
-					<div class="form-group row">
-						<div class="col-sm-10">
-
-							<button type="submit" value="Login" class="btn btn-success">Sign
-								in</button>
-						</div>
-					</div>
-				</form>
+				</div>
 			</div>
-<!-- 			<div class="col"></div> -->
-		</div>
-	</div>
+	</form>
+
 </body>
 </html>

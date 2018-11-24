@@ -7,14 +7,13 @@ public class RequestHelper {
 	public static String process(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println(req.getRequestURI());
 		switch (req.getRequestURI()) {
-		case "ErsReimbursement/resources/html/ERSReimbursement.html":
+		case "/ErsReimbursement/resources/html/login.ERSServlet":
 			return LoginController.login(req,resp);
-		case "ErsReimbursement/resources/html/NEWReimbursement.html":
+		case "/ErsReimbursement/resources/html/NEWReimbursement.html":
 		
 			return HomeController.InsertReimbursement(req,resp);
 default:
-			case "resources/html/unsuccessfullogin.html":
-				return LoginController.login(req,resp);
+			return "/ErsReimbursement/resources/html/ErsReimbursement.html";
 	}
 
 }

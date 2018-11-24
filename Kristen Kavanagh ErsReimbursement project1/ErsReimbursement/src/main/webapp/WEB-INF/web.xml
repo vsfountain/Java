@@ -15,9 +15,13 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>ERSServlet</servlet-name>
-	<servlet-class>com.ErsReimbursement.servlets.ERSServlet</servlet-class>
-		
+		<servlet-class>com.ErsReimbursement.servlets.ERSServlet</servlet-class>
 	</servlet>
+	<!-- <servlet> -->
+	<!-- <servlet-name>databaseaccess</servlet-name> -->
+	<!-- <servlet-class>com.ersReimbursement.dao</servlet-class> -->
+	<!-- </servlet> -->
+
 	<servlet-mapping>
 		<servlet-name>ERSServlet</servlet-name>
 		<url-pattern>*.ERSReimburse</url-pattern>
@@ -31,7 +35,7 @@
 		<servlet-name>MasterJSON</servlet-name>
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
-	
+
 
 
 </web-app>

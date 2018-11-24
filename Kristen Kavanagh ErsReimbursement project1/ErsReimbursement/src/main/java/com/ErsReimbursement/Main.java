@@ -1,8 +1,5 @@
 package com.ErsReimbursement;
 
-
-import com.ErsReimbursement.dao.UserDao;
-
 public class Main {
 
 		
@@ -13,7 +10,7 @@ public static void main(String[] args) {
 		System.out.println("done");
 		
 		// connects with db
-			System.out.println("Hey this is the jamiej's userid:" + UserDao.getCurrUserName("Jamiej"));
+			//System.out.println("Hey this is the jamiej's userid:" + UserService.getCurrUserName("Jamiej"));
 		}
 
 	}

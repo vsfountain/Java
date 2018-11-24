@@ -34,7 +34,7 @@ public class HomeController {
 		
 
 
-				return "NewReimbursement.html";
+				return "pendingrequest.html";
 			}
 	}
 		
