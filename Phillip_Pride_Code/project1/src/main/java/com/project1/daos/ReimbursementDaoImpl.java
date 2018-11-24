@@ -34,17 +34,16 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	private static String password = "ers1234";
 
 	@Override
-	public void creatReimb(int reimbAmount, String reimbDescription, Blob receipt, int reimbAuthor,
+	public void creatReimb(double reimbAmount, String reimbDescription, int reimbAuthor,
 			int reimbTypeId) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "{ call add_reimbursement(?,?,?,?,?) }";
+			String sql = "{ call add_reimbursement(?,?,?,?) }";
 
 			CallableStatement cs = conn.prepareCall(sql);
-			cs.setInt(1, reimbAmount);
+			cs.setDouble(1, reimbAmount);
 			cs.setString(2, reimbDescription);
-			cs.setBlob(3, receipt);
-			cs.setInt(4, reimbAuthor);
-			cs.setInt(5, reimbTypeId);
+			cs.setInt(3, reimbAuthor);
+			cs.setInt(4, reimbTypeId);
 
 			cs.executeUpdate();
 			// logger.info("Account for " + name + " was successfully created.");
@@ -56,20 +55,46 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 			 */
 		}
 	}
+	
+	@Override
+	public Reimbursement getReimb(int id) {
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+			String sql = "SELECT * FROM ers_reimbursement WHERE reimb_id=" + id;
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				 return new Reimbursement(rs.getInt("reimb_id"), rs.getDouble("reimb_amount"),
+						""+rs.getTimestamp("reimb_submitted"), ""+rs.getTimestamp("reimb_resolved"),
+						rs.getString("reimb_description"), rs.getBlob("reimb_receipt"), 
+						rs.getInt("reimb_author"), rs.getInt("reimb_resolver"),
+						rs.getInt("reimb_status_id"), rs.getInt("reimb_type_id"));
+			}
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			/*
+			 * logger.error("There was an error creating an account for " + name + ".", new
+			 * SQLException());
+			 */
+		}
+		return null;
+	}
 
 	@Override
 	public List<Reimbursement> getUserReimbs(User user) {
 		List reimbs = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			String sql = "SELECT * FROM ers_reimbursement WHERE reimb_author=" +
-							user.getUserId();
+							user.getUserId() + " ORDER BY reimb_id";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				reimbs.add(new Reimbursement(rs.getInt("reimb_id"), rs.getInt("reimb_amount"),
-						rs.getTimestamp("reimb_submitted"), rs.getTimestamp("reimb_resolved"),
+				reimbs.add(new Reimbursement(rs.getInt("reimb_id"), rs.getDouble("reimb_amount"),
+						""+rs.getTimestamp("reimb_submitted"), ""+rs.getTimestamp("reimb_resolved"),
 						rs.getString("reimb_description"), rs.getBlob("reimb_receipt"), 
 						rs.getInt("reimb_author"), rs.getInt("reimb_resolver"),
 						rs.getInt("reimb_status_id"), rs.getInt("reimb_type_id")));
@@ -89,14 +114,14 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	public List<Reimbursement> getAllReimbs() {
 		List reimbs = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "SELECT * FROM ers_reimbursement";
+			String sql = "SELECT * FROM ers_reimbursement ORDER BY reimb_id";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				reimbs.add(new Reimbursement(rs.getInt("reimb_id"), rs.getInt("reimb_amount"),
-						rs.getTimestamp("reimb_submitted"), rs.getTimestamp("reimb_resolved"),
+				reimbs.add(new Reimbursement(rs.getInt("reimb_id"), rs.getDouble("reimb_amount"),
+						""+rs.getTimestamp("reimb_submitted"), ""+rs.getTimestamp("reimb_resolved"),
 						rs.getString("reimb_description"), rs.getBlob("reimb_receipt"), 
 						rs.getInt("reimb_author"), rs.getInt("reimb_resolver"),
 						rs.getInt("reimb_status_id"), rs.getInt("reimb_type_id")));

@@ -1,6 +1,5 @@
 package com.project1.service;
 
-import java.sql.Blob;
 import java.util.List;
 
 import com.project1.daos.ReimbursementDao;
@@ -12,25 +11,30 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	ReimbursementDao reimb = new ReimbursementDaoImpl();
 
 	@Override
-	public void logReimbursement(int reimbAmount, String reimbDescription, Blob receipt, User reimbAuthor,
+	public void logReimbursement(double reimbAmount, String reimbDescription, User reimbAuthor,
 			String reimbType) {
 		switch (reimbType.toLowerCase()) {
 		case "lodging":
-			reimb.creatReimb(reimbAmount, reimbDescription, receipt, reimbAuthor.getUserId(), 1);
+			reimb.creatReimb(reimbAmount, reimbDescription, reimbAuthor.getUserId(), 1);
 			break;
 		case "travel":
-			reimb.creatReimb(reimbAmount, reimbDescription, receipt, reimbAuthor.getUserId(), 1);
+			reimb.creatReimb(reimbAmount, reimbDescription, reimbAuthor.getUserId(), 2);
 			break;
 		case "food":
-			reimb.creatReimb(reimbAmount, reimbDescription, receipt, reimbAuthor.getUserId(), 1);
+			reimb.creatReimb(reimbAmount, reimbDescription, reimbAuthor.getUserId(), 3);
 			break;
 		case "other":
-			reimb.creatReimb(reimbAmount, reimbDescription, receipt, reimbAuthor.getUserId(), 1);
+			reimb.creatReimb(reimbAmount, reimbDescription, reimbAuthor.getUserId(), 4);
 			break;
 		default:
 			System.out.println("Please enter a valid type of reimbursement");
 		}
 
+	}
+	
+	@Override
+	public Reimbursement getReimb(int id) {
+		return reimb.getReimb(id);
 	}
 
 	@Override
@@ -48,9 +52,17 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	}
 
 	@Override
-	public void processReimb(Reimbursement reimb, User resolver, int process) {
-		if (resolver.getUserRoleId() == 2)
-			this.reimb.updateReimb(reimb, resolver, process);
+	public void processReimb(Reimbursement reimb, User resolver, String process) {
+		if (resolver.getUserRoleId() == 2) {
+			switch(process.toLowerCase()) {
+			case "approve":
+				this.reimb.updateReimb(reimb, resolver, 2);
+				break;
+			case "deny":
+				this.reimb.updateReimb(reimb, resolver, 3);
+			}
+			
+		}
 		else
 			System.out.println("This user is not authorized to process reimbursements.");
 

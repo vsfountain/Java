@@ -14,7 +14,18 @@
 	background-image: url("images/bewd1.png");
 	background-repeat: no-repeat;
 	background-size: cover; 
-	background-color: #c0c0c00080;
+	/* background-color: rgb(150); */
+	background-position: top;
+	height: 800px;
+	
+}
+
+#fm-account-page{
+	
+	background-image: url("images/beud1.png");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-color: rgb(100,100,100);
 	background-position: top;
 	height: 800px;
 	
@@ -28,12 +39,23 @@
 	height: 400px;
 }
 
+#process-fail{
+	background-image: url("images/traphole.jpg");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-position: top;
+	height: 400px;
+	color: red;
+}
+
 #reimb-form{
 	background-image: url("images/obelisk1.jpg");
 	background-repeat: no-repeat;
 	background-size: cover; 
 	background-position: top;
 	height: 400px;
+	color: white;
+	font-size: 20px;
 }
 
 .form-container{
@@ -58,6 +80,12 @@
 	text-align: center;
 	justify-content: center;
 	
+}
+
+#reimb-table{
+	color: black;
+	background-color: rgba(210, 180, 99, .5);
+	text-style: bold;
 }
 
 input{

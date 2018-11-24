@@ -25,24 +25,14 @@ public class JSONServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		User user = (User) session.getAttribute("currentuser");
 		resp.getWriter().write(new ObjectMapper().writeValueAsString(user));
-		/*List<Reimbursement> reimbList = ReimbursementHelper.process(req);
-		  System.out.println("In GET after helper");
-		  resp.getWriter().println(reimbList);*/
-		/*PrintWriter out = resp.getWriter();
 		
-		out.println("<script>");
-		
-		for(int i=0; i < reimbList.size(); i++) {
-			out.println("console.log("+ reimbList.get(i)+");");
-		}
-		
-		out.println("</script>");*/
 	}
 
 	
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		//System.out.println(ReimbursementHelper.process(req));
+		resp.getWriter().write(new ObjectMapper().writeValueAsString(ReimbursementHelper.process(req)));
+		
 	}
 
 }

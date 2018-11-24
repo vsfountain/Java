@@ -3,55 +3,55 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>KC Reimbursement Form</title>
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/mystyle.css"/>
+<link rel="stylesheet" type="text/css" href="../css/mystyle.css" />
 
-<link rel="shortcut icon" href="resources/css/images/kc_logo1.png"
-	type="image/x-icon" /> -->
+<link rel="shortcut icon" href="../css/images/kc_logo1.png"
+	type="image/x-icon" />
 
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body id="reimb-form">
 	<p>Please fill out the reimbursement form below.</p>
-	<form>
-		<div class="form-group">
-			<label for="exampleFormControlInput1">Email address</label> <input
-				type="email" class="form-control" id="exampleFormControlInput1"
-				placeholder="name@example.com">
+	<form method=POST action="reimb.insert">
+		<div class="form-row">
+			<div class="form-group col-md-2">
+				<label for="reimbType">Type of reimbursement</label> <select
+					class="form-control" name="reimbType" id="reimbType">
+					<option selected>Choose...</option>
+					<option>Lodging</option>
+					<option>Travel</option>
+					<option>Food</option>
+					<option>Other</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-2">
+				<label for="inputReimbAmount">Reimbursement Amount</label>
+				<div class="input-group-prepend">
+					<span class="input-group-text">$</span> <input type="number"
+						class="form-control" id="inputReimbAmount" name="reimbAmount"
+						step=".01" min="0">
+				</div>
+			</div>
+
 		</div>
-		<div class="form-group">
-			<label for="exampleFormControlSelect1">Example select</label> <select
-				class="form-control" id="exampleFormControlSelect1">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlSelect2">Example multiple
-				select</label> <select multiple class="form-control"
-				id="exampleFormControlSelect2">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-		</div>
-		<div class="form-group">
-			<label for="exampleFormControlTextarea1">Example textarea</label>
-			<textarea class="form-control" id="exampleFormControlTextarea1"
-				rows="3"></textarea>
-		</div>
+		
+		<div class="form-group col-md-4">
+				<label for="inputDesc">Information on reimbursement</label>
+				<textarea rows=4 cols=50 class="form-control"
+					aria-label="With textarea" name="reimbDesc" id="inputDesc"></textarea>
+			</div>
+
+		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
 </body>
 </html>

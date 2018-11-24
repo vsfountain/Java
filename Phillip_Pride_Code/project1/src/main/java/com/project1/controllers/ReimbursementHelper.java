@@ -7,10 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import com.project1.objs.Reimbursement;
 
 public class ReimbursementHelper {
-	public static List<Reimbursement> process(HttpServletRequest req) {
-		System.out.println(req.getRequestURI());
 
-		return ReimbursementController.show(req);
+	public static Object process(HttpServletRequest req) {
+		System.out.println(req.getRequestURI());
+		switch (req.getRequestURI()) {
+		case "/project1/show.reimb":
+			return ReimbursementController.show(req);
+		default:
+			return null;
+		}
 
 	}
 

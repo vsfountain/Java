@@ -26,9 +26,12 @@ public class LoginController {
 		 * return "/home.wumpus"; }
 		 */
 		if (user != null) {
-			System.out.println("we have a non null user");
+			//System.out.println("we have a non null user");
 			req.getSession().setAttribute("currentuser", user);
-			return "resources/html/loginsuccess.html";
+			if(user.getUserRoleId() == 2) {
+				return "resources/html/fmaccount.html";
+			}
+			return "resources/html/employeeaccount.html";
 
 		} else {
 			return "resources/html/loginfail.html";

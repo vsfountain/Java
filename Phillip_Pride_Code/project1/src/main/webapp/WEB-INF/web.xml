@@ -13,6 +13,7 @@
     <servlet-name>MainServlet</servlet-name>
     <url-pattern>/MainServlet</url-pattern>
     <url-pattern>*.login</url-pattern>
+    <url-pattern>*.insert</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -25,5 +26,6 @@
     <servlet-name>JSONServlet</servlet-name>
     <url-pattern>/JSONServlet</url-pattern>
     <url-pattern>*.reimb</url-pattern>
+    <url-pattern>*.user</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -9,8 +9,11 @@ import com.project1.objs.User;
 public interface ReimbursementDao {
 
 	// CREATE a new reimbursement
-	public void creatReimb(int reimbAmount, String reimbDescription, Blob receipt, int reimbAuthor, int reimbTypeId);
+	public void creatReimb(double reimbAmount, String reimbDescription, int reimbAuthor, int reimbTypeId);
 
+	// Access existing reimbursements
+	public Reimbursement getReimb(int reimbId);
+	
 	public List<Reimbursement> getUserReimbs(User user);
 	
 	public List<Reimbursement> getAllReimbs();

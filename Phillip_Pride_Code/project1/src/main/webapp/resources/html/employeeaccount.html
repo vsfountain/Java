@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Account</title>
+<link rel="stylesheet" type="text/css" href="resources/css/mystyle.css" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<link rel="shortcut icon" href="resources/css/images/kc_logo1.png"
+	type="image/x-icon" />
+</head>
+
+<body id="account-page">
+	<h2>
+		Welcome<span id="user"></span>!
+	</h2>
+	<div class="form-row">
+		<!-- <div class="form-group col-md-2">
+			<button class="btn btn-primary" id="reimbs"
+				onclick="showReimbursements();">Show current reimbursements
+			</button>
+		</div> -->
+		<div class="form-group col-md-2">
+			<a class="btn btn-primary"
+				href="resources/html/reimbursementform.html" role="button">Create
+				new reimbursement</a>
+		</div>
+	</div>
+
+	<table class="table" id="reimb-table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Reimbursement Type</th>
+				<th scope="col">Description</th>
+				<th scope="col">Amount</th>
+				<th scope="col">Date Submitted</th>
+				<th scope="col">Date Resolved</th>
+				<th scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script type="text/javascript" src="resources/js/welcomeuser.js"></script>
+</body>
+</html>

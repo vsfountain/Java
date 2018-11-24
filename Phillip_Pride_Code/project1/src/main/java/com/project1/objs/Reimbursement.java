@@ -5,9 +5,9 @@ import java.sql.Timestamp;
 
 public class Reimbursement {
 	private int reimbId;
-	private int reimbAmount;
-	private Timestamp reimbSubmitted;
-	private Timestamp reimbResolved;
+	private double reimbAmount;
+	private String reimbSubmitted;
+	private String reimbResolved;
 	private String reimDescription;
 	private Blob receipt;
 	private int reimbAuthor;
@@ -21,7 +21,7 @@ public class Reimbursement {
 
 	
 
-	public Reimbursement(int reimbId, int reimbAmount, Timestamp reimbSubmitted, Timestamp reimbResolved,
+	public Reimbursement(int reimbId, double reimbAmount, String reimbSubmitted, String reimbResolved,
 			String reimDescription, Blob receipt, int reimbAuthor, int reimbResolver, int reimbStatusId,
 			int reimbTypeId) {
 		super();
@@ -47,27 +47,27 @@ public class Reimbursement {
 		this.reimbId = reimbId;
 	}
 
-	public int getReimbAmount() {
+	public double getReimbAmount() {
 		return reimbAmount;
 	}
 
-	public void setReimbAmount(int reimbAmount) {
+	public void setReimbAmount(double reimbAmount) {
 		this.reimbAmount = reimbAmount;
 	}
 
-	public Timestamp getReimbSubmitted() {
+	public String getReimbSubmitted() {
 		return reimbSubmitted;
 	}
 
-	public void setReimbSubmitted(Timestamp reimbSubmitted) {
+	public void setReimbSubmitted(String reimbSubmitted) {
 		this.reimbSubmitted = reimbSubmitted;
 	}
 
-	public Timestamp getReimbResolved() {
+	public String getReimbResolved() {
 		return reimbResolved;
 	}
 
-	public void setReimbResolved(Timestamp reimbResolved) {
+	public void setReimbResolved(String reimbResolved) {
 		this.reimbResolved = reimbResolved;
 	}
 
@@ -121,7 +121,7 @@ public class Reimbursement {
 
 	@Override
 	public String toString() {
-		return "Reimbursement [reimbId=" + reimbId + ", reimbAmount=" + reimbAmount + ", \nreimbSubmitted="
+		return "Reimbursement [reimbId=" + reimbId + ", reimbAmount=$" + reimbAmount + ", \nreimbSubmitted="
 				+ reimbSubmitted + ", reimbResolved=" + reimbResolved + ",\nreimDescription=" + reimDescription
 				+ ", receipt=" + receipt + ", \nreimbAuthor=" + reimbAuthor + ", reimbResolver=" + reimbResolver
 				+ ", \nreimbStatusId=" + reimbStatusId + ", reimbTypeId=" + reimbTypeId + "]\n";
