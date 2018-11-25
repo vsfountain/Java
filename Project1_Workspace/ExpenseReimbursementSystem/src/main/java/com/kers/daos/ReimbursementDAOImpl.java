@@ -341,8 +341,10 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	@Override
 	public String h2InitFunctions() {
-		// TODO Auto-generated method stub
-		return null;
+		return "CREATE ALIAS GET_CUSTOMER_HASH FOR \"com.test.Functions.getCustomerHash\"; " +
+				"CREATE ALIAS CHECK_CRENDENTIALS FOR \"com.test.Functions.checkCredentials\";" +
+				"CREATE ALIAS QUERY FOR \"com.test.Functions.query\";" +
+				"CREATE ALIAS UPDATE_REIMB_STATUS FOR \"com.test.Functions.updateReimbStatus\";";
 	}
 	
 }
