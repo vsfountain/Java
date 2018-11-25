@@ -31,46 +31,46 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	private static String url = "jdbc:oracle:thin:@kristen.cu5uh73jvis1.us-east-2.rds.amazonaws.com:1521:kristen";
 	private static String username = "kristenzers";
 	private static String password = "krisers1234";
-	@Override
-	public int InsertReimbursement(Reimbursement reimburse) {
-		int imbur =0;
-	try (Connection conn = DriverManager.getConnection(url,username,password)){
-		String sql = "{call insert_reimbursement_null_id(?,?,?,?,?,?)}";
-		CallableStatement cs = conn.prepareCall(sql);
-		cs.setDouble(1, reimburse.getRemb_Amount());
-		cs.setString(2, reimburse.getRemb_Description());
-		cs.setInt(3, reimburse.getRemb_Author());
-		cs.setInt(4, reimburse.getRemb_Status_Id());
-		cs.setInt(5, reimburse.getRemb_Type_Id());
-		
-		imbur = cs.executeUpdate();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	return imbur;
-	}
-
 //	@Override
 //	public int InsertReimbursement(Reimbursement reimburse) {
 //		int imbur = 0;
-//		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-//			String sql = "INSERT INTO ERS_REIMBURSEMENT (REIMB_AMOUNT,REIMB_DESCRIPTION, REIMB_AUTHOR,REIMB_STATUS_ID, REIMB_TYPE_ID)"
-//					+ "VALUES(?,?,?,?,?,?)";
-//
-//			PreparedStatement ps = conn.prepareStatement(sql);
-//			ps.setDouble(1, reimburse.getRemb_Amount());
-//			ps.setString(2, reimburse.getRemb_Description());
-//			ps.setInt(3, reimburse.getRemb_Author());
-//			ps.setInt(4, reimburse.getRemb_Status_Id());
-//			ps.setInt(5, reimburse.getRemb_Type_Id());
-//			imbur = ps.executeUpdate();
-//
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//
-//		}
-//		return imbur;
+//	try (Connection conn = DriverManager.getConnection(url,username,password)){
+//		String sql = "{call insert_reimbursement_null_id(?,?,?,?,?,?)}";
+//		CallableStatement cs = conn.prepareCall(sql);
+//		cs.setDouble(1, reimburse.getRemb_Amount());
+//		cs.setString(2, reimburse.getRemb_Description());
+//		cs.setInt(3, reimburse.getRemb_Author());
+//		cs.setInt(4, reimburse.getRemb_Status_Id());
+//		cs.setInt(5, reimburse.getRemb_Type_Id());
+//				cs.execute();
+//		imbur=1;
+//	} catch (SQLException e) {
+//		e.printStackTrace();
 //	}
+//	return imbur;
+//	}
+
+	@Override
+	public int InsertReimbursement(Reimbursement reimburse) {
+		int imbur = 0;
+		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+			String sql = "INSERT INTO ERS_REIMBURSEMENT (REIMB_AMOUNT,REIMB_DESCRIPTION, REIMB_AUTHOR,REIMB_STATUS_ID, REIMB_TYPE_ID)"
+					+ "VALUES(?,?,?,?,?)";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setDouble(1, reimburse.getRemb_Amount());
+			ps.setString(2, reimburse.getRemb_Description());
+			ps.setInt(3, reimburse.getRemb_Author());
+			ps.setInt(4, reimburse.getRemb_Status_Id());
+			ps.setInt(5, reimburse.getRemb_Type_Id());
+			imbur = ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		return imbur;
+	}
 
 	@Override
 	public ArrayList<Reimbursement> viewReimburse() {

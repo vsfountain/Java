@@ -26,10 +26,11 @@ public class LoginController {
 		} else {
 			req.getSession().setAttribute("loggedusername", username);
 			req.getSession().setAttribute("loggedpassword", password);
+			req.getSession().setAttribute("logUser", logUser);
 			if (checked!= null & logUser.getUserRoleId() == 2) {
 				return "FinanceERSReimbursement.html";
 			} else {
-			return "ErsReimbursement.html";
+			return "NewReimbursement.html";
 			}
 		}
 	}

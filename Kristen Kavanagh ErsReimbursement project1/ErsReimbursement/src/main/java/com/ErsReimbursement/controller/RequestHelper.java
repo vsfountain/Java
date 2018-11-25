@@ -9,7 +9,7 @@ public class RequestHelper {
 		switch (req.getRequestURI()) {
 		case "/ErsReimbursement/resources/html/login.ERSServlet":
 			return LoginController.login(req,resp);
-		case "/ErsReimbursement/resources/html/NEWReimbursement.html":
+		case "/ErsReimbursement/resources/html/InsertReimbursement.ERSServlet":
 		
 			return HomeController.InsertReimbursement(req,resp);
 default:

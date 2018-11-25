@@ -35,6 +35,14 @@ public class Reimbursement {
 			String reimb_type_id) {
 		// TODO Auto-generated constructor stub
 	}
+	public Reimbursement(Double reimb_amount, String reimb_description, int reimb_author, int reimb_status_id,
+			int reimb_type_id) {
+		this.remb_Amount = reimb_amount;
+		this.remb_Description = reimb_description;
+		this.remb_Author = reimb_author;
+		this.remb_Status_Id = reimb_status_id;
+		this.remb_Type_Id = reimb_type_id;
+	}
 	public int getRemb_Id() {
 		return remb_Id;
 	}

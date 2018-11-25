@@ -107,7 +107,7 @@
 
 
 
-	<form method="post" action="ERSServlet">
+	<form method="post" action="InsertReimbursement.ERSServlet">
 		<div class="login-container">
 
 
@@ -115,37 +115,37 @@
 
 				<label for="exampleFormControlInput1">Amount</label> <input
 					type="text" name="reimb_amount" class="form-control"
-					id="Reimb_Amount" placeholder="amount">
+					id="reimb_amount" placeholder="amount">
 			</div>
 			<div class="form-group">
 				<label for="exampleFormControlSelect1">Description</label>
 				<textarea name="reimb_description" class="form-control"
-					id="Reimb_Description" rows="3"></textarea>
+					id="reimb_description" rows="3"></textarea>
 			</div>
-			<div class="form-group">
-				<label for="exampleFormControlInput1">Author</label> <input
-					type="text" name="reimb_author" class="User_Id" id="User_Id"
-					placeholder="Author">
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect2">Reimbursement Status
-				</label> <select name="reimb_status_id" multiple class="form-control"
-					id="REIMB_STATUS_ID">
-					<option>Approved</option>
-					<option>Denied</option>
-					<option>Pending</option>
-				</select>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="exampleFormControlInput1">Author</label> <input -->
+<!-- 					type="text" name="reimb_author" class="User_Id" id="reimb_author" -->
+<!-- 					placeholder="Author"> -->
+<!-- 			</div> -->
+<!-- 			<div class="form-group"> -->
+<!-- 				<label for="exampleFormControlSelect2">Reimbursement Status -->
+<!-- 				</label> <select name="reimb_status_id" multiple class="form-control" -->
+<!-- 					id="reimb_status_id"> -->
+<!-- 					<option>Approved</option> -->
+<!-- 					<option>Denied</option> -->
+<!-- 					<option>Pending</option> -->
+<!-- 				</select> </div>-->
+
 				<div class="form-group">
 					<label for="exampleFormControlSelect2">Reimbursement Status
 					</label> <select name="reimb_type_id" class="form-control"
 						id="REIMB_TYPE_ID">
-						<option>Lodging</option>
-						<option>Travel</option>
-						<option>Food</option>
-						<option>Other</option>
+						<option value='1'>Lodging</option>
+						<option value='2'>Travel</option>
+						<option value='3'>Food</option>
+						<option value='4'>Other</option>
 					</select>
 				</div>
-			</div>
 			<div class="container">
 				<div class="well">
 					<input type="submit" value="Submit" id="login"
