@@ -112,7 +112,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 					int blobLength = (int)blob.length();
 					byte[] blobAsBytes = blob.getBytes(1, blobLength);
 					blob.free();
-					reimbursement = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						reimbursement = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getTimestamp(4),
 							rs.getString(5), blobAsBytes, rs.getString(7), rs.getString(8), rs.getString(9),
 							rs.getString(10));
 				}
@@ -149,17 +149,8 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			String sql = "{ call update_reimb_status(?,?,?) }";
 
 			PreparedStatement ps = con.prepareStatement(sql);
-			System.out.println("DECISION: " + decision);
-			/*
-			 * if (decision.equals("approve")) { ps.setInt(1, 102); } else { ps.setInt(1,
-			 * 103); }
-			 */
 			ps.setInt(1, id);
-			if (decision.equals("approve")) {
-				ps.setString(2, "Approved");
-			} else {
-				ps.setString(2, "Denied");
-			}
+			ps.setString(2, decision);
 			ps.setString(3, resolver);
 
 			return ps.executeUpdate();

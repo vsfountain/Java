@@ -1,5 +1,8 @@
 package com.kers.services;
 
-public interface UserService {
+import com.kers.models.User;
 
+public interface UserService {
+	public User getUserByUsername(String username);
+	public User getUserbyUsernameAndPassword(String username, String password);
 }
