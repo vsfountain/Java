@@ -17,9 +17,10 @@
 
 input {
 	/*margin: 3px;*/
+	
 }
 
-.control-label{
+.control-label {
 	text-align: left;
 }
 
@@ -31,23 +32,34 @@ body {
 	/*font-family: "M PLUS Rounded 1c";*/
 	/*font-family: 'Montserrat', sans-serif;
 	font-size: 13px;*/
+	height: 100%;
 }
 
-h1{
+.div-center{
+	height: 80vh;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+.table-dark td, .table-dark th, .table-dark thead th {
+    background-color: #151518;
+}
+
+h1 {
 	color: #F1E4E8;
 	font-family: "M PLUS Rounded 1c";
 	font-size: 40px;
 	letter-spacing: 20px;
 }
 
-h3{
+h3 {
 	color: #F1E4E8;
 	font-family: "M PLUS Rounded 1c";
 	font-size: 20px;
 	margin: 3px;
 }
 
-h4{
+h4 {
 	color: #F1E4E8;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
@@ -55,19 +67,18 @@ h4{
 	text-transform: uppercase;
 }
 
-
 .textfield-box {
 	display: inline-block;
 	border-radius: 10px;
 	background-color: #E2DCDE;
-	border: none; text-align : center;
+	border: none;
+	text-align: center;
 	font-size: 13px;
 	width: 200px;
 	padding: 10px;
 	margin: 5px;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
-	
 }
 
 .login-button {
@@ -98,8 +109,34 @@ h4{
 }
 
 .box-flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 95vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 95vh;
+}
+
+.dropdown-menu {
+	background-color: #151518;
+	color: #E2DCDE;
+}
+
+.bg-dark {
+	background-color: #151518 !important;
+}
+
+.dropdown-divider {
+	border-top: 1px solid #1F1F23;
+}
+
+.dropdown-item {
+	color: #E2DCDE;
+	opacity: 0.5;
+}
+
+.btn-outline-light {
+    color: #E2DCDE;
+    background-color: transparent;
+    background-image: none;
+    border-color: #E2DCDE;
+    opacity: 0.5;
 }

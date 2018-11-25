@@ -40,6 +40,14 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email

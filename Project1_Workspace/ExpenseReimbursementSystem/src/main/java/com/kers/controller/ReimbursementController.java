@@ -1,6 +1,7 @@
 package com.kers.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,18 +29,31 @@ public class ReimbursementController {
 
 	public static void getList(HttpServletRequest req, HttpServletResponse resp)
 			throws JsonProcessingException, IOException {
+		User u = (User) req.getSession().getAttribute("user");
+
 		List<Reimbursement> rList = rdao.selectAllReimbursements();
-		System.out.println("requesthelper retrieve rLIST: " + rList);
-		resp.getWriter().write(new ObjectMapper().writeValueAsString(rList));
+		System.out.println("RLIST: " + rList);
+		// System.out.println("requesthelper retrieve rLIST: " + rList);
+		if (u.getRole().equals("Admin")) {
+			resp.getWriter().write(new ObjectMapper().writeValueAsString(rList));
+		} else {
+			List<Reimbursement> uRList = new ArrayList<Reimbursement>();
+			for (Reimbursement r : rList) {
+				if (r.getAuthor().equals(u.getUsername())) {
+					uRList.add(r);
+				}
+			}
+			resp.getWriter().write(new ObjectMapper().writeValueAsString(uRList));
+		}
 	}
 
 	public static String alterReimbursements(HttpServletRequest req) throws JsonProcessingException, IOException {
 		String[] checkedValues = req.getParameterValues("selectedRow");
 		System.out.println("Arrays toString: " + Arrays.toString(checkedValues));
-		String resolver = ((User)req.getSession().getAttribute("user")).getUsername();
-		
+		String resolver = ((User) req.getSession().getAttribute("user")).getUsername();
+
 		System.out.println("RESOLVER: " + resolver);
-		//int resolverid = udao.selectUserByUsername(resolver).get;
+		// int resolverid = udao.selectUserByUsername(resolver).get;
 		String decision = req.getParameter("submit");
 		System.out.println();
 		// System.out.println("CHECKED VALUES: " + checkedValues[0]);

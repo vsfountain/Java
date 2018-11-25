@@ -1,5 +1,7 @@
 package com.kers.daos;
 
+import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kers.models.Reimbursement;
+
+import oracle.sql.BLOB;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 
@@ -26,16 +30,22 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	private static String username = "ersdb";
 	private static String password = "password";
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public int insertReimbursement(Reimbursement r) {
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
 			String sql = "{ call insert_ers_reimb_id_null(?,?,?,?,?,?) }";
-
+			System.out.println("BEFORE BLOBING: " + r.getReceiptByteArray().toString());
+			//BLOB blob = BLOB.createTemporary(con, false, 1);
+			//BLOB blob = r.getReceiptByteArray();
+			//System.out.println("AFTER BLOBING: " + blob);
+			//blob.putBytes(4, r.getReceiptByteArray());
 			CallableStatement cs = con.prepareCall(sql);
 			cs.setDouble(1, r.getAmountDouble());
 			cs.setTimestamp(2, Timestamp.valueOf(java.time.LocalDateTime.now()));
 			cs.setString(3, r.getDescription());
-			cs.setBlob(4, r.getReceipt());
+			cs.setBlob(4, new ByteArrayInputStream(r.getReceiptByteArray()));
+			//cs.setBlob(4, blob);
 			cs.setString(5, r.getAuthor());
 			cs.setString(6, r.getType());
 
@@ -61,11 +71,24 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			while (rs.next()) {
 				Reimbursement r;
 				if (rs.getTimestamp(3) == null) {
+					Blob blob = rs.getBlob(6);
+					System.out.println("BLOB AFTER: " + blob);
+					int blobLength = (int)blob.length();
+					byte[] blobAsBytes = blob.getBytes(1, blobLength);
+					blob.free();
+					System.out.println("Blob As Bytes: " + blobAsBytes);
 					r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getString(5),
-							rs.getBlob(6), rs.getString(7), rs.getString(9), rs.getString(10));
+							blobAsBytes, rs.getString(7), rs.getString(9), rs.getString(10));
+					
 				} else {
+					Blob blob = rs.getBlob(6);
+					System.out.println("BLOB AFTER: " + blob);
+					int blobLength = (int)blob.length();
+					byte[] blobAsBytes = blob.getBytes(1, blobLength);
+					blob.free();
+					
 					r = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getTimestamp(4),
-							rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+							rs.getString(5), blobAsBytes, rs.getString(7), rs.getString(8), rs.getString(9),
 							rs.getString(10));
 				}
 				rList.add(r);
@@ -78,7 +101,40 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	@Override
 	public Reimbursement selectReimbursementById(int id) {
-		// TODO Auto-generated method stub
+		Reimbursement reimbursement = null;
+		
+		try (Connection con = DriverManager.getConnection(url, username, password)) {
+			String sql = "SELECT * FROM ers_reimbursement WHERE reimb_id = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				if (rs.getTimestamp(3) == null) {
+					Blob blob = rs.getBlob(6);
+					int blobLength = (int)blob.length();
+					byte[] blobAsBytes = blob.getBytes(1, blobLength);
+					blob.free();
+					System.out.println("BLOB: " + blobAsBytes);
+					reimbursement = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getString(5),
+							blobAsBytes, rs.getString(7), rs.getString(9), rs.getString(10));
+					
+				} else {
+					Blob blob = rs.getBlob(6);
+					int blobLength = (int)blob.length();
+					byte[] blobAsBytes = blob.getBytes(1, blobLength);
+					blob.free();
+					System.out.println("BLOB: " + blobAsBytes);
+					reimbursement = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getTimestamp(4),
+							rs.getString(5), blobAsBytes, rs.getString(7), rs.getString(8), rs.getString(9),
+							rs.getString(10));
+				}
+				return reimbursement;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		
 		return null;
 	}
 
