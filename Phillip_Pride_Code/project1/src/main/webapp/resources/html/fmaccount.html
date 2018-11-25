@@ -23,10 +23,29 @@
 		Welcome<span id="user"></span>!
 	</h2>
 	<div class="form-row">
+		<form method="POST" action="exit.login">
+			<div class="form-group col-md-2">
+				<button type="submit" class="btn btn-primary" id="reimbs">Logout</button>
+			</div>
+		</form>
 		<div class="form-group col-md-2">
 			<a class="btn btn-primary"
-				href="resources/html/processreimbursement.html" role="button">Process reimbursements</a>
+				href="resources/html/processreimbursement.html" role="button">Process
+				reimbursements</a>
 		</div>
+		<div class="input-group mb-1">
+			<div class="input-group-prepend">
+				<label class="input-group-text" for="filters">Filter By</label>
+			</div>
+			<select class="custom-select" id="filters" onchange="filterTable();">
+				<option selected>All</option>
+				<option value="Pending">Pending</option>
+				<option value="Approved">Approved</option>
+				<option value="Denied">Denied</option>
+			</select>
+		</div>	
+
+
 	</div>
 
 	<table class="table" id="reimb-table">

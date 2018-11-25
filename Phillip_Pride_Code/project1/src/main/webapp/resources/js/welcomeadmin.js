@@ -8,21 +8,18 @@ window.onload = function() {
 
 function getName() {
 
-	// getting field value
+	// getting name span
 	let uId = document.getElementById('user');
 
-	// this object allows us to make requests and get data back
-	// in short this is our API caller
+	
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
-		// console.log('ready state is changing! weee~~~!')
 
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 
 			let user = JSON.parse(xhttp.responseText);
 			uId.innerHTML = " " + user.firstName + " " + user.lastName;
-			// setValues(sw);
 		}
 	}
 
@@ -36,14 +33,12 @@ function getName() {
 }
 
 function showReimbursements() {
-	console.log("in showReimbursement function.");
 
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			let response = JSON.parse(xhttp.responseText);
-			// console.log(response);
 			populateTable(response);
 
 		}
@@ -112,11 +107,28 @@ function populateTable(json) {
 			status.textContent = "Approved";
 			break;
 		default:
-			// console.log(row.reimbStatusId);
 			status.textContent = "Denied";
 		}
 		
 		tr.appendChild(status);
 		reimbsTable.appendChild(tr);
 	})
+}
+
+function filterTable(){
+	let filter = document.getElementById("filters").value;
+	let table, tr, td, i;
+	  table = document.getElementById("reimb-table");
+	  tr = table.getElementsByTagName("tr");
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[6];
+	    if (td) {
+	      if (td.textContent === filter || filter==="All") {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    }       
+	  }
+	
 }

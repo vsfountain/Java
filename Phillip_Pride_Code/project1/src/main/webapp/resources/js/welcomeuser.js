@@ -11,23 +11,19 @@ function getName() {
 	// getting field value
 	let uId = document.getElementById('user');
 
-	// this object allows us to make requests and get data back
-	// in short this is our API caller
+	// create a request
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
-		// console.log('ready state is changing! weee~~~!')
 
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 
 			let user = JSON.parse(xhttp.responseText);
 			uId.innerHTML = " " + user.firstName + " " + user.lastName;
-			// setValues(sw);
 		}
 	}
 
 	// create a connection
-	// (http method, url, and boolean asynch or not)
 	xhttp.open("GET", 'http://localhost:9007/project1/info.user');
 
 	// this begins the request process
@@ -43,7 +39,6 @@ function showReimbursements() {
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			let response = JSON.parse(xhttp.responseText);
-			// console.log(response);
 			populateTable(response);
 
 		}
@@ -109,7 +104,6 @@ function populateTable(json) {
 			status.textContent = "Approved";
 			break;
 		default:
-			// console.log(row.reimbStatusId);
 			status.textContent = "Denied";
 		}
 		
@@ -119,14 +113,12 @@ function populateTable(json) {
 }
 
 function processReimbursements() {
-	console.log("in processReimbursement function.");
 
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			let response = JSON.parse(xhttp.responseText);
-			// console.log(response);
 			populateTable(response);
 
 		}

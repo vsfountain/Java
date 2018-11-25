@@ -11,22 +11,13 @@ public class LoginController {
 
 	public static String login(HttpServletRequest req) {
 		if (!req.getMethod().equals("POST")) {
-			/* return "index.html"; */
+			 return "index.html"; 
 		}
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 
 		User user = userService.loginUser(username, password);
-
-		/*
-		 * if (!(username.equals("mac") && password.equals("cheese"))) { return
-		 * "index.html"; } else { req.getSession().setAttribute("loggusername",
-		 * username); req.getSession().setAttribute("loggpassword", password);
-		 * 
-		 * return "/home.wumpus"; }
-		 */
 		if (user != null) {
-			//System.out.println("we have a non null user");
 			req.getSession().setAttribute("currentuser", user);
 			if(user.getUserRoleId() == 2) {
 				return "resources/html/fmaccount.html";
@@ -36,5 +27,11 @@ public class LoginController {
 		} else {
 			return "resources/html/loginfail.html";
 		}
+	}
+
+	public static String logout(HttpServletRequest req) {
+		req.getSession().invalidate();
+		System.out.println("in logout method");
+		return "index.html";
 	}
 }
