@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="resources/css/mystyles.css" />
+
+</head>
+<body onload="getUser();">
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">KERS Employee</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="employeehome.html">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Reimbursements </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="employeeadd.html">Add New</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="employeeviewpast.html">View
+							Past</a>
+					</div></li>
+			</ul>
+			<button class="btn btn-outline-light my-2 my-sm-0"
+				onclick="logout();">Log Out</button>
+		</div>
+	</nav>
+	<div>
+		<div class="box-flex">
+			<div class="login-container">
+				<h1>いらっしゃいませ</h1>
+				<h3>
+					Welcome, <span id="username-id">Guest</span>
+				</h3>
+				<form class="form-design" method="POST" action="home.kers"
+					id="reimb-form" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+					<div class="form-group">
+						<label class="control-label" for="type">Reimbursement Type</label>
+						<select required name="reimb-type" form="reimb-form"
+							class="custom-select">
+							<option value="" disabled selected>Select Reimbursement
+								Type</option>
+							<option value="Lodging">Lodging</option>
+							<option value="Travel">Travel</option>
+							<option value="Food">Food</option>
+							<option value="Other">Other</option>
+						</select><br>
+						<div class="valid-feedback">Looks good!</div>
+						<div class="invalid-feedback">Looks bad!</div>
+					</div>
+
+					<div class="form-group">
+						<label for="receipt">Amount</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroupPrepend2">$</span>
+							</div>
+							<input type="number" class="form-control" name="amount"
+								id="amount" placeholder="0.00" step=".01" min="0" required>
+							<!--  aria-describedby="amount-help-block" -->
+							<div class="valid-feedback">Looks good!</div>
+							<div class="invalid-feedback">Looks bad!</div>
+						</div>
+						<!-- <small id="amount-help-block" class="form-text text-muted">Amount
+							must be bigger than 0.00$.</small> -->
+
+					</div>
+					<div class="form-group">
+						<label for="receipt">Receipt</label>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="receipt-file"
+								name="receipt" required> <label
+								class="custom-file-label" for="receipt-file">Choose File</label>
+							<div class="valid-feedback">Looks good!</div>
+							<div class="invalid-feedback">Looks bad!</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="amount">Description</label> <input type="text"
+							class="form-control" id="description" name="description"
+							placeholder="Write a description here">
+					</div>
+
+
+
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck"
+							required> <label class="form-check-label" for="gridCheck">
+							I agree that this information is correct.</label>
+						<div class="invalid-feedback">You must agree before
+							submitting.</div>
+					</div>
+					<br>
+					<button type="submit" class="btn btn-primary">Sign in</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="resources/js/kers-js.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function() {
+			'use strict';
+			window.addEventListener('load',
+					function() {
+						// Fetch all the forms we want to apply custom Bootstrap validation styles to
+						var forms = document
+								.getElementsByClassName('needs-validation');
+						// Loop over them and prevent submission
+						var validation = Array.prototype.filter.call(forms,
+								function(form) {
+									form.addEventListener('submit', function(
+											event) {
+										if (form.checkValidity() === false) {
+											event.preventDefault();
+											event.stopPropagation();
+										}
+										form.classList.add('was-validated');
+									}, false);
+								});
+					}, false);
+		})();
+
+		$('.custom-file-input').on('change', function() {
+			var fileName = $(this).val().replace("C:\\fakepath\\", "");
+			console.log("File name: " + fileName);
+			$(this).next('.custom-file-label').html(fileName);
+		})
+	</script>
+</body>
+</html>

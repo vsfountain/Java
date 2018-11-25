@@ -256,3 +256,32 @@ function addTableEmployee(list, table) {
 	}
 }
 
+
+function logout(){
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			console.log("Logging out...");
+			window.location.replace("index.html");
+		}
+	}
+	xhr.open('POST', 'logout.kers', true);
+	xhr.send();
+}
+
+/*
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+	if (xhr.readyState == 4) {
+		let a = xhr.responseText;
+		console.log(a);
+		var userk = JSON.parse(a);
+		console.log(userk);
+		promiseUser(userk);
+	}
+}
+xhr.open('GET',
+		'http://localhost:8080/ExpenseReimbursementSystem/home/home.html',
+		true);
+xhr.send();
+*/

@@ -23,6 +23,8 @@ public class RequestHelper {
 			return HomeController.processReimbursement(req);
 		case "/ExpenseReimbursementSystem/update.kers":
 			return ReimbursementController.alterReimbursements(req);
+		case "/ExpenseReimbursementSystem/logout.kers":
+			return InvalidateSessionController.logout(req);
 		default:
 			return "resources/html/badlogin.html";
 		}
