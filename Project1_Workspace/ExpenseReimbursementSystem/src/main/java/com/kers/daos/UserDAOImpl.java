@@ -35,6 +35,15 @@ public class UserDAOImpl implements UserDAO {
 	 * 
 	 * } catch (SQLException ex) { ex.printStackTrace(); } return 0; }
 	 */
+	
+	public UserDAOImpl() {}
+	
+	public UserDAOImpl(String url, String username, String password) {
+		UserDAOImpl.url = url;
+		UserDAOImpl.username = username;
+		UserDAOImpl.password = password;
+	}
+	
 	@Override
 	public List<User> selectAllUsers() {
 		// TODO Auto-generated method stub
