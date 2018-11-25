@@ -22,6 +22,29 @@ $(function singlePageTablePending(){
 	xhr.send();
 });
 
+function flushTable(){
+	var xhr = new XMLHttpRequest(),
+    method = "GET",
+    url = "reqTablePending.json";
+	xhr.open(method, url, true);
+	xhr.onreadystatechange = function () {
+	  if(xhr.readyState === 4 && xhr.status === 200) {
+		 //console.log(xhr.responseText);
+		jData = JSON.parse(xhr.responseText);
+		//console.log(jData);
+		pendingTable = [];
+		for(var key in jData){
+			
+			str = JSON.stringify(key);
+			//console.log(jData[key]);
+
+			pendingTable.push(str);
+		}
+	  }
+	}; 
+	xhr.send();
+};
+
 function singlePageTableApprove(reimbKey){
 	key = JSON.parse(reimbKey);
 	
@@ -34,16 +57,62 @@ function singlePageTableApprove(reimbKey){
 	xhr.onreadystatechange = function () {
 	  if(xhr.readyState === 4 && xhr.status === 200) {
 		  console.log("inside single page table approve");
-//		jData = JSON.parse(xhr.responseText);
-//		pendingTable = [];
-//		for(var i in jData){
-//			str = JSON.stringify(i);
-//			pendingTable.push(str);
-//		}
 	  }
 	}; 
 	xhr.send();
 }
+
+function singlePageTableDeny(reimbKey){
+	key = JSON.parse(reimbKey);
+	
+	value = jData[key]
+	console.log(jData[key]);
+	var xhr = new XMLHttpRequest(),
+    method = 'POST',
+    url = 'reqTableDeny.json';
+	xhr.open(method, url + '?reimbKey='+value, true);
+	xhr.onreadystatechange = function () {
+	  if(xhr.readyState === 4 && xhr.status === 200) {
+		  console.log("inside single page table deny");
+	  }
+	}; 
+	xhr.send();
+}
+
+function alert(reimbKey) {
+	swal("Would you like to grant this person access?", {
+		buttons: {
+			cancel: "Cancel",
+			catch: {
+				text: "Approve",
+				value: "approve",
+			},
+			Deny: true,
+		},
+	})
+	.then((value) => {
+		switch (value) {
+
+		case "Deny":
+			singlePageTableDeny(reimbKey);
+			flushTable();
+			swal("Access Denied");
+			window.location.reload();
+			break;
+
+		case "approve":
+			singlePageTableApprove(reimbKey);
+			flushTable();
+			swal("Access Granted", "Opening Vault Door!", "success");
+			window.location.reload();
+			break;
+
+		default:
+			swal("Action Cancelled");
+		}
+	});
+}
+
 
 $(function() {
     $('#pending').on('click', function() {
@@ -55,11 +124,12 @@ $(function() {
         $(tableClone).appendTo(two);
 	      $(function() {
 	      $('#2').on('click', function() {
-	          var tc = $.clone(this);
-	          var stage = $('#showTableHereWhenTableIsClicked');
-	          singlePageTableApprove(pendingTable[0]);
-	          //stage.prop('innerHTML',"Would you like to approve this request?");
-	          $(tc).appendTo(stage);
+	    	  alert(pendingTable[0]);
+//	          var tc = $.clone(this);
+//	          var stage = $('#showTableHereWhenTableIsClicked');
+//	          singlePageTableApprove(pendingTable[0]);
+//	          //stage.prop('innerHTML',"Would you like to approve this request?");
+//	          $(tc).appendTo(stage);
 
 	      });
 	  });

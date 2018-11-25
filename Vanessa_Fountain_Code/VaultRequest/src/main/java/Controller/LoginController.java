@@ -26,6 +26,7 @@ public class LoginController {
 			req.getSession().setAttribute("loggedpassword", password);
 			
 			return "/home.vault867";
+			//return "resources/html/ReqForm.html";
 		}
 	}
 		
