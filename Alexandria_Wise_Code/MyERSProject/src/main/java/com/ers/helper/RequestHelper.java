@@ -23,7 +23,6 @@ public class RequestHelper {
 			
 			switch(request.getRequestURI()) {
 			case "/MyERSProject/login.ERSServlet":
-				System.out.println("case login");
 				return LoginController.login(request, response);
 			
 			/*case "/MyERSProject/employee.":

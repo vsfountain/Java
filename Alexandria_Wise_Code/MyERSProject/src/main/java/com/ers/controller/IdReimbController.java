@@ -16,15 +16,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class IdReimbController {
 	private static ReimbursementService rServ = new ReimbursementServiceImpl();
 
-	public static String getReimbursementsById(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
+	public static void getReimbursementsById(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
 
 		//String userId = request.getParameter("ID");
-		
+			
 		User myUser = (User) request.getSession().getAttribute("user");
 		
 		ArrayList<Reimbursement> myReimbList = rServ.filterByEmployee(myUser.getUserId());
-		String rlist = new ObjectMapper().writeValueAsString(myReimbList);
+		//String rlist = new ObjectMapper().writeValueAsString(myReimbList);
+		response.getWriter().write(new ObjectMapper().writeValueAsString(myReimbList));
 		
-		return rlist;
+		//return rlist;
 	}
 }

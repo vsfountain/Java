@@ -45,9 +45,13 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 			ps.setInt(5, typeId);
 			ps.executeUpdate();
 			
+			ResultSet rs= ps.executeQuery();
+			System.out.println(rs);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		
 	}
 
@@ -95,7 +99,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 			{
 				myReimbursement = new Reimbursement(rs.getInt(1), rs.getDouble(2), rs.getTimestamp(3), rs.getTimestamp(4), rs.getString(5),
 						 rs.getBlob(6),rs.getInt(7), rs.getInt(8), rs.getInt(9), rs.getInt(10));
-				System.out.println(myReimbursement);
+				//System.out.println(myReimbursement);
 				reimbList.add(myReimbursement);
 			}
 			

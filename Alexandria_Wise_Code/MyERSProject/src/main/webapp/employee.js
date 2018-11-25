@@ -1,5 +1,6 @@
 window.onload = function() {
 	getSW();
+	getReimbTable();
 }
 
 function getSW() {
@@ -27,7 +28,44 @@ function getSW() {
 	console.log(xhttp);
 }
 
-function getMyReimbursements() {
+$(function getReimbTable() {
+	var xhr = new XMLHttpRequest();
+	let myData;
+	xhr.open('POST', "/MyERSProject/getReimbursementsById.json", true);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			var data = xhr.responseText;
+			myData = JSON.parse(data);
+			console.log("Reimbursements: "+myData);
+		}
+		populateReimbTable(myData);
+	}
+	
+	
+	xhr.send();
+	console.log(xhr)
+});
+
+function addReimb() {
+	var xx = new XMLHttpRequest();
+	let myData;
+	xx.open('POST', "/MyERSProject/createNewReimb.json", true);
+	/*xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			var data = xhr.responseText;
+			myData = JSON.parse(data);
+			console.log("Reimbursements: "+myData);
+		}
+		populateReimbTable(myData);
+	}
+	
+*/	
+	xx.send();
+	console.log(xx)
+	getReimbTable();
+}
+
+/*function getMyReimbursements() {
 	//let swId = document.getElementById('role');
 	let xhttp = new XMLHttpRequest();
 
@@ -45,11 +83,11 @@ function getMyReimbursements() {
 	xhttp.send();
 
 	console.log(xhttp);
-}
+}*/
 
 
 function setValues(sw){
-	getMyReimbursements();
+	//getMyReimbursements();
 }
 
 

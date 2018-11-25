@@ -16,11 +16,13 @@ public class AllReimbController {
 	
 	private static ReimbursementService rServ = new ReimbursementServiceImpl();
 
-	public static String selectAllReimbursements(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
+	public static void selectAllReimbursements(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
 		
 		ArrayList<Reimbursement> myReimbList = rServ.displayReimbursements();
-		String rlist = new ObjectMapper().writeValueAsString(myReimbList);
+		//String rlist = new ObjectMapper().writeValueAsString(myReimbList);
+		System.out.println(myReimbList);
+		response.getWriter().write(new ObjectMapper().writeValueAsString(myReimbList));
 		
-		return rlist;
+		//return rlist;
 	}
 }

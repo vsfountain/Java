@@ -1,5 +1,6 @@
 package com.ers.model;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class ReimbursementServiceImpl implements ReimbursementService {
@@ -9,7 +10,10 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	public ReimbursementServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	public void createReimbursement(double amount, Timestamp reqTime, int author, int statusId, int typeId) {
+		rDAO.preparedInsertReimbursement(amount, reqTime, author, statusId, typeId);
+	}
 	public ArrayList<Reimbursement> displayReimbursements() {
 		return rDAO.selectAllReimbursements();
 	}

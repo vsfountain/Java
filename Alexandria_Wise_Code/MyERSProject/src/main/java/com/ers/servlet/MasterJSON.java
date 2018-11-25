@@ -24,20 +24,23 @@ public class MasterJSON extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getRequestURI());
+		/*System.out.println(request.getRequestURI());
 		HttpSession session = request.getSession();
 		ArrayList<Reimbursement> list = (ArrayList<Reimbursement>) session.getAttribute("reimbs");
 		System.out.println("reimbs: "+list);
 		PrintWriter out = response.getWriter();
 		out.println(new ObjectMapper().writeValueAsString(list));
 	
+*/	
+		JSONRequestHelper.process(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println(request.getRequestURI());
+		/*System.out.println(request.getRequestURI());
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
-		out.println(JSONRequestHelper.process(request, response));
+		out.println(JSONRequestHelper.process(request, response));*/
+		JSONRequestHelper.process(request, response);
 	}
 
 }

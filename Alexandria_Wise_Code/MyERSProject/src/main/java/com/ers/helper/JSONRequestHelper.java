@@ -7,25 +7,33 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ers.controller.AllReimbController;
 import com.ers.controller.IdReimbController;
+import com.ers.controller.NewReimbController;
 import com.ers.controller.StatusReimbController;
 import com.ers.controller.UserReimbController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class JSONRequestHelper {
-	public static String process(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
+	public static void process(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
 		System.out.println(request.getRequestURI());
 
 		switch (request.getRequestURI()) {
-		case "/MyERSProject/getAllReimbursements.MasterJSON":
-			return AllReimbController.selectAllReimbursements(request, response);
-		case "/MyERSProject/getReimbursementsById.MasterJSON":
-			return IdReimbController.getReimbursementsById(request, response);
-		case "/MyERSProject/getReimbursementsByStatus.MasterJSON":
-			return StatusReimbController.getReimbursementsByStatus(request, response);
-		case "MyERSProject/getUserReimbursements.MasterJSON":
-			return UserReimbController.getUserReimbursements(request, response);
+		case "/MyERSProject/getAllReimbursements.json":
+			AllReimbController.selectAllReimbursements(request, response);
+			break;
+		case "/MyERSProject/getReimbursementsById.json":
+			IdReimbController.getReimbursementsById(request, response);
+			break;
+		case "/MyERSProject/getReimbursementsByStatus.json":
+			StatusReimbController.getReimbursementsByStatus(request, response);
+			break;
+		case "MyERSProject/getUserReimbursements.json":
+			UserReimbController.getUserReimbursements(request, response);
+			break;
+		case "MyERSProject/createReimbursement.json":
+			NewReimbController.createNewReimb(request, response);
+			break;
 		default:
-			return null;
+			//figure out what to put here
 		}
 		
 	}

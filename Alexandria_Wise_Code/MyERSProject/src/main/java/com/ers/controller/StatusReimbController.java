@@ -9,17 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.ers.model.Reimbursement;
 import com.ers.model.ReimbursementService;
 import com.ers.model.ReimbursementServiceImpl;
+import com.ers.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class StatusReimbController {
 	private static ReimbursementService rServ = new ReimbursementServiceImpl();
 
-	public static String getReimbursementsByStatus(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
+	public static void getReimbursementsByStatus(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
 		
-		ArrayList<Reimbursement> myReimbList = rServ.filterByStatus(0);
-		String rlist = new ObjectMapper().writeValueAsString(myReimbList);
+		String status = request.getParameter("status");
 		
-		return rlist;
+		int statusId = Integer.parseInt(status);
+		
+		ArrayList<Reimbursement> myReimbList = rServ.filterByStatus(statusId);
+		
+		response.getWriter().write(new ObjectMapper().writeValueAsString(myReimbList));
+		
+//		return rlist;
 	}
 }
