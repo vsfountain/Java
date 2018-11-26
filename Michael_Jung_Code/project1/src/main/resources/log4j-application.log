@@ -1,0 +1,288 @@
+2018-11-25 12:58:01 INFO  Main:119 - User: employee1 has logged In
+2018-11-25 12:58:29 INFO  Main:94 - User: employee1 has applied for Reimbursement: 1
+2018-11-25 13:01:13 INFO  Main:133 - User: admin1 has logged In
+2018-11-25 13:01:52 INFO  Main:43 - Reimbursement: 23 has been disapproved.
+2018-11-25 13:02:02 INFO  Main:43 - Reimbursement: 24 has been disapproved.
+2018-11-25 13:02:12 INFO  Main:43 - Reimbursement: 25 has been disapproved.
+2018-11-25 13:11:29 INFO  Main:119 - User: employee1 has logged In
+2018-11-25 14:47:18 INFO  Main:94 - User: employee1 has applied for reimbursement
+2018-11-25 14:51:34 INFO  Main:133 - User: admin1 has logged In
+2018-11-25 14:52:28 INFO  Main:119 - User: employee1 has logged In
+2018-11-25 15:48:27 INFO  Main:119 - User: employee1 has logged In
+2018-11-25 19:18:00 INFO  Main:119 - User: employee1 has logged In
+2018-11-25 19:19:13 INFO  Main:94 - User: employee1 has applied for reimbursement
+2018-11-25 19:20:01 INFO  Main:133 - User: admin1 has logged In
+2018-11-25 19:21:06 INFO  Main:28 - Reimbursement: 26 has been approved.
+2018-11-25 19:21:19 INFO  Main:43 - Reimbursement: 27 has been disapproved.
+2018-11-25 19:31:42 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 20:01:21 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:04:45 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:04:56 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:05:43 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:07:48 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:08:04 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:09:13 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:12:48 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:15:32 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 20:16:56 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 20:17:16 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 20:18:40 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:24:41 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:24:48 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:25:47 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:25:52 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:25:55 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:25:59 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:27:29 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:30:09 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:11 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:14 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:17 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:41 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:44 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:31:58 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:22 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:24 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:28 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:50 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:53 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:32:55 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:33:22 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:35:22 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:35:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:35:54 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:37:18 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:07 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:31 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:33 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:35 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:37 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:38:58 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:39:27 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:39:50 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:13 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:17 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:21 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:48 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:50 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:40:52 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:49:11 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:51:44 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:52:03 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:52:37 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:52:42 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:52:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:06 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:09 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:12 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:48 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:54:54 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:55:29 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:55:33 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:55:35 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:16 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:18 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:20 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:21 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:40 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:42 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:56:46 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:57:27 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:57:29 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:57:31 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:57:34 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:57:59 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:04 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:06 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:23 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:25 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:27 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:29 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:42 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:44 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:46 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:58:48 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:24 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:26 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:29 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:31 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:48 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:52 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 20:59:54 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:00:30 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:00:50 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:08 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:11 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:13 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:31 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:34 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:36 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:01:38 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:02:37 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:02:40 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:02:43 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:02:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:03:47 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:03 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:05 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:06 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:08 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:23 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:28 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:35 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:37 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:40 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:04:42 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:01 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:04 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:06 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:09 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:12 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:19 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:30 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:05:52 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:06:01 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:06:05 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:06:15 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:06:38 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:07:00 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:07:28 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:07:56 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:08:22 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:08:43 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:09:24 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:09:45 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:10:08 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:10:18 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:10:41 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:11:07 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:14:58 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 21:15:06 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:15:26 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 21:33:23 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 21:35:05 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:36:44 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 21:37:04 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 21:37:20 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 21:37:32 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-25 23:14:06 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:16:25 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:16:50 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:16:54 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:16:56 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:17:10 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-25 23:18:52 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:19:15 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:19:19 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:20:31 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:20:39 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:20:47 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:20:54 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:21:41 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:22:31 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:22:36 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:22:37 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:23:47 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:24:15 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:24:25 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:27:10 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:28:29 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:29:26 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:29:39 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:30:05 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:30:33 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:30:42 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:32:41 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:32:48 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:32:56 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:33:18 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:33:45 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:34:27 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:34:36 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:35:22 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:35:30 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:37:04 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:37:19 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:38:16 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:38:25 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:40:05 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:40:09 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:01 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:28 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:32 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:35 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:54 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:41:58 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:42:00 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:42:36 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:42:43 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:44:09 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:44:12 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:44:20 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:45:18 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:45:24 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:46:28 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:46:31 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:46:33 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:46:35 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:47:12 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:47:20 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:49:08 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:49:15 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:49:40 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:49:47 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:53:18 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:54:32 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:55:10 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:56:49 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:56:54 INFO  LoginController:133 - User: admin1 has logged In
+2018-11-25 23:57:17 INFO  LoginController:119 - User: employee1 has logged In
+2018-11-26 02:13:28 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:16:59 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-26 02:17:31 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:21:17 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:21:34 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:22:09 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-26 02:22:27 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:22:53 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:23:15 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:26:44 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:26:59 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:28:56 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:29:41 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:29:56 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:30:25 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:30:30 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:30:57 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:32:48 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:33:26 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:34:24 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:35:57 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:37:39 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:40:39 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:40:53 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:41:45 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:42:27 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:42:48 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:43:07 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:43:17 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:43:49 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:44:04 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 02:45:15 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:45:33 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:46:38 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:47:32 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:50:04 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 02:51:36 INFO  ApplicationController:94 - User: employee1 has applied for reimbursement
+2018-11-26 02:53:47 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 03:03:06 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 03:03:25 INFO  LoginController:143 - User: employee1 has logged In
+2018-11-26 03:04:57 INFO  ApplicationController:118 - User: employee1 has applied for reimbursement
+2018-11-26 03:05:52 INFO  ApplicationController:118 - User: employee1 has applied for reimbursement
+2018-11-26 03:06:37 INFO  ApplicationController:118 - User: employee1 has applied for reimbursement
+2018-11-26 03:07:10 INFO  LoginController:157 - User: admin1 has logged In
+2018-11-26 03:07:48 INFO  ApproveController:28 - Reimbursement: 1 has been approved.
+2018-11-26 03:08:16 INFO  ApproveController:43 - Reimbursement: 2 has been disapproved.
+2018-11-26 03:09:14 INFO  LoginController:143 - User: employee1 has logged In

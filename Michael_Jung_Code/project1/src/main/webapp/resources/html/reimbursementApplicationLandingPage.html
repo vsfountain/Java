@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="resources/css/mystyles.css"/>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="resources/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="resources/css/style.css" rel="stylesheet">
+</head>
+<body style="background-color:rgba(210,180,140,1);">
+
+<!-- application land -->
+	<h2 style="color:white;margin-left:26px;margin-top:25px;"><b>Apply For Reimbursement</b></h2>
+	<section class="section2">
+	<!-- <div style="margin-top:20px;margin-left:30%;"class="login-container2"> -->
+	<form style="display:inline-block;vertical-align:top;margin-top:5px;margin-left:115px;"method="POST" action="backToLand.servletTwo">
+		<button type="submit" class="btn btn-primary">Back</button>
+	</form>
+	<form method="POST" style="margin-top:20px;margin-left:11%;display:inline-block;"class="login-container2" action="submitApplication.servletTwo">
+		<h5 style="margin-top:5px;"><b>Details</b></h5>
+		<label style="float:left;margin-top:4px;width:122px;text-align:left;margin-left:10px;">Amount: $</label>
+		<input style="margin-top:4px;width:auto;"class="form-control"placeholder="amount" name="amount">
+		<!-- <p></p> -->
+		<br style="clear:both;"/>
+		<label style="float:left;width:122px;text-align:left;margin-left:10px">Type:</label>
+		<select style="text-align:left;float:left;width:58%;"class="form-control"name="type">
+			<option value="Lodging">Lodging</option>
+			<option value="Travel">Travel</option>
+			<option value="Food">Food</option>
+			<option value="Other">Other</option>
+		</select><br style="clear:both"/>
+		<label style="float:left;text-align:left;margin-top:10px;margin-left:10px">Additional Info:</label>
+		<!-- <br> -->
+		<textarea style="margin-left:3px;margin-top:12px;"placeholder="description" name="description"class="form-control"
+				cols="20" rows="5"></textarea>
+		<div id="oo"><button type="submit" class="btn btn-primary" disabled>Submit</button></div>
+		
+	</form>
+	<!-- </div> -->
+	</section>
+	
+	
+	<script type="text/javascript" src="resources/js/ourApplicationJavascriptFile.js"></script>
+	
+</body>
+</html>
