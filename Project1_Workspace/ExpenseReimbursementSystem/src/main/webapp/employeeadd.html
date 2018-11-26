@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/mystyles.css" />
 
 </head>
-<body onload="getUser();">
+<body onload="getUserReimb();">
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">KERS Employee</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -18,8 +18,8 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="employeehome.html">Home
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link"
+					href="employeehome.html">Home <span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -43,8 +43,9 @@
 				<h3>
 					Welcome, <span id="username-id">Guest</span>
 				</h3>
-				<form class="form-design" method="POST" action="home.kers"
-					id="reimb-form" class="needs-validation" enctype="multipart/form-data" novalidate>
+				<form class="form-design needs-validation" method="POST" action="home.kers"
+					id="reimb-form" 
+					enctype="multipart/form-data" novalidate>
 
 					<div class="form-group">
 						<label class="control-label" for="type">Reimbursement Type</label>
@@ -57,8 +58,8 @@
 							<option value="Food">Food</option>
 							<option value="Other">Other</option>
 						</select><br>
-						<div class="valid-feedback">Looks good!</div>
-						<div class="invalid-feedback">Looks bad!</div>
+						<div class="valid-feedback">Got type!</div>
+						<div class="invalid-feedback">Please input type!</div>
 					</div>
 
 					<div class="form-group">
@@ -70,8 +71,8 @@
 							<input type="number" class="form-control" name="amount"
 								id="amount" placeholder="0.00" step=".01" min="0" required>
 							<!--  aria-describedby="amount-help-block" -->
-							<div class="valid-feedback">Looks good!</div>
-							<div class="invalid-feedback">Looks bad!</div>
+							<div class="valid-feedback">Good amount!</div>
+							<div class="invalid-feedback">Please input valid amount!</div>
 						</div>
 						<!-- <small id="amount-help-block" class="form-text text-muted">Amount
 							must be bigger than 0.00$.</small> -->
@@ -83,14 +84,14 @@
 							<input type="file" class="custom-file-input" id="receipt-file"
 								name="receipt" required> <label
 								class="custom-file-label" for="receipt-file">Choose File</label>
-							<div class="valid-feedback">Looks good!</div>
-							<div class="invalid-feedback">Looks bad!</div>
+							<div class="valid-feedback">File's here!</div>
+							<div class="invalid-feedback">Add a file please!</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="amount">Description</label> <input type="text"
 							class="form-control" id="description" name="description"
-							placeholder="Write a description here">
+							placeholder="Write a description here" required>
 					</div>
 
 
@@ -103,11 +104,12 @@
 							submitting.</div>
 					</div>
 					<br>
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="submit" class="btn btn-primary">Submit</button>
 				</form>
 			</div>
 		</div>
 	</div>
+	
 	<script type="text/javascript" src="resources/js/kers-js.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script
@@ -120,14 +122,17 @@
 			'use strict';
 			window.addEventListener('load',
 					function() {
+						console.log("LOADED!");
 						// Fetch all the forms we want to apply custom Bootstrap validation styles to
 						var forms = document
 								.getElementsByClassName('needs-validation');
 						// Loop over them and prevent submission
 						var validation = Array.prototype.filter.call(forms,
 								function(form) {
+								console.log("CC");
 									form.addEventListener('submit', function(
 											event) {
+										console.log("BB");
 										if (form.checkValidity() === false) {
 											event.preventDefault();
 											event.stopPropagation();

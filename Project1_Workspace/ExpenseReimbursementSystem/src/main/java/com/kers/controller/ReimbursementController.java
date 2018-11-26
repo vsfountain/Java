@@ -73,6 +73,6 @@ public class ReimbursementController {
 		for (String values : checkedValues) {
 			rService.updateReimbursementById(Integer.parseInt(values), decision, resolver);
 		}
-		return "adminviewpending.html";
+		return "adminviewall.html";
 	}
 }

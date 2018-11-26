@@ -9,9 +9,11 @@ function getUser() {
 			promiseUser(userk);
 		}
 	}
-	xhr.open('GET',
-			'http://localhost:8080/ExpenseReimbursementSystem/home/home.html',
-			true);
+	xhr
+			.open(
+					'GET',
+					'http://localhost:8080/ExpenseReimbursementSystem/home/employeehome.html',
+					true);
 	xhr.send();
 }
 
@@ -22,11 +24,46 @@ function promiseUser(userk) {
 	let usernameSpan = document.getElementById('username-id');
 	console.log('usernamespan: ' + usernameSpan.innerHTML);
 	usernameSpan.innerHTML = user.firstName + " " + user.lastName;
+
 	document.getElementById('tb-username').innerHTML = user.username;
-	document.getElementById('tb-name').innerHTML = user.firstName + " " + user.lastName;
+	document.getElementById('tb-name').innerHTML = user.firstName + " "
+			+ user.lastName;
 	document.getElementById('tb-email').innerHTML = user.email;
 	document.getElementById('tb-role').innerHTML = user.role;
+
 }
+
+
+function getUserReimb() {
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
+			let a = xhr.responseText;
+			console.log(a);
+			var userk = JSON.parse(a);
+			console.log(userk);
+			promiseUserReimb(userk);
+		}
+	}
+	xhr
+			.open(
+					'GET',
+					'http://localhost:8080/ExpenseReimbursementSystem/home/employeehome.html',
+					true);
+	xhr.send();
+}
+
+function promiseUserReimb(userk) {
+	let user = userk;
+	console.log("USER: " + user);
+
+	let usernameSpan = document.getElementById('username-id');
+	console.log('usernamespan: ' + usernameSpan.innerHTML);
+	usernameSpan.innerHTML = user.firstName + " " + user.lastName;
+
+
+}
+
 
 function loadTable() {
 	let table = document.getElementById("reimb-table");
@@ -49,9 +86,11 @@ function loadTable() {
 }
 
 function addTable(list, table) {
+	let buttons = document.getElementsByName('submit');
+	let hasPending = false;
 	for (i = 0; i < list.length; i++) {
-		let hasPending = false;
-		let buttons = document.getElementsByName('submit');
+		
+		
 		let checkbox = document.createElement("A");
 		checkbox.type = "checkbox";
 		let row = table.insertRow(i + 1);
@@ -73,7 +112,8 @@ function addTable(list, table) {
 		cell3.innerHTML = list[i].submitted;
 		cell4.innerHTML = list[i].resolved;
 		cell5.innerHTML = list[i].description;
-		cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id=' + list[i].id + '">...</a>';
+		cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
+				+ list[i].id + '">...</a>';
 		cell7.innerHTML = list[i].resolver;
 		cell8.innerHTML = list[i].status;
 		cell9.innerHTML = list[i].type;
@@ -82,11 +122,12 @@ function addTable(list, table) {
 					+ list[i].id + '>';
 			hasPending = true;
 		}
+
 		
-		if(!hasPending){
-			buttons[0].hidden = true;
-			buttons[1].hidden = true;
-		}
+	}
+	if (!hasPending) {
+		buttons[0].hidden = true;
+		buttons[1].hidden = true;
 	}
 }
 
@@ -189,7 +230,7 @@ function loadTableEmployee() {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) {
 			let temp = xhr.responseText;
-			
+
 			temp1 = JSON.parse(temp);
 			console.log(temp1);
 			addTableEmployee(temp1, table);
@@ -204,9 +245,11 @@ function loadTableEmployee() {
 }
 
 function addTableEmployee(list, table) {
+	let hasPending = false;
+	let buttons = document.getElementsByName('submit');
 	for (i = 0; i < list.length; i++) {
-		let hasPending = false;
-		let buttons = document.getElementsByName('submit');
+		
+		
 		if (document.URL == 'http://localhost:8080/ExpenseReimbursementSystem/adminviewpending.html') {
 			if (list[i].status == 'Pending') {
 				let row = table.insertRow(table.rows.length);
@@ -228,7 +271,8 @@ function addTableEmployee(list, table) {
 				cell3.innerHTML = list[i].submitted;
 				cell4.innerHTML = list[i].resolved;
 				cell5.innerHTML = list[i].description;
-				cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id=' + list[i].id + '">...</a>';
+				cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
+						+ list[i].id + '">...</a>';
 				cell7.innerHTML = list[i].resolver;
 				cell8.innerHTML = list[i].status;
 				cell9.innerHTML = list[i].type;
@@ -237,13 +281,9 @@ function addTableEmployee(list, table) {
 					cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='
 							+ list[i].id + '>';
 				}
-				
+
 			}
-			
-			if(!hasPending){
-				buttons[0].hidden = true;
-				buttons[1].hidden = true;
-			}
+			console.log("haspending: " + hasPending);
 			
 		} else {
 			let row = table.insertRow(i + 1);
@@ -264,22 +304,27 @@ function addTableEmployee(list, table) {
 			cell3.innerHTML = list[i].submitted;
 			cell4.innerHTML = list[i].resolved;
 			cell5.innerHTML = list[i].description;
-			cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id=' + list[i].id + '">...</a>';
+			cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
+					+ list[i].id + '">...</a>';
 			cell7.innerHTML = list[i].resolver;
 			cell8.innerHTML = list[i].status;
 			cell9.innerHTML = list[i].type;
-			
+
 		}
+
 	}
 	
-	
+	if (!hasPending) {
+		buttons[0].hidden = true;
+		buttons[1].hidden = true;
+	}
+
 }
 
-
-function logout(){
+function logout() {
 	let xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4){
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4) {
 			console.log("Logging out...");
 			window.location.replace("index.html");
 		}
@@ -289,18 +334,9 @@ function logout(){
 }
 
 /*
-let xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-	if (xhr.readyState == 4) {
-		let a = xhr.responseText;
-		console.log(a);
-		var userk = JSON.parse(a);
-		console.log(userk);
-		promiseUser(userk);
-	}
-}
-xhr.open('GET',
-		'http://localhost:8080/ExpenseReimbursementSystem/home/home.html',
-		true);
-xhr.send();
-*/
+ * let xhr = new XMLHttpRequest(); xhr.onreadystatechange = function() { if
+ * (xhr.readyState == 4) { let a = xhr.responseText; console.log(a); var userk =
+ * JSON.parse(a); console.log(userk); promiseUser(userk); } } xhr.open('GET',
+ * 'http://localhost:8080/ExpenseReimbursementSystem/home/home.html', true);
+ * xhr.send();
+ */

@@ -33,7 +33,7 @@ public class HomeController {
 	final static Logger logger = Logger.getLogger(HomeController.class);
 
 	public static String home(HttpServletRequest req) {
-		return "home.html";
+		return "employeehome.html";
 	}
 
 	public static String processReimbursement(HttpServletRequest req) throws IOException {

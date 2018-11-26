@@ -14,7 +14,7 @@ import com.kers.models.User;
 
 public class RequestHelper {
 	public static String process(HttpServletRequest req) throws JsonProcessingException, IOException {
-		System.out.println(req.getRequestURI());
+		System.out.println("Process: " + req.getRequestURI());
 
 		switch (req.getRequestURI()) {
 		case "/ExpenseReimbursementSystem/login.kers":
@@ -32,9 +32,9 @@ public class RequestHelper {
 
 	public static void retrieve(HttpServletRequest req, HttpServletResponse resp)
 			throws JsonProcessingException, IOException {
-		System.out.println(req.getRequestURI());
+		System.out.println("Retrieve: " + req.getRequestURI());
 		switch (req.getRequestURI()) {
-		case "/ExpenseReimbursementSystem/home/home.html":
+		case "/ExpenseReimbursementSystem/home/employeehome.html":
 			ReimbursementController.getUser(req, resp);
 			break;
 	
