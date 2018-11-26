@@ -15,16 +15,16 @@ package com.ErsReimbursement;
 //public class MyTest {
 	//NOT using mockito, so this is not a unit test
 	//	it is integration testing
-	//ConversionService cserv= new ConversionService();
+	//UserService Userv= new UserService();
 	
 	//Let's use mockito instead
-//	UserService cserv= Mockito.mock(UserService.class);
+//	UserService Userv= Mockito.mock(UserService.class);
 //}
 //	User conv;
 //
 //	@Before
 //	public void setUp() throws Exception {
-//		conv=new User(cserv);
+//		conv=new User(Userv);
 //	}
 //
 //	@Test

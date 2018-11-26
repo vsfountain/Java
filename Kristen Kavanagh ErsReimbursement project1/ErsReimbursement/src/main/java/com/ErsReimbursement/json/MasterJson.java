@@ -1,5 +1,4 @@
 package com.ErsReimbursement.json;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -16,5 +15,3 @@ public class MasterJson extends HttpServlet{
 	}
 
 	}
-
-

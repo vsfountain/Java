@@ -27,7 +27,7 @@ public class LoginController {
 			req.getSession().setAttribute("loggedusername", username);
 			req.getSession().setAttribute("loggedpassword", password);
 			req.getSession().setAttribute("logUser", logUser);
-			if (checked!= null & logUser.getUserRoleId() == 2) {
+			if (checked!= null & logUser.getUserRoleId() == 1) {
 				return "FinanceERSReimbursement.html";
 			} else {
 			return "NewReimbursement.html";

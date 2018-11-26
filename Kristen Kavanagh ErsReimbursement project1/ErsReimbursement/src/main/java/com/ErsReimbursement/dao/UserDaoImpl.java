@@ -81,8 +81,8 @@ public class UserDaoImpl implements UserDao {
 			int dbId = 0;
 			while (rs.next()) {
 				dbId = rs.getInt(1);
-				 String dbName = rs.getString(2);
-			 String dbPassword = rs.getString(3);
+				  currUserName = rs.getString(2);
+			 password = rs.getString(3);
 			}
 			return String.valueOf(dbId);
 		} catch (SQLException e) {

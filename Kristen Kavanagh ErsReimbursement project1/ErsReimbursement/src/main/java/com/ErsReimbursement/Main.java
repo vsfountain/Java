@@ -5,7 +5,7 @@ public class Main {
 		
 public static void main(String[] args) {
 	//UserService userService = UserServiceImpl.Login();
-	//UserDao logUser =  UserDaoImpl.selectUserByLoginInfo(UserName, PassWord);
+	//User logUser =  UserImpl.selectUserByLoginInfo(UserName, PassWord);
 
 		System.out.println("done");
 		

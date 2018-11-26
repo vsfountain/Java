@@ -21,8 +21,8 @@ public class Main {
 		}
 		
 		UserService userv = new UserServiceImpl();
-		System.out.println("Hey this is the jamiej's userid: " + userv.getCurrUserName("Jamiej"));
-	}
+		System.out.println("Hey this is the userid: " + userv.getCurrUserName("currUserName"));
+		}
 }
 
 

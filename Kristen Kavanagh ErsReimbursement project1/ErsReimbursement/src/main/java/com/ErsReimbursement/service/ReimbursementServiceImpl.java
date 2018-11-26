@@ -1,5 +1,7 @@
 package com.ErsReimbursement.service;
 
+import java.util.ArrayList;
+
 import com.ErsReimbursement.dao.ReimbursementDao;
 import com.ErsReimbursement.dao.ReimbursementDaoImpl;
 import com.ErsReimbursement.model.Reimbursement;
@@ -10,6 +12,7 @@ import com.ErsReimbursement.model.User;
  * @version 11/15/2018
  *
  */
+
 public class ReimbursementServiceImpl implements ReimbursementService {
 
 	private ReimbursementDao emburse = new ReimbursementDaoImpl();
@@ -24,25 +27,19 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		int imbur = emburse.InsertReimbursement(reimburse);
 		if (imbur == 1) {
 			return true;
-			// System.out.println("it is valid");
 
 		} else
 
-			// System.out.println("it is not valid");
-			// }
 			return false;
 	}
 
-	// private static ReimbursementService imbur = new ReimbursementServiceImpl();
-//	@Override
-//	public String InsertReimbursement(Reimbursement newReimb) {
-//		emburse.InsertReimbursement(newReimb);
-//		return "";
-//	}
 
 	@Override
 	public void CreateReimbursement(User staff) {
-		// TODO Auto-generated method stub
 
 	}
+	@Override
+	public ArrayList<Reimbursement>selectAllReimburse() {
+		return emburse.viewReimburse();
+}
 }

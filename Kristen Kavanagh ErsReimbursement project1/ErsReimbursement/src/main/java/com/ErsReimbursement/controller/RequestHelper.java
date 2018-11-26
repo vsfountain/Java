@@ -10,9 +10,9 @@ public class RequestHelper {
 		case "/ErsReimbursement/resources/html/login.ERSServlet":
 			return LoginController.login(req,resp);
 		case "/ErsReimbursement/resources/html/InsertReimbursement.ERSServlet":
-		
-			return HomeController.InsertReimbursement(req,resp);
-default:
+			System.out.println("Hello");
+			return ReimbursementController.InsertReimbursement(req,resp);
+		default:
 			return "/ErsReimbursement/resources/html/ErsReimbursement.html";
 	}
 

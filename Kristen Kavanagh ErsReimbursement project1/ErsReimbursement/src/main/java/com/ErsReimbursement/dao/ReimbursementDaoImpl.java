@@ -1,6 +1,5 @@
 package com.ErsReimbursement.dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,8 +18,6 @@ import com.ErsReimbursement.model.Reimbursement;
 public class ReimbursementDaoImpl implements ReimbursementDao {
 
 	 static {
-			// This is how we can make sure our tomcat knows what to do when calling DB
-			// make sure you add ojdbc to WEB-INF and add to build-path
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 			} catch (ClassNotFoundException e) {
@@ -73,7 +70,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 	@Override
-	public ArrayList<Reimbursement> viewReimburse() {
+	public ArrayList<Reimbursement>viewReimburse() {
 		ArrayList<Reimbursement> arryreimb = new ArrayList<>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			String sql = "SELECT * FROM ERS_REIMBURSEMENT";
@@ -82,6 +79,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 
 			ResultSet rs = statmnt.executeQuery(sql);
 			while (rs.next()) {
+				
 				int reimb_id = rs.getInt(1);
 				double reimb_amount = rs.getDouble(2);
 				String reimb_submitted = rs.getString(3);
@@ -106,6 +104,7 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		return arryreimb;
 
 	}
+	
 
 	public ArrayList<Reimbursement> selectByremb_Status_Id(int remb_Status_Id) {
 
@@ -151,5 +150,19 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 		}
 		return arryremb_Author;
 	}
+
+
+public int updateReimbursementStatus(Reimbursement reimburse) {
+	try (Connection conn = DriverManager.getConnection(url, username, password)){
+		String sql = "UPDATE REIMBURSEMENT SET REIMB_STATUS_ID = ? WHERE REIMB_ID = ? ";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, reimburse.getRemb_Status_Id());
+		ps.setInt(2, reimburse.getRemb_Id());
+		 ps.executeUpdate();
+	}catch (SQLException e) {
+		e.printStackTrace();
+	}
+	return 0;
 }
+	}
 
