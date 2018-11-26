@@ -60,3 +60,55 @@
 2018-11-26 00:56:55 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
 2018-11-26 00:57:03 INFO  MasterServlet:46 - doPost called
 2018-11-26 00:57:03 INFO  ReimbursementController:70 - AlterReimbursement done by: trevinchester
+2018-11-26 00:59:11 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:59:11 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 00:59:11 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:08:59 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:08:59 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:08:59 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:09:19 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:09:19 INFO  LoginController:23 - User tried to log in with:  
+2018-11-26 01:09:19 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct:  
+2018-11-26 01:09:20 WARN  UserDAOImpl:123 - There was no username and password associated with following:  
+2018-11-26 01:09:23 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:09:23 INFO  LoginController:23 - User tried to log in with: bronwenhughes 12345
+2018-11-26 01:09:23 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: bronwenhughes 12345
+2018-11-26 01:09:23 INFO  LoginController:35 - Employee bronwenhughes logged in.
+2018-11-26 01:09:24 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:09:24 INFO  ReimbursementController:35 - GetUser
+2018-11-26 01:09:29 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:09:29 INFO  ReimbursementController:44 - GetList for bronwenhughes
+2018-11-26 01:09:29 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:09:33 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:09:33 INFO  InvalidateSessionController:15 - User bronwenhughes is logging out.
+2018-11-26 01:09:37 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:09:37 INFO  LoginController:23 - User tried to log in with: trevinchester help
+2018-11-26 01:09:37 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: trevinchester help
+2018-11-26 01:09:37 INFO  LoginController:30 - Admin trevinchester logged in.
+2018-11-26 01:09:41 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:09:41 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:09:41 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:09:50 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:09:50 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:09:50 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:11:01 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:11:01 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:11:01 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:11:28 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:11:28 INFO  LoginController:23 - User tried to log in with: trevinchester help
+2018-11-26 01:11:28 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: trevinchester help
+2018-11-26 01:11:28 INFO  LoginController:30 - Admin trevinchester logged in.
+2018-11-26 01:11:34 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:11:34 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:11:34 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:12:34 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:12:34 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:12:34 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:12:49 INFO  MasterServlet:46 - doPost called
+2018-11-26 01:12:49 INFO  ReimbursementController:70 - AlterReimbursement done by: trevinchester
+2018-11-26 01:13:00 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:13:00 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:13:00 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 01:17:03 INFO  MasterServlet:37 - doGet called.
+2018-11-26 01:17:03 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 01:17:03 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements

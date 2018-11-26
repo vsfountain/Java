@@ -50,7 +50,8 @@ function loadTable() {
 
 function addTable(list, table) {
 	for (i = 0; i < list.length; i++) {
-
+		let hasPending = false;
+		let buttons = document.getElementsByName('submit');
 		let checkbox = document.createElement("A");
 		checkbox.type = "checkbox";
 		let row = table.insertRow(i + 1);
@@ -79,6 +80,12 @@ function addTable(list, table) {
 		if (list[i].status == 'Pending') {
 			cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='
 					+ list[i].id + '>';
+			hasPending = true;
+		}
+		
+		if(!hasPending){
+			buttons[0].hidden = true;
+			buttons[1].hidden = true;
 		}
 	}
 }
@@ -199,6 +206,7 @@ function loadTableEmployee() {
 function addTableEmployee(list, table) {
 	for (i = 0; i < list.length; i++) {
 		let hasPending = false;
+		let buttons = document.getElementsByName('submit');
 		if (document.URL == 'http://localhost:8080/ExpenseReimbursementSystem/adminviewpending.html') {
 			if (list[i].status == 'Pending') {
 				let row = table.insertRow(table.rows.length);
@@ -229,13 +237,13 @@ function addTableEmployee(list, table) {
 					cell10.innerHTML = '<input type="checkbox" name="selectedRow" value='
 							+ list[i].id + '>';
 				}
-				let buttons = document.getElementsByName('submit');
-				if(!hasPending){
-					buttons[0].hidden = true;
-					buttons[1].hidden = true;
-				}
+				
 			}
 			
+			if(!hasPending){
+				buttons[0].hidden = true;
+				buttons[1].hidden = true;
+			}
 			
 		} else {
 			let row = table.insertRow(i + 1);
@@ -261,7 +269,6 @@ function addTableEmployee(list, table) {
 			cell8.innerHTML = list[i].status;
 			cell9.innerHTML = list[i].type;
 			
-
 		}
 	}
 	
