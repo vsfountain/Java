@@ -6,6 +6,7 @@ import com.project1.objs.User;
 
 public class UserServiceImpl implements UserService{
 	
+	
 	private UserDao user = new UserDaoImpl();
 
 	@Override

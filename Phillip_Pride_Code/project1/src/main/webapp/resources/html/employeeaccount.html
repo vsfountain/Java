@@ -19,21 +19,23 @@
 </head>
 
 <body id="account-page">
-	<h2>
-		Welcome<span id="user"></span>!
-	</h2>
-	<div class="form-row">
-		<form method="POST" action="exit.login">
+	<div class="jumbotron" id="header">
+  <h1 class="display-4">Welcome<span id="user"></span>!</h1>
+  <p class="lead"><b>Kaiba Corp Employee</b></p>
+  <hr class="my-4"></hr>
+  <p class="lead">
+  <div class="form-group col-md-1">
+    <form method="POST" action="exit.login">
 			<div class="form-group col-md-2">
-				<button type="submit" class="btn btn-primary" id="reimbs">Logout</button>
+				<button type="submit" class="btn btn-warning" id="reimbs">Logout</button>
 			</div>
 		</form>
-		<div class="form-group col-md-2">
-			<a class="btn btn-primary"
-				href="resources/html/reimbursementform.html" role="button">Create
+		
+			<a class="btn btn-warning"
+				href="resources/html/reimbursementform.html" role="button">Submit
 				new reimbursement</a>
 		</div>
-	</div>
+</div>
 
 	<table class="table" id="reimb-table">
 		<thead class="thead-dark">

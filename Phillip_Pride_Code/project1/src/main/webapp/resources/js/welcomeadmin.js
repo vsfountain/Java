@@ -23,8 +23,7 @@ function getName() {
 		}
 	}
 
-	// create a connection
-	// (http method, url, and boolean asynch or not)
+	
 	xhttp.open("GET", 'http://localhost:9007/project1/info.user');
 
 	// this begins the request process
@@ -82,7 +81,7 @@ function populateTable(json) {
 		tr.appendChild(desc);
 		
 		let amount = document.createElement("td");
-		amount.textContent = row.reimbAmount;
+		amount.textContent = "$"+row.reimbAmount;
 		tr.appendChild(amount);
 		
 		let dateCreated = document.createElement("td");

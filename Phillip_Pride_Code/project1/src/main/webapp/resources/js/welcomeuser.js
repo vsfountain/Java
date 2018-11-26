@@ -32,14 +32,13 @@ function getName() {
 }
 
 function showReimbursements() {
-	console.log("in showReimbursement function.");
-
 	let xhttp = new XMLHttpRequest();
 
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			let response = JSON.parse(xhttp.responseText);
 			populateTable(response);
+			
 
 		}
 	}
@@ -79,7 +78,7 @@ function populateTable(json) {
 		tr.appendChild(desc);
 		
 		let amount = document.createElement("td");
-		amount.textContent = row.reimbAmount;
+		amount.textContent = "$"+row.reimbAmount;
 		tr.appendChild(amount);
 		
 		let dateCreated = document.createElement("td");
@@ -110,21 +109,4 @@ function populateTable(json) {
 		tr.appendChild(status);
 		reimbsTable.appendChild(tr);
 	})
-}
-
-function processReimbursements() {
-
-	let xhttp = new XMLHttpRequest();
-
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			let response = JSON.parse(xhttp.responseText);
-			populateTable(response);
-
-		}
-	}
-
-	xhttp.open("POST", 'http://localhost:9007/project1/process.reimb');
-	xhttp.send();
-
 }

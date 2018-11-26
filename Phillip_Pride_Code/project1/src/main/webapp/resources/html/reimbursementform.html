@@ -20,12 +20,15 @@
 </head>
 
 <body id="reimb-form">
+	<!-- <a class="btn btn-warning"
+				href="/project1/resources/html/employeeaccount.html" role="button">Homepage</a> -->
+
 	<p>Please fill out the reimbursement form below.</p>
 	<form method=POST action="reimb.insert">
 		<div class="form-row">
 			<div class="form-group col-md-2">
 				<label for="reimbType">Type of reimbursement</label> <select
-					class="form-control" name="reimbType" id="reimbType">
+					class="form-control" name="reimbType" id="reimbType" required>
 					<option selected>Choose...</option>
 					<option>Lodging</option>
 					<option>Travel</option>
@@ -39,7 +42,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">$</span> <input type="number"
 						class="form-control" id="inputReimbAmount" name="reimbAmount"
-						step=".01" min="0">
+						step=".01" min="0" required>
 				</div>
 			</div>
 
@@ -53,5 +56,6 @@
 
 		<button type="submit" class="btn btn-primary">Submit</button>
 	</form>
+
 </body>
 </html>

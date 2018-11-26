@@ -1,4 +1,4 @@
-package com.project1.main;
+/*package com.project1.main;
 
 import java.sql.Blob;
 import java.util.List;
@@ -32,7 +32,7 @@ public class Main {
 		System.out.println("Welcome " +user.getFirstName() + " "
 							+ user.getLastName() + "!");
 		
-		/*System.out.println("How much are you seeking reimbursement for?");
+		System.out.println("How much are you seeking reimbursement for?");
 		amount = input.nextInt();
 		
 		System.out.println("What kind of reimbursement is this?");
@@ -41,12 +41,12 @@ public class Main {
 		System.out.println("Please write a brief description of what this reimbursement is for:");
 		desc = input.next();
 		
-		reimburse.logReimbursement(amount, desc, receipt, user, reimbType);*/
-		List<Reimbursement> reimbs = reimburse.getAllReimbs(user);
+		reimburse.logReimbursement(amount, desc, receipt, user, reimbType);
+		//List<Reimbursement> reimbs = reimburse.getAllReimbs(user);
 		
-		reimburse.processReimb(reimbs.get(0), user, 2);
+		//reimburse.processReimb(reimbs.get(0), user, 2);
 		
-		System.out.println(reimburse.getAllReimbs(user));
+		//System.out.println(reimburse.getAllReimbs(user));
 		
 		
 		
@@ -54,3 +54,4 @@ public class Main {
 	}
 
 }
+*/
