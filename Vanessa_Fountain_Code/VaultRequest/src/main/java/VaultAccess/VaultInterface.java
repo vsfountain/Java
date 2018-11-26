@@ -1,6 +1,8 @@
 package VaultAccess;
 
 import java.util.ArrayList;
+import java.util.Map;
+
 import ModelLayer.VaultReimbursement;
 import ModelLayer.VaultUser;
 
@@ -15,10 +17,14 @@ public interface VaultInterface {
 		//RETREIVE CHECK REQUESTORS INFORMATION
 		public int retreiveDweller(VaultUser ERSUsersID);
 		
+		public Map<Integer,Integer> masterKey();
+		
 		//UPDATE GRANT ACCESS TO OPEN VAULT DOOR OR DENY UPDATE REOLVED, UPDATE RESOLVER
 		public void updateStatus(int reimbID, boolean approve);
 		
 		//DELETE MAKE SURE RESOLVED THEN DELETE
 		public void deleteReq();
+		
+		
 
 }

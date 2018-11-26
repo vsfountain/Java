@@ -5,7 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import ModelLayer.VaultReimbursement;
 import ModelLayer.VaultUser;
 
@@ -24,7 +28,28 @@ public class VaultAccessImplementaion implements VaultInterface{
 	private static String pass= "MyPassword";
 
 	public void insertVaultDB(VaultReimbursement reqEntrance) {
-		// TODO Auto-generated method stub
+		//String str = "INSERT INTO ERS_REIMBURSEMENT (reimb_amount, reimb_submitted, reimb_author, reimb_status_id, reimb_type_id) VALUES (?, ?, ?, ?)";
+		//INSERT INTO ERS_REIMBURSEMENT (reimb_amount, reimb_submitted, reimb_author, reimb_status_id, reimb_type_id) VALUES (98, systimestamp, 9, 0, 2);
+
+		try(Connection connect = DriverManager.getConnection(url, user, pass);){
+
+			PreparedStatement ps = connect.prepareStatement("INSERT INTO ERS_REIMBURSEMENT "
+					+ "(reimb_amount, reimb_submitted, reimb_author, reimb_status_id, reimb_type_id, reimb_description) "
+					+ "VALUES (?, ?, ?, ?, ?, ?)"
+					);
+			ps.setDouble(1, reqEntrance.getReimbAmount());
+			Timestamp tmp = new Timestamp(System.currentTimeMillis());
+			ps.setTimestamp(2, tmp);
+			ps.setInt(3, reqEntrance.getReimbAuthor());
+			ps.setInt(4, reqEntrance.getReimbStatusID());
+			ps.setInt(5, reqEntrance.getReimbTypeID());
+			ps.setString(6, reqEntrance.getReimbDescription());
+
+			ps.executeQuery();
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -91,5 +116,29 @@ public class VaultAccessImplementaion implements VaultInterface{
 		}
 		return all;
 	}
+
+	@Override
+	public Map<Integer, Integer> masterKey() {
+		//SELECT REIMB_ID, REIMB_AUTHOR FROM ERS_REIMBURSEMENT;
+		Map<Integer, Integer> all = new HashMap<Integer, Integer>();
+		try(
+				Connection connect = DriverManager.getConnection(url, user, pass);
+				){
+			
+			PreparedStatement ps = connect.prepareStatement("SELECT REIMB_ID, REIMB_AUTHOR FROM ERS_REIMBURSEMENT");
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				all.put(rs.getInt("REIMB_ID"), rs.getInt("REIMB_AUTHOR"));
+			}
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return all;
+		
+	}
+	
 
 }

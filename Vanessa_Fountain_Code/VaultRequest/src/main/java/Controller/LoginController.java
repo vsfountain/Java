@@ -15,18 +15,31 @@ public class LoginController {
 		
 		VaultService dweller = new VaultServiceImplementation();
 		
-		int userID = dweller.getUserInfo(username, password);
+		int userRole = dweller.getUserInfo(username, password);
+		int userID = dweller.getUserId(username, password);
 		
 		System.out.println(dweller.getUserInfo(username, password));
-		if( userID != 1) {
-			return "Index.html";
+		
+		if( userRole == 1) {
+			req.getSession().setAttribute("loggedID", userID);
+			
+			System.out.println(req.getSession().getAttribute("loggedID"));
+			
+			return "/dweller.vault867";
+
+		}
+		if( userRole == 2) {
+			req.getSession().setAttribute("loggedID", userID);
+			
+			System.out.println(req.getSession().getAttribute("loggedID"));
+			
+			return "/home.vault867";
 
 		}else {
 			req.getSession().setAttribute("loggedusername", username);
 			req.getSession().setAttribute("loggedpassword", password);
 			
-			return "/home.vault867";
-			//return "resources/html/ReqForm.html";
+			return "Index.html";
 		}
 	}
 		

@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class VaultReimbursement {
 	private int reimbId;
-	private int reimbAmount;
+	private double reimbAmount;
 	private Date reimbSubmitted;
 	private Date reimbResolved;
 	private String reimbDescription;
@@ -35,7 +35,7 @@ public class VaultReimbursement {
 	public void setReimbId(int reimbId) {
 		this.reimbId = reimbId;
 	}
-	public int getReimbAmount() {
+	public double getReimbAmount() {
 		return reimbAmount;
 	}
 	public void setReimbAmount(int reimbAmount) {
@@ -89,6 +89,18 @@ public class VaultReimbursement {
 	public void setReimbTypeID(int reimbTypeID) {
 		this.reimbTypeID = reimbTypeID;
 	}
+	
+	public VaultReimbursement(double reimbAmount, String reimbDescription, int reimbAuthor, int reimbStatusID,
+			int reimbTypeID) {
+		super();
+		this.reimbAmount = reimbAmount;
+		this.reimbDescription = reimbDescription;
+		this.reimbAuthor = reimbAuthor;
+		this.reimbStatusID = reimbStatusID;
+		this.reimbTypeID = reimbTypeID;
+		//this.reimbSubmitted = new Date(System.currentTimeMillis());
+	}
+	
 	@Override
 	public String toString() {
 		return "VaultReimbursement [reimbId=" + reimbId + ", reimbAmount=" + reimbAmount + ", reimbSubmitted="

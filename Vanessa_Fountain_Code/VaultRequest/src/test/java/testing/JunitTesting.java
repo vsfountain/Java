@@ -19,7 +19,7 @@ public class JunitTesting {
 		String username = "vsfount";
 		String password = "password";
 		assertThat("Fails if 0, No UserID is 0", tester.getUserInfo(username, password), is(not(0)));
-		assertThat("Should be 1",tester.getUserInfo(username, password), is(1));
+		assertThat("Should be 2",tester.getUserInfo(username, password), is(2));
 	}
 	
 	@Test

@@ -31,6 +31,9 @@ public class JSONRequestHelper {
 			case "/VaultRequest/resources/html/reqTableDeny.json":
 				StatusController.denyReimb(req,resp);
 				break;
+			case "/VaultRequest/viewMyReq.json":
+				ReimbursementController.viewPastReq(req, resp);
+				break;
 			default:
 				HomeController.home(req);
 				break;

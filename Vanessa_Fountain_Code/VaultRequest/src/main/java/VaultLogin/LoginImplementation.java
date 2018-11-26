@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ModelLayer.PastDisplay;
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultUser;
 
@@ -27,8 +28,8 @@ public class LoginImplementation implements LoginInterface{
 	public void addNewDweller(VaultUser newDweller) {
 		
 	}
-
-	public int checkInfo(String username, String password) {
+	
+	public int getInfo(String username, String password) {
 		//HashMap<Object, Object> map = new HashMap<>();
 		int userID = 0;
 		//FOR HASHMAP IMPLEMENTATION USE GET ALL SQL STATEMENT
@@ -50,6 +51,30 @@ public class LoginImplementation implements LoginInterface{
 			e.printStackTrace();
 		}
 		return userID;
+	}
+
+	public int checkInfo(String username, String password) {
+		//HashMap<Object, Object> map = new HashMap<>();
+		int userRole = 0;
+		//FOR HASHMAP IMPLEMENTATION USE GET ALL SQL STATEMENT
+		//SELECT * FROM ERS_USERS WHERE ERS_USERNAME = 'vsfount' and ERS_PASSWORD = 'password';
+		try(
+				Connection connect = DriverManager.getConnection(url, user, pass);
+				){
+			
+			PreparedStatement ps = connect.prepareStatement("SELECT USER_ROLE_ID FROM ERS_USERS WHERE ERS_USERNAME = ? and ERS_PASSWORD = ?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				userRole = rs.getInt("USER_ROLE_ID");
+			}
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return userRole;
 	}
 
 	public void changeInfo(VaultUser VaultUsersID) {
@@ -124,6 +149,33 @@ public class LoginImplementation implements LoginInterface{
 			
 			while(rs.next()) {
 				 all.add(new RequestDisplay(rs.getInt("REIMB_ID"), rs.getInt("REIMB_AMOUNT"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
+			}
+					
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return all;
+	}
+
+	@Override
+	public ArrayList<PastDisplay> retrievePast() {
+		ArrayList<PastDisplay> all = new ArrayList<PastDisplay>();
+		try(
+				Connection connect = DriverManager.getConnection(url, user, pass);
+				){
+			
+			PreparedStatement ps = connect.prepareStatement("SELECT R.REIMB_ID, R.REIMB_AMOUNT, R.REIMB_AUTHOR, P.USER_FIRST_NAME, P.USER_LAST_NAME, S.REIMB_STATUS, T.REIMB_TYPE, V.USER_ROLE " + 
+					"FROM ERS_REIMBURSEMENT R " + 
+					"JOIN ERS_USERS P ON P.ERS_USERS_ID = R.REIMB_AUTHOR " + 
+					"JOIN ERS_REIMBURSEMENT_TYPE T ON T.REIMB_TYPE_ID = R.REIMB_TYPE_ID " + 
+					"JOIN ERS_REIMBURSEMENT_STATUS S ON S.REIMB_STATUS_ID = R.REIMB_STATUS_ID " + 
+					"JOIN ERS_USER_ROLES V ON P.USER_ROLE_ID = V.ERS_USER_ROLE_ID"
+					);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				 all.add(new PastDisplay(rs.getInt("REIMB_ID"), rs.getInt("REIMB_AMOUNT"), rs.getInt("REIMB_AUTHOR"), rs.getString("USER_FIRST_NAME"), rs.getString("USER_LAST_NAME"), rs.getString("REIMB_STATUS"), rs.getString("REIMB_TYPE"), rs.getString("USER_ROLE")));
 			}
 					
 		}catch(SQLException e) {

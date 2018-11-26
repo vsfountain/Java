@@ -2,8 +2,7 @@ package ServiceLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
+import ModelLayer.PastDisplay;
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultReimbursement;
 import ModelLayer.VaultUser;
@@ -22,7 +21,10 @@ public class VaultServiceImplementation implements VaultService{
 	private HashMap<String, Integer> display = new HashMap<String, Integer>();
 	private HashMap<String, Integer> displayAll = new HashMap<String, Integer>();
 	
+	private HashMap<Integer,String> reqUser = new HashMap<Integer,String>();
+	
 	private int loggedIn;
+	private int inSess;
 
 	@Override
 	public int getUserInfo(String username, String password) {
@@ -92,6 +94,38 @@ public class VaultServiceImplementation implements VaultService{
 	}
 
 
-	
+	@Override
+	public int getUserId(String username, String password) {
+		inSess = dweller.getInfo(username, password);
+		return inSess;
+	}
+
+
+	@Override
+	public void insertReq(double amount, int type, String message, Integer loggedId) {
+		
+		VaultReimbursement reqEntrance = new VaultReimbursement(amount, message, loggedId, 0,
+				type);
+		System.out.println(reqEntrance);
+		request.insertVaultDB(reqEntrance);
+		
+	}
+
+
+	@Override
+	public HashMap<Integer,String> viewMyReq(Integer loggedId) {
+		
+		ArrayList<PastDisplay> pastReq = dweller.retrievePast();
+		
+		for(PastDisplay req : pastReq) {
+			System.out.println(req.getAuthor()+" "+req.getId() + " "+ pastReq);
+			if (req.getAuthor() == loggedId) {
+				reqUser.put(req.getId(), req.getStatus()+": "+req.getRole()+" "+req.getFirst()+" "+req.getLast()+" Amount: "+req.getAmount());
+			}
+		}
+		
+		return reqUser;
+		
+	}
 
 }
