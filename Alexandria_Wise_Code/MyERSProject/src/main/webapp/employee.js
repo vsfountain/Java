@@ -2,6 +2,10 @@ window.onload = function() {
 	getSW();
 	getReimbTable();
 }
+/*document.getElementById("newReimButton").addEventListener("click", function(event){
+    event.preventDefault();
+    addReimb();
+});*/
 
 function getSW() {
 	let swId = document.getElementById('role');
@@ -16,8 +20,6 @@ function getSW() {
 			myUser = JSON.parse(temp);
 			console.log("MyUser: " + myUser);
 			swId.innerHTML = myUser.firstName;
-			getMyReimbursements();
-
 		}
 	}
 	
@@ -28,13 +30,14 @@ function getSW() {
 	console.log(xhttp);
 }
 
-$(function getReimbTable() {
+function getReimbTable() {
 	var xhr = new XMLHttpRequest();
 	let myData;
-	xhr.open('POST', "/MyERSProject/getReimbursementsById.json", true);
+	xhr.open('POST', 'http://localhost:11001/MyERSProject/getReimbursementsById.json', true);
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4) {
 			var data = xhr.responseText;
+			console.log("DATA: "+data);
 			myData = JSON.parse(data);
 			console.log("Reimbursements: "+myData);
 		}
@@ -44,25 +47,25 @@ $(function getReimbTable() {
 	
 	xhr.send();
 	console.log(xhr)
-});
+}
 
 function addReimb() {
+	let amt = document.forms["newReimbForm"]["amount"].value;
+	let type = document.forms["newReimbForm"]["type"].value;
+	let desc = document.forms["newReimbForm"]["desc"].value;
+	params = '?amount='+amt+'&type='+type+'&desc='+desc;
+	console.log(params);
 	var xx = new XMLHttpRequest();
 	let myData;
-	xx.open('POST', "/MyERSProject/createNewReimb.json", true);
-	/*xhr.onreadystatechange = function() {
-		if (xhr.readyState == 4) {
-			var data = xhr.responseText;
-			myData = JSON.parse(data);
-			console.log("Reimbursements: "+myData);
+	xx.open('POST', 'http://localhost:11001/MyERSProject/createReimbursement.json'+params, true);
+	xx.onreadystatechange = function() {
+		if (xx.readyState == 4 && xx.status ==200) {
+			window.location.href = "employee.html";
+			//getReimbTable();		
 		}
-		populateReimbTable(myData);
-	}
-	
-*/	
+	}	
 	xx.send();
-	console.log(xx)
-	getReimbTable();
+	console.log(xx);
 }
 
 /*function getMyReimbursements() {
@@ -117,15 +120,14 @@ function populateReimbTable(reimbs) {
 		cell2.innerHTML = reimbs[reimb].reqTime;
 		cell3.innerHTML = reimbs[reimb].resTime;
 		cell4.innerHTML = reimbs[reimb].description;
-		//cell5.innerHTML = ;
-		cell6.innerHTML = reimbs[reimb].author;
-		cell7.innerHTML = reimbs[reimb].resolver;
-		cell8.innerHTML = reimbs[reimb].status;
-		cell9.innerHTML = reimbs[reimb].type;
+		
+		cell5.innerHTML = reimbs[reimb].author;
+		cell6.innerHTML = reimbs[reimb].resolver;
+		cell7.innerHTML = reimbs[reimb].status;
+		cell8.innerHTML = reimbs[reimb].type;
 		if (reimbs[reimb].resolved) {
-			cell8.innerHTML = res;
+			cell9.innerHTML = res;
 		}
-		cell7.innerHTML = reimbs[reimb].resolver;
 	}
 }
 

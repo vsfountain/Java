@@ -28,16 +28,16 @@
 </div>
 
 
-	<form method="POST" action="MyERSProject/createReimbursement.json">
+	<form id = "newReimbForm" method="POST" name ="newReimbForm" action="createReimbursement.json">
 		<label><b>New Reimbursement Form</b></label>
 		<!-- type input -->
 		<div class="form-group">
 			<label>Reimbursement Type</label> 
 			<select name="type" id="type" class = "form-control">
-                <option value=0>Lodging</option>
-                <option value=1>Travel</option>
-                <option value=2>Food</option>
-                <option value=3>Other</option>
+                <option value="0">Lodging</option>
+                <option value="1">Travel</option>
+                <option value="2">Food</option>
+                <option value="3">Other</option>
              </select>
 		<!-- amount input -->
 			<label>Reimbursement Amount</label> 
@@ -46,7 +46,7 @@
 			<label>Description</label> 
 			<input name = "desc" class="form-control" id="desc">
 		</div>
-		<button class="btn btn-primary" name="reimb" onclick="">Submit</button>
+		<button id ="newReimbButtonS" class="btn btn-primary" name="reimb">Submit</button>
 	</form>
 <br>
 	<table class="table">

@@ -8,7 +8,7 @@ public interface ReimbursementDAO {
 	
 	
 	//insert new reimbursement <- used by employee
-	public void preparedInsertReimbursement(double amount, Timestamp reqTime, int author, int statusId, int typeId);
+	public void preparedInsertReimbursement(double amount, String description, Timestamp reqTime, int author, int statusId, int typeId);
 	//select all existing reimbursements <- used my finance manager
 	public ArrayList<Reimbursement> selectAllReimbursements();
 	//select all pending reimbursements <- used by finance manager

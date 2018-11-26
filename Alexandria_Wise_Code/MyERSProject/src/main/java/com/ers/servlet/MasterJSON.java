@@ -40,6 +40,12 @@ public class MasterJSON extends HttpServlet {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		out.println(JSONRequestHelper.process(request, response));*/
+		System.out.println("In POST");
+		String type = request.getParameter("type");
+		String amount = request.getParameter("amount");
+		String desc = request.getParameter("desc");
+		
+		System.out.println("POST Paramters gotten: "+type+" "+amount+" "+desc);
 		JSONRequestHelper.process(request, response);
 	}
 

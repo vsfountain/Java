@@ -32,14 +32,15 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 
 
 	//insert new reimbursement <- used by employee
-	public void preparedInsertReimbursement(double amount, Timestamp reqTime, int author, int statusId, int typeId) {
+	public void preparedInsertReimbursement(double amount, String description, Timestamp reqTime, int author, int statusId, int typeId) {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			
-			String sql= "{ call insert_initial_reimbursement(?,current_timestamp,?,?,?) }";
+			String sql= "{ call insert_initial_reimbursement(?,?,?,?,?) }";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setDouble(1,amount);
 			//ps.setTimestamp(2, reqTime);
+			ps.setString(2, description);
 			ps.setInt(3, author);
 			ps.setInt(4, statusId);
 			ps.setInt(5, typeId);
@@ -160,6 +161,4 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 	}
 
 }
-	
-	
 

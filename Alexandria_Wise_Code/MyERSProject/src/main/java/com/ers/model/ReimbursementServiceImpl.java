@@ -11,8 +11,8 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void createReimbursement(double amount, Timestamp reqTime, int author, int statusId, int typeId) {
-		rDAO.preparedInsertReimbursement(amount, reqTime, author, statusId, typeId);
+	public void createReimbursement(double amount, String description, Timestamp reqTime, int author, int statusId, int typeId) {
+		rDAO.preparedInsertReimbursement(amount, description, reqTime, author, statusId, typeId);
 	}
 	public ArrayList<Reimbursement> displayReimbursements() {
 		return rDAO.selectAllReimbursements();

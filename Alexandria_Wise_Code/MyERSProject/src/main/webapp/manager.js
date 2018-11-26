@@ -83,22 +83,28 @@ function getReimbTableByStatus() {
 	console.log(xhr2)
 }
 
-//making the list selection of reimbursement type work
-var pStatus = document.getElementsByName('status');
 
-for(let i = 0; i<pStatus.length; i++){
-		pStatus[i].addEventListener('change', change);
-}
+function approveAndDeny() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i;
+	  input = document.getElementById("myInput");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("reimbursements");
+	  tr = table.getElementsByTagName("tr");
 
-function change(){
-	for(let i=0; i<pStatus.length; i++){
-		if(pStatus[i].selected == true){		
-			getReimbsByStatus();
-		}
+	  // Loop through all table rows, and hide those who don't match the search query
+	  for (i = 0; i < tr.length; i++) {
+	    td = tr[i].getElementsByTagName("td")[0];
+	    if (td) {
+	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	        tr[i].style.display = "";
+	      } else {
+	        tr[i].style.display = "none";
+	      }
+	    } 
+	  }
 	}
-}
 
-change();
 
 
 
