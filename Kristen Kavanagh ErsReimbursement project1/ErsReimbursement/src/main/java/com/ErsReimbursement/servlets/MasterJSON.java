@@ -22,14 +22,14 @@ public class MasterJSON extends HttpServlet {
 								
 	{
 		//ArrayList<Reimbursement> arryreimb = emburse.selectAllReimburse();
-		System.out.println(req.getRequestURI());
-		resp.setContentType("application/json");
-		Reimbursement reimburse = new Reimbursement ("reimb_amount", "reimb_description", "reimb_author", 
-				"reimb_status_id","reimb_type_id");
-		resp.getWriter().write(
-				new ObjectMapper().writeValueAsString(reimburse));
+		//System.out.println(req.getRequestURI());
+		//resp.setContentType("application/json");
+		//Reimbursement reimburse = new Reimbursement ("reimb_amount", "reimb_description", "reimb_author", 
+		//		"reimb_status_id","reimb_type_id");
+		//resp.getWriter().write(
+		//		new ObjectMapper().writeValueAsString(reimburse));
 
-		
+		System.out.println("Helloooooooooooo");
 		req.getRequestDispatcher(JSONRequestHelper.process(req, resp));
 	}
 

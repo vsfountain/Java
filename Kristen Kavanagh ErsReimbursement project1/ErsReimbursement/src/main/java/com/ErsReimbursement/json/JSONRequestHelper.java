@@ -18,7 +18,7 @@ throws JsonProcessingException,IOException{
 	case "/ErsReimbursement/MasterJSON.json":
 		return LoginController.login(req,resp);
 	//case "/ErsReimbursement/resources/html/viewReimbursement.MasterJSON":
-	case "/ErsReimbursement/viewReimbursement.MasterJSON":
+	case "/ErsReimbursement/resources/html/viewReimbursement.json":
 		System.out.println("Hello222");
 		return	ReimbursementController.viewReimbursement(req,resp);
 //	case "/ErsReimbursement/MasterJSON.json":
