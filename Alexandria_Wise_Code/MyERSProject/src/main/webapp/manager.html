@@ -32,38 +32,49 @@
 		<div class="form-group">
 			<label>Filter By Status</label> 
 			<select name="status" id="status"class="form-control" onclick="myFunction()">
-				<option value=0>Pending</option>
-				<option value=1>Approved</option>
-				<option value=2>Denied</option>
+				<option value="Pending">Pending</option>
+				<option value="Approved">Approved</option>
+				<option value="Denied">Denied</option>
 			</select>
 		</div>
+</form>
+
+<label>Search Requests</label>
+	<input type="text" id="myInput" class="form-control" onkeyup="approveAndDeny()" placeholder="Search for requests..">
+
+<form id = "review" method="POST" name ="review" action="reviewReimbursement.json">
+	
 </form>
 
 
 
 
 
-<label>Approve/Deny Request</label>
-	<input type="text" id="myInput" class="form-control" onkeyup="approveAndDeny()" placeholder="Search for requests..">
-
+<form method="POST" action="updateReimb.json" onsubmit="this.submitted">
 <table class="table">
   <thead>
     <tr>
+      
       <th scope="col">I.D.</th>
       <th scope="col">Amount</th>
       <th scope="col">Time Submitted</th>
       <th scope="col">Time Resolved</th>
       <th scope="col">Description</th>
-      <th scope="col">Receipt</th>
+      <!-- <th scope="col">Receipt</th> -->
       <th scope="col">Author</th>
       <th scope="col">Resolver</th>
       <th scope="col">Status</th>
-      <th scope="col">Type</th>
+      <th scope="col">Type</th>   
+      <th scope="col">Select</th> 
     </tr>
   </thead>
   <tbody id = "reimbursements">
   </tbody>
 </table>
+
+<!-- <input id="form-button" type="submit" value="approve" name="submit" onclick="this.form.submited=this.value;"> 
+<input id="form-button" type="submit" value="deny" name="submit" onclick="this.form.submited=this.value;">
+ -->
 
 <script type="text/javascript" src= "manager.js"></script>
 </body>

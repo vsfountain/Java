@@ -140,18 +140,15 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 	}
 	
 	//update a reimbursement's status from pending to approved/denied <- used by finance manager
-	public void approveOrDeny(int reimbId, Timestamp resTime, String description, Blob receipt, int resolver, int statusId) {
+	public void approveOrDeny(int reimbId, int resolver, int statusId) {
 		try(Connection conn=DriverManager.getConnection(url,username, password))
 		{
-			String sql= "{ call update_reimbursement(?,?,?,?,?,?) }";
+			String sql= "{ call update_reimbursement(?,?,?) }";
 			
 			PreparedStatement ps= conn.prepareStatement(sql);
 			ps.setInt(1, reimbId);
-			ps.setTimestamp(2, resTime);
-			ps.setString(3, description);
-			ps.setBlob(4, receipt);
-			ps.setInt(5, resolver);
-			ps.setInt(6, statusId);
+			ps.setInt(2, resolver);
+			ps.setInt(3, statusId);
 			
 			ResultSet rs= ps.executeQuery();
 			
@@ -161,4 +158,6 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 	}
 
 }
+	
+	
 

@@ -16,7 +16,7 @@ public interface ReimbursementDAO {
 	//select all reimbursements associated with a certain employee <- used by employee and finance manager
 	public ArrayList<Reimbursement> selectReimbursementsByID(int userId);
 	//update a reimbursement's status from pending to approved/denied <- used by finance manager 
-	public void approveOrDeny(int reimbId, Timestamp resTime, String description, Blob receipt, int resolver, int statusId);
+	public void approveOrDeny(int reimbId, int resolver, int statusId);
 	
 	
 }

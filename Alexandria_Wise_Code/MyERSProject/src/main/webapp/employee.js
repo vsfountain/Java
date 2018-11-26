@@ -68,25 +68,7 @@ function addReimb() {
 	console.log(xx);
 }
 
-/*function getMyReimbursements() {
-	//let swId = document.getElementById('role');
-	let xhttp = new XMLHttpRequest();
 
-	xhttp.onreadystatechange= function() {
-		if(xhttp.readyState == 4){
-			let bubba = xhttp.responseText;
-			console.log("Response Text: "+bubba);
-			let myReimbursement = JSON.parse(bubba);
-			populateReimbTable(myReimbursement);
-		}
-	}
-	
-	xhttp.open('POST', 'http://localhost:11001/MyERSProject/json/getReimbursementsById');
-	
-	xhttp.send();
-
-	console.log(xhttp);
-}*/
 
 
 function setValues(sw){
@@ -111,6 +93,7 @@ function populateReimbTable(reimbs) {
 		let cell7 = newRow.insertCell(7);	// Receipt
 		let cell8 = newRow.insertCell(8);	// Resolved
 		let cell9 = newRow.insertCell(9);	// Resolver
+		let cell10 = newRown.insertCell(10);
 		
 		//let sub = new Date(reimbs[reimb].reqTme);
 		//let res = new Date(reimbs[reimb].resTime);
@@ -123,11 +106,25 @@ function populateReimbTable(reimbs) {
 		
 		cell5.innerHTML = reimbs[reimb].author;
 		cell6.innerHTML = reimbs[reimb].resolver;
-		cell7.innerHTML = reimbs[reimb].status;
-		cell8.innerHTML = reimbs[reimb].type;
-		if (reimbs[reimb].resolved) {
-			cell9.innerHTML = res;
+		
+		if(reimbs[reimb].status==0){
+			cell7.innerHTML = "Pending"
+		}else if(reimbs[reimb].status==1){
+			cell7.innerHTML = "Approved"
+		}else {
+			cell7.innerHTML = "Denied"
 		}
+		
+		if(reimbs[reimb].type==0){
+			cell8.innerHTML = "Lodging";
+		} else if(reimbs[reimb].type==1){
+			cell8.innerHTML = "Travel";
+		}else if(reimbs[reimb].type==2){
+			cell8.innerHTML = "Food";
+		} else {
+			cell8.innerHTML = "Other";
+		}
+				
 	}
 }
 

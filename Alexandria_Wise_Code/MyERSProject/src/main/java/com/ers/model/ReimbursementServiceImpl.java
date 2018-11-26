@@ -10,6 +10,9 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 	public ReimbursementServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
+	public void approveOrDeny(int reimbId, int resolver, int statusId) {
+		rDAO.approveOrDeny(reimbId, resolver, statusId);
+	}
 	
 	public void createReimbursement(double amount, String description, Timestamp reqTime, int author, int statusId, int typeId) {
 		rDAO.preparedInsertReimbursement(amount, description, reqTime, author, statusId, typeId);

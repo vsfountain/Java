@@ -28,4 +28,8 @@ public class StatusReimbController {
 		
 //		return rlist;
 	}
+	
+	public static void updateReimbursement(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
+		
+	}
 }
