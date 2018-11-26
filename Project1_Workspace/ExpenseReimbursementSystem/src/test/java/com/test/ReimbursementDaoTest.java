@@ -8,13 +8,18 @@ import org.junit.Test;
 
 import com.kers.daos.ReimbursementDAO;
 import com.kers.daos.ReimbursementDAOImpl;
+import com.kers.daos.UserDAO;
+import com.kers.daos.UserDAOImpl;
+import com.kers.models.Reimbursement;
 
 public class ReimbursementDaoTest {
 private static ReimbursementDAO rdao;
+private static UserDAO udao;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception{
 		rdao = new ReimbursementDAOImpl("jdbc:h2:./Reimbursement/data;MODE=Oracle", "ersdb", "password");
+		udao = new UserDAOImpl("jdbc:h2:./Reimbursement/data;MODE=Oracle", "ersdb", "password");
 	}
 	
 	@AfterClass
@@ -33,8 +38,11 @@ private static ReimbursementDAO rdao;
 	
 	@Test
 	public void selectByNametest() {
-		/*Reimbursement r = new Reimbursement(32.23, "Test description", null, "trevinchester", "lodging");
-		rdao.insertReimbursement(r);*/
+		/*System.out.println(udao.selectUserByUsername("bronwenhughes"));*/
+		Reimbursement r = new Reimbursement(32.23, "Test description", "bronwenhughes", "Food");
+		rdao.insertReimbursementSansBlob(r);
 	}
+	
+	
 
 }

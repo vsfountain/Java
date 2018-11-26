@@ -6,6 +6,7 @@ import com.kers.models.Reimbursement;
 
 public interface ReimbursementDAO {
 	public int insertReimbursement(Reimbursement r);
+	public int insertReimbursementSansBlob(Reimbursement r);
 	
 	public List<Reimbursement> selectAllReimbursements();
 	

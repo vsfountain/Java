@@ -1,6 +1,7 @@
 package com.test;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import org.h2.api.Trigger;
@@ -16,8 +17,19 @@ public class TriggerErsUsers implements Trigger{
 
 	@Override
 	public void fire(Connection conn, Object[] oldRow, Object[] newRow) throws SQLException {
-		oldRow[2] = Functions.getCustomerHash(conn, (String)oldRow[1], (String)oldRow[2]);
-		
+		String sql = "INSERT INTO ers_users (ers_users_id, ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id)" 
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+		try(PreparedStatement ps = conn.prepareStatement(sql)){
+			ps.setObject(1, newRow[0]);
+			ps.setObject(2, newRow[1]);
+			ps.setObject(3, Functions.getCustomerHash(conn, (String)newRow[1], (String)newRow[2]));
+			ps.setObject(4, newRow[3]);
+			ps.setObject(5, newRow[4]);
+			ps.setObject(6, newRow[5]);
+			ps.setObject(7, newRow[6]);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 	}
 
 	@Override

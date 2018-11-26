@@ -17,6 +17,16 @@ public class Reimbursement {
 	private String status;
 	private String type;
 
+	// testing constructor
+	// constructor for making reimbursement
+		public Reimbursement(double amount, String description, String author, String type) {
+			super();
+			this.amount = amount;
+			this.description = description;
+			this.author = author;
+			this.type = type;
+		}
+	
 	// constructor for making reimbursement
 	public Reimbursement(double amount, String description, byte[] receiptByteArray , String author, String type) {
 		super();
