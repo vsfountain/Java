@@ -11,9 +11,9 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 		// TODO Auto-generated constructor stub
 	}
 	public void approveOrDeny(int reimbId, int resolver, int statusId) {
+		System.out.println("approveOrDeny in service");
 		rDAO.approveOrDeny(reimbId, resolver, statusId);
 	}
-	
 	public void createReimbursement(double amount, String description, Timestamp reqTime, int author, int statusId, int typeId) {
 		rDAO.preparedInsertReimbursement(amount, description, reqTime, author, statusId, typeId);
 	}

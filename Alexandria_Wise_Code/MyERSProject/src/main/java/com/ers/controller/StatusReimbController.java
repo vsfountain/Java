@@ -25,11 +25,7 @@ public class StatusReimbController {
 		ArrayList<Reimbursement> myReimbList = rServ.filterByStatus(statusId);
 		
 		response.getWriter().write(new ObjectMapper().writeValueAsString(myReimbList));
-		
-//		return rlist;
+	
 	}
 	
-	public static void updateReimbursement(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException {
-		
-	}
 }

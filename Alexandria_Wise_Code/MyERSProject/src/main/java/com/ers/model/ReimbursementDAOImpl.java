@@ -46,14 +46,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 			ps.setInt(5, typeId);
 			ps.executeUpdate();
 			
-			ResultSet rs= ps.executeQuery();
-			System.out.println(rs);
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-
-		
+		}	
 	}
 
 	//select all existing reimbursements <- used my finance manager
@@ -150,7 +145,10 @@ public class ReimbursementDAOImpl implements ReimbursementDAO{
 			ps.setInt(2, resolver);
 			ps.setInt(3, statusId);
 			
-			ResultSet rs= ps.executeQuery();
+			System.out.println("inside DAO approve/deny");
+			System.out.println("id = "+reimbId+" resolver = "+resolver+" status = "+statusId);
+			
+			ps.executeUpdate();
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
