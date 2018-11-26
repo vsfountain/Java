@@ -175,7 +175,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public void h2InitDao() {
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			System.out.println("-----------CREATING DB!----------");
-			String sql = h2InitSeqs() + h2InitTables();
+			String sql = h2InitSeqs() + h2InitTables() + h2InitFunctions() + h2InitTriggers();
 			Statement state = conn.createStatement();
 			state.execute(sql);
 
@@ -197,7 +197,11 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 					"DROP SEQUENCE ERS_REIMB_ID_SEQ;\r\n" + 
 					"DROP SEQUENCE ERS_REIMB_TYPE_ID_SEQ;  \r\n" + 
 					"DROP SEQUENCE ERS_USER_ROLE_ID_SEQ;\r\n" + 
-					"DROP SEQUENCE ERS_USERS_ID_SEQ;";
+					"DROP SEQUENCE ERS_USERS_ID_SEQ;" +
+					"DROP ALIAS GET_CUSTOMER_HASH; " +
+					"DROP ALIAS CHECK_CRENDENTIALS;" +
+					"DROP ALIAS QUERY;" +
+					"DROP ALIAS UPDATE_REIMB_STATUS;";
 			Statement state = conn.createStatement();	
 			state.execute(sql);
 		} catch (SQLException ex) {
@@ -278,59 +282,10 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	@Override
 	public String h2InitTriggers() {
-		return "CREATE OR REPLACE TRIGGER ERS_REIMB_ID_NULL_TRIG\r\n" + 
-				"BEFORE INSERT ON ERS_REIMBURSEMENT\r\n" + 
-				"FOR EACH ROW\r\n" + 
-				"BEGIN\r\n" + 
-				"        IF :new.REIMB_ID IS NULL THEN\r\n" + 
-				"                SELECT ERS_REIMB_ID_SEQ.nextval INTO :new.REIMB_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"        IF :new.REIMB_STATUS_ID IS NULL THEN\r\n" + 
-				"             SELECT 101 INTO :new.REIMB_STATUS_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"END;\r\n" + 
-				"/\r\n" + 
-				"\r\n" + 
-				"CREATE OR REPLACE TRIGGER ERS_USERS_ID_NULL_TRIG\r\n" + 
-				"BEFORE INSERT ON ERS_USERS\r\n" + 
-				"FOR EACH ROW\r\n" + 
-				"BEGIN\r\n" + 
-				"        IF :new.ERS_USERS_ID IS NULL THEN\r\n" + 
-				"                SELECT ERS_USERS_ID_SEQ.nextval INTO :new.ERS_USERS_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"        \r\n" + 
-				"         SELECT GET_CUSTOMER_HASH(:NEW.ERS_USERNAME,:NEW.ERS_PASSWORD) INTO :NEW.ERS_PASSWORD FROM DUAL;\r\n" + 
-				"END;\r\n" + 
-				"/\r\n" + 
-				"CREATE OR REPLACE TRIGGER ERS_REIMB_STATUS_ID_NULL_TRIG\r\n" + 
-				"BEFORE INSERT ON ERS_REIMBURSEMENT_STATUS\r\n" + 
-				"FOR EACH ROW\r\n" + 
-				"BEGIN\r\n" + 
-				"        IF :new.REIMB_STATUS_ID IS NULL THEN\r\n" + 
-				"                SELECT ERS_REIMB_STATUS_ID_SEQ.nextval INTO :new.REIMB_STATUS_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"END;\r\n" + 
-				"/\r\n" + 
-				"\r\n" + 
-				"CREATE OR REPLACE TRIGGER ERS_REIMB_TYPE_ID_NULL_TRIG\r\n" + 
-				"BEFORE INSERT ON ERS_REIMBURSEMENT_TYPE\r\n" + 
-				"FOR EACH ROW\r\n" + 
-				"BEGIN\r\n" + 
-				"        IF :new.REIMB_TYPE_ID IS NULL THEN\r\n" + 
-				"                SELECT ERS_REIMB_TYPE_ID_SEQ.nextval INTO :new.REIMB_TYPE_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"END;\r\n" + 
-				"/\r\n" + 
-				"\r\n" + 
-				"CREATE OR REPLACE TRIGGER ERS_USER_ROLE_ID_NULL_TRIG\r\n" + 
-				"BEFORE INSERT ON ERS_USER_ROLES\r\n" + 
-				"FOR EACH ROW\r\n" + 
-				"BEGIN\r\n" + 
-				"        IF :new.ERS_USER_ROLE_ID IS NULL THEN\r\n" + 
-				"                SELECT ERS_USER_ROLE_ID_SEQ.nextval INTO :new.ERS_USER_ROLE_ID FROM dual;\r\n" + 
-				"        END IF;\r\n" + 
-				"END;\r\n" + 
-				"/";
+		return "CREATE TRIGGER ERS_USERS_ID_NULL_TRIG " +
+				"BEFORE INSERT ON ERS_USERS " +
+				"FOR EACH ROW " +
+				"CALL \"com.test.TriggerErsUsers\"";
 	}
 
 	@Override
