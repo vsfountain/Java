@@ -8,16 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.kers.controller.RequestHelper;
+import com.kers.daos.UserDAOImpl;
 
 /**
  * Servlet implementation class MasterServlet
  */
 public class MasterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String filePath;   
-	
+    final static Logger logger = Logger.getLogger(MasterServlet.class);
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -31,14 +34,7 @@ public class MasterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		//String contextEx = getServletContext().getInitParameter("contextExample");
-		//String configEx = getServletConfig().getInitParameter("configExample");
-		//System.out.println(contextEx + " " + configEx);
-		//JSONRequestHelper.process(request, response);
-		//request.getRequestDispatcher(RequestHelper.retrieve(req, resp);)
-		//System.out.println(request.getRequestURI());
+		logger.info("doGet called.");
 		RequestHelper.retrieve(request, response);
 		PrintWriter out = response.getWriter();
 	}
@@ -47,10 +43,8 @@ public class MasterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+		logger.info("doPost called");
 		request.getRequestDispatcher(RequestHelper.process(request)).forward(request, response);
-		//System.out.println("Context path: " + request.getRequestURI());
 	}
 
 }

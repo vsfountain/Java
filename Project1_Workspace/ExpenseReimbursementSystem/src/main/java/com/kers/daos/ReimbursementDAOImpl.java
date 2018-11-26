@@ -76,13 +76,14 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 			return cs.executeUpdate();
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 		return 0;
 	}
 
 	@Override
 	public List<Reimbursement> selectAllReimbursements() {
+		logger.info("Getting all reimbursements");
 		ArrayList<Reimbursement> rList = new ArrayList<>();
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
 			String sql = "SELECT r.reimb_id, r.reimb_amount, r.reimb_submitted, r.reimb_resolved, r.reimb_description, r.reimb_receipt, u1.ers_username, u2.ers_username, rs.reimb_status, rt.reimb_type FROM ERS_REIMBURSEMENT r  LEFT OUTER JOIN ERS_USERS u1   ON r.reimb_author = u1.ers_users_id"
@@ -117,13 +118,14 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				rList.add(r);
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 		return rList;
 	}
 	
 	@Override
 	public List<Reimbursement> selectAllReimbursementsSansBlob() {
+		logger.info("Getting all reimbursements sans blob");
 		ArrayList<Reimbursement> rList = new ArrayList<>();
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
 			String sql = "SELECT r.reimb_id, r.reimb_amount, r.reimb_submitted, r.reimb_resolved, r.reimb_description, r.reimb_receipt, u1.ers_username, u2.ers_username, rs.reimb_status, rt.reimb_type FROM ERS_REIMBURSEMENT r  LEFT OUTER JOIN ERS_USERS u1   ON r.reimb_author = u1.ers_users_id"
@@ -149,13 +151,14 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				rList.add(r);
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 		return rList;
 	}
 
 	@Override
 	public Reimbursement selectReimbursementById(int id) {
+		logger.info("Getting reimbursement by id: " + id );
 		Reimbursement reimbursement = null;
 
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
@@ -185,7 +188,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				return reimbursement;
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 
 		return null;
@@ -211,6 +214,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	@Override
 	public int updateReimbursementById(int id, String decision, String resolver) {
+		logger.info("Updating reimbursement by id: " + id + " " + decision +  " " + resolver);
 		try (Connection con = DriverManager.getConnection(url, username, password)) {
 			String sql = "{ call update_reimb_status(?,?,?) }";
 
@@ -222,7 +226,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			return ps.executeUpdate();
 
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.warn(ex);
 		}
 		return 0;
 	}
@@ -237,7 +241,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			state.execute(sql);
 
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 	}
 
@@ -257,7 +261,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			Statement state = conn.createStatement();
 			state.execute(sql);
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 
 	}

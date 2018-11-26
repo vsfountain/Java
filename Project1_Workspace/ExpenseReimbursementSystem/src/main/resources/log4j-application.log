@@ -3,3 +3,60 @@
 2018-11-26 00:01:55 INFO  ReimbursementDAOImpl:67 - Inserting reimbursement through h2 without a blob: Reimbursement [id=0, amount=32.23, submitted=null, resolved=null, description=Test description, receiptByteArray=null, author=bronwenhughes, resolver=null, status=null, type=Food]
 2018-11-26 00:05:13 INFO  ReimbursementDAOImpl:47 - Inserting reimbursement: Reimbursement [id=0, amount=44.54, submitted=null, resolved=null, description=hello, receiptByteArray=[B@6ce7171f, author=bronwenhughes, resolver=null, status=null, type=Travel]
 2018-11-26 00:10:22 INFO  ReimbursementDAOImpl:47 - Inserting reimbursement: Reimbursement [id=0, amount=54.3, submitted=null, resolved=null, description=efwge, receiptByteArray=[B@1f74f6e0, author=seandoyle, resolver=null, status=null, type=Travel]
+2018-11-26 00:55:12 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:55:12 INFO  LoginController:23 - User tried to log in with: bronwenhughes 12345
+2018-11-26 00:55:12 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: bronwenhughes 12345
+2018-11-26 00:55:13 INFO  LoginController:35 - Employee bronwenhughes logged in.
+2018-11-26 00:55:13 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:13 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:55:16 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:16 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:55:27 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:55:27 INFO  HomeController:67 - Processing reimbursement from user: bronwenhughes with reimbursement info: Reimbursement [id=0, amount=435.3, submitted=null, resolved=null, description=new reimb, receiptByteArray=[B@5c1de186, author=bronwenhughes, resolver=null, status=null, type=Food]
+2018-11-26 00:55:27 INFO  ReimbursementDAOImpl:47 - Inserting reimbursement: Reimbursement [id=0, amount=435.3, submitted=null, resolved=null, description=new reimb, receiptByteArray=[B@5c1de186, author=bronwenhughes, resolver=null, status=null, type=Food]
+2018-11-26 00:55:29 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:55:32 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:32 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:55:33 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:55:33 INFO  InvalidateSessionController:15 - User bronwenhughes is logging out.
+2018-11-26 00:55:38 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:55:38 INFO  LoginController:23 - User tried to log in with: seandoyle 12345
+2018-11-26 00:55:38 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: seandoyle 12345
+2018-11-26 00:55:39 INFO  LoginController:35 - Employee seandoyle logged in.
+2018-11-26 00:55:39 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:39 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:55:42 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:42 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:55:50 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:55:50 INFO  HomeController:67 - Processing reimbursement from user: seandoyle with reimbursement info: Reimbursement [id=0, amount=546.4, submitted=null, resolved=null, description=rgiowe, receiptByteArray=[B@5e1febb0, author=seandoyle, resolver=null, status=null, type=Other]
+2018-11-26 00:55:50 INFO  ReimbursementDAOImpl:47 - Inserting reimbursement: Reimbursement [id=0, amount=546.4, submitted=null, resolved=null, description=rgiowe, receiptByteArray=[B@5e1febb0, author=seandoyle, resolver=null, status=null, type=Other]
+2018-11-26 00:55:52 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:55:57 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:55:57 INFO  ReimbursementController:35 - GetUser
+2018-11-26 00:56:04 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:56:04 INFO  ReimbursementController:44 - GetList for seandoyle
+2018-11-26 00:56:04 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:56:13 INFO  ImageServlet:38 - Trying to get an image from ImageServlet
+2018-11-26 00:56:13 INFO  ReimbursementDAOImpl:161 - Getting reimbursement by id: 2064
+2018-11-26 00:56:14 INFO  ImageServlet:47 - Image for reimbursement 2064 was processed.
+2018-11-26 00:56:18 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:56:18 INFO  InvalidateSessionController:15 - User seandoyle is logging out.
+2018-11-26 00:56:24 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:56:24 INFO  LoginController:23 - User tried to log in with: trevinchester help
+2018-11-26 00:56:24 INFO  UserDAOImpl:104 - Getting user from username and password, provided its correct: trevinchester help
+2018-11-26 00:56:25 INFO  LoginController:30 - Admin trevinchester logged in.
+2018-11-26 00:56:31 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:56:31 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 00:56:31 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:56:38 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:56:38 INFO  ReimbursementController:70 - AlterReimbursement done by: trevinchester
+2018-11-26 00:56:38 INFO  ReimbursementDAOImpl:217 - Updating reimbursement by id: 2063 Approved trevinchester
+2018-11-26 00:56:39 INFO  ReimbursementDAOImpl:217 - Updating reimbursement by id: 2064 Approved trevinchester
+2018-11-26 00:56:40 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:56:40 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 00:56:40 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:56:55 INFO  MasterServlet:37 - doGet called.
+2018-11-26 00:56:55 INFO  ReimbursementController:44 - GetList for trevinchester
+2018-11-26 00:56:55 INFO  ReimbursementDAOImpl:86 - Getting all reimbursements
+2018-11-26 00:57:03 INFO  MasterServlet:46 - doPost called
+2018-11-26 00:57:03 INFO  ReimbursementController:70 - AlterReimbursement done by: trevinchester

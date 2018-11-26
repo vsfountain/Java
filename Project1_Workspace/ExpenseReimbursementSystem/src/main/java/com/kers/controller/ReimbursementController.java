@@ -8,6 +8,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kers.daos.ReimbursementDAO;
@@ -23,11 +25,14 @@ import com.kers.services.UserServiceImpl;
 
 public class ReimbursementController {
 	
+	final static Logger logger = Logger.getLogger(ReimbursementController.class);
+	
 	private static ReimbursementService rService = new ReimbursementServiceImpl();
 	private static UserService uService = new UserServiceImpl();
 
 	public static void getUser(HttpServletRequest req, HttpServletResponse resp)
 			throws JsonProcessingException, IOException {
+		logger.info("GetUser");
 		User u = (User) req.getSession().getAttribute("user");
 		resp.getWriter().write(new ObjectMapper().writeValueAsString(u));
 	}
@@ -36,6 +41,8 @@ public class ReimbursementController {
 			throws JsonProcessingException, IOException {
 		User u = (User) req.getSession().getAttribute("user");
 
+		logger.info("GetList for " + u.getUsername());
+		
 		List<Reimbursement> rList = rService.getAllReimbursements();
 		System.out.println("RLIST: " + rList);
 		// System.out.println("requesthelper retrieve rLIST: " + rList);
@@ -53,15 +60,16 @@ public class ReimbursementController {
 	}
 
 	public static String alterReimbursements(HttpServletRequest req) throws JsonProcessingException, IOException {
+		
+		
+		
 		String[] checkedValues = req.getParameterValues("selectedRow");
 		System.out.println("Arrays toString: " + Arrays.toString(checkedValues));
 		String resolver = ((User) req.getSession().getAttribute("user")).getUsername();
 
-		System.out.println("RESOLVER: " + resolver);
-		// int resolverid = udao.selectUserByUsername(resolver).get;
+		logger.info("AlterReimbursement done by: " + resolver);
+		
 		String decision = req.getParameter("submit");
-		System.out.println();
-		// System.out.println("CHECKED VALUES: " + checkedValues[0]);
 		for (String values : checkedValues) {
 			rService.updateReimbursementById(Integer.parseInt(values), decision, resolver);
 		}

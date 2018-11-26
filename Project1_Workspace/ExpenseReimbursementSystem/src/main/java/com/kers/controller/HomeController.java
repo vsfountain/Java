@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.rowset.serial.SerialException;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 
 import com.kers.daos.ReimbursementDAO;
 import com.kers.daos.ReimbursementDAOImpl;
+import com.kers.daos.UserDAOImpl;
 import com.kers.models.Reimbursement;
 import com.kers.models.User;
 import com.kers.services.ReimbursementService;
@@ -27,12 +29,15 @@ public class HomeController {
 	private String filePath;
 	private static ReimbursementService rService = new ReimbursementServiceImpl();
 	private static UserService uService = new UserServiceImpl();
+	
+	final static Logger logger = Logger.getLogger(HomeController.class);
 
 	public static String home(HttpServletRequest req) {
 		return "home.html";
 	}
 
 	public static String processReimbursement(HttpServletRequest req) throws IOException {
+		
 		System.out.println("-------------REIMBURSEMENT-------------");
 
 		int maxFileSize = 5000 * 1024;
@@ -57,13 +62,11 @@ public class HomeController {
 		
 		User u = (User) req.getSession().getAttribute("user");
 		String author = u.getUsername();
-		System.out.println(type + " " + amount + " " + receiptBytes + " " + description + " " + dateSubmitted);
 
 		Reimbursement r = new Reimbursement(amount, description, receiptBytes, author, type);
-		System.out.println("reimb: " + r);
+		logger.info("Processing reimbursement from user: " + author + " with reimbursement info: " + r);
 		rService.addReimbursement(r);
 		List<Reimbursement> temp = rService.getAllReimbursements();
-		System.out.println("process reimbursements: " + temp);
 		req.getSession().setAttribute("reimbursementlist", temp);
 		return "employeeadd.html";
 	}

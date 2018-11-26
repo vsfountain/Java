@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.kers.models.User;
 
 public class UserDAOImpl implements UserDAO {
@@ -21,6 +23,8 @@ public class UserDAOImpl implements UserDAO {
 	private static String url = "jdbc:oracle:thin:@revychan.c75kj45zpjaq.us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String username = "ersdb";
 	private static String password = "password";
+
+	final static Logger logger = Logger.getLogger(UserDAOImpl.class);
 
 	/*
 	 * @Override public int insertUser(User u) { try (Connection con =
@@ -47,6 +51,7 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public List<User> selectAllUsers() {
+		logger.info("Getting all users");
 		List<User> uList = new ArrayList<>();
 		try(Connection con = DriverManager.getConnection(url, username, password)){
 			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME, ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID";
@@ -60,7 +65,7 @@ public class UserDAOImpl implements UserDAO {
 			return uList;
 			
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 		return null;
 	}
@@ -73,6 +78,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User selectUserByUsername(String username) {
+		logger.info("Getting user from username: " + username );
 		try (Connection con = DriverManager.getConnection(url, UserDAOImpl.username, password)) {
 			// String sql = "SELECT * FROM users WHERE username = ?";
 			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME, ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
@@ -88,13 +94,14 @@ public class UserDAOImpl implements UserDAO {
 				return u;
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
 		return null;
 	}
 
 	@Override
 	public User selectUserByUsernameAndPassword(String username, String password) {
+		logger.info("Getting user from username and password, provided its correct: " + username + " " + password);
 		try (Connection con = DriverManager.getConnection(url, UserDAOImpl.username, UserDAOImpl.password)) {
 			// String sql = "SELECT * FROM users WHERE username = ?";
 			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME,  ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
@@ -111,8 +118,9 @@ public class UserDAOImpl implements UserDAO {
 				return u;
 			}
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			logger.fatal(ex);
 		}
+		logger.warn("There was no username and password associated with following: " + username + " " + password);
 		return null;
 	}
 
