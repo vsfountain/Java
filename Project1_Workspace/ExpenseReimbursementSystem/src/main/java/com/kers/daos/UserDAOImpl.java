@@ -1,11 +1,12 @@
 package com.kers.daos;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.kers.models.User;
@@ -46,7 +47,21 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public List<User> selectAllUsers() {
-		// TODO Auto-generated method stub
+		List<User> uList = new ArrayList<>();
+		try(Connection con = DriverManager.getConnection(url, username, password)){
+			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME, ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID";
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while (rs.next()) {
+				User u = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+				uList.add(u);
+			}
+			return uList;
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
 		return null;
 	}
 
@@ -60,7 +75,7 @@ public class UserDAOImpl implements UserDAO {
 	public User selectUserByUsername(String username) {
 		try (Connection con = DriverManager.getConnection(url, UserDAOImpl.username, password)) {
 			// String sql = "SELECT * FROM users WHERE username = ?";
-			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME, ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS FULL OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
+			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME, ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
 					+ " WHERE ERS_USERS.ERS_USERNAME = ?";
 
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -82,7 +97,7 @@ public class UserDAOImpl implements UserDAO {
 	public User selectUserByUsernameAndPassword(String username, String password) {
 		try (Connection con = DriverManager.getConnection(url, UserDAOImpl.username, UserDAOImpl.password)) {
 			// String sql = "SELECT * FROM users WHERE username = ?";
-			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME,  ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS FULL OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
+			String sql = "SELECT ERS_USERS.ERS_USERNAME,  ERS_USERS.USER_FIRST_NAME,  ERS_USERS.USER_LAST_NAME,  ERS_USERS.USER_EMAIL, ERS_USER_ROLES.USER_ROLE FROM ERS_USERS LEFT OUTER JOIN ERS_USER_ROLES ON  ERS_USERS.USER_ROLE_ID = ERS_USER_ROLES.ERS_USER_ROLE_ID"
 					+ " WHERE ERS_USERS.ERS_PASSWORD = CHECK_CRENDENTIALS(?, ?)";
 
 			PreparedStatement ps = con.prepareStatement(sql);

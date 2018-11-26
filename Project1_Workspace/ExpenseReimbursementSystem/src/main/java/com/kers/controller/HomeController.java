@@ -16,11 +16,17 @@ import com.kers.daos.ReimbursementDAO;
 import com.kers.daos.ReimbursementDAOImpl;
 import com.kers.models.Reimbursement;
 import com.kers.models.User;
+import com.kers.services.ReimbursementService;
+import com.kers.services.ReimbursementServiceImpl;
+import com.kers.services.UserService;
+import com.kers.services.UserServiceImpl;
 import com.oreilly.servlet.MultipartRequest;
 
 public class HomeController {
 
 	private String filePath;
+	private static ReimbursementService rService = new ReimbursementServiceImpl();
+	private static UserService uService = new UserServiceImpl();
 
 	public static String home(HttpServletRequest req) {
 		return "home.html";
@@ -34,28 +40,9 @@ public class HomeController {
 		File file;
 		String filePath = req.getServletContext().getInitParameter("file-upload");
 
-		/*
-		 * String type = req.getParameter("reimb-type"); System.out.println("Type is: "
-		 * + type); double amount = Double.parseDouble(req.getParameter("amount")); Blob
-		 * receipt = null; // req.getParameter("receipt-file"); String description =
-		 * req.getParameter("description");
-		 */
-		/*
-		 * User u = (User)req.getSession().getAttribute("user"); String username =
-		 * u.getUsername();
-		 */
-		// LocalDateTime dateSubmitted = LocalDateTime.now();
+		
 		Timestamp dateSubmitted = new Timestamp(System.currentTimeMillis());
 
-		/* upload file */
-		/*
-		 * boolean isMultipart; isMultipart = ServletFileUpload.isMultipartContent(req);
-		 * 
-		 * DiskFileItemFactory factory = new DiskFileItemFactory();
-		 * factory.setSizeThreshold(maxMemSize); factory.setRepository(new
-		 * File("c:\\temp")); ServletFileUpload upload = new ServletFileUpload(factory);
-		 * upload.setSizeMax(maxFileSize);
-		 */
 		MultipartRequest m = new MultipartRequest(req, filePath);
 		String type = m.getParameter("reimb-type");
 		double amount = Double.parseDouble(m.getParameter("amount"));
@@ -67,35 +54,17 @@ public class HomeController {
 		Blob receipt = null;
 		
 		String description = m.getParameter("description");
-		/*
-		 * try { List fileItems = upload.parseRequest(req); Iterator i =
-		 * fileItems.iterator();
-		 * 
-		 * while (i.hasNext()) { FileItem fi = (FileItem) i.next(); if
-		 * (!fi.isFormField()) { String fieldName = fi.getFieldName(); String fileName =
-		 * fi.getName(); String contentType = fi.getContentType(); boolean isInMemory =
-		 * fi.isInMemory(); long sizeInBytes = fi.getSize();
-		 * 
-		 * if (fileName.lastIndexOf("\\") >= 0) { file = new File(filePath +
-		 * fileName.substring(fileName.lastIndexOf("\\"))); } else { file = new
-		 * File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1)); }
-		 * fi.write(file); System.out.println("Uploaded filename: " + fileName);
-		 * 
-		 * } } } catch (Exception ex) { System.out.println(ex); } end upload file
-		 * 
-		 */
-
+		
 		User u = (User) req.getSession().getAttribute("user");
 		String author = u.getUsername();
 		System.out.println(type + " " + amount + " " + receiptBytes + " " + description + " " + dateSubmitted);
 
 		Reimbursement r = new Reimbursement(amount, description, receiptBytes, author, type);
 		System.out.println("reimb: " + r);
-		ReimbursementDAO rdao = new ReimbursementDAOImpl();
-		rdao.insertReimbursement(r);
-		List<Reimbursement> temp = rdao.selectAllReimbursements();
+		rService.addReimbursement(r);
+		List<Reimbursement> temp = rService.getAllReimbursements();
 		System.out.println("process reimbursements: " + temp);
 		req.getSession().setAttribute("reimbursementlist", temp);
-		return "home.html";
+		return "employeeadd.html";
 	}
 }

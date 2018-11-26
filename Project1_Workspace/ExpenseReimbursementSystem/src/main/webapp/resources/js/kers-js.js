@@ -72,7 +72,7 @@ function addTable(list, table) {
 		cell3.innerHTML = list[i].submitted;
 		cell4.innerHTML = list[i].resolved;
 		cell5.innerHTML = list[i].description;
-		cell6.innerHTML = list[i].receipt;
+		cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id=' + list[i].id + '">...</a>';
 		cell7.innerHTML = list[i].resolver;
 		cell8.innerHTML = list[i].status;
 		cell9.innerHTML = list[i].type;
@@ -247,7 +247,7 @@ function addTableEmployee(list, table) {
 			cell3.innerHTML = list[i].submitted;
 			cell4.innerHTML = list[i].resolved;
 			cell5.innerHTML = list[i].description;
-			cell6.innerHTML = '<img src="data:image/png;base64,' + list[i].receiptByteArray; + '" />';
+			cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id=' + list[i].id + '">...</a>';
 			cell7.innerHTML = list[i].resolver;
 			cell8.innerHTML = list[i].status;
 			cell9.innerHTML = list[i].type;

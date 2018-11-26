@@ -67,6 +67,37 @@ public class Reimbursement {
 		this.type = type;
 	}
 	
+	// SANS BLOBS
+	
+	// constructor for retrieving reimbursement that is pending
+		public Reimbursement(int id, double amount, Timestamp submitted, String description, String author,
+				String status, String type) {
+			super();
+			this.id = id;
+			this.amount = amount;
+			this.submitted = submitted;
+			this.description = description;
+			this.author = author;
+			this.status = status;
+			this.type = type;
+		}
+		
+		// constructor for retrieving reimbursement for completed transactions
+		public Reimbursement(int id, double amount, Timestamp submitted, Timestamp resolved, String description,
+				String author, String resolver, String status, String type) {
+			super();
+			this.id = id;
+			this.amount = amount;
+			this.submitted = submitted;
+			this.resolved = resolved;
+			this.description = description;
+			this.author = author;
+			this.resolver = resolver;
+			this.status = status;
+			this.type = type;
+		}
+	
+	
 	public int getId() {
 		return id;
 	}

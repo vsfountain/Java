@@ -16,10 +16,15 @@ import com.kers.daos.UserDAO;
 import com.kers.daos.UserDAOImpl;
 import com.kers.models.Reimbursement;
 import com.kers.models.User;
+import com.kers.services.ReimbursementService;
+import com.kers.services.ReimbursementServiceImpl;
+import com.kers.services.UserService;
+import com.kers.services.UserServiceImpl;
 
 public class ReimbursementController {
-	private static ReimbursementDAO rdao = new ReimbursementDAOImpl();
-	private static UserDAO udao = new UserDAOImpl();
+	
+	private static ReimbursementService rService = new ReimbursementServiceImpl();
+	private static UserService uService = new UserServiceImpl();
 
 	public static void getUser(HttpServletRequest req, HttpServletResponse resp)
 			throws JsonProcessingException, IOException {
@@ -31,7 +36,7 @@ public class ReimbursementController {
 			throws JsonProcessingException, IOException {
 		User u = (User) req.getSession().getAttribute("user");
 
-		List<Reimbursement> rList = rdao.selectAllReimbursements();
+		List<Reimbursement> rList = rService.getAllReimbursements();
 		System.out.println("RLIST: " + rList);
 		// System.out.println("requesthelper retrieve rLIST: " + rList);
 		if (u.getRole().equals("Admin")) {
@@ -58,8 +63,8 @@ public class ReimbursementController {
 		System.out.println();
 		// System.out.println("CHECKED VALUES: " + checkedValues[0]);
 		for (String values : checkedValues) {
-			rdao.updateReimbursementById(Integer.parseInt(values), decision, resolver);
+			rService.updateReimbursementById(Integer.parseInt(values), decision, resolver);
 		}
-		return "ownreimb.html";
+		return "adminviewpending.html";
 	}
 }

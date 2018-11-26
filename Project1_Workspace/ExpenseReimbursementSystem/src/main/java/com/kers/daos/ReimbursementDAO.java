@@ -9,6 +9,7 @@ public interface ReimbursementDAO {
 	public int insertReimbursementSansBlob(Reimbursement r);
 	
 	public List<Reimbursement> selectAllReimbursements();
+	public List<Reimbursement> selectAllReimbursementsSansBlob();
 	
 	public Reimbursement selectReimbursementById(int id);
 	

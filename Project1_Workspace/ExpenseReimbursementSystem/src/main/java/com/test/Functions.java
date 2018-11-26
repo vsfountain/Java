@@ -20,22 +20,34 @@ public class Functions {
 	}
 
 	public static void updateReimbStatus(Connection con, int id, String status, String resolver) throws SQLException {
-		int t_reimb_status_id;
-		int t_resolver_id;
-		Timestamp t_resolved;
+		int t_reimb_status_id = 0;
+		int t_resolver_id = 0;
+		Timestamp t_resolved = null;
 
 		ResultSet rs = query(con, ("SELECT ers_users_id FROM ers_users WHERE ers_username = '" + resolver + "'"));
-		t_resolver_id = rs.getInt(1);
+		while (rs.next()) {
+			t_resolver_id = rs.getInt(1);
+		}
 
 		rs = query(con, ("SELECT reimb_status_id FROM ers_reimbursement_status WHERE reimb_status = '" + status + "'"));
-		t_reimb_status_id = rs.getInt(1);
+		while (rs.next()) {
+			t_reimb_status_id = rs.getInt(1);
+		}
 
 		rs = query(con, ("SELECT CURRENT_TIMESTAMP FROM DUAL"));
-		t_resolved = rs.getTimestamp(1);
 
-		rs = query(con, ("UPDATE ers_reimbursement SET reimb_resolved = " + t_resolved + ", reimb_resolver = "
-				+ t_resolver_id + ", reimb_status_id = " + t_reimb_status_id + " WHERE reimb_id = " + id));
+		while (rs.next()) {
+			t_resolved = rs.getTimestamp(1);
+		}
 
+		String sql = "UPDATE ers_reimbursement SET reimb_resolved = ? , reimb_resolver = ?, reimb_status_id = ? WHERE reimb_id = ?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setTimestamp(1, t_resolved);
+		ps.setInt(2, t_resolver_id);
+		ps.setInt(3, t_reimb_status_id);
+		ps.setInt(4, id);
+		ps.executeUpdate();
 	}
 
 	public static ResultSet query(Connection con, String sql) throws SQLException {
@@ -44,14 +56,24 @@ public class Functions {
 
 	public static void insertUsersId(Connection con, String username, String password, String firstname,
 			String lastname, String email, int user_role_id) throws SQLException {
-		ResultSet rs = query(con, "INSERT INTO ers_users VALUES(ers_users_id_seq.nextval, '" + username + "', '"
-				+ password + "', '" + firstname + "', '" + lastname + "', '" + email + "', " + user_role_id);
+		/*ResultSet rs = query(con, "INSERT INTO ers_users VALUES(ers_users_id_seq.nextval, '" + username + "', '"
+				+ password + "', '" + firstname + "', '" + lastname + "', '" + email + "', " + user_role_id);*/
+		
+		String sql = "INSERT INTO ers_users VALUES(?, ?, ?, ?, ?, ?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, username);
+		ps.setString(2, password);
+		ps.setString(3, firstname);
+		ps.setString(4, lastname);
+		ps.setString(5, email);
+		ps.setInt(6, user_role_id);
+		ps.executeUpdate();
 	}
 
 	public static void insertReimbId(Connection con, double amount, Timestamp submitted, String description,
-			 String author, String type) throws SQLException {
+			String author, String type) throws SQLException {
 		int reimb_author_id = 0;
-		int reimb_status_id = 0;
+		int reimb_status_id = 101;
 		int reimb_typeid = 0;
 
 		ResultSet rs = query(con, ("SELECT ers_users_id FROM ers_users WHERE ers_username = '" + author + "'"));
@@ -64,8 +86,7 @@ public class Functions {
 			reimb_typeid = rs.getInt(1);
 		}
 
-		String sql =
-				"INSERT INTO ers_reimbursement(reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_id, reimb_type_id) "
+		String sql = "INSERT INTO ers_reimbursement(reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_id, reimb_type_id) "
 				+ "VALUES(?, ?, ?, ?, ?, ?)";
 
 		PreparedStatement ps = con.prepareStatement(sql);
