@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <meta charset="UTF-8"> 
+		<title>Electronic Reimbursement System</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<style>
+			#accordionExample{
+				display: none;
+			}
+			#form{
+				display: none;
+			}
+			#head{
+				display: none;
+			}
+			#badlogin{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			function reimbItem(reimb,role){
+				let buttons = '';
+				if(role == 'Admin' && reimb.status == 'Pending')
+					buttons = '<td><button id="app-' + reimb.id + '" type="button" class="btn btn-success btn-sm" onclick="approve(event)">Approve</button><button id="den-' + reimb.id + '" type="button" class="btn btn-danger btn-sm" onclick="deny(event)">Deny</button></td>';
+	
+				let span = '';
+				let level = 'table-light';
+				if (reimb.status == 'Approved'){
+					level = 'table-success';
+					span = 'colspan="2"';
+				} else if (reimb.status == 'Denied'){
+					level = 'table-danger';
+					span = 'colspan="2"';
+				}
+	
+				let block = '<tr class="' + level + '"><td hidden>' + reimb.type + ' ' + reimb.status + ' ' + reimb.author + ' ' + reimb.description + '</td><td>$' + 
+				reimb.amount.toFixed(2) + 
+				'<br><b>' + 
+				reimb.type + 
+				'</b></td><td>' + 
+				reimb.author + 
+				'</td><td>' + 
+				reimb.submitted + '<br>' + reimb.resolved + 
+				'</td><td ' + span + '>' + reimb.description + '</td>' + buttons + '</tr>';
+
+				console.log(block);
+				return block;
+			}
+			function userReimbs(id){
+				console.log("in userReimbs() id is " + id);
+				var prom = new Promise(function(resolve, reject) {
+					let params = 'id=' + id;
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'userreimb.json');
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send(params);
+				});
+
+				prom.then(function(response) {
+					let obj = JSON.parse(response);
+					console.log(obj);
+					document.getElementById('reimb_list').innerHTML = '';
+					let block = '';
+					for(i = 0; i < obj.length; i++){
+						block += reimbItem(obj[i], sessionUser.role);
+					}
+					document.getElementById('reimb_list').innerHTML = block;
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			function userLogin() {
+				console.log("in userLogin()");
+				console.log(document.getElementById('exampleInputEmail1').value);
+				console.log(document.getElementById('password').value);
+				var prom = new Promise(function(resolve, reject) {
+					let params = 'username=' + document.getElementById('exampleInputEmail1').value + '&password=' + document.getElementById('password').value;
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'login.ers');
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send(params);
+				});
+
+				prom.then(function(response) {
+					console.log('response: ' + typeof response);
+					let obj = JSON.parse(response);
+					if(obj == null){
+						console.log('in bad login');
+						document.getElementById('badlogin').style.display = 'block';
+						document.getElementById('exampleInputEmail1').focus();
+					} else {
+						console.log(obj);
+						sessionUser = obj;
+						document.getElementById('content').setAttribute('class', 'col-10');
+						document.getElementById('login').style.display = 'none';
+						document.getElementById('accordionExample').style.display = 'block';
+						document.getElementById('fname').innerHTML = obj.firstname;
+						document.getElementById('lname').innerHTML = obj.lastname;
+						document.getElementById('uname').innerHTML = obj.username;
+						document.getElementById('email').innerHTML = obj.email;
+						document.getElementById('role').innerHTML = obj.role;
+						let header = (obj.role == 'Admin') ? 'Finance Manager: ' + obj.firstname + ' ' + obj.lastname: obj.firstname + ' ' + obj.lastname + '\'s Reimbursements Page';
+						document.title = header;
+						document.getElementById('header').innerHTML = header;
+						document.getElementById('head').style.display = 'inline';
+						if (obj.role == 'Employee'){
+							console.log('In user is employee')
+							document.getElementById('form').style.display = 'inline';
+							userReimbs(obj.id);
+						} else {
+							console.log('User is admin');
+							allReimbs();
+						}
+					}
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			function allReimbs(){
+				console.log("in allReimbs()");
+				var prom = new Promise(function(resolve, reject) {
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'allreimb.json');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send();
+				});
+
+				prom.then(function(response) {
+					let obj = JSON.parse(response);
+					console.log(obj);
+					console.log(sessionUser);
+					document.getElementById('reimb_list').innerHTML = '';
+					let block = '';
+					for(i = 0; i < obj.length; i++){
+						block += reimbItem(obj[i], sessionUser.role);
+					}
+					document.getElementById('reimb_list').innerHTML = block;
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			function newReimb(){
+				console.log("in newReimb()");
+				var prom = new Promise(function(resolve, reject) {
+					let e = document.getElementById('type');
+					let type = e.options[e.selectedIndex].value;
+					let params = 'id=' + sessionUser.id + '&type=' + type + '&amount=' + document.getElementById('amount').value + '&description=' + document.getElementById('descr').value;
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'add.json');
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send(params);
+				});
+
+				prom.then(function(response) {
+					let obj = JSON.parse(response);
+					console.log(obj);
+					document.getElementById('createForm').reset();
+					userReimbs(sessionUser.id);
+					document.getElementById('collapseThree').style.display = "block";
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			
+			function approve(e){
+				console.log("in approve()");
+				e.preventDefault();
+				var prom = new Promise(function(resolve, reject) {
+					let splitId = e.target.id.split('-');
+					console.log(splitId[1]);
+					let params = 'rid=' + splitId[1] + '&uid=' + sessionUser.id + '&role=' + sessionUser.role;
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'approve.json');
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send(params);
+				});
+
+				prom.then(function(response) {
+					console.log('in promise');
+					console.log(response);
+					let obj = JSON.parse(response);
+					console.log(obj['return']);
+					if(obj['return'] == 1){
+						console.log('ushdbsnaidnzsidnasjfiasn d');
+						let row = e.target.parentNode.parentNode;
+						console.log(row);
+						row.setAttribute('class', 'table-success');
+						row.removeChild(row.lastChild);
+					}
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			function deny(e){
+				console.log("in approve()");
+				e.preventDefault();
+				var prom = new Promise(function(resolve, reject) {
+					let splitId = e.target.id.split('-');
+					console.log(splitId[1]);
+					let params = 'rid=' + splitId[1] + '&uid=' + sessionUser.id + '&role=' + sessionUser.role;
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'deny.json');
+					xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send(params);
+				});
+
+				prom.then(function(response) {
+					console.log('in promise');
+					console.log(response);
+					let obj = JSON.parse(response);
+					console.log(obj['return']);
+					if(obj['return'] == 1){
+						console.log('ushdbsnaidnzsidnasjfiasn d');
+						let row = e.target.parentNode.parentNode;
+						console.log(row);
+						row.setAttribute('class', 'table-danger');
+						row.removeChild(row.lastChild);
+					}
+				}, function(error) {
+					document.getElementById('content').innerHTML = 'Sorry we failed. TT';
+					console.log(error);
+				});
+			}
+			function logout(){
+				sessionUser = null;
+				document.title = 'Electronic Reimbursement System';
+				document.getElementById('content').setAttribute('class', 'col');
+				document.getElementById('login').reset();
+				document.getElementById('login').style.display = 'block';
+				document.getElementById('accordionExample').style.display = 'none';
+				document.getElementById('head').style.display = 'none';
+				document.getElementById('exampleInputEmail1').focus();
+				var prom = new Promise(function(resolve, reject) {
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'logout.ers');
+					xhr.onload = function() {
+						// This is called even on 404 etc
+						// so check the status
+						if (xhr.status == 200) {
+							// Resolve the promise with the response text
+							resolve(xhr.response);
+						} else {
+							// Otherwise reject with the status text
+							// which will hopefully be a meaningful error
+							reject(Error(xhr.statusText));
+						}
+					};
+					// Handle network errors
+					xhr.onerror = function() {
+						reject(Error("Network Error"));
+					};
+					xhr.send();
+				});
+
+				prom.then(function(response) {
+					console.log('Logged Out');
+					location.reload(true);
+				}, function(error) {
+					console.log(error);
+				});
+			}
+			function myFunction() {
+				  var input, filter, table, tr, td, i;
+				  input = document.getElementById("filter-text");
+				  filter = input.value.toUpperCase();
+				  table = document.getElementById("reimb_list");
+				  tr = table.getElementsByTagName("tr");
+				  for (i = 0; i < tr.length; i++) {
+				    td = tr[i].getElementsByTagName("td")[0];
+				    if (td) {
+				      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				        tr[i].style.display = "";
+				      } else {
+				        tr[i].style.display = "none";
+				      }
+				    }       
+				  }
+				}
+		</script>
+		<div class="container">
+			<div class="row" style="margin: 10px;">
+				<div class="col"/>
+				<div id="head" class="col-10">
+					<div class="form-inline">
+						<h2 id="header"></h2>
+						<button type="button" class="btn btn-light" onclick="logout()">Log Out</button>
+					</div>
+				</div>
+				<div class="col"/>
+			</div>
+			<div class="row">
+				<div class="col"></div>
+				<div id="content" class="col" style="border: solid black 2px; padding: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+						<form id="login">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Username</label> <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" name="username" autofocus>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Password</label> <input id="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+								<div id="badlogin" style="padding: 5px"><h4 class="table-danger">Bad Username or Password</h4></div>
+							</div><button type="submit" class="btn btn-dark btn-block" onClick="event.preventDefault(); userLogin()">Submit</button>
+						</form>
+
+					
+					<div class="accordion" id="accordionExample">
+					  <div class="card">
+					    <div class="card-header" id="headingOne">
+					      <h5 class="mb-0">
+					        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					          Account Details:
+					        </button>
+					      </h5>
+					    </div>
+
+					    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+					      <div class="card-body">
+							  <table class="table">
+							    <thead>
+							      <tr>
+							        <th scope="col">First Name</th>
+							        <th scope="col">Last Name</th>
+							        <th scope="col">Username</th>
+							        <th scope="col">Email</th>
+							        <th scope="col">Role</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td id="fname"></td>
+							        <td id="lname"></td>
+							        <td id="uname"></td>
+							        <td id="email"></td>
+							        <td id="role"></td>
+							      </tr>
+							    </tbody>
+							  </table>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card" id="form">
+					    <div class="card-header" id="headingTwo">
+					      <h5 class="mb-0">
+					        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					          Create New Reimbursement Ticket:
+					        </button>
+					      </h5>
+					    </div>
+					    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+					      <div class="card-body">
+							  <form id="createForm">
+								  <div class="form-group">
+							      	<label for="amount">Enter Amount: $</label>
+								  	<input type="number" class="form-control" id="amount" placeholder="$0.00" min="0.01" max="5000" step="0.01" name="amount">
+								  </div>
+								  <label class="my-1 mr-2" for="type">Expense Type:</label>
+								  <select class="custom-select my-1 mr-sm-2" id="type">
+								    <option selected>Choose...</option>
+								    <option value="FOOD">Food</option>
+								    <option value="LODGING">Lodging</option>
+								    <option value="TRAVEL">Travel</option>
+								    <option value="OTHER">Other</option>
+								  </select>
+								  <div class="input-group">
+								    <div class="input-group-prepend">
+								      <span class="input-group-text">Description</span>
+								    </div>
+								    <textarea id="descr" class="form-control" aria-label="With textarea" name="descr" maxlength="250"></textarea>
+								  </div>
+								  <div class="form-group">
+								    <label for="receipt">Upload a Copy of Your Receipt:</label>
+								    <input type="file" class="form-control-file" id="receipt" name="receipt">
+								  </div>
+								  <button type="submit" class="btn btn-primary my-1" onclick="event.preventDefault(); newReimb()" data-toggle="collapse" data-target="#collapseTwo,#collapseThree">Submit</button>
+							  </form>
+					      </div>
+					    </div>
+					  </div>
+					  <div class="card">
+					    <div class="card-header" id="headingThree">
+					      <h5 class="mb-0">
+					        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					          Current Reimbursements:
+					        </button>
+					      </h5>
+					    </div>
+					    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+					      <div class="card-body">
+					      	<div class="input-group md-form form-sm form-1 pl-0">
+					      		<div class="input-group-prepend">
+					      			<span class="input-group-text dark grey lighten-3" id="basic-text1"><i class="fa fa-search" aria-hidden="true"></i></span>
+					      		</div>
+					      		<input id="filter-text" class="form-control my-0 py-1" type="text" placeholder="Filter by: status, type, username, or description" aria-label="Search" onkeyup="myFunction()">
+					      	</div>
+							  <table class="table table-sm table-hover">
+							    <thead>
+							      <tr class="table-light">
+							        <th scope="col">Amount/<br>Type</th>
+							        <th scope="col">Name</th>
+							        <th scope="col">Dates</th>
+							        <th scope="col">Description</th>
+							      </tr>
+							    </thead>
+							    <tbody id="reimb_list">
+							    </tbody>
+							  </table>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</div>
+				<div class="col"></div>
+			</div>
+		</div>
+	</body>
+</html>
