@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("Am i getting called at all? GET");
 		String goTo = LoginHelper.process(request, response);
 
+
 	}
 
 	/**

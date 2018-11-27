@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.jwjibilian.json.MasterJson;
 import com.jwjibilian.model.reimbursement.Reimbursement;
 import com.jwjibilian.model.user.User;
@@ -15,6 +18,7 @@ import com.jwjibilian.services.UserService;
 import com.jwjibilian.services.UserServiceImpl;
 
 public class ReimburseController {
+	private static final Logger LOGGER = LogManager.getLogger(ReimburseController.class.getName());
 
 	static public void getReimbursmentForUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		User user = (User) req.getSession().getAttribute("user");
@@ -34,6 +38,7 @@ public class ReimburseController {
 		System.out.println(req.getParameter("ammount") + " "+  req.getParameter("type") + " " + req.getParameter("desc"));
 		service.addReimbursement(user.getId(), Double.parseDouble(req.getParameter("ammount")), req.getParameter("type")
 				, req.getParameter("desc"));
+		LOGGER.info("User " + user.getId() + " has requested reimbursement.");
 		return false;
 		
 	}

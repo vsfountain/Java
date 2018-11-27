@@ -1,0 +1,52 @@
+2018-11-26 16:21:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:25:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:25:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:26:21 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:28:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:29:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:30:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:30:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: No data is available [2000-197]
+2018-11-26 16:31:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:31:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:31:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+SELECT * FROM ERS_REIMBURSEMENT; [42102-197]
+2018-11-26 16:31:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:31:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:31:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+SELECT * FROM ERS_REIMBURSEMENT; [42102-197]
+2018-11-26 16:32:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:32:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:32:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+SELECT * FROM ERS_REIMBURSEMENT; [42102-197]
+2018-11-26 16:32:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:32:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), null, ?, null, ?, null, 1, ?) [42102-197]
+2018-11-26 16:32:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" not found; SQL statement:
+SELECT * FROM ERS_REIMBURSEMENT; [42102-197]

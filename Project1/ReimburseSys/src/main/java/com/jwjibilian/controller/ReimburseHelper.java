@@ -1,8 +1,6 @@
 package com.jwjibilian.controller;
 
 import java.io.IOException;
-import java.util.Enumeration;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,13 +17,8 @@ public class ReimburseHelper {
 				ReimburseController.getReimbursmentForUser(req, resp);
 				return "/client.html";
 			case "/ReimburseSys/sendReimburse":
-				System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-				Enumeration x = req.getParameterNames();
-				while (x.hasMoreElements()) {
-					System.out.println("loop: " + x.nextElement());
-				}
 				ReimburseController.sendReimbursementRequest(req, resp);
-				return "client.html";
+				return "/client.html";
 			case "/ReimburseSys/getAll":
 				ReimburseController.getAllUsersReimburse(req, resp);
 				break;

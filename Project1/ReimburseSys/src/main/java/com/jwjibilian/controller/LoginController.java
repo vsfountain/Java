@@ -2,7 +2,6 @@ package com.jwjibilian.controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,13 +9,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.jwjibilian.daos.UserDAOImpl;
 import com.jwjibilian.json.MasterJson;
 import com.jwjibilian.model.user.Admin;
 import com.jwjibilian.model.user.User;
 import com.jwjibilian.services.UserService;
 import com.jwjibilian.services.UserServiceImpl;
-import com.jwjibilian.servlets.LoginServlet;
 
 public class LoginController {
 	private static final Logger LOGGER = LogManager.getLogger(LoginController.class.getName());
@@ -39,7 +36,7 @@ public class LoginController {
 			return "/index.html";
 
 		} else {
-			LOGGER.info(user.getFirstName() + " " + user.getFirstName() + " logged in as " + user.getClass());
+			LOGGER.info(user.getFirstName() + " " + user.getLastname() + " logged in as " + user.getClass().getName());
 			System.out.println("SETTTING USER NOW!!");
 			req.getSession().setAttribute("user", user);
 
@@ -67,16 +64,16 @@ public class LoginController {
 	}
 
 	public static String logOut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		LOGGER.info(req.getSession().getAttribute("user") + " has logged out");
 		req.getSession().invalidate();
+		resp.sendRedirect(req.getContextPath() + "/index.html");
 
-		req.getSession().getAttribute("username");
-		System.out.println("invalidated " + req.getSession().getAttribute("user"));
-		System.out.println("/ReimburseSys/index.html");
+
 		// resp.sendRedirect("/ReimburseSys/index.html");
 		// resp.setStatus(HttpServletResponse.SC_FOUND);//302
 		// resp.setHeader("Location", req.getContextPath() +
 		// "/ReimburseSys/index.html");
-		resp.sendRedirect(req.getContextPath() + "/index.html");
+
 		return "/index.html";
 	}
 }

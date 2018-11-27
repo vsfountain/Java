@@ -18,32 +18,88 @@
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand">ReimburseUs</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+		    aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item ">
+					<button id="logOutButton" type="button" class="btn btn-primary ">Log Out</button>
+				</li>
+				<!-- <li class="nav-item active">
+					<a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li> -->
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="#">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pricing</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</nav>
 
-	<button id="logOutButton" type="button" class="btn btn-primary">Log Out</button>
 	<br>
 
-	<h6>ADMIN</h6>
-	<br>
-	<div id="user"></div>
-	<br>
-	<table id="reimburseTable" border="1px solid black">
-		<tr>
-			<!-- REIMB_AUTHOR, USER_FIRST_NAME, USER_LAST_NAME, REIMB_RESOLVER, REIMB_SUBMITTED, REIMB_RESOLVED,
+
+
+	<div class="container">
+		<h6>ADMIN</h6>
+		<br>
+		<div id="user"></div>
+		<br>
+		<div class="card border mb-3 w-100 h-100" style="background: rgba(255, 255, 255, 0.5);">
+			<div class="card-body w-100 h-100">
+				<h5>Select a filter option</h5>
+				<form id="filterForm">
+					<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="All"> All
+					<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Pending"> Pending
+					<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Approved">Approved
+					<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Denied"> Denied
+				</form>
+			</div>
+		</div>
+		<div class="card border"  style="background: rgba(255, 255, 255, 0.5);">
+			<div class="table-responsive">
+				<table class="table"  border="2px solid black" id="reimburseTable">
+					<thead>
+						<tr>
+							<!-- REIMB_AUTHOR, USER_FIRST_NAME, USER_LAST_NAME, REIMB_RESOLVER, REIMB_SUBMITTED, REIMB_RESOLVED,
 				 REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS, REIMB_RECEIPT, REIMB_DESCRIPTION-->
-			<th></th>
-			<th>Author Id</th>
-			<th>Request Id</th>
-			<th>Submit Date</th>
-			<th>Name</th>
-			<th>Ammount</th>
-			<th>Type</th>
-			<th>Status</th>
-			<th>Recipt</th>
-			<th>Description</th>
-			<th>Resolved By</th>
-			<th>Resolved Date</th>
-		</tr>
-	</table>
+							<th></th>
+							<th>Author Id</th>
+							<th>Request Id</th>
+							<th>Submit Date</th>
+							<th>Name</th>
+							<th>Ammount</th>
+							<th>Type</th>
+							<th>Status</th>
+							<th>Recipt</th>
+							<th>Description</th>
+							<th>Resolved By</th>
+							<th>Resolved Date</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+	</div>
+
 </body>
 <script type="text/javascript" src="../js/adminScreen.js"></script>
 <script type="text/javascript" src="../js/logOut.js"></script>

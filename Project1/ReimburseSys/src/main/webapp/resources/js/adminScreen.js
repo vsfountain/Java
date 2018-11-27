@@ -62,6 +62,8 @@ function getAllReimburse() {
 function showAllReimburse(json) {
 	let table = document.getElementById("reimburseTable");
 	let count = 0;
+	let body = document.createElement("TBODY");
+	body.id = "body";
 	for (let index in json) {
 		console.log(json[index]);
 		let userId = json[index].id;
@@ -126,9 +128,10 @@ function showAllReimburse(json) {
 			//console.log(newHTML);
 			//console.log(newRow);
 			newRow.innerHTML = newHTML
-			table.appendChild(newRow);
-		}
+			body.appendChild(newRow);
 
+		}
+		table.appendChild(body);
 
 	}
 }
@@ -172,4 +175,31 @@ function deny(columnId) {
 
 	xhttp.send(params);
 	location.reload(true)
+}
+
+function filter() {
+	let input = document.getElementById("filterForm");
+	let filter = input.getElementsByTagName("input");
+	console.log("THE FILTER", filter)
+	let filterBy;
+	for (var i = 0; i < filter.length; i++) {
+		if (filter[i].checked)
+			filterBy = filter[i].value;
+	}
+	console.log(filter);
+	let table = document.getElementById("reimburseTable");
+	console.log("The table",table);
+	let tr = table.getElementsByTagName("tr");
+
+	for (i = 0; i < tr.length; i++) {
+		td = tr[i].getElementsByTagName("td")[7];
+		console.log("thedata !",td );
+		if (td) {
+			if (filterBy == "All" || td.innerHTML == filterBy) {
+				tr[i].style.display = "";
+			} else {
+				tr[i].style.display = "none";
+			}
+		}
+	}
 }

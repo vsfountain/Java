@@ -89,7 +89,7 @@ public class UserDAOImpl implements UserDAO {
 				"LEFT JOIN ERS_REIMBURSEMENT_STATUS status on re.REIMB_STATUS_ID = status.REIMB_STATUS_ID " + 
 				"LEFT JOIN ERS_REIMBURSEMENT_TYPE reType on re.REIMB_TYPE_ID = reType.REIMB_TYPE_ID " + 
 				"LEFT JOIN ERS_USERS theUsers on theUsers.ERS_USERS_ID = REIMB_AUTHOR " + 
-				"order by REIMB_AUTHOR, REIMB_SUBMITTED";
+				"order by REIMB_SUBMITTED DESC, REIMB_AUTHOR";
 		try(Connection conn = theDriver.connect()){
 			PreparedStatement cs = conn.prepareStatement(sql);
 			rs = cs.executeQuery();

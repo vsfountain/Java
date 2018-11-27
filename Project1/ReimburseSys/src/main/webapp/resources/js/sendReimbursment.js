@@ -15,6 +15,7 @@ function sendReimburse() {
         console.log(JSON.stringify(item));
         console.log(document.getElementsByName("desc").value);
         let amount = document.getElementById("ammount").value;
+        
         let type = document.querySelector('input[name = "type"]:checked').value;;
         let desc = document.getElementById('desc').value;
 

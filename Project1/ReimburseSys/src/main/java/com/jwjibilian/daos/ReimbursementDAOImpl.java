@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.Statement;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -20,10 +20,10 @@ import com.jwjibilian.model.reimbursement.Reimbursement;
 import com.jwjibilian.model.user.Admin;
 import com.jwjibilian.model.user.Client;
 import com.jwjibilian.model.user.User;
-import com.jwjibilian.services.ReimbursementServiceImpl;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
-	//private static final Logger LOGGER = LogManager.getLogger(ReimbursementDAOImpl.class.getName());
+	// private static final Logger LOGGER =
+	// LogManager.getLogger(ReimbursementDAOImpl.class.getName());
 	DBDriver orclDriver = new DBDriver();
 
 	@Override
@@ -34,7 +34,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 				+ "FROM " + "ERS_REIMBURSEMENT re "
 				+ "RIGHT JOIN ERS_REIMBURSEMENT_STATUS status on re.REIMB_STATUS_ID = status.REIMB_STATUS_ID "
 				+ "RIGHT JOIN ERS_REIMBURSEMENT_TYPE reType on re.REIMB_TYPE_ID = reType.REIMB_TYPE_ID "
-				+ "WHERE re.REIMB_AUTHOR = ?";
+				+ "WHERE re.REIMB_AUTHOR = ? ORDER BY REIMB_SUBMITTED DESC";
 		System.out.println(u.getId());
 		try (Connection conn = orclDriver.connect()) {
 			PreparedStatement cs = conn.prepareStatement(query);
@@ -59,7 +59,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			}
 			cs.close();
 		} catch (SQLException e) {
-			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+			// LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
 		}
 		// System.out.println(toReturn);
 		return toReturn;
@@ -70,7 +70,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		String sql = "INSERT INTO ers_reimbursement VALUES (null, ?, TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS'), "
 				+ "null, ?, null, ?, null, 1, ?)";
 		Instant time = Instant.now();
-		Timestamp ts = java.sql.Timestamp.from(time);
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 				.withZone(ZoneId.systemDefault());
 		String datetime = formatter.format(time);
@@ -98,7 +98,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			}
 
 		} catch (SQLException e) {
-
+			e.printStackTrace();
 			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
 
 			return false;
@@ -109,13 +109,10 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	@Override
 	public boolean updateRequest(int requestId, int adminId, String status) {
 		int statusId = -1;
-		
-		String sql = "UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = (select TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS') from dual), " + 
-				"REIMB_RESOLVER = ?, " + 
-				"REIMB_STATUS_ID = ? " + 
-				"WHERE REIMB_ID = ?";
+
+		String sql = "UPDATE ERS_REIMBURSEMENT SET REIMB_RESOLVED = (select TO_DATE(?, 'YYYY-MM-DD HH24:MI:SS') from dual), "
+				+ "REIMB_RESOLVER = ?, " + "REIMB_STATUS_ID = ? " + "WHERE REIMB_ID = ?";
 		Instant time = Instant.now();
-		Timestamp ts = java.sql.Timestamp.from(time);
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 				.withZone(ZoneId.systemDefault());
 		String datetime = formatter.format(time);
@@ -132,18 +129,60 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			cs.setInt(3, statusId);
 			cs.setInt(4, requestId);
 			result = cs.executeUpdate();
-			
-			if(result == 1) {
+
+			if (result == 1) {
 				return true;
 			}
 
 		} catch (SQLException e) {
 
-			//LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
+			// LOGGER.error(e.getMessage() +"\n" + e.getSQLState() + "\n" + e.getCause());
 
 			return false;
 		}
 		return false;
+	}
+
+	public void h2InitDao() {
+		String url = "jdbc:h2:./data";
+		String username = "sa";
+		String password = "sa";
+		DBDriver x = new DBDriver();
+		DBDriver.setItems(url, username, password);
+		try (Connection conn = orclDriver.connect()) {
+			String sql = "CREATE TABLE ERS_REIMBURSEMENT " + 
+					"( " + 
+					"   REIMB_ID NUMBER , " + 
+					"   REIMB_AMMOUNT NUMBER , " + 
+					"   REIMB_SUBMITTED TIMESTAMP  , " + 
+					"   REIMB_RESOLVED TIMESTAMP, " + 
+					"   REIMB_DESCRIPTION VARCHAR2(250), " + 
+					"   REIMB_RECEIPT BLOB, " + 
+					"   REIMB_AUTHOR NUMBER , " + 
+					"   REIMB_RESOLVER NUMBER, " + 
+					"   REIMB_STATUS_ID NUMBER , " + 
+					"   REIMB_TYPE_ID NUMBER" + 
+					"   " + 
+					")";
+
+			Statement state = conn.createStatement();
+			state.execute(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void h2DestroyDao() {
+		try (Connection conn = orclDriver.connect()) {
+			String sql = "DROP TABLE ERS_REIMBURSEMENT ";
+
+			Statement state = conn.createStatement();
+			state.execute(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

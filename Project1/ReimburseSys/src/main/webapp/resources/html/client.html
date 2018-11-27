@@ -14,40 +14,107 @@
 </head>
 
 <body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand">ReimburseUs</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+		    aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item ">
+					<button id="logOutButton" type="button" class="btn btn-primary ">Log Out</button>
+				</li>
+				<!-- <li class="nav-item active">
+					<a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li> -->
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="#">Features</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Pricing</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</nav>
 
-	<button id="logOutButton" type="button" class="btn btn-primary">Log Out</button>
-	<h6>CLIENT</h6>
+
 	<div id="user"></div>
-	<form id="reimburseForm">
-		Ammount:
-		<input id="ammount" name="ammount" type="number" min="0.01" step="0.01" max="10000" value="0.00" />
-		<br border="1px solid black">
-		<input type="radio" name="type" value="Lodging"> Lodging
-		<input type="radio" name="type" value="Travel"> Travel
-		<input type="radio" name="type" value="Food"> Food
-		<input type="radio" name="type" value="Other"> Other
-		<br>
-		<textarea id="desc" name="desc" rows="4" cols="50"></textarea>
-		<br>
-		<input type="submit" value="sumbit" onClick="sendReimburse()" />
-	</form>
-	<div>
-		<table id="reimburseTable" border="1px solid black">
-			<tr>
-				<!-- REIMB_ID, REIMB_SUBMITTED, REIMB_RESOLVED, 
+
+	<div class="container ">
+		<div class="row">
+			<div class="col-sm-6">
+
+				<div class="card border h-100 w-100" style="background: rgba(255, 255, 255, 0.5);">
+					<div class="card-body h-100 w-100">
+						<form id="reimburseForm">
+							<H5>Enter info for a request.</H5>
+							Ammount:
+							<input id="ammount" name="ammount" type="number" min="0.01" step="0.01" max="10000" value="0.00" />
+							<br border="1px solid black">
+							<input type="radio" name="type" value="Lodging"> Lodging
+							<input type="radio" name="type" value="Travel"> Travel
+							<input type="radio" name="type" value="Food"> Food
+							<input type="radio" name="type" value="Other"> Other
+							<br>
+							<textarea id="desc" name="desc" rows="4" cols="50"></textarea>
+							<br>
+							<input type="submit" value="sumbit" onClick="sendReimburse()" />
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+			<div class="col-sm-6">
+
+				<div class="card border mb-3 w-100 h-100" style="background: rgba(255, 255, 255, 0.5);">
+					<div class="card-body w-100 h-100">
+						<h5>Select a filter option</h5>
+						<form id="filterForm">
+							<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="All"> All
+							<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Pending"> Pending
+							<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Approved">Approved
+							<input type="radio" onclick="filter()" id="filterType" name="myRadios" value="Denied"> Denied
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table" id="reimburseTable" border="2px solid black">
+				<thead>
+					<tr>
+						<!-- REIMB_ID, REIMB_SUBMITTED, REIMB_RESOLVED, 
 				REIMB_AMMOUNT, REIMB_TYPE, REIMB_STATUS,
 				 REIMB_RECEIPT, REIMB_DESCRIPTION -->
-				<th>Id</th>
-				<th>Date Submitted</th>
-				<th>Date Resolved</th>
-				<th>Ammount</th>
-				<th>Type</th>
-				<th>Status</th>
-				<th>Recipt</th>
-				<th>Description</th>
-			</tr>
-		</table>
+						<th>Id</th>
+						<th>Date Submitted</th>
+						<th>Date Resolved</th>
+						<th>Ammount</th>
+						<th>Type</th>
+						<th>Status</th>
+						<th>Recipt</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
 	</div>
+
+
 
 
 </body>

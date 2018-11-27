@@ -31,4 +31,9 @@ public class DBDriver {
 	public Connection connect() throws SQLException {
 		return DriverManager.getConnection(url, username, password);
 	}
+	public static void setItems(String url, String username, String password) {
+		DBDriver.url = url;
+		DBDriver.username = username;
+		DBDriver.password = password;
+	}
 }

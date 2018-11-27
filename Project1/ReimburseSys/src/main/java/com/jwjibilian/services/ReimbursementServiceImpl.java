@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.jwjibilian.actualdatabasetest.GetUser;
 import com.jwjibilian.daos.ReimbursementDAO;
 import com.jwjibilian.daos.ReimbursementDAOImpl;
 import com.jwjibilian.model.reimbursement.Reimbursement;
