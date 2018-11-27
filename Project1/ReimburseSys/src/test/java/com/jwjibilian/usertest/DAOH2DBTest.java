@@ -1,19 +1,16 @@
 package com.jwjibilian.usertest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import com.jwjibilian.controller.DBDriver;
 import com.jwjibilian.daos.ReimbursementDAOImpl;
 import com.jwjibilian.services.ReimbursementServiceImpl;
@@ -22,7 +19,7 @@ class DAOH2DBTest {
 	static DBDriver driver;
 	static ReimbursementDAOImpl dao = new ReimbursementDAOImpl();
 
-	@BeforeAll
+	@BeforeClass
 	static void setUpBeforeClass() throws Exception {
 
 		// final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -43,16 +40,16 @@ class DAOH2DBTest {
 
 	}
 
-	@AfterAll
+	@AfterClass
 	static void tearDownAfterClass() throws Exception {
 		dao.h2DestroyDao();
 	}
 
-	@BeforeEach
+	@Before
 	void setUp() throws Exception {
 	}
 
-	@AfterEach
+	@After
 	void tearDown() throws Exception {
 	}
 
