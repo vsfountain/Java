@@ -93,6 +93,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			cs.setInt(4, userId);
 			cs.setInt(5, typeNum);
 			int result = cs.executeUpdate();
+			conn.commit();
 			if (result == 1) {
 				return true;
 			}
@@ -146,8 +147,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public void h2InitDao() {
 		String url = "jdbc:h2:./data";
 		String username = "sa";
-		String password = "sa";
+		String password = "";
 		DBDriver x = new DBDriver();
+		System.out.println(x);
 		DBDriver.setItems(url, username, password);
 		try (Connection conn = orclDriver.connect()) {
 			String sql = "CREATE TABLE ERS_REIMBURSEMENT " + 

@@ -36,4 +36,9 @@ public class DBDriver {
 		DBDriver.username = username;
 		DBDriver.password = password;
 	}
+	@Override
+	public String toString() {
+		return "DBDriver ["+DBDriver.password+", " + DBDriver.url + ", "+ DBDriver.username+"]";
+	}
+	
 }
