@@ -12,13 +12,21 @@ function loadRecords() {
 			document.getElementsByTagName("tbody")[0].removeChild(document.getElementsByTagName("tbody")[0].childNodes[0]);
 			/*document.getElementsByTagName("tbody")[0].removeChild(document.getElementsByTagName("tbody")[0].childNodes[0]);*/
 			
-			document.getElementById("2").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
-			document.getElementById("3").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0;");
+			/*document.getElementById("2").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
+			document.getElementById("3").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0;");*/
 			
 			
 			var arr = JSON.parse(this.responseText);
 			if(arr.length != 0) {
 				document.getElementById("1").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
+				document.getElementById("2").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
+				document.getElementById("3").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
+				
+			}
+			for(var i = 0; i < arr.length; i++) {
+				if(arr[i].reimbursementResolvedDate) {
+					document.getElementById("4").setAttribute("style", "padding-bottom:29px;padding-top:0;padding-left:0;padding-right:0");
+				}
 			}
 			
 			obj = arr;
@@ -114,8 +122,14 @@ function loadRecordsA(arr) {
 					declineButtonValue.setAttribute("type", "hidden");
 					declineButtonForm.appendChild(declineButtonValue);*/
 					value.textContent = arr[i].reimbursementStatus;
+				} else if(arr[i].reimbursementStatus == "Approved"){
+					value.textContent = arr[i].reimbursementStatus;
+					/*value.style.color = "green";
+					value.style.fontWeight = "bold";*/
 				} else {
 					value.textContent = arr[i].reimbursementStatus;
+					/*value.style.color = "red";
+					value.style.fontWeight = "bold";*/
 				}
 			} else if (j == 6) {
 				value.textContent = arr[i].reimbursementResolver ? arr[i].reimbursementResolver.username : null;

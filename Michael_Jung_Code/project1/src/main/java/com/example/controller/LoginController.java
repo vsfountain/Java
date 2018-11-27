@@ -107,7 +107,7 @@ public class LoginController {
 						out.write("<th id=\"2\">Description</th>\n");
 						out.write("<th id=\"3\">Status</th>\n");
 						out.write("<th>Reimbursing Manager</th>\n");
-						out.write("<th>Resolved Date</th>\n");
+						out.write("<th id=\"4\">Resolved Date</th>\n");
 						out.write("</tr>\n");
 						out.write("<tr></tr>\n");
 						out.write("<tbody><tr><td colspan=\"7\" style=\"text-align:center;\"><i class=\"fa fa-spinner fa-spin fa-3x fa-fw margin-bottom\"style=\"opacity:.5;\"></i><i style=\"font-size:12px;opacity:.5;\">Your Reimbursements are Loading...</i><td></tr></tbody>");

@@ -2,13 +2,26 @@
 	
 	
 	border: 1px solid black;
+	-webkit-animation: aaaaa .5s;
 }
 
 .section2 {
 	background-color: white;
-	height:500%;
+	height:85%;
 	width:100%;
 	top:15%;
 	position: absolute;
+	overflow:auto;
+}
+
+@keyframes aaaaa {
+	from {
+		opacity: 0;
+		transform: translate3d(0, 3%, 0);
+	}
 	
+	to {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
 }
