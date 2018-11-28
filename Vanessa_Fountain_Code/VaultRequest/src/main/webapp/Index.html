@@ -39,7 +39,7 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#"><button type="button" class="btn btn-primary navbar-btn">Request Access</button></a></li>
+            <li onClick='asf()'><a href="#" ><button type="button" class="btn btn-primary navbar-btn">Request Access</button></a></li>
           </ul>
         </nav>
       </div>
@@ -52,8 +52,9 @@
           <div class="row">
             <div class="col-md-3">
               <div class="text-uppercase">
-                <h3>Access the Vault</h3>
-				<form method="POST" action="login.vault867">
+                <h3> </h3>
+                <div class="login-wrapper">
+				<form id="login-vault" method="POST" action="login.vault867">
 				<!-- You can see the parameters in the url if you change this to a GET -->
 					<p class ="text-muted">Please Log In To Request Access To This Vault</p>
 					<input placeholder="enter username" name="username"/>
@@ -65,11 +66,16 @@
 	              <figure><img src="https://www.geek.com/wp-content/uploads/2015/12/Vault_111-01-625x352.png" alt="" class=hide></figure>
 					</div>
 				</form>
+				</div>
           	</div>
        	 </div>
       </div>
     </div>
 </main>
 
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="resources/js/bootstrap.min.js" type="text/javascript"></script>
+
 </body>
 </html>
+

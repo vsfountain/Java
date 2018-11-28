@@ -143,8 +143,8 @@ h6 {
   content: "";
   height: 100%;
   left: 0;
-  opacity: 0.75;
-  filter: alpha(opacity=75);
+  opacity: 0.95;
+  filter: alpha(opacity=95);
   position: absolute;
   right: 0;
   top: 0;
