@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<!-- Head -->
+<head>
+<title>Finance Manager Page</title>
+<!DOCTYPE html>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/mystyles.css">
+</head>
+
+<body onload="getSW()">
+<div class="bg-dark p-4">
+      <h4 class="text-white">
+      	<span id="welcome">Loading...</span>
+     </h4>
+</div>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+     <h6>
+      	<span id="ManagerId">...</span>
+     </h6>
+     <h6><span id="ManagerUserName">...</span></h6>
+     <h6><span id="ManagerEmail">...</span></h6>
+    </div>
+    <div class = "bg-dark p-4">
+	<form method="POST" action="logout.serv">
+	<input type="submit" value="Log Out">
+	</form>
+	</div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
+<span class="col3">
+
+</span>
+<div id="accordion">
+  <div class="card bg-dark">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+  	 	<input class="form-control" id="myInput" type="text" placeholder="Search...." width = "50px">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         All Reimbursements
+        </button>
+      </h5>
+    </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+       <table id="reimbursementsTable" class="table table-hover table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID #:</th>
+                      <th scope="col">Amount:</th>
+                      <th scope="col">Description:</th>
+                      <th scope="col">Author:</th>
+                      <th scope="col">Status:</th>
+                      <th scope="col">Type:</th>
+                      <th scope="col">Submitted Date:</th>
+                      <th scope="col">Resolve:</th>
+                      <th scope="col">Action:</th>
+                    </tr>
+                  </thead>
+                  <tbody id="reimbursements"></tbody>
+                </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#reimbursements tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+	
+</body>
+<script type="text/javascript" src="resources/js/managerhome.js"></script>
+</html>
+
