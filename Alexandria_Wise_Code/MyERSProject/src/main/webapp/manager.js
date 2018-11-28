@@ -86,26 +86,26 @@ function getReimbTableByStatus() {
 }
 
 
-function approveAndDeny() {
+/*function approveAndDeny() {
 	  // Declare variables 
 	  var input, filter, table, tr, td, i;
 	  input = document.getElementById("myInput");
-	  filter = input.value.toUpperCase();
+	  filter = input.value;
 	  table = document.getElementById("reimbursements");
 	  tr = table.getElementsByTagName("tr");
 
 	  // Loop through all table rows, and hide those who don't match the search query
 	  for (i = 0; i < tr.length; i++) {
-	    td = tr[i].getElementsByTagName("td")[5];
+	    td = tr[i].getElementsByTagName("td")[0];
 	    if (td) {
-	      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+	      if (td.innerHTML.indexOf(filter) > -1) {
 	        tr[i].style.display = "";
 	      } else {
 	        tr[i].style.display = "none";
 	      }
 	    } 
 	  }
-	}
+	}*/
 
 function setValues(sw){
 	//document.getElementById("swName").innerHTML = sw.name;
@@ -192,7 +192,7 @@ function populateReimbTable(reimbs) {
 			cell9.innerHTML =  
 				`<form>
 				<div class="form-group">
-					<select name="chooser" id="chooser"class="form-control" onclick="selectStatus(`+cell0.innerHTML+`)" placeholder="update">
+					<select name="chooser" id="chooser"class="form-control" oninput="selectStatus(`+cell0.innerHTML+`)" data-placeholder="update">
 						<option value=0>Pending</option>
 						<option value=1>Approved</option>
 						<option value=2>Denied</option>

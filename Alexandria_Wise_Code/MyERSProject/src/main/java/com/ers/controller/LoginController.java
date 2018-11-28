@@ -1,11 +1,10 @@
 package com.ers.controller;
+import org.apache.log4j.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ers.model.User;
 import com.ers.model.UserService;
@@ -14,10 +13,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class LoginController {
+	//log4j
+	final static Logger logger = Logger.getLogger(LoginController.class);
+	
 	private static UserService uServ = new UserServiceImpl();
 	
 	public static String login(HttpServletRequest request, HttpServletResponse response) throws JsonProcessingException, IOException { 
-	
+		logger.info("In the login, logincontroller method");
 	    // String email = request.getParameter("email");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
