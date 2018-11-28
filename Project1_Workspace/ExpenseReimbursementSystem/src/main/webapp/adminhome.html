@@ -7,7 +7,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="resources/css/mystyles.css" />
 </head>
-<body>
+<body onload="getUser();">
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="#">KERS Admin</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -23,7 +23,7 @@
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Reimbursements </a>
+					aria-expanded="false"> Art </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="adminviewpending.html">View
 							Pending</a>
@@ -35,6 +35,41 @@
 				onclick="logout();">Log Out</button>
 		</div>
 	</nav>
+
+	<div class="row align-items-center div-center">
+		<div class="col-1"></div>
+		<div class="col-md card text-white bg-dark mb-3">
+			<h5 class="card-header">
+				Welcome, <span id="username-id">Guest</span>
+			</h5>
+			<div class="card-body">
+				<table class="table table-hover table-dark">
+					<thead>
+						<tr>
+							<th scope="col">Username</th>
+							<td id="tb-username"></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Name</th>
+							<td id="tb-name"></td>
+						</tr>
+						<tr>
+							<th scope="row">Email</th>
+							<td id="tb-email"></td>
+						</tr>
+						<tr>
+							<th scope="row">Role</th>
+							<td id="tb-role"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-1"></div>
+	</div>
+
 
 	<script type="text/javascript" src="resources/js/kers-js.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

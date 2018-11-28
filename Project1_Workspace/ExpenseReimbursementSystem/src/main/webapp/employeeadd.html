@@ -18,13 +18,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="employeehome.html">Home <span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link" href="employeehome.html">Home
+						<span class="sr-only">(current)</span>
 				</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Reimbursements </a>
+					aria-expanded="false"> Art </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="employeeadd.html">Add New</a>
 						<div class="dropdown-divider"></div>
@@ -41,22 +41,22 @@
 			<div class="login-container">
 				<h1>いらっしゃいませ</h1>
 				<h3>
-					Welcome, <span id="username-id">Guest</span>
+					Welcome Artist, <span id="username-id">Guest</span>
 				</h3>
 				<form class="form-design needs-validation" method="POST" action="home.kers"
 					id="reimb-form" 
 					enctype="multipart/form-data" novalidate>
 
 					<div class="form-group">
-						<label class="control-label" for="type">Reimbursement Type</label>
+						<label class="control-label" for="type">Artwork Type</label>
 						<select required name="reimb-type" form="reimb-form"
 							class="custom-select">
-							<option value="" disabled selected>Select Reimbursement
+							<option value="" disabled selected>Select Artwork
 								Type</option>
-							<option value="Lodging">Lodging</option>
-							<option value="Travel">Travel</option>
-							<option value="Food">Food</option>
-							<option value="Other">Other</option>
+							<option value="Realism">Realism</option>
+							<option value="Surealism">Surealism</option>
+							<option value="Memes">Memes</option>
+							<option value="Garbage">Garbage</option>
 						</select><br>
 						<div class="valid-feedback">Got type!</div>
 						<div class="invalid-feedback">Please input type!</div>
@@ -79,7 +79,7 @@
 
 					</div>
 					<div class="form-group">
-						<label for="receipt">Receipt</label>
+						<label for="receipt">Artwork</label>
 						<div class="custom-file">
 							<input type="file" class="custom-file-input" id="receipt-file"
 								name="receipt" required> <label
@@ -89,9 +89,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="amount">Description</label> <input type="text"
+						<label for="amount">Title</label> <input type="text"
 							class="form-control" id="description" name="description"
-							placeholder="Write a description here" required>
+							placeholder="Write a title here" required>
 					</div>
 
 

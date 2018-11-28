@@ -106,12 +106,14 @@ function addTable(list, table) {
 		let cell9 = row.insertCell(9);
 		let cell10 = row.insertCell(10);
 
+		
 		cell0.innerHTML = list[i].id;
-		cell1.innerHTML = list[i].author;
-		cell2.innerHTML = list[i].amount;
-		cell3.innerHTML = list[i].submitted;
-		cell4.innerHTML = list[i].resolved;
-		cell5.innerHTML = list[i].description;
+		cell1.innerHTML = list[i].description;
+		cell2.innerHTML = list[i].author;
+		cell3.innerHTML = list[i].amount;
+		cell4.innerHTML = list[i].submitted;
+		cell5.innerHTML = list[i].resolved;
+		
 		cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
 				+ list[i].id + '">...</a>';
 		cell7.innerHTML = list[i].resolver;
@@ -265,12 +267,14 @@ function addTableEmployee(list, table) {
 				let cell9 = row.insertCell(9);
 				let cell10 = row.insertCell(10);
 
+				
 				cell0.innerHTML = list[i].id;
-				cell1.innerHTML = list[i].author;
-				cell2.innerHTML = list[i].amount;
-				cell3.innerHTML = list[i].submitted;
-				cell4.innerHTML = list[i].resolved;
-				cell5.innerHTML = list[i].description;
+				cell1.innerHTML = list[i].description;
+				cell2.innerHTML = list[i].author;
+				cell3.innerHTML = list[i].amount;
+				cell4.innerHTML = list[i].submitted;
+				cell5.innerHTML = list[i].resolved;
+				
 				cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
 						+ list[i].id + '">...</a>';
 				cell7.innerHTML = list[i].resolver;
@@ -298,12 +302,14 @@ function addTableEmployee(list, table) {
 			let cell8 = row.insertCell(8);
 			let cell9 = row.insertCell(9);
 
+			
 			cell0.innerHTML = list[i].id;
-			cell1.innerHTML = list[i].author;
-			cell2.innerHTML = list[i].amount;
-			cell3.innerHTML = list[i].submitted;
-			cell4.innerHTML = list[i].resolved;
-			cell5.innerHTML = list[i].description;
+			cell1.innerHTML = list[i].description;
+			cell2.innerHTML = list[i].author;
+			cell3.innerHTML = list[i].amount;
+			cell4.innerHTML = list[i].submitted;
+			cell5.innerHTML = list[i].resolved;
+			
 			cell6.innerHTML = '<a href="http://localhost:8080/ExpenseReimbursementSystem/image?id='
 					+ list[i].id + '">...</a>';
 			cell7.innerHTML = list[i].resolver;
