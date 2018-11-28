@@ -1,0 +1,75 @@
+
+#content {
+	padding: 25px;
+}
+
+#fade {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: #ababab;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .70;
+	filter: alpha(opacity = 80);
+}
+
+#deedee {
+	display: none;
+	position: relative;
+	top: 30%;
+	left: 30%;
+	width: 5vw !important;
+	height: auto;
+	z-index: 1002;
+	text-align: center;
+}
+
+tr {
+	opacity: 0.85;
+}
+
+th {
+	position: sticky;
+	top: 0;
+	z-index: 999;
+	background-color: #007bff;
+	opacity: 1.0;
+}
+
+td>tBody {
+	opactiy: 1.0;
+	text-opactiy: 1.0;
+	font-weight: bolder;
+	font-family: Times New Roman;
+}
+
+tBody>td {
+	opactiy: 1.0;
+	text-opactiy: 1.0;
+	font-weight: 400;
+	font-family: Times New Roman;
+}
+
+/* Thanks to https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp */
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}

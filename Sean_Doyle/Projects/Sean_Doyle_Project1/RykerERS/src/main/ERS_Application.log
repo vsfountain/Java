@@ -1,0 +1,15 @@
+2018-11-28 10:33:29 INFO  MasterServletAction:31 - @doPost		INFO: using URI /RykerERS/action/logout.ryker
+2018-11-28 10:33:29 INFO  RequestHelperAction:21 - @process		INFO: using URI: /RykerERS/action/logout.ryker
+2018-11-28 10:33:29 INFO  LoginController:55 - @logout		Successful: Session invalidated
+2018-11-28 10:33:29 INFO  MasterServletAction:33 - @doPost		INFO: BACK TO HTML
+2018-11-28 10:33:31 INFO  MasterServletJSON:26 - @doPost		INFO: using URI /RykerERS/json/login.ryker
+2018-11-28 10:33:31 INFO  RequestHelperJSON:18 - @process		INFO: using URI: /RykerERS/json/login.ryker
+2018-11-28 10:33:31 INFO  ERSServiceImplementation:79 - @checkLoginCreds		username & password(omitted) trevinchester
+2018-11-28 10:33:32 INFO  ERSServiceImplementation:82 - @checkLoginCreds		Success: user trevinchester found
+2018-11-28 10:33:33 INFO  LoginController:42 - @login		Successful: login returned user is 
+	User [username=trevinchester, firstName=Trevin, lastName=Chester, email=Trevin.Chester@revature.com, role=Admin]
+2018-11-28 10:33:33 INFO  MasterServletJSON:28 - @doPost		INFO: BACK TO HTML
+2018-11-28 10:37:03 INFO  MasterServletAction:31 - @doPost		INFO: using URI /RykerERS/action/logout.ryker
+2018-11-28 10:37:03 INFO  RequestHelperAction:21 - @process		INFO: using URI: /RykerERS/action/logout.ryker
+2018-11-28 10:37:03 INFO  LoginController:55 - @logout		Successful: Session invalidated
+2018-11-28 10:37:03 INFO  MasterServletAction:33 - @doPost		INFO: BACK TO HTML

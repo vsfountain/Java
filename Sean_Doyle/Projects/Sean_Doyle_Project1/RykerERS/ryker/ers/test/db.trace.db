@@ -1,0 +1,117 @@
+2018-11-26 07:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT U.ERS_USERNAME, U.USER_FIRST_NAME, U.USER_LAST_NAME, U.USER_EMAIL, R.USER_ROLE FROM (ERS_USERS U FULL JOIN[*] ERS_USER_ROLES R ON U.USER_ROLE_ID = R.ERS_USER_ROLE_ID)  WHERE ERS_PASSWORD = CHECKLOGINCREDENTIALS(?, ?) "; SQL statement:
+SELECT u.ers_username, u.user_first_name, u.user_last_name, u.user_email, r.user_role from (ers_users u FULL JOIN ers_user_roles r ON u.user_role_id = r.ers_user_role_id)  WHERE ers_password = checkLoginCredentials(?, ?) [42000-197]
+2018-11-26 07:21:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT U.ERS_USERNAME, U.USER_FIRST_NAME, U.USER_LAST_NAME, U.USER_EMAIL, R.USER_ROLE FROM (ERS_USERS U FULL JOIN[*] ERS_USER_ROLES R ON U.USER_ROLE_ID = R.ERS_USER_ROLE_ID)  WHERE ERS_PASSWORD = CHECKLOGINCREDENTIALS(?, ?) "; SQL statement:
+SELECT u.ers_username, u.user_first_name, u.user_last_name, u.user_email, r.user_role from (ers_users u FULL JOIN ers_user_roles r ON u.user_role_id = r.ers_user_role_id)  WHERE ers_password = checkLoginCredentials(?, ?) [42000-197]
+2018-11-26 08:27:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method "UPDATE_REIMB_STATUS (com.dao.H2DAOImplementation, parameter count: 4)" not found; SQL statement:
+  call update_reimb_status(?, ?, ?, ?)   [90087-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.engine.FunctionAlias.findJavaMethod(FunctionAlias.java:270)
+	at org.h2.expression.JavaFunction.<init>(JavaFunction.java:32)
+	at org.h2.command.Parser.readJavaFunction(Parser.java:2711)
+	at org.h2.command.Parser.readFunction(Parser.java:2756)
+	at org.h2.command.Parser.readTerm(Parser.java:3102)
+	at org.h2.command.Parser.readFactor(Parser.java:2587)
+	at org.h2.command.Parser.readSum(Parser.java:2574)
+	at org.h2.command.Parser.readConcat(Parser.java:2544)
+	at org.h2.command.Parser.readCondition(Parser.java:2370)
+	at org.h2.command.Parser.readAnd(Parser.java:2342)
+	at org.h2.command.Parser.readExpression(Parser.java:2334)
+	at org.h2.command.Parser.parseCall(Parser.java:4854)
+	at org.h2.command.Parser.parsePrepared(Parser.java:382)
+	at org.h2.command.Parser.parse(Parser.java:335)
+	at org.h2.command.Parser.parse(Parser.java:307)
+	at org.h2.command.Parser.prepareCommand(Parser.java:278)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcCallableStatement.<init>(JdbcCallableStatement.java:50)
+	at org.h2.jdbc.JdbcConnection.prepareCall(JdbcConnection.java:930)
+	at com.dao.ReimbDAOImplementation.updateReimbursement(ReimbDAOImplementation.java:174)
+	at com.test.dao.DaoTests.testUpdateReimb(DaoTests.java:162)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)
+2018-11-26 09:53:02 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1001') WHERE ERS_REIMBURSEMENT.REIMB_ID = 101 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1001') WHERE ers_reimbursement.reimb_id = 101 [42001-197]
+2018-11-26 09:53:02 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1002') WHERE ERS_REIMBURSEMENT.REIMB_ID = 102 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1002') WHERE ers_reimbursement.reimb_id = 102 [42001-197]
+2018-11-26 09:53:02 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1001') WHERE ERS_REIMBURSEMENT.REIMB_ID = 101 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1001') WHERE ers_reimbursement.reimb_id = 101 [42001-197]
+2018-11-26 09:53:02 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1001') WHERE ERS_REIMBURSEMENT.REIMB_ID = 101 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1001') WHERE ers_reimbursement.reimb_id = 101 [42001-197]
+2018-11-26 09:53:02 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1002') WHERE ERS_REIMBURSEMENT.REIMB_ID = 102 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1002') WHERE ers_reimbursement.reimb_id = 102 [42001-197]
+2018-11-26 09:53:02 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1001') WHERE ERS_REIMBURSEMENT.REIMB_ID = 101 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1001') WHERE ers_reimbursement.reimb_id = 101 [42001-197]
+2018-11-26 09:53:02 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1002') WHERE ERS_REIMBURSEMENT.REIMB_ID = 102 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1002') WHERE ers_reimbursement.reimb_id = 102 [42001-197]
+2018-11-26 09:53:02 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1001') WHERE ERS_REIMBURSEMENT.REIMB_ID = 101 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1001') WHERE ers_reimbursement.reimb_id = 101 [42001-197]
+2018-11-26 09:53:02 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER='1', REIMB_STATUS_ID='1002') WHERE ERS_REIMBURSEMENT.REIMB_ID = 102 "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver='1', reimb_status_id='1002') WHERE ers_reimbursement.reimb_id = 102 [42001-197]
+2018-11-26 09:58:29 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[7]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
+2018-11-26 09:58:29 jdbc[8]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE ERS_REIMBURSEMENT SET (REIMB_RESOLVED=[*]CURRENT_TIMESTAMP, REIMB_RESOLVER=?, REIMB_STATUS_ID=?) WHERE ERS_REIMBURSEMENT.REIMB_ID = ? "; expected "., ,, )"; SQL statement:
+UPDATE ers_reimbursement SET (reimb_resolved=CURRENT_TIMESTAMP, reimb_resolver=?, reimb_status_id=?) WHERE ers_reimbursement.reimb_id = ? [42001-197]
