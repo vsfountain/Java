@@ -20,25 +20,29 @@
 
 <body id="fm-account-page">
 
-<div class="jumbotron" id="header">
-  <h1 class="display-4">Welcome<span id="user"></span>!</h1>
-  <p class="lead"><b>Kaiba Corp Financial Manager</b></p>
-  <hr class="my-4"></hr>
-  <p class="lead">
-  <div class="form-row col-md-2">
-    <form method="POST" action="exit.login">
-			<div class="form-group col-md-2">
+	<div class="jumbotron" id="header">
+		<h1 class="display-4">
+			Welcome<span id="user"></span>!
+		</h1>
+		<p class="lead">
+			<b>Kaiba Corp Financial Manager</b>
+		</p>
+		<hr class="my-4"></hr>
+		<p class="lead">
+		<div class="btn-group">
+			<form method="POST" action="exit.login" id="exitButton">
+
 				<button type="submit" class="btn btn-warning" id="reimbs">Logout</button>
-			</div>
-		</form>
-		
+
+			</form>
+
 			<a class="btn btn-warning"
 				href="resources/html/processreimbursement.html" role="button">Process
 				reimbursements</a>
 		</div>
-</div>
+	</div>
 	<div class="form-row">
-		
+
 		<div class="input-group mb-1">
 			<div class="input-group-prepend">
 				<label class="input-group-text" for="filters">Filter By</label>
@@ -49,7 +53,7 @@
 				<option value="Approved">Approved</option>
 				<option value="Denied">Denied</option>
 			</select>
-		</div>	
+		</div>
 
 
 	</div>

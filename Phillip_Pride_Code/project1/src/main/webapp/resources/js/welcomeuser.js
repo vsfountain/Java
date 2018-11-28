@@ -54,7 +54,6 @@ function populateTable(json) {
 		reimbsTable.removeChild(reimbsTable.firstChild);
 	}
 	json.forEach((row) =>{
-		console.log(row);
 		let tr = document.createElement("tr");
 		
 		let type = document.createElement("td");
