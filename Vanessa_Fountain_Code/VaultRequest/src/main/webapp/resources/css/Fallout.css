@@ -20,6 +20,11 @@ body {
 	margin: auto;
 }
 
+.overseer{
+	color: lightgreen;
+	text-align: center;
+}
+
 .pipfront {
 	width: 450px;
 	height: 400px;

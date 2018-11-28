@@ -4,10 +4,22 @@
 	margin: 0 5px;
 }
 
-body {
-	background: linear-gradient(rgba(0, 0, 0, 1), #333333);
+.body {
+   font-family: 'Lucida Console',sans-serif;
+    background: white;
+  font-size: 25px;
+   color: rgba(255, 255, 255, 1); 
+   background-color: rgba(236, 181, 62, 0.95); 
+  text-align: left;
+  font-weight: 75;
+  -webkit-font-smoothing: antialiased;
+}
+.body {
+	background: white;
+	/*linear-gradient(rgba(0, 0, 0, 1), #333333);*/
 	font-family: Lucida Console, sans-serif;
 	max-width: autofill;
+	font-weight: 75;
 	max-height: autofill;
 	margin: auto;
 }
@@ -107,13 +119,13 @@ p
 .behind_container{
 	position: relative;
 	right:-600px;
-    border:1px solid red;
+    
     width:200px;
     z-index: -1000;
 }
 
-body {
-	background: #111;
+.body {
+	background: white;
 	font-family: 'Droid Sans', sans-serif;
 	font-size: 11pt;
 	color: #d8c99e;

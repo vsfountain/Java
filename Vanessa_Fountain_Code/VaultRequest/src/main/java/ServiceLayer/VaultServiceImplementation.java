@@ -2,6 +2,9 @@ package ServiceLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.apache.log4j.Logger;
+
 import ModelLayer.PastDisplay;
 import ModelLayer.RequestDisplay;
 import ModelLayer.VaultReimbursement;
@@ -12,6 +15,8 @@ import VaultLogin.LoginImplementation;
 import VaultLogin.LoginInterface;
 
 public class VaultServiceImplementation implements VaultService{
+	
+	
 	private LoginInterface dweller = new LoginImplementation();
 	private VaultInterface request = new VaultAccessImplementaion();
 	
@@ -28,7 +33,10 @@ public class VaultServiceImplementation implements VaultService{
 
 	@Override
 	public int getUserInfo(String username, String password) {
+		Logger log = Logger.getLogger(VaultServiceImplementation.class);
 		loggedIn = dweller.checkInfo(username, password);
+		
+		log.info("logged in: ");
 		return loggedIn;
 	}
 
@@ -39,6 +47,7 @@ public class VaultServiceImplementation implements VaultService{
 		for(RequestDisplay req : all) {
 			displayAll.put(req.getStatus()+": "+req.getRole()+" "+req.getFirst()+" "+req.getLast()+" Amount: "+req.getAmount(), req.getId());
 		}
+		
 		return displayAll;
 	}
 
