@@ -92,6 +92,13 @@ $(function() {
     });
 });
 
+function logout() {
+    (function(myCallbackGoesHereAsVariable) {
+      Parse.User.logOut();
+    })(myFunctionToShowTheLoginScreen())
+
+  }
+
 
 function asd(){
     if(document.getElementById("contact-form").style.display == "none")
