@@ -42,5 +42,13 @@ public class LoginController {
 			return "Index.html";
 		}
 	}
+	
+	public static String logout(HttpServletRequest req) {
+		
+		req.getSession().invalidate();
+		
+		return "Index.html";
+		
+	}
 		
 }

@@ -3,7 +3,9 @@ package ServiceLayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.log4j.Category;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
 import ModelLayer.PastDisplay;
 import ModelLayer.RequestDisplay;
@@ -15,7 +17,7 @@ import VaultLogin.LoginImplementation;
 import VaultLogin.LoginInterface;
 
 public class VaultServiceImplementation implements VaultService{
-	
+	private static Logger logger = Logger.getLogger(VaultServiceImplementation.class);
 	
 	private LoginInterface dweller = new LoginImplementation();
 	private VaultInterface request = new VaultAccessImplementaion();
@@ -30,13 +32,19 @@ public class VaultServiceImplementation implements VaultService{
 	
 	private int loggedIn;
 	private int inSess;
+	
+//	public static void main(String[] args) {
+//		
+//		VaultServiceImplementation obj = new VaultServiceImplementation();
+//		//obj.;
+//		
+//	}
 
 	@Override
 	public int getUserInfo(String username, String password) {
-		Logger log = Logger.getLogger(VaultServiceImplementation.class);
+		//PropertyConfigurator.configure("log4j.properties");
 		loggedIn = dweller.checkInfo(username, password);
-		
-		log.info("logged in: ");
+		logger.info("Logged in: "+loggedIn);
 		return loggedIn;
 	}
 
@@ -91,7 +99,7 @@ public class VaultServiceImplementation implements VaultService{
 	public void denyReimb(int reimbID) {
 		//ReimbImple(reqID, false);
 		request.updateStatus(reimbID, false);
-		
+		logger.info("Denying: "+reimbID+" By: "+loggedIn);
 	}
 
 
@@ -99,6 +107,7 @@ public class VaultServiceImplementation implements VaultService{
 	public void approveReimb(int reimbID) {
 		//ReimbImple(reqID, true);
 		request.updateStatus(reimbID, true);
+		logger.info("Approving: "+reimbID+" By: "+loggedIn);
 
 	}
 

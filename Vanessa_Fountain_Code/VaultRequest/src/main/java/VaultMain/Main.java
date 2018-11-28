@@ -8,11 +8,9 @@ import ServiceLayer.VaultServiceImplementation;
 public class Main {
 
 	public static void main(String[] args) {
-		//VaultService meta = new VaultServiceImplementation();
 		Logger log = Logger.getLogger(VaultServiceImplementation.class);
 		
 		log.info("logged in: ");
-
 	}
 
 }
