@@ -21,9 +21,13 @@ throws JsonProcessingException,IOException{
 	case "/ErsReimbursement/resources/html/viewReimbursement.json":
 		System.out.println("Hello222");
 		return	ReimbursementController.viewReimbursement(req,resp);
-//	case "/ErsReimbursement/MasterJSON.json":
-//		ReimbursementController.InsertReimbursement(req,resp);
+	case "/ErsReimbursement/resources/html/approvedpastemployeeReimbursement.json":
+	ReimbursementController.updateapprovedReimbursementByStatusId(req,resp);
+	case "/ErsReimbursement/resources/html/deniedpastEmployeeReimbursement.json":
+		ReimbursementController.updateDeniedReimbursementByStatusId(req,resp);
+	case "/ErsReimbursement/resources/html/pendingEmployeeReimbursement.json":
+			ReimbursementController.updateReimbursementByStatusId(req,resp);
 		default:
 			
-			return null;
+			return "/ErsReimbursement/resources/html/viewReimbursement.json";
 	}}}

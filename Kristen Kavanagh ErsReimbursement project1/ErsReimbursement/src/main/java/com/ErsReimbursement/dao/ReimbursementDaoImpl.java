@@ -152,9 +152,9 @@ public class ReimbursementDaoImpl implements ReimbursementDao {
 	}
 
 
-public int updateReimbursementStatus(Reimbursement reimburse) {
+public int updateReimbursementByStatusId(Reimbursement reimburse) {
 	try (Connection conn = DriverManager.getConnection(url, username, password)){
-		String sql = "UPDATE REIMBURSEMENT SET REIMB_STATUS_ID = ? WHERE REIMB_ID = ? ";
+		String sql = "UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = ? WHERE REIMB_ID = ? ";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, reimburse.getRemb_Status_Id());
 		ps.setInt(2, reimburse.getRemb_Id());
@@ -164,5 +164,42 @@ public int updateReimbursementStatus(Reimbursement reimburse) {
 	}
 	return 0;
 }
+
+@Override
+public int updateReimbursementByStatusId() {
+	// TODO Auto-generated method stub
+	return 0;
+}
+public int updateapprovedReimbursementByStatusId(String reimb_Resolved, String reimb_Resolver, int reimb_status_id) {
+	try (Connection conn = DriverManager.getConnection(url, username, password)){
+		String sql = "UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = ?,?,? WHERE REIMB_ID = ?,?,?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(4, reimb_Resolved);
+		ps.setString(7, reimb_Resolver);
+		ps.setInt(8, reimb_status_id);
+		 ps.executeUpdate();
+	}catch (SQLException e) {
+		e.printStackTrace();
 	}
+	return 0;
+}
+}
+	
+//public int updateReimbursementById(int id, String decision, String resolver) {
+//	logger.info("Updating reimbursement by id: " + id + " " + decision +  " " + resolver);
+//	try (Connection con = DriverManager.getConnection(url, username, password)) {
+//		String sql = "{ call update_reimb_status(?,?,?) }";
+//
+//		PreparedStatement ps = con.prepareStatement(sql);
+//		ps.setInt(1, id);
+//		ps.setString(2, decision);
+//		ps.setString(3, resolver);
+//
+//		return ps.executeUpdate();
+//
+//	} catch (SQLException ex) {
+//		logger.warn(ex);
+//	}
+//	return 0;
+//}
 

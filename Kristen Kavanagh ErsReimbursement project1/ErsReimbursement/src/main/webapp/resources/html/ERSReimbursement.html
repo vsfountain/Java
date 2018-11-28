@@ -16,7 +16,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <img src="images/reimlogo.jpg"
+		<a class="navbar-brand" href="ErsReimbursement"> <img src="images/reimlogo.jpg"
 			width="150" height="75" alt=""></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -27,18 +27,24 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="ErsReimbursement.html">Home
-						<span class="sr-only">(current)</span>
+				<li class="nav-item active"><a class="nav-link"
+					href="ErsReimbursement.html">Home <span class="sr-only">(current)</span>
 				</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="ErsReimbursement.html" id="navbarDropdown"
-					role="button" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> Reimbursement </a>
+					class="nav-link dropdown-toggle" href="ErsReimbursement.html"
+					id="navbarDropdown" role="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> Reimbursement </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-						<a class="dropdown-item" href="#">NewReimbursement</a> <a
-							class="dropdown-item" href="ErsReimbursement/resources/html/ViewReimbursement.html">ViewReimbursement</a>
+						<a class="dropdown-item"
+							href="approvedpastemployeeReimbursement.html">ApprovedReimbursement</a>
+						<a class="dropdown-item" href="pendingEmployeeReimbursement.html">PendingReimbursement</a>
+						<!-- 						<a class="dropdown-item" href="NewReimburement.html">NewReimbursement</a> -->
+						<!-- 						<a class="dropdown-item" href="ViewReimbursement.html">ViewReimbursement</a> -->
+
+						<a class="dropdown-item"
+							href="deniedpastEmployeeReimbursement.html">DeniedReimbursement</a>
+
 						<div class="dropdown-divider"></div>
 					</div></li>
 			</ul>
@@ -100,8 +106,6 @@
 
 	<form action="login.ERSServlet" method="POST">
 
-<!-- 				<form method="post" action="ERSServlet"></form> -->
-<!-- 		 		<form method="post" action="MasterJSON"></form> -->
 
 		<div class="container">
 			<div class="row" style="margin: 25px;"></div>
@@ -109,7 +113,6 @@
 			<div class="row">
 				<div class="col"></div>
 				<div class="col">
-					<!-- 				<form method="POST" action="ERSServlet"> -->
 					<p>Please enter your log in credentials:</p>
 					<div class="form-group row">
 						<label for="username" class="col-sm-3 col-form-label">username</label>
@@ -126,7 +129,6 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<!-- 					value and method  -->
 						<div class="col-sm">Manager</div>
 						<div class="col-sm">
 							<div class="form-check">
@@ -138,14 +140,13 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-10">
-							<button type="submit" value="Login" class="btn btn-success">Sign in
-								</button>
+							<button type="submit" value="Login" class="btn btn-success">Sign
+								in</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</form>
-
 </body>
 </html>

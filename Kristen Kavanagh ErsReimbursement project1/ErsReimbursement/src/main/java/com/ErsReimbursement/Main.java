@@ -1,61 +1,66 @@
 package com.ErsReimbursement;
+import org.apache.log4j.Logger;
+
+import com.ErsReimbursement.dao.ReimbursementDaoImpl;
+import com.ErsReimbursement.model.Reimbursement;
+import com.ErsReimbursement.service.ReimbursementService;
+import com.ErsReimbursement.service.ReimbursementServiceImpl;
+
 
 public class Main {
 
-		
-public static void main(String[] args) {
-	//UserService userService = UserServiceImpl.Login();
-	//User logUser =  UserImpl.selectUserByLoginInfo(UserName, PassWord);
+	
+	
+	
+	
+	final static Logger logger = Logger.getLogger(Main.class);
+	private static ReimbursementService imbur = new ReimbursementServiceImpl();
 
-		System.out.println("done");
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+//		Reimbursement customer = ReimbursementServiceImpl.webRegister();
+//		UserServiceImpl.selectUserByLoginInfo(String userName, String passWord);
+//
+//
+//		logger.setLevel(Level.ERROR);
 		
-		// connects with db
-			//System.out.println("Hey this is the jamiej's userid:" + UserService.getCurrUserName("Jamiej"));
-		}
+		
+		/*if(logger.isInfoEnabled()) {*/
+			logger.info("This is info: loggers are cool, right? Sugoi!");
+		/*}*/
+		
+		logger.warn("This is a warning: it comes for me at dawn....");
+		logger.error("This is an error: pineapples don't go on pizza...",
+				new IndexOutOfBoundsException());
+		logger.fatal("This is fatal");
+		logger.info("-----------");
+		System.out.println("I have learned alot from this project");
+		System.out.println("o");
+		Reimbursement reimbursement = null;
+		
+		int remb_Id = 2;
+		double remb_Amount = 28.90;
+		String remb_Submitted = "hello";
+		String remb_Resolved = "approved";
+		String remb_Description ="lodging";
+		int remb_Author = 1;
+		String remb_Resolver ="Jonathan" ;
+		 int remb_Status_Id = 3;
+		 int remb_Type_Id = 2;
+		
+		Reimbursement reimburse = new Reimbursement(remb_Id, remb_Amount, remb_Submitted, remb_Resolved, remb_Description,
+				remb_Author, remb_Resolver, remb_Status_Id,remb_Type_Id);
+		ReimbursementDaoImpl ReimbursementDao = new ReimbursementDaoImpl();
+		imbur.InsertReimbursement(reimburse);
 
 	}
-//		
-//		public static void callableStatementExample(String p_name,
-//												String p_type)
-//		{
-//			try(Connection conn=
-//					DriverManager.getConnection(url, username, password))
-//			{
-//				String sql= "{ call insert_pokemon_null_id(?,?) }";
-//				
-//				CallableStatement cs= conn.prepareCall(sql);
-//				cs.setString(1, p_name); //notice how we start at 1
-//				cs.setString(2, p_type);
-//				
-//				int status = cs.executeUpdate();
-//				System.out.println("CallableStatement returns: "+status);
-//			}catch(SQLException  e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		public static void preparedStatementExample(String p_name,
-//												String p_type)
-//		{
-//			try(Connection conn=
-//					DriverManager.getConnection(url, username, password))
-//			{
-//				String sql= "INSERT INTO pokemon(pokemon_name, pokemon_type) "+
-//							"VALUES(?,?)";
-//				
-//				PreparedStatement ps= conn.prepareStatement(sql);
-//				ps.setString(1, p_name);
-//				ps.setString(2, p_type);
-//				
-//				ps.executeUpdate();
-//				
-//			}catch(SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//
-//		
-//	}
-//		
-		
+
+
+
+
+}
+
+	
