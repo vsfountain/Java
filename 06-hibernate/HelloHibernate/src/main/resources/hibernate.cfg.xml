@@ -14,6 +14,13 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.show_sql">false</property>
 		<property name="hibernate.format_sql">false</property>
+		<!-- Connection Pool. A method of speeding up database calls.
+		Hibernate will create 10 connections to the database when it starts up
+		  and everytime you create a session, that session will "borrow" a
+		  connection from the connection pool. When you close a session
+		  the connection doesn't close, it is simply freed up for another session
+		  to use. This speeds up database interactions -->
+		<property name="connection.pool_size">10</property>
 	<!-- 	CREATE    drops all existing tables and then hibernate creates your schema
 	 		VALIDATE   hibernate checks to makes sure the schema is as expected
 	 		UPDATE   hibernate will not delete anything, it'll only add to your schema
@@ -21,5 +28,6 @@
 		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<mapping class="com.example.model.SuperVillain"/>
+		<mapping class="com.example.model.Crime"/>
 	</session-factory>
 </hibernate-configuration>

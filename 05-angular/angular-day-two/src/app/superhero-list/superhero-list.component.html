@@ -31,7 +31,7 @@
             <td>
               <img *ngIf='showImage' [src]='temp.image' [title]='temp.metahuman' [style.width.px]='imageWidth' [style.margin.px]='imageMargin'>
             </td>
-            <td>{{temp.name}}</td>
+            <td><a [routerLink]="['/profile', temp.name]">{{temp.name}}</a></td>
             <td>{{temp.ability}}</td>
             <td>{{temp.organization}}</td>
           </tr>

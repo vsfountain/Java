@@ -1,0 +1,9 @@
+package com.example.model;
+
+public class Crime {
+
+	private int crimeId;
+	private String crimeName;
+	private String description;
+	
+}

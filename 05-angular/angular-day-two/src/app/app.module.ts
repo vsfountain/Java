@@ -26,7 +26,7 @@ import { PokemonService } from './shared/pokemon.service';
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent},
-      {path: 'profile', component: ProfileComponent},
+      {path: 'profile/:name', component: ProfileComponent},
       {path: 'superheroes', component: SuperheroListComponent},
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'}

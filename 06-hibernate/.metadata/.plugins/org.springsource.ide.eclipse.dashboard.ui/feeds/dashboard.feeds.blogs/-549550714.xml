@@ -5,7 +5,39 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-11-27T16:49:53Z</updated>
+  <updated>2018-11-29T14:50:55Z</updated>
+  <entry>
+    <title>Spring Security 5.1.2, 5.0.10, 4.2.10  Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/11/29/spring-security-5-1-2-5-0-10-4-2-10-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2018-11-29:3481</id>
+    <updated>2018-11-29T14:50:55Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community I am pleased to announce the release of Spring Security 5.1.2 (&lt;a href="https://github.com/spring-projects/spring-security/issues?q=is%3Aclosed+milestone%3A5.1.2+sort%3Aupdated-desc"&gt;changelog&lt;/a&gt;), 5.0.10 (&lt;a href="https://github.com/spring-projects/spring-security/issues?q=is%3Aclosed+milestone%3A5.0.10+sort%3Aupdated-desc"&gt;changelog&lt;/a&gt;), and 4.2.10 (&lt;a href="https://github.com/spring-projects/spring-security/issues?q=is%3Aclosed+milestone%3A4.2.10+sort%3Aupdated-desc"&gt;changelog&lt;/a&gt;). This series of releases provides a round of bug fixes and users are encouraged to update to the latest patch release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="http://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; |
+&lt;a href="http://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 1.5.18 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/11/29/spring-boot-1-5-18-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2018-11-29:3480</id>
+    <updated>2018-11-29T11:34:02Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Boot 1.5.18 has been released and is is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Spring Boot 1.5.18 is a maintenance release that includes &lt;a href="https://github.com/spring-projects/spring-boot/milestone/123?closed=1"&gt;16 fixes, documentation improvements and dependency updates&lt;/a&gt;. Thanks to all that have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;p&gt;If you haven’t already upgraded to Spring Boot 2, please consider doing so as support for 1.x will &lt;a href="https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019"&gt;end on August 1st 2019&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - November 27th, 2018</title>
     <link rel="alternate" href="https://spring.io/blog/2018/11/27/this-week-in-spring-november-27th-2018" />
@@ -1457,184 +1489,5 @@ $ docker run -p 8080:8080 myorg/myapp
 &lt;/ul&gt;&lt;h1&gt;&lt;a href="#one-last-thing" class="anchor" name="one-last-thing"&gt;&lt;/a&gt;One Last Thing&lt;/h1&gt;
 &lt;p&gt;The list above is far from exhaustive, you can browse &lt;a href="https://www.youtube.com/user/SpringSourceDev"&gt;the full list of videos from SpringOne to find more Reactive content&lt;/a&gt;. Make sure to check out our latest incubating reactive project: &lt;a href="http://r2dbc.io"&gt;R2DBC&lt;/a&gt;, an initiative to bring Reactive Streams to relational database access. Also, take a deeper look at &lt;a href="http://rsocket.io"&gt;RSocket&lt;/a&gt; for more details about Reactive Streams applied to network communications.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://projectreactor.io"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/reactor"&gt;GitHub&lt;/a&gt; | &lt;a href="https://projectreactor.io/docs"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Security OAuth2 Auto-config 2.0.6 &amp; 2.1.0 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/10/31/spring-security-oauth2-auto-config-2-0-6-2-1-0-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Josh Cummings</name>
-    </author>
-    <id>tag:spring.io,2018-10-23:3445</id>
-    <updated>2018-10-31T15:37:47Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;I&amp;#8217;m pleased to announce on behalf of the community &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot"&gt;Spring Security OAuth2 Boot Auto-config&lt;/a&gt; 2.0.6 and 2.1.0.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Both releases primarily deliver bug fixes and dependency version updates along with some minor improvements. Of particular note is that these align with &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.1.0.RELEASE"&gt;recent&lt;/a&gt; &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.0.6.RELEASE"&gt;releases&lt;/a&gt; of Spring Boot.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Note that for 2.1.0, gaps in configuration of keys between Resource Server and Authorization Server were brought into parity. Now, it&amp;#8217;s possible on the Authorization Server side &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot/issues/56"&gt;to configure a single key&lt;/a&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;security:
-  oauth2:
-    authorization:
-      jwt:
-        key-value: ${PRIVATE_KEY}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;similar to Resource Server configuration.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Also, some &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot/issues/18"&gt;basic support for configuring a key store&lt;/a&gt; was added to both Resource Server and Authorization Server.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For a complete list of changes, please refer to the 2.0.6 &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot/milestone/14"&gt;changelog&lt;/a&gt;, the 2.1.0.RC1 &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot/milestone/12?closed=1"&gt;changelog&lt;/a&gt; and the 2.1.0 &lt;a href="https://github.com/spring-projects/spring-security-oauth2-boot/milestone/5?closed=1"&gt;changelog&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://projects.spring.io/spring-security/"&gt;Project Site&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-security-oauth2-boot/docs/current/reference/htmlsingle/"&gt;Reference&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-security"&gt;Help&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Session Bean GA Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/10/31/spring-session-bean-ga-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2018-10-31:3461</id>
-    <updated>2018-10-31T13:59:32Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;em&gt;This post was authored by &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;On behalf of the community, I&amp;#8217;m pleased to announce the general availability of Spring Session BOM Bean. This is the first release based on Spring Session 2.1 and can be easily consumed with freshly released &lt;a href="https://spring.io/blog/2018/10/30/spring-boot-2-1-0"&gt;Spring Boot 2.1&lt;/a&gt;. Please read on for the highlights of the release.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="same-site-cookie-support-for-code-httpsession-code-integration"&gt;&lt;a class="anchor" href="#same-site-cookie-support-for-code-httpsession-code-integration"&gt;&lt;/a&gt;Same-Site Cookie support for &lt;code&gt;HttpSession&lt;/code&gt; integration&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Same-Site Cookie is another mechanism that &lt;a href="https://scotthelme.co.uk/csrf-is-dead/"&gt;helps developers to protect from Cross-Site Request Forgery&lt;/a&gt;. Our &lt;code&gt;DefaultCookieSerializer&lt;/code&gt; has been enhanced to support adding &lt;code&gt;SameSite&lt;/code&gt; attribute to session cookie produced by Spring Session. The &lt;code&gt;SameSite&lt;/code&gt; attribute is enabled by default with value &lt;code&gt;Lax&lt;/code&gt; and is customizable using &lt;code&gt;DefaultCookieSerializer#setSameSite&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Note that the equivalent support for &lt;code&gt;WebSession&lt;/code&gt; is present in the Spring WebFlux itself starting with Spring Framework 5.1.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="code-httpsessionbindinglistener-code-support"&gt;&lt;a class="anchor" href="#code-httpsessionbindinglistener-code-support"&gt;&lt;/a&gt;&lt;code&gt;HttpSessionBindingListener&lt;/code&gt; support&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session now supports &lt;a href="https://javaee.github.io/javaee-spec/javadocs/javax/servlet/http/HttpSessionBindingListener.html"&gt;&lt;code&gt;HttpSessionBindingListener&lt;/code&gt;&lt;/a&gt; and will properly invoked callbacks on implementations of this API. This also means that it is now possible to use &lt;code&gt;@PreDestroy&lt;/code&gt; on session scoped beans, since that feature is realized using Spring Framework&amp;#8217;s &lt;code&gt;DestructionCallbackBindingListener&lt;/code&gt; which is a concrete implementation of &lt;code&gt;HttpSessionBindingListener&lt;/code&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="custom-serialization-for-redis-code-websession-code-integration"&gt;&lt;a class="anchor" href="#custom-serialization-for-redis-code-websession-code-integration"&gt;&lt;/a&gt;Custom serialization for Redis &lt;code&gt;WebSession&lt;/code&gt; integration&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Our Redis &lt;code&gt;WebSession&lt;/code&gt; integration can now be easily configured to use a custom serialization mechanism. In a similar fashion like with Redis &lt;code&gt;HttpSession&lt;/code&gt; integration, this can be achived by providing a &lt;code&gt;@Bean&lt;/code&gt; of type &lt;code&gt;RedisSerializer&amp;lt;Object&amp;gt;&lt;/code&gt; that is named &lt;code&gt;springSessionDefaultRedisSerializer&lt;/code&gt;:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="listingblock"&gt;
-&lt;div class="content"&gt;
-&lt;pre class="prettyprint highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;@EnableRedisWebSession
-static class SessionConfig {
-
-    @Bean
-    public RedisSerializer&amp;lt;Object&amp;gt; springSessionDefaultRedisSerializer() {
-        // configure and return a serializer of your choice
-    }
-
-}&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="performance-improvements-for-jdbc-code-httpsession-code-integration"&gt;&lt;a class="anchor" href="#performance-improvements-for-jdbc-code-httpsession-code-integration"&gt;&lt;/a&gt;Performance improvements for JDBC &lt;code&gt;HttpSession&lt;/code&gt; integration&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We have added a couple of performance improvements for our JDBC &lt;code&gt;HttpSession&lt;/code&gt; integration:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;lazy deserialization of session attributes - session attributes will now be deserialized on first access, rather than on retrieval of &lt;code&gt;HttpSession&lt;/code&gt; from database, which can for many HTTP request avoid the cost of deserialization completely&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;option for disabling transactions - for users that want to avoid the cost of transactions, &lt;code&gt;JdbcOperationsSessionRepository&lt;/code&gt; now offers a constructor that takes only &lt;code&gt;JdbcOperations&lt;/code&gt; and uses a no-op &lt;code&gt;TransactionOperations&lt;/code&gt; implementation internally&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="support-for-java-11"&gt;&lt;a class="anchor" href="#support-for-java-11"&gt;&lt;/a&gt;Support for Java 11&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session now supports recently released Java 11, while the required version of course stays at Java 8. Our CI pipeline has been enhanced so that the project is now continuosly verified against Java 11.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="dependency-upgrades"&gt;&lt;a class="anchor" href="#dependency-upgrades"&gt;&lt;/a&gt;Dependency Upgrades&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Session 2.1 is based on the following latest and greatest releases of key dependencies:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Framework 5.1&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Data Lovelace&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Spring Security 5.1&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Project Reactor Californium&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="sect1"&gt;
-&lt;h2 id="other"&gt;&lt;a class="anchor" href="#other"&gt;&lt;/a&gt;Other&lt;/h2&gt;
-&lt;div class="sectionbody"&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Complete details of Spring Session 2.1 release can be found in the following changelogs:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/46?closed=1"&gt;&lt;code&gt;2.1.1.RELEASE&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/28?closed=1"&gt;&lt;code&gt;2.1.0.RELEASE&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/42?closed=1"&gt;&lt;code&gt;2.1.0.RC1&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/41?closed=1"&gt;&lt;code&gt;2.1.0.M3&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/39?closed=1"&gt;&lt;code&gt;2.1.0.M2&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/29?closed=1"&gt;&lt;code&gt;2.1.0.M1&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;&lt;a href="https://projects.spring.io/spring-session/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-session/docs/2.1.0.RELEASE/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-session"&gt;Gitter&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-session"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;</content>
   </entry>
 </feed>

@@ -24,11 +24,21 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 
+	private static Session ses;
+	
 	private static SessionFactory sf =
 			new Configuration().configure("hibernate.cfg.xml")
 			.buildSessionFactory();
 	
 	public static Session getSession() {
-		return sf.openSession();
+		if(ses==null)
+			ses=sf.openSession();
+		
+		return ses;
+	}
+	
+	public static void closeSession() {
+		ses.close();
+		sf.close();
 	}
 }
