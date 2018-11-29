@@ -1,21 +1,5 @@
 package com.example.dao;
 
-/*Session methods
- * 
- * 	save() and persist()		result in a sql insert
- * 	update() and merge()		result in a sql update
- *  delete() 					result in a sql delete
- *  saveOrUpdate()				results in either a sql insert or update (depending)
- *  get() and load()			results in a sql select
- *  
- *  get()	will go to the database immediately
- *  load() will use a placeholder (called a proxy) until you need the value
- *  
- *  update() will not allow duplicate ids inside of your cache
- *  merge() will insert into the cache or overwrite the existing cache value
- * 
- */
-
 import java.util.List;
 
 import org.hibernate.Session;
