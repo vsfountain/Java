@@ -1,0 +1,31 @@
+package com.example.dao;
+
+import java.util.List;
+
+import com.example.model.SuperVillain;
+
+public class SuperVillainDao {
+
+	public SuperVillainDao() {
+	}
+	
+	public void insert(SuperVillain myVill) {
+		
+	}
+	
+	public void update(SuperVillain myVill) {
+		
+	}
+	
+	public SuperVillain selectById(int id) {
+		return null;
+	}
+	
+	public SuperVillain selectByName(String name) {
+		return null;
+	}
+	
+	public List<SuperVillain> selectAll(){
+		return null;
+	}
+}
