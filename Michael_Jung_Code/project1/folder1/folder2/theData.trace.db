@@ -1,0 +1,50 @@
+2018-11-27 22:45:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENTS" not found; SQL statement:
+DROP TABLE ers_reimbursements;  [42102-197]
+2018-11-27 22:46:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ERS_REIMBURSEMENT" already exists; SQL statement:
+CREATE TABLE ers_reimbursement( reimb_id INTEGER, reimb_amount INTEGER, reimb_submitted TIMESTAMP, reimb_resolved TIMESTAMP, reimb_description VARCHAR2(250), reimb_receipt BLOB, reimb_author INTEGER, reimb_status_id INTEGER, reimb_type_id INTEGER, reimb_resolver INTEGER ); INSERT INTO ers_reimbursement VALUES(1, 4, null, null, null, null, 2, 3, 2, null); INSERT INTO ers_reimbursement VALUES(2, 5, null, null, null, null, 2, 1, 1, null); INSERT INTO ers_reimbursement VALUES(3, 6, null, null, null, null, 2, 2, 3, null);  [42101-197]
+2018-11-28 09:33:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+insert into ers_reimbursement values(?,?,?,?,?,?,?,?) [21002-197]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:357)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:306)
+	at org.h2.command.Parser.prepareCommand(Parser.java:283)
+	at org.h2.engine.Session.prepareLocal(Session.java:611)
+	at org.h2.engine.Session.prepareCommand(Session.java:549)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1247)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:76)
+	at org.h2.jdbc.JdbcCallableStatement.<init>(JdbcCallableStatement.java:50)
+	at org.h2.jdbc.JdbcConnection.prepareCall(JdbcConnection.java:930)
+	at com.example.dao.H2ErsReimbursementDaoImpl.insertReimbursement(H2ErsReimbursementDaoImpl.java:69)
+	at com.example.dao.H2ErsReimbursementDaoImplTest.insertReimbursementTest(H2ErsReimbursementDaoImplTest.java:105)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:89)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:41)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:541)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:763)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:463)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:209)
