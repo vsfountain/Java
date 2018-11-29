@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/mainMenuManagerStyles.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Actions</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link">View Account Requests</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="viewPendingReimbursements.html">View Pending Reimbursement Requests</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="index.html">Logout</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div id="usersName" value="username">
+	<!-- User's name put it here -->
+	</div>
+	<div id="wrap">
+		<div id="check">
+			<form method='GET' class="needs-validation" id="changeAction" novalidate>
+			  	<h2><span class="changeText">Pending Account Requests:</span></h2>
+				<table class="table table-dark">
+				  <thead>
+				    <tr>
+				      <th scope="col" >ID #:</th>
+				      <th scope="col" >Username:</th>
+				      <th scope="col">Password:</th>
+				      <th scope="col" >Firstname:</th>
+				      <th scope="col" >Lastname:</th>
+				      <th scope="col" >Email:</th>
+				      <th scope="col">Role:</th>
+				      <th scope="col">Action:</th>
+				    </tr>
+				  </thead>
+				  <tbody id="reimbursements">
+				  </tbody>
+				</table>
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript" src="ManagerMenuJS.js"></script>
+</body>
+</html>

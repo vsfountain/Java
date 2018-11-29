@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="resources/css/mainMenuStyles.css">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#">Actions</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNav">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link">View updated status</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="reimbursementRequestPage.html">Add Reimbursement Request</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="index.html">Logout</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+	<div id="usersName" value="username">
+	<!-- User's name put it here -->
+	</div>
+	<div id="wrap">
+		<div id="check">
+			<h2><span class="changeText">Reimbursement Requests:</span>
+				<input style="width:10%; margin: 0px 0px 0px 550px" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search status.." title="Type in a category">
+			</h2>
+			<table id="reimbursementTable" class="table table-dark">
+			  <thead>
+			    <tr>
+			      <th scope="col">ID #:</th>
+			      <th scope="col">Amount:</th>
+			      <th scope="col">Description:</th>
+			      <th scope="col">Author:</th>
+			      <th scope="col">Status:</th>
+			      <th scope="col">Type:</th>
+			      <th scope="col">Submitted Date:</th>
+			      <th scope="col">Resolved Date:</th>
+			    </tr>
+			  </thead>
+			  <tbody id="reimbursements">
+			  </tbody>
+			</table>
+			<ul class="list-group" id="reimbursementRequest" value="home.json">
+			</ul>
+					<!-- AJAX SERVLET DEMOS -->
+			<!--
+			<form method="GET" action="dannyboy.json">
+				<p> Json servlet button</p>
+				<input type="submit" value="Find Danny Boy"/>
+			</form>
+			<form method="GET" action="aster.json">
+				<p> Json servlet button</p>
+				<input type="submit" value="Find Aster"/>
+			</form>
+			-->
+		</div>
+	</div>
+	<script type="text/javascript" src="MainMenuJS.js"></script>
+	<script>
+		function myFunction() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("reimbursementTable");
+		  tr = table.getElementsByTagName("tr");
+		
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[4];
+		    if (td) {
+		      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
+		}
+	</script>
+</body>
+</html>
