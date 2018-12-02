@@ -92,7 +92,6 @@ public int updatedeclinedReimbursementByStatusId(String reimb_Resolved, String r
 		
 		return reimb_status_id;}
 		else {
-			/*return emburse.updateReimbursementByStatusId();*/
 			return emburse.updateReimbursementByStatusId(reimburse);
 		}
 		

@@ -110,6 +110,15 @@ public class ReimbursementController {
 			return "ApprovedEmployeeReimbursement.html";
 		
 	}
+	/**
+	 *  Manger can approve  reimbursement based on current status
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws JsonProcessingException
+	 * @throws IOException
+	 */
+	
 	
 	public static String updateapprovedReimbursementByStatusIdForManager(HttpServletRequest req, HttpServletResponse resp)
 			throws JsonProcessingException, IOException {
@@ -117,9 +126,7 @@ public class ReimbursementController {
 		Reimbursement loggedUser = (Reimbursement) req.getSession().getAttribute("loggeduser");
 		ArrayList<Reimbursement> checkedVal = imbur.selectAllReimburse();
 		int reimburseId = Integer.parseInt(req.getParameter("reimburseId"));
-		/*if ( logUser.getUserId()== loggedUser.getRemb_Author() & loggedUser.getRemb_Status_Id() == 1) {
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(checkedVal));
-		}*/
+		
 		imbur.updateapprovedReimbursementByStatusId(logUser.getUserName(), logUser.getUserName(), reimburseId);
 			return "ViewReimbursement.html";
 		
@@ -131,9 +138,7 @@ public class ReimbursementController {
 		Reimbursement loggedUser = (Reimbursement) req.getSession().getAttribute("loggeduser");
 		ArrayList<Reimbursement> checkedVal = imbur.selectAllReimburse();
 		int reimburseId = Integer.parseInt(req.getParameter("reimburseId"));
-		/*if ( logUser.getUserId()== loggedUser.getRemb_Author() & loggedUser.getRemb_Status_Id() == 1) {
-			resp.getWriter().write(new ObjectMapper().writeValueAsString(checkedVal));
-		}*/
+	
 		imbur.updatedeclinedReimbursementByStatusId(logUser.getUserName(), logUser.getUserName(), reimburseId);
 			return "ViewReimbursement.html";
 		
@@ -150,21 +155,6 @@ public class ReimbursementController {
 			return "DeniedEmployeeReimbursement.html";
 		
 	}
-	// to be reviewed
-//public static String alterReimbursements(HttpServletRequest req) throws JsonProcessingException, IOException {
-//		
-//		int checkedValues = req.getParameterValues("selectedRow");
-//		System.out.println("Arrays toString: " + Arrays.toString(checkedValues));
-//		String resolver = ((User) req.getSession().getAttribute("user")).getUsername();
-//
-//		logger.info("AlterReimbursement done by: " + resolver);
-//		
-//		String decision = req.getParameter("submit");
-//		for (String values : checkedValues) {
-//			rService.updateReimbursementById(Integer.parseInt(values), decision, resolver);
-//		}
-//		return "adminviewall.html";
-//	}
 }
 
 

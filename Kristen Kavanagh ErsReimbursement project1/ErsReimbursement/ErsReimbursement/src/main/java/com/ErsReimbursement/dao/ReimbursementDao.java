@@ -26,8 +26,7 @@ public interface ReimbursementDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-//	// to be reivewd
-//	public Reimbursement updateReimbursement(Reimbursement r);
+
 
 	public int updateapprovedReimbursementByStatusId(String reimb_Resolved, String reimb_Resolver, int reimb_status_id);
 	}

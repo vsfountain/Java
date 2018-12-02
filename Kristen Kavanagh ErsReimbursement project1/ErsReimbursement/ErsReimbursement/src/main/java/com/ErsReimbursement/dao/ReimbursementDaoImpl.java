@@ -167,7 +167,6 @@ public int updateReimbursementByStatusId(Reimbursement reimburse) {
 
 @Override
 public int updateReimbursementByStatusId() {
-	// TODO Auto-generated method stub
 	return 0;
 }
 public int updateapprovedReimbursementByStatusId(String reimb_Resolved, String reimb_Resolver, int reimb_status_id) {
@@ -185,21 +184,4 @@ public int updateapprovedReimbursementByStatusId(String reimb_Resolved, String r
 }
 }
 	
-//public int updateReimbursementById(int id, String decision, String resolver) {
-//	logger.info("Updating reimbursement by id: " + id + " " + decision +  " " + resolver);
-//	try (Connection con = DriverManager.getConnection(url, username, password)) {
-//		String sql = "{ call update_reimb_status(?,?,?) }";
-//
-//		PreparedStatement ps = con.prepareStatement(sql);
-//		ps.setInt(1, id);
-//		ps.setString(2, decision);
-//		ps.setString(3, resolver);
-//
-//		return ps.executeUpdate();
-//
-//	} catch (SQLException ex) {
-//		logger.warn(ex);
-//	}
-//	return 0;
-//}
 

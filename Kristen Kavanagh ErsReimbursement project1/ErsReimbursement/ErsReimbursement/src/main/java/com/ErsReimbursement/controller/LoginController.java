@@ -93,18 +93,4 @@ public class LoginController {
 		}
 	}}
 	
-//	public static String viewReimbursement(HttpServletRequest req, HttpServletResponse resp)
-//			 { to bE REVIEWD
-//		User logUser = (User) req.getSession().getAttribute("user");
-//Reimbursement myReimbursement = (Reimbursement) req.getSession().getAttribute("reimb");
-//		if (logUser.getUserId() == myReimbursement.getRemb_Author())
-//		rServ.approveOrDeny(myReimbursement.getRemb_Id(), myUser.getUserId(), 1);
-//		request.getRequestDispatcher("manager.html").forward(request, response);
-//
-//		return "manager.html";
-//
-//		
-//			 }
-//		
-//			 }
-////		
+	
