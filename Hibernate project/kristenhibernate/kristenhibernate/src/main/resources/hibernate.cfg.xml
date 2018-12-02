@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<!-- JDBC API STUFF -->
+		<property name=" hibernate.connection.username">svilliandb</property>
+		<property name="hibernate.connection.password">p4ssw0rd</property>
+		<!-- jdbc:oracle:thin@YOURENDPOINT:1521:orcl -->
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@kristen.cu5uh73jvis1.us-east-2.rds.amazonaws.com:1521:kristen
+		</property>
+		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<!-- Optional additives -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		<!-- CREATE drops all existing tables and then hibernate creates your schema 
+			VALIDATE hibernate checks to make sure the schems is as expected UPDATE hibernate 
+			will not delete anything, it'll onlu add to your schema none hibernate won't 
+			do anything to your schema automatically -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- Connection Pool A method of speeding up database calls. Hibernate 
+			will create 10 connections to the database when it starts up and everytime 
+			you create a session, that sesion will "borrow" a connection from the connection 
+			pool. When you close a session the connection doesn't close, it is simply 
+			freed up for another session to use. This speeds up database interactions -->
+		<property name="connection.pool_size">10</property>
+		<property name="com.kristen.model.SuperVillain"></property>
+		<property name="com.kristen.model.Crime"></property>
+
+	</session-factory>
+</hibernate-configuration>
