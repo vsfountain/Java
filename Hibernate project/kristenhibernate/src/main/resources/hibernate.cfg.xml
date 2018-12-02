@@ -27,7 +27,7 @@
 			freed up for another session to use. This speeds up database interactions -->
 		<property name="connection.pool_size">10</property>
 		<property name="com.kristen.model.SuperVillain"></property>
-		<property name="com.kristen.model.Crime></property>
+		<property name="com.kristen.model.Crime"></property>
 
 	</session-factory>
 </hibernate-configuration>
