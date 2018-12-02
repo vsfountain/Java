@@ -5,7 +5,67 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2018-11-29T17:11:07Z</updated>
+  <updated>2018-11-30T19:29:00Z</updated>
+  <entry>
+    <title>Spring Session Bean-SR1 and Apple-SR7 Released</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/11/30/spring-session-bean-sr1-and-apple-sr7-released" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Rob Winch</name>
+    </author>
+    <id>tag:spring.io,2018-11-30:3485</id>
+    <updated>2018-11-30T19:29:00Z</updated>
+    <content type="html">&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;em&gt;This post was authored by &lt;a href="https://github.com/vpavic"&gt;Vedran Pavi?&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;On behalf of the community I’m pleased to announce the releases of Spring Session BOM &lt;code&gt;Bean-SR1&lt;/code&gt; and &lt;code&gt;Apple-SR7&lt;/code&gt;. These maintenance releases are based on Spring Session &lt;code&gt;2.1.2.RELEASE&lt;/code&gt; and &lt;code&gt;2.0.8.RELEASE&lt;/code&gt;, respectively, which bring a couple of bug fixes together with the usual dependency upgrades.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Complete details of these releases can be found in the following changelogs:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/48?closed=1"&gt;&lt;code&gt;2.1.2.RELEASE&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-session/milestone/47?closed=1"&gt;&lt;code&gt;2.0.8.RELEASE&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;&lt;a href="https://projects.spring.io/spring-session/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-session/docs/2.1.2.RELEASE/reference/html5/"&gt;Documentation&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-session/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-session"&gt;Gitter&lt;/a&gt; | &lt;a href="https://stackoverflow.com/questions/tagged/spring-session"&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.1.1 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/11/30/spring-boot-2-1-1-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Madhura Bhave</name>
+    </author>
+    <id>tag:spring.io,2018-11-30:3483</id>
+    <updated>2018-11-30T11:02:30Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone that contributed, I&amp;rsquo;m happy to announce that Spring Boot 2.1.1 has been released and is is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This release contains &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.1.1.RELEASE"&gt;almost 70 closed issues and pull requests&lt;/a&gt; which include bug fixes, documentation updates and dependency upgrades. Thanks to everyone who contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.1.1.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Boot 2.0.7 available now</title>
+    <link rel="alternate" href="https://spring.io/blog/2018/11/30/spring-boot-2-0-7-available-now" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Stéphane Nicoll</name>
+    </author>
+    <id>tag:spring.io,2018-11-30:3484</id>
+    <updated>2018-11-30T08:00:37Z</updated>
+    <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, it is my pleasure to announce that Spring Boot 2.0.7 has been released and is is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Spring Boot 2.0.7 includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v2.0.7.RELEASE"&gt;81 fixes, improvements and dependency updates&lt;/a&gt;. Thanks to all that have contributed with issue reports and pull requests.&lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
+&lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/2.0.7.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>Spring IO Platform Brussels-SR15</title>
     <link rel="alternate" href="https://spring.io/blog/2018/11/29/spring-io-platform-brussels-sr15" />
@@ -54,9 +114,9 @@
       <name>Stéphane Nicoll</name>
     </author>
     <id>tag:spring.io,2018-11-29:3480</id>
-    <updated>2018-11-29T11:34:02Z</updated>
+    <updated>2018-11-29T11:34:00Z</updated>
     <content type="html">&lt;p&gt;On behalf of the team and everyone who has contributed, I am pleased to announce that Spring Boot 1.5.18 has been released and is is now available from &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.springframework.boot%22"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Spring Boot 1.5.18 is a maintenance release that includes &lt;a href="https://github.com/spring-projects/spring-boot/milestone/123?closed=1"&gt;16 fixes, documentation improvements and dependency updates&lt;/a&gt;. Thanks to all that have contributed with issue reports and pull requests.&lt;/p&gt;
+&lt;p&gt;Spring Boot 1.5.18 is a maintenance release that includes &lt;a href="https://github.com/spring-projects/spring-boot/releases/tag/v1.5.18.RELEASE"&gt;16 fixes, documentation improvements and dependency updates&lt;/a&gt;. Thanks to all that have contributed with issue reports and pull requests.&lt;/p&gt;
 &lt;p&gt;If you haven’t already upgraded to Spring Boot 2, please consider doing so as support for 1.x will &lt;a href="https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019"&gt;end on August 1st 2019&lt;/a&gt;. &lt;/p&gt;&lt;h3&gt;&lt;a href="#how-can-you-help" class="anchor" name="how-can-you-help"&gt;&lt;/a&gt;How can you help?&lt;/h3&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in helping out, check out the &lt;a href="https://github.com/spring-projects/spring-boot/labels/status%3A%20ideal-for-contribution"&gt;&amp;ldquo;ideal for contribution&amp;rdquo; tag&lt;/a&gt; in the issue repository. If you have general questions, please ask on &lt;a href="http://stackoverflow.com"&gt;stackoverflow.com&lt;/a&gt; using the &lt;a href="http://stackoverflow.com/tags/spring-boot"&gt;&lt;code&gt;spring-boot&lt;/code&gt; tag&lt;/a&gt; or chat with the community on &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://spring.io/projects/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/1.5.18.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt; | &lt;a href="http://stackoverflow.com/questions/tagged/spring-boot"&gt;Stack Overflow&lt;/a&gt; | &lt;a href="https://gitter.im/spring-projects/spring-boot"&gt;Gitter&lt;/a&gt;&lt;/p&gt;</content>
@@ -1383,101 +1443,5 @@ $ docker run -p 8080:8080 myorg/myapp
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Cloud Task 2.1.0.M1 is now available</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/11/05/spring-cloud-task-2-1-0-m1-is-now-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Glenn Renfro</name>
-    </author>
-    <id>tag:spring.io,2018-11-05:3465</id>
-    <updated>2018-11-05T15:43:34Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that Spring Cloud Task 2.1.0M1 is now available on Github and the Pivotal download repository. Many thanks to all of those who contributed to this release.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new" class="anchor" name="what-rsquo-s-new"&gt;&lt;/a&gt;What&amp;rsquo;s New?&lt;/h2&gt;
-&lt;p&gt;Spring Cloud Task 2.1.0.M1 is intended to be the version of the framework aligned with Spring Boot 2.1.0. Updates from 2.0.x include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Update all dependencies.&lt;/li&gt;
-  &lt;li&gt;Spring Cloud Task is now enabled through auto-configuration.&lt;/li&gt;
-  &lt;li&gt;The &lt;code&gt;exitCode&lt;/code&gt; of a &lt;code&gt;TaskExecution&lt;/code&gt; is &lt;code&gt;null&lt;/code&gt; when a task is executing.&lt;/li&gt;
-  &lt;li&gt;Spring Cloud Task compiles and runs on Java 8, 9, 10, 11.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Let&amp;rsquo;s walk through these updates in more detail.&lt;/p&gt;&lt;h2&gt;&lt;a href="#update-to-all-dependencies" class="anchor" name="update-to-all-dependencies"&gt;&lt;/a&gt;Update to All Dependencies&lt;/h2&gt;
-&lt;p&gt;As stated earlier, this release brings Spring Cloud Task into alignment with Spring Boot 2.1. This includes updating all dependencies. &lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-cloud-task-is-now-enabled-through-auto-configuration" class="anchor" name="spring-cloud-task-is-now-enabled-through-auto-configuration"&gt;&lt;/a&gt;Spring Cloud Task Is Now Enabled through Auto-configuration&lt;/h2&gt;
-&lt;p&gt;Goodbye to &lt;code&gt;@EnableTask&lt;/code&gt; and hello to &lt;strong&gt;auto-configuration&lt;/strong&gt;! Spring Cloud Task is now enabled through auto-configuration. To use it, add the &lt;code&gt;spring-cloud-starter-task&lt;/code&gt; dependency to your Maven pom or Gradle build file. &lt;/p&gt;&lt;h2&gt;&lt;a href="#task-execution-rsquo-s-code-exitcode-code-is-null-when-a-task-executes" class="anchor" name="task-execution-rsquo-s-code-exitcode-code-is-null-when-a-task-executes"&gt;&lt;/a&gt;Task Execution&amp;rsquo;s &lt;code&gt;exitCode&lt;/code&gt; Is Null When a Task Executes&lt;/h2&gt;
-&lt;p&gt;In previous releases of Spring Cloud Task, the &lt;code&gt;TaskExecution&lt;/code&gt; returned from Spring Cloud Task methods always showed that a running task&amp;rsquo;s &lt;code&gt;exitCode&lt;/code&gt; was &lt;code&gt;0&lt;/code&gt;. Now the TaskExecutions returned from Spring Cloud Task have an &lt;code&gt;exitCode&lt;/code&gt; of &lt;code&gt;null&lt;/code&gt; if the task is still executing.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-do-you-think" class="anchor" name="what-do-you-think"&gt;&lt;/a&gt;What Do You Think?&lt;/h2&gt;
-&lt;p&gt;We look forward to your feedback on these new features in &lt;a href="https://github.com/spring-cloud/spring-cloud-task/issues"&gt;Github&lt;/a&gt;, &lt;a href="http://stackoverflow.com/tags/spring-cloud-task"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://gitter.im/spring-cloud/spring-cloud-task"&gt;Gitter&lt;/a&gt;, or directly via Twitter to &lt;a href="https://twitter.com/michaelminella"&gt;@michaelminella&lt;/a&gt; or &lt;a href="https://twitter.com/cppwfs"&gt;@cppwfs&lt;/a&gt;!&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://cloud.spring.io/spring-cloud-task/"&gt;Spring Cloud Task Home&lt;/a&gt; | &lt;a href="https://github.com/spring-cloud/spring-cloud-task"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-cloud-task/docs/2.1.0.M1/reference/htmlsingle/"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Project Update: Spring Cloud Data Flow for Apache Mesos and Apache YARN</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/11/01/project-update-spring-cloud-data-flow-for-apache-mesos-and-apache-yarn" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Mark Pollack</name>
-    </author>
-    <id>tag:spring.io,2018-11-01:3464</id>
-    <updated>2018-11-01T15:53:00Z</updated>
-    <content type="html">&lt;div class="paragraph"&gt;
-&lt;p&gt;Dear Spring community,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The Spring Cloud Data Flow team have been happy stewards of the Spring Cloud Deployer and Spring Cloud Data Flow implementations of &lt;a href="https://github.com/spring-cloud?utf8=%E2%9C%93&amp;amp;q=mesos&amp;amp;type=&amp;amp;language="&gt;Apache Mesos&lt;/a&gt; and &lt;a href="https://github.com/spring-cloud?utf8=%E2%9C%93&amp;amp;q=yarn&amp;amp;type=&amp;amp;language="&gt;Apache YARN&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;We now feel that &lt;a href="https://trustedchoice.com"&gt;TrustedChoice.com&lt;/a&gt; will be a better home for Apache Mesos implementation of Spring Cloud Deployer and Spring Cloud Data Flow, and we are donating the projects to them to carry it forward.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;The development will now be managed directly by the team (&lt;a href="https://github.com/aweigold"&gt;Adam J. Weigold&lt;/a&gt;, &lt;a href="https://github.com/pegelston"&gt;Phil Egelston&lt;/a&gt;, &lt;a href="https://github.com/Jmathieu3289"&gt;Justin Mathieu&lt;/a&gt;, and &lt;a href="https://github.com/bitskeptic-tc"&gt;Cole Anderson&lt;/a&gt;) at TrustedChoice.com, as the Spring Cloud Data Flow team will no longer maintain it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For more details, please refer to the projects in TrustedChoice.com’s GitHub repositories:&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/trustedchoice/spring-cloud-deployer-mesos"&gt;Spring Cloud Deployer for Mesos&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href="https://github.com/trustedchoice/spring-cloud-dataflow-server-mesos"&gt;Spring Cloud Data Flow for Mesos&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;For Apache YARN, however, since we are focusing our efforts towards Local, Kubernetes and Cloud Foundry implementations, the Spring Cloud Data Flow team has stopped maintaining it. The Apache Yarn implementation of Spring Cloud Deployer and Spring Cloud Data Flow projects have officially reached the end-of-life status today (November 1st, 2018).&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;If there’s interest in the community, we would like to open it up and donate the related projects similar to Apache Mesos implementation. If you are interested in forking the project to continue to develop and maintaining it, we would be happy to cross-link and promote your forked project. Please ping us at &lt;a href="https://gitter.im/spring-cloud/spring-cloud-dataflow"&gt;Gitter&lt;/a&gt; to discuss it.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;All the best,&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Spring Cloud Data Flow Team&lt;/p&gt;
-&lt;/div&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Tools 4.0.1 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2018/11/01/spring-tools-4-0-1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Martin Lippert</name>
-    </author>
-    <id>tag:spring.io,2018-11-01:3463</id>
-    <updated>2018-11-01T14:21:30Z</updated>
-    <content type="html">&lt;p&gt;Dear Spring Community,&lt;/p&gt;
-&lt;p&gt;I am happy to announce the 4.0.1 release of the Spring Tools 4 for Eclipse, Visual Studio Code, and Atom.&lt;/p&gt;
-&lt;p&gt;Highlights from this release include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;(Eclipse) added support for Buildship 3.0&lt;/li&gt;
-  &lt;li&gt;(Eclipse) added Tomcat server adapters back to default distribution&lt;/li&gt;
-  &lt;li&gt;(Concourse) updated S3 params to latest changes&lt;/li&gt;
-  &lt;li&gt;(Spring Boot suppport in general) various bug fixes&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;To download the distribution for Eclipse and find links to the marketplace entries for Visual Studio Code and Atom, please go visit:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring Tools 4: &lt;a href="https://spring.io/tools/"&gt;https://spring.io/tools/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Detailed changes can be found here: &lt;a href="https://github.com/spring-projects/sts4/wiki/Changelog#2018-10-31-401-release"&gt;https://github.com/spring-projects/sts4/wiki/Changelog#2018-10-31-401-release&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Enjoy!&lt;/p&gt;</content>
   </entry>
 </feed>
