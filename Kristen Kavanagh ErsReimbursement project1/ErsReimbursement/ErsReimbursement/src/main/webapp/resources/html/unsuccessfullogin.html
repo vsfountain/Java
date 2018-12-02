@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>unsuccessfullogin</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="resources/css/ERSStyle.css" />
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"> <img src="images/reimlogo.jpg"
+			width="150" height="75" alt=""></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Reimbursement </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+						<a class="dropdown-item" href="#">NewReimbursement</a> <a
+							class="dropdown-item" href="ErsReimbursement/resources/html/ViewReimbursement.html">ViewReimbursement</a>
+						<div class="dropdown-divider"></div>
+					</div></li>
+			</ul>
+
+		</div>
+	</nav>
+	<div id="demo" class="carousel slide" data-ride="carousel">
+
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0" class="active"></li>
+			<li data-target="#demo" data-slide-to="1"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+			<li data-target="#demo" data-slide-to="3"></li>
+			<li data-target="#demo" data-slide-to="4"></li>
+		</ul>
+
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="images/handshake.jpg" alt="Handshake" width="1500"
+					height="400">
+				<div class="carousel-caption">
+				
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="images/movingtarget.jpg" alt="Movingtarget" width="1100"
+					height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/digitalmoney.jpg" alt="digitalmoney" width="1500"
+					height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/food.jpg" alt="food" width="1500" height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/travel.jpg" alt="travel" width="1500" height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/lodging.jpg" alt="Lodging" width="1500"
+					height="400">
+			</div>
+		</div>
+
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span
+			class="carousel-control-prev-icon"></span>
+		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+
+	<script type="text/javascript" src="fetch.js"></script>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+				<form method="POST" action="login.ERSServlet">
+
+	
+	<div class="login-container">
+		<img src="images/sademoji.jpg" alt="sorry" width="200" height="400"   align = "right" >
+
+		<h1>Incorrect Credentials</h1>
+		<h1>you are welcome to try again!</h1>
+
+	</div>
+	</form>
+</body>
+</html>

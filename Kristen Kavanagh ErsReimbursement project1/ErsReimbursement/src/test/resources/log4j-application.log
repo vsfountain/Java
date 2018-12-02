@@ -1,0 +1,7 @@
+2018-11-28 16:15:27 INFO  Main:31 - This is info: loggers are cool, right? Sugoi!
+2018-11-28 16:15:27 WARN  Main:34 - This is a warning: it comes for me at dawn....
+2018-11-28 16:15:27 ERROR Main:35 - This is an error: pineapples don't go on pizza...
+java.lang.IndexOutOfBoundsException
+	at com.ErsReimbursement.Main.main(Main.java:36)
+2018-11-28 16:15:27 FATAL Main:37 - This is fatal
+2018-11-28 16:15:27 INFO  Main:38 - -----------

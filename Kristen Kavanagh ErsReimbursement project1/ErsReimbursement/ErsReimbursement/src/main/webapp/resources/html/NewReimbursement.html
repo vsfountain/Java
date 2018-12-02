@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>We owe you</title>
+<script type="text/javascript" src="fetch.js"></script>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<!-- boostrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/ERSStyle.css" />
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#"> <img src="images/reimlogo.jpg"
+			width="150" height="75" alt=""></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="ErsReimbursement.html">Home <span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="ErsReimburesment" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Reimbursement </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+						<a class="dropdown-item" href="NewReimbursement.html">NewReimbursement</a>
+						<a class="dropdown-item" href="ViewReimbursement.html">ViewReimbursement</a>
+
+						<a class="dropdown-item"
+							href="approvedpastemployeeReimbursement.html">ApprovedReimbursement</a>
+						<a class="dropdown-item" href="pendingEmployeeReimbursement.html">PendingReimbursement</a>
+						<a class="dropdown-item"
+							href="deniedpastEmployeeReimbursement.html">DeniedReimbursement</a>
+												<a class="dropdown-item" href="signout.html">Signout</a>
+							
+
+						<div class="dropdown-divider"></div>
+					</div></li>
+				<!-- 				<li class="nav-item"><a class="nav-link" href="#">Finance</a></li> -->
+			</ul>
+		</div>
+	</nav>
+	<div id="demo" class="carousel slide" data-ride="carousel">
+
+		<ul class="carousel-indicators">
+			<li data-target="#demo" data-slide-to="0"></li>
+			<li data-target="#demo" data-slide-to="1" class="active"></li>
+			<li data-target="#demo" data-slide-to="2"></li>
+			<li data-target="#demo" data-slide-to="3"></li>
+			<li data-target="#demo" data-slide-to="4"></li>
+		</ul>
+
+		<div class="carousel-inner">
+			<div class="carousel-item">
+				<img src="images/handshake.jpg" alt="Handshake" width="1500"
+					height="400">
+				<div class="carousel-caption"></div>
+			</div>
+			<div class="carousel-item">
+				<img src="images/movingtarget.jpg" alt="Movingtarget" width="1100"
+					height="400">
+			</div>
+			<div class="carousel-item active">
+				<img src="images/digitalmoney.jpg" alt="digitalmoney" width="1500"
+					height="400">
+				<div class="carousel-caption">
+					<h1>You say it, we pay it</h1>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img src="images/food.jpg" alt="food" width="1500" height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/travel.jpg" alt="travel" width="1500" height="400">
+			</div>
+			<div class="carousel-item">
+				<img src="images/lodging.jpg" alt="Lodging" width="1500"
+					height="400">
+			</div>
+		</div>
+
+		<a class="carousel-control-prev" href="#demo" data-slide="prev"> <span
+			class="carousel-control-prev-icon"></span>
+		</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+			<span class="carousel-control-next-icon"></span>
+		</a>
+	</div>
+
+
+	<!-- 	<div class="login-container"> -->
+	<!-- 		<form method="GET" action="ERSServlet"></form> -->
+	<!-- 		<form method="post" action="MasterJSON"></form> -->
+	<!-- 		<h3>Hello: ${User.username}</h3> -->
+	<!-- 		User Name: <b>req.getParameter("username")</b> -->
+
+
+
+
+	<form method="post" action="InsertReimbursement.ERSServlet">
+		<div class="login-container">
+
+
+			<div class="form-group">
+
+				<label for="exampleFormControlInput1">Amount</label> <input
+					type="text" name="reimb_amount" class="form-control"
+					id="reimb_amount" placeholder="amount">
+			</div>
+			<div class="form-group">
+				<label for="exampleFormControlSelect1">Description</label>
+				<textarea name="reimb_description" class="form-control"
+					id="reimb_description" rows="3"></textarea>
+			</div>
+			<!-- 			<div class="form-group"> -->
+			<!-- 				<label for="exampleFormControlInput1">Author</label> <input -->
+			<!-- 					type="text" name="reimb_author" class="User_Id" id="reimb_author" -->
+			<!-- 					placeholder="Author"> -->
+			<!-- 			</div> -->
+			<!-- 			<div class="form-group"> -->
+			<!-- 				<label for="exampleFormControlSelect2">Reimbursement Status -->
+			<!-- 				</label> <select name="reimb_status_id" multiple class="form-control" -->
+			<!-- 					id="reimb_status_id"> -->
+			<!-- 					<option>Approved</option> -->
+			<!-- 					<option>Denied</option> -->
+			<!-- 					<option>Pending</option> -->
+			<!-- 				</select> </div>-->
+
+			<div class="form-group">
+				<label for="exampleFormControlSelect2">Reimbursement Type </label> <select
+					name="reimb_type_id" class="form-control" id="reimb_type_id">
+					<option value='1'>Lodging</option>
+					<option value='2'>Travel</option>
+					<option value='3'>Food</option>
+					<option value='4'>Other</option>
+				</select>
+			</div>
+			<div class="container">
+				<div class="well">
+					<input type="submit" value="Submit" id="login"
+						class="form-control btn btn-primary" />
+				</div>
+			</div>
+		</div>
+	</form>
+	<form method="post" action="MasterJSON"></form>
+
+</body>
+</html>
