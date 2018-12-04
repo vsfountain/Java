@@ -3,9 +3,11 @@ package com.example.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Controller;
+
 import com.example.model.CartoonCharacter;
 
-@RestController
+@Controller
 public class CartoonDaoImpl implements CartoonDao {
 
 	public CartoonDaoImpl() {
