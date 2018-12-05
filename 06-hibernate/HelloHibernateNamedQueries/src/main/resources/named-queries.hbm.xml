@@ -1,0 +1,17 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<query name="HQL_GET_ALL">from SuperVillain</query>
+
+	<query name="HQL_GET_VILLAIN_BY_NAME">
+		<![CDATA[from SuperVillain where name = 'Jinx']]>
+	</query>
+	
+	<sql-query name="SQL_GET_ALL_VILLAINS">
+		<![CDATA[select * from Super_Villain]]>
+	</sql-query>
+	
+</hibernate-mapping>
