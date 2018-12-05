@@ -11,6 +11,7 @@
 	<context:component-scan base-package="com.example" />
 
 	<tx:annotation-driven />
+	<mvc:annotation-driven/>
 
 	<!-- DATASOURCE -->
 	<bean id="dataSource"
