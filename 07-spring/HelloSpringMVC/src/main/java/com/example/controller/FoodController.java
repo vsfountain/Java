@@ -16,6 +16,7 @@ import com.example.repository.FoodDao;
 
 @Controller
 @RequestMapping(value="/enriko")
+//@CrossOrigin(stuff)
 public class FoodController {
 
 	@Autowired
@@ -24,12 +25,17 @@ public class FoodController {
 	public FoodController() {
 	}
 	
+<<<<<<< HEAD
 //	@GetMapping(value="/getAllFood.app")
+=======
+	//@GetMapping(value="/getAllFood.app")
+>>>>>>> 913c752bd8fc06f213baa704e33a2fdbdf48e72f
 	@RequestMapping(value="/getAllFood.app", method=RequestMethod.GET)
 	public @ResponseBody List<Food> getAllFoods() {
 		return foodDao.selectAll();
 	}
 	
+<<<<<<< HEAD
 	/*@RequestMapping(value="/getFood.app", method=RequestMethod.POST, produces="application/json", params= {"id"})
 	public ResponseEntity<Food> getFoodById(int id){
 		return new ResponseEntity<Food>(foodDao.selectById(id), HttpStatus.OK);
@@ -39,6 +45,23 @@ public class FoodController {
 	//same as before different way
 	@PostMapping(value="/getFoodById.app")
 	public @ResponseBody Food getFoodById(@RequestParam int num){
+=======
+	//http://localhost:9005/HelloSpringMVC/enriko/getFoodById.app?id=2
+	/*@RequestMapping(value="/getFoodById.app", method=RequestMethod.POST,
+			produces="application/json", params= {"num"})
+	public ResponseEntity<Food> getFoodById(int num) {
+		return new ResponseEntity<Food>(foodDao.selectById(num), HttpStatus.OK);
+	}*/
+	
+	@PostMapping(value="/getFoodById.app")
+	public @ResponseBody Food getFoodById(@RequestParam int num) {
+		return foodDao.selectById(num);
+	}
+	
+	//http://localhost:9005/HelloSpringMVC/enriko/4/getFoodByUri.app
+	@PostMapping(value="{num}/getFoodByUri.app")
+	public @ResponseBody Food getFoodByUri(@PathVariable("num") int num) {
+>>>>>>> 913c752bd8fc06f213baa704e33a2fdbdf48e72f
 		return foodDao.selectById(num);
 	}
 	
