@@ -7,7 +7,9 @@
   
   <!-- The following listener tag will tie the lifecycle of spring to the
   	lifecycle of tomcat. For this reason, you need to have your xml file
-  		(applicationContext.xml) named what tomcat is expecting to be named -->
+  		(applicationContext.xml) named what tomcat is expecting to be named ....we no longer
+  		have a main so we have to use tomcat to run everything for us using the listener
+  		/-->
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
