@@ -18,7 +18,8 @@ public class HystrixController {
 	//allows a microservice to send HTTP requests to a RESTful server
 	RestTemplate restTemp = new RestTemplate();
 	
-	@HystrixCommand(fallbackMethod="hystrixNotAKeyword")
+	//we're using hystrix for circuit breaking
+	@HystrixCommand(fallbackMethod="hystrixNotAKeyword") 
 	@GetMapping("/fetchpets")
 	public List<Pet> fetchPets() {
 		
@@ -28,6 +29,7 @@ public class HystrixController {
 		return pList;
 	}
 	
+	//same return type
 	public List<Pet> hystrixNotAKeyword() {
 		System.out.println("not........a keyword. Seriously, I'm not trolling");
 		List<Pet> pList= new ArrayList<>();
