@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.revature</groupId>
+	<artifactId>GreetingClient</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>SOAP greeting client</name>
+	<packaging>jar</packaging>
+	<properties>
+	<cxf.version>3.1.6</cxf.version>
+	</properties>
+	<dependencies>
+	<!-- apache cxf -->
+	<dependency>
+	<groupId>org.apache.cxf</groupId>
+	<artifactId>cxf-rt-frontend-jaxws</artifactId>
+	<version>${cxf.version}</version>
+	</dependency>
+	<dependency>
+	<groupId>org.apache.cxf</groupId>
+	<artifactId>cxf-rf-transports-http</artifactId>
+	<version>${cxf.version}</version>
+	</dependency>
+	</dependencies>
+</project>

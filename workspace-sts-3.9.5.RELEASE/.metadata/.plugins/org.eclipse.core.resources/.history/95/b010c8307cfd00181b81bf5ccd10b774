@@ -1,0 +1,26 @@
+package com.example.controller;
+
+
+import java.util.List;
+
+import com.example.model.Food;
+import com.example.repo.FoodDao;
+
+@RestController
+@RequestMapping("api/foo")
+public class FoodController {
+
+	@Autowired
+	private FoodDao foodDao;
+	
+	@GetMapping("/food.app")
+	public @ResponseBody Food findFood() {
+		return foodDao.findByDishName("Spaghetti");
+	}
+	
+	@GetMapping(""")
+	public @ResponseBody List<Food> findAllFood() {
+		//return (List<Food>) foodDao.findAll();
+		return foodDao.findByOrderByDishName();
+	}
+}

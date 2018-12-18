@@ -1,0 +1,9 @@
+package com.aspects;
+
+public class AspectService {
+
+	public AspectService() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

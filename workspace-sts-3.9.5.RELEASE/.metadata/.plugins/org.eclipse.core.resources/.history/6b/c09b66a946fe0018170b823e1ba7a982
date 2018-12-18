@@ -1,0 +1,9 @@
+package com.reavture.ws;
+
+public class MessageGenImpl {
+
+	public MessageGenImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

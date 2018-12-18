@@ -1,0 +1,13 @@
+package com.example;
+@RestContorller
+@RefreshScope
+public class ConfigController {
+	@Value= ("${message:Lookat this message}");"
+	private String configMessage;
+
+	
+	@GetMapping("/test")
+	public String our ConfigExample() {
+	}
+
+}

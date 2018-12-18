@@ -1,0 +1,9 @@
+package com.example.repository;
+
+public class FoodDao {
+
+	public FoodDao() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

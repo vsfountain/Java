@@ -1,0 +1,11 @@
+package com.example;
+@RestContorller
+@RefreshScope
+public class ConfigController {
+
+	
+	@GetMapping("/test")
+	public String our ConfigExample() {
+	}
+
+}

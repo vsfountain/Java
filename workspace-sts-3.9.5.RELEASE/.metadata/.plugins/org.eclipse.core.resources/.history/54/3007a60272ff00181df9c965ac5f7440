@@ -1,0 +1,29 @@
+package com.practice.recursionPractice;
+
+/**
+ * Print number from 5 to one 
+ * @param num
+ */
+public class printNumbers {
+	public static void main(String []args) {
+		printNumbers(5);
+		
+	}
+	public static void printNumbers(int num) {
+		if (num==0) {
+			return;
+		}
+		else {System.out.println(num);
+		printNumbers(num-1);
+		
+		}
+			
+	}
+/**
+ * 
+ */
+	public static int catEyes(int cats) {
+		
+	}
+}
+

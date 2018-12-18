@@ -1,0 +1,14 @@
+package com.aspects;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
+
+@Component("aspects")
+@Aspect
+public class AspectService {
+
+	public AspectService() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

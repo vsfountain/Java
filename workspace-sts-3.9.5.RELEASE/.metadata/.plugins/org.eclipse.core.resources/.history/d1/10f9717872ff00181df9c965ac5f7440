@@ -1,0 +1,31 @@
+package com.practice.recursionPractice;
+
+/**
+ * Print number from 5 to one 
+ * @param num
+ */
+public class printNumbers {
+	public static void main(String []args) {
+		printNumbers(10);
+		
+	}
+	public static void printNumbers(int num) {
+		if (num==0) {
+			return;
+		}
+		else {System.out.println(num);
+		printNumbers(num-1);
+		
+		}
+			
+	}
+/**
+ * We have cats and each have two eyes. Send the number of cats to a function
+ * and return the total number of eyes all cats have.
+ */
+	public static int catEyes(int cats) {
+		
+		
+	}
+}
+

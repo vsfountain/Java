@@ -1,0 +1,14 @@
+package com.example.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@GetMapping
+public class SoundController {
+
+	@GetMapping("/sound")
+	public AnimalSound getSound() {
+AnimalSound s = new AnimalSound ("WEEEE",721.1);
+		return s;
+
+}

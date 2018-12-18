@@ -1,0 +1,38 @@
+package com.Kristen.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.Kristen.dao.CartoonDao;
+import com.Kristen.model.CartoonCharacter;
+@Component("CartoonServ")
+public class CartoonServiceImpl implements CartoonService{
+	public static int counter =0;
+	
+	// this is the old way without dependency injection
+	//private CartoonDao cartDao = new CartoonDaoImpl();
+	
+	// this is with DI
+	@Autowired// usingautowired here tells spring to attempt byName then
+	//by type Autowiring. 
+	private CartoonDao cartDao;
+	
+	public CartoonServiceImpl() {
+		System.out.println("In service layer: no args constructor-"+ ++counter);
+		
+	}
+	public CartoonServiceImpl( CartoonDao cartDao) {
+		this.cartDao =cartDao;
+		
+		System.out.println("In service layer: first constructor-"+ ++counter);
+		
+	}
+
+	public List<CartoonCharacter> getAllCartoons() {
+		 return cartDao.selectAll();
+	}
+	}
+
+	

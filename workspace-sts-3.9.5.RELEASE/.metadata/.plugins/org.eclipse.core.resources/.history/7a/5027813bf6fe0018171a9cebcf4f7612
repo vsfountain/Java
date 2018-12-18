@@ -1,0 +1,11 @@
+package com.example.model;
+
+public class AnimalSound {
+	private String sound;
+	private double decibel;
+
+	public Sound() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

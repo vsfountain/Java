@@ -1,0 +1,9 @@
+package com.example.controller;
+
+public class PetController {
+
+	public PetController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

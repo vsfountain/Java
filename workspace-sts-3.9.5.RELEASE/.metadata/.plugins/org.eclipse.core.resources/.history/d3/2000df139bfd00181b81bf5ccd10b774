@@ -1,0 +1,9 @@
+package com.example.repository;
+
+
+	public  interface FoodDao extends CrudRepository<Food,Integer>{
+public List<Food>findAll();
+public Food findByFoodId(int id);
+
+
+}

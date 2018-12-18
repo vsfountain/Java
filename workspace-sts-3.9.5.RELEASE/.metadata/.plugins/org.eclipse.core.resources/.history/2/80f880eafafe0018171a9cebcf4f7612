@@ -1,0 +1,9 @@
+server:
+port:8765
+ereka:
+client:
+fetch-registry:true
+register-with-eureka:true
+spring:
+application:
+name:pet-zuul

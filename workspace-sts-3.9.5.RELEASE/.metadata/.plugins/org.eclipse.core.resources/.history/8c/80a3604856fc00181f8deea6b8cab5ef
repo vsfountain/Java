@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- LifeCycle of a Spring Bean -->
+<!-- IPNFCBAIAUDD -->
+
+
+<!-- What is Java Bean? -->
+<!-- /*A Java Bean is a java class that encapsulates many objects into a single object. -->
+<!-- They are serializable -->
+<!-- they have a no-argument constructor -->
+<!-- Java beans allow access to properties using getter and setter methods. */ -->
+
+
+<!-- What is a Spring Bean? -->
+<!-- A Spring bean is a bean that is instantiated, assembly and managed by the IOC Container.  -->
+
+<!-- Setter Injection also a scope attribute Demo  -->
+<!-- <bean name="CartoonDaoBean" class= com.Kristen.dao.CartoonDaoImpl/> -->
+<!-- <bean name= "CartoonServ" scope= "prototype" class= "com.Kristen.service.CartoonServiceImpl"> -->
+<!-- <property name= "CartDao" ref="CartoonDaoBean"/> -->
+<!-- </bean> -->
+
+<!-- CONSTRUCTOR INJECTION -->
+<!-- <bean name="CartoonDaoBean" class= "com.Kristen.dao.CartoonDaoImpl"/> -->
+<!-- <bean name= "CartoonServ" class= "com.Kristen.service.CartoonServiceImpl"> -->
+<!-- <constructor-arg index="0" ref="CartoonDaoBean"/> -->
+<!-- <constructor-arg index="1" type="int"  value= "5"/> 
+</bean>-->
+
+
+
+
+<!-- AUTOWIRING
+"no" autowiring means spring will not autowire. this is also the default  -->
+<!-- Three types of autowiring -->
+
+<!-- "byType" means spring will autowire by looking at the class property datatypes and matching -->
+<!-- 	default  the same as no-->
+<!-- "Constructor" works similar to byTyp, except it iuses a constructor with the most distinct dependencies, 
+it then matches the types to beans in the IOC container  -->
+<!-- "byName"  looks at the class property variable names and finds beans in the container with the same name. 
+it uses setters to inject the beans.-->
+
+<bean name= "CartoonDaoBean" class="com.Kristen.dao.CartoonDaoImpl"/>
+<bean name= "CartoonDaoBean" class="com.Kristen.service.CartoonServiceImpl" autowire="byType" />
+</bean> 
+
+<!--  The difference between byType and byName autowiring is as follows : -->
+<!--   Autowire byType will search for a bean in configuration file, whose id match with the property type to be wired whereas  -->
+<!--  Autowire byName will search for a bean whose id is matching with the property name to be wired. -->
+
+
+<!-- what ways can you autowire? -->
+<!-- byname and by name in xml file and annotation placed above the constructor, setter or property in the class. -->
+
+<!-- <bean name= "CartoonDaoBean" class="com.Kristen.dao.CartoonDaoImpl"/> -->
+<!-- <bean name= "CartoonDaoBean" class="com.Kristen.service.CartoonServiceImpl" autowire="byType" /> -->
+<!-- </bean>  -->
+
+<!-- AUTOWIRED ANNOTATION -->
+<!-- <bean name= "CartoonDaoBean" class="com.Kristen.dao.CartoonDaoImpl"/> -->
+<!-- <bean name= "CartoonDaoBean" class="com.Kristen.service.CartoonServiceImpl"/> -->
+
+<!-- this is how to tell annotation for spring -->
+<Context:annotation-config/>
+
+
+</beans>

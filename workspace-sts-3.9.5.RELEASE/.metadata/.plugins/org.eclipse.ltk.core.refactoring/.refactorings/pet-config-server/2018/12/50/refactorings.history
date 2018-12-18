@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;pet-config-server/bootstrap.xml&apos; to &apos;bootstrap.yml&apos;" description="Rename resource &apos;bootstrap.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="bootstrap.xml" name="bootstrap.yml" stamp="1544821091582" updateReferences="true"/>
+</session>

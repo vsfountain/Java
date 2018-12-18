@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature</groupId>
+  <artifactId>SOAPGreeting</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <properties>
+  <cxf.version>3.1.6</cxf.version>
+  <org.springfrmework.version>4.2.3.RELEASE
+  </org.springfrmework.version>
+  </properties>
+  <dependencies>
+  <!-- Web applicationdevelopment utilities applicable to both Servlet and Portlet Environments (depends on spring-core, spring-beans, spring-context)
+  Define this if you use Spring MVC, or wish to use Struts, JSF, or another web framework with Spring(org.springframework.web.*) -->
+  <dependency>
+  <groupID>org.springframework</groupID>
+  <artifactId>spring-web</artifactId>
+  <version>${org.springframework.version}</version>
+  </dependency>
+  <!-- apache cxf -->;
+&<dependency>
+<groupId>org.apache.cxf</groupId>
+<artifactId>cxf-rt-frontend-jaxws</artifactId>
+<version>${cxf.version}</version>
+</dependency>
+<dependency>
+<groupId> org.apache.cxf</groupId>
+&lt;artifactId&gt;cxf-rt-transports-http&lt;/artifactId&gt;
+&lt;version&gt;${cxf.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;/dependencies&gt;
+&lt;build&gt;
+&lt;plugins&gt;
+&lt;plugin&gt;
+&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+&lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+&lt;version&gt;3.3&lt;/version&gt;
+&lt;configuration&gt;
+&lt;source&gt;1.7&lt;/source&gt;
+&lt;target&gt;1.7&lt;/target&gt;
+&lt;/configuration&gt;
+&lt;/plugin&gt;
+&lt;/plugins&gt;
+&lt;/build&gt;
+&lt;/project&gt;
+  </dependencies>
+</project>

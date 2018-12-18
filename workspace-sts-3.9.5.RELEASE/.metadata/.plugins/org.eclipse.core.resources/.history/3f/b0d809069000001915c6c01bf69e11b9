@@ -1,0 +1,54 @@
+package com.JavaPracticeOne;
+
+import java.util.Scanner;
+
+/**
+ * ➢Write a program to add, subtract, multiply and divide two non zero hard-coded numbers.
+➢Write a program to search for the greatest of three numbers using Short-circuit Operators and
+print the result.
+➢Write a program –declare two variables a and b and initialize them to true and false
+respectively. Get the output of the following computations:
+!a
+a | b
+(!a & b) | (a & !b)
+
+ * @author Kristen
+ *
+ */
+public class JavaOperators {
+	
+
+	public static void  main (String[]args) {
+		inputArithmeticOperators();
+		arithmeticOperatorsHardCodedValues();
+	}
+		
+	
+
+	public static void inputArithmeticOperators() {
+		// not hard coded numbers
+				Scanner in = new Scanner(System.in);
+				System.out.println("Input first number:");
+				int num1 = in.nextInt();
+				
+				System.out.println("Input second number:");
+				int num2 = in.nextInt();
+				
+				System.out.println(num1 + "+" +num2 + "=" + (num1 + num2));
+				System.out.println(num1 + "-" + num2 + "=" + (num2-num1));
+				System.out.println(num1 + "*" + num2 + "=" + (num2 * num1));
+						System.out.println(num2 + "/" + num1 + "=" + (num2/num1));
+	}
+
+public static void  arithmeticOperatorsHardCodedValues(){
+	
+	int price = 8;
+	int quantity = 19;
+	
+	System.out.println(price + "+" +quantity + "=" + (price + quantity));
+//	System.out.println(n + "-" + n + "=" + (num2-num1));
+//	System.out.println(num1 + "*" + num2 + "=" + (num2 * num1));
+//			System.out.println(num2 + "/" + num1 + "=" + (num2/num1));
+	 
+}
+}

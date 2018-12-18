@@ -1,0 +1,8 @@
+package com.project.aspect;
+
+public class AspectService {
+
+	public AspectService() {
+	}
+
+}

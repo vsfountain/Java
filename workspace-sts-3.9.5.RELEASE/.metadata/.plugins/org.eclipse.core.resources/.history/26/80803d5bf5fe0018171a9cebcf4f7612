@@ -1,0 +1,12 @@
+package com.example.model;
+
+public class Pet {
+	private class Pet{
+		private string name;
+		private String animal;
+	}
+
+	public Pet() {
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.example;
+
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+
+@RestContorller
+@RefreshScope
+public class ConfigController {
+	@Value= ("${message:Lookat this message}");"
+	private String configMessage;
+
+	
+	@GetMapping("/test")
+	public String our ConfigExample() {
+	}
+
+}

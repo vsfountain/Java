@@ -1,0 +1,11 @@
+package com.example.model;
+
+public class Pet {
+		private String name;
+		private String animal;
+	
+
+	public Pet() {
+	}
+
+}

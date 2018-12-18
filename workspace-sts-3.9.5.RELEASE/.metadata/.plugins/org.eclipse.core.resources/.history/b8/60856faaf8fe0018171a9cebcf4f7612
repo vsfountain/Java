@@ -1,0 +1,4 @@
+server.port = 8761
+# default port for Eureka is 8761, so the above is redundant
+eureka.client.fetch-registry= false
+eureka.client.register-with-eureke= false

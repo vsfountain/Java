@@ -1,0 +1,11 @@
+package com.reavture.ws;
+
+@WebService
+public interface MessageGen {
+
+
+	@WebMethod
+String getMessage();
+	
+
+}
