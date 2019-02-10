@@ -1,58 +1,98 @@
 package com.bankofdikoko.model;
 
-public class Account extends User{
-	private int balance;
-	private int previousTransaction;
-	private String customerName;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
+
+@Component("Account")
+@Entity
+@Table(name="Accounts")
+public class Account {
 	
-	public void deposit(int amount) {
-		if (amount > 0) {
-			balance = balance + amount;
-			previousTransaction = amount;
-			setBalance(balance);
-		} else
-			System.out.println("Invalid amount");
+	
+	@Id
+	@Column(name="account_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="ACCOUNT_SEQ")
+	@SequenceGenerator(name="ACCOUNT_SEQ", sequenceName="ACCOUNT_SEQ", allocationSize=13)
+	private int accountId;
+	
+	public Account(int balance, User user, User secondaryAccountHolder) {
+		super();
+		this.balance = balance;
+		this.user = user;
+		this.secondaryAccountHolder = secondaryAccountHolder;
 	}
 
-	public void withdraw(int amount) {
+	@Column(name="Balance")
+	private int balance;
+	
+	@OneToOne
+	@JoinColumn(name="accountholder", nullable =false)
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="secondaryholder")
+	private User secondaryAccountHolder;
+	
+	public Account() {}
 
-		if (amount > 0) {
-			if ((balance - amount) > 0) {
-				balance -= amount;
-				previousTransaction = amount;
-				System.out.println("You withdrew: $" + amount);
-			}else System.out.println("Insufficient funds");
-		} else
-			System.out.println("Invalid amount");
+	public Account(int accountId, int balance) {
+		super();
+		this.accountId = accountId;
+		this.balance = balance;
 	}
+	
+	public Account(int balance) {
+		super();
+		this.balance = balance;
+	}
+
+	public int getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(int accountId) {
+		this.accountId = accountId;
+	}
+
 	public int getBalance() {
 		return balance;
 	}
+
 	public void setBalance(int balance) {
 		this.balance = balance;
 	}
-	public int getPreviousTransaction() {
-		return previousTransaction;
+
+	public User getUser() {
+		return user;
 	}
-	public void setPreviousTransaction(int previousTransaction) {
-		this.previousTransaction = previousTransaction;
+
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public String getCustomerName() {
-		return customerName;
+
+	public User getSecondaryAccountHolder() {
+		return secondaryAccountHolder;
 	}
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
+
+	public void setSecondaryAccountHolder(User secondaryAccountHolder) {
+		this.secondaryAccountHolder = secondaryAccountHolder;
 	}
 
 	@Override
 	public String toString() {
-		return "Account [balance=" + balance + ", previousTransaction=" + previousTransaction + "]";
-	}
-	public static void apply() {
-		
-	
-		
+		return "Account [accountId=" + accountId + ", balance=" + balance + "]";
 	}
 	
+
 
 }
