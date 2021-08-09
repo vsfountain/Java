@@ -1,7 +1,6 @@
 package com.example;
 
 public class Main {
-
 	public static void main(String[] args) {
 		//we cannot instantiate an interface
 		//MyInterface myInter = new MyInterface();
@@ -16,6 +15,8 @@ public class Main {
 			System.out.println("in my printer: "+ i*j+" "+s);
 			};
 		myInter.printer("Trevin");
+		
+		
 		
 		//a lambda with one line of code
 		MyInterface myInter2= (String s)->System.out.println("No curly"+s);

@@ -1,4 +1,4 @@
-package com.example.multithreading;
+//package com.example.multithreading;
 
 public class MyFirstThread {
 

@@ -23,7 +23,7 @@ package com.example.abstraction;
  * 
  */
 public abstract class Food {
-	
+	 
 	String color;
 	static int temperature;
 	String quality= "good";
